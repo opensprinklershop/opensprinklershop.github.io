@@ -43,6 +43,10 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#start-kompass-fur-neue-kunden">Start-Kompass für neue Kunden</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#produktfamilien-und-relevante-dokumentation">Produktfamilien und relevante Dokumentation</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#firmware-update">Firmware Update</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#opensprinkler-v3">OpenSprinkler v3</a>
@@ -90,6 +94,8 @@
                   <li class="toctree-l1"><a class="reference internal" href="opensprinklerpro_fr/">Présentation (Français)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="opensprinklerpro_it/">Panoramica (Italiano)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="pro-api-endpoints/">API and platform addendum</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">MCP Server</span></p>
@@ -147,6 +153,98 @@
 <li>OpenSprinklerPro extensions: <a href="opensprinklerpro/">English</a>, <a href="opensprinklerpro_de/">Deutsch</a>, <a href="opensprinklerpro_fr/">Français</a>, <a href="opensprinklerpro_it/">Italiano</a>.</li>
 <li>For firmware release notes, visit the <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/releases">OpenSprinklerShop Firmware Releases</a> page on GitHub.</li>
 </ul>
+<hr class="double">
+
+<h2 id="start-kompass-fur-neue-kunden">Start-Kompass für neue Kunden</h2>
+<p>Wenn Sie OpenSprinkler zum ersten Mal einrichten, starten Sie mit diesen Abschnitten:</p>
+<table>
+<thead>
+<tr>
+<th>Ziel</th>
+<th>Empfohlener Einstieg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Neues Gerät anschließen</td>
+<td><a href="2.2.1/221_4_manual/#installation">Installation und Hardware</a>, inklusive WiFi-/Ethernet-Ersteinrichtung</td>
+</tr>
+<tr>
+<td>Zonen und Bewässerungsprogramme anlegen</td>
+<td><a href="2.2.1/221_4_manual/#station-cards">Station Cards</a>, <a href="2.2.1/221_4_manual/#programs">Programs</a></td>
+</tr>
+<tr>
+<td>Wetter, Sensoren und Durchfluss nutzen</td>
+<td><a href="2.2.1/221_4_manual/#weather-adjustment">Weather Adjustment</a>, <a href="2.2.1/221_4_manual/#sensor-setup">Sensor Setup</a>, <a href="fyta-sensors/">FYTA Sensors</a></td>
+</tr>
+<tr>
+<td>Fernzugriff und Benachrichtigungen einrichten</td>
+<td><a href="2.2.1/221_4_manual/#integration">Integration</a>, <a href="opensprinklerpro/#notification-events">OpenSprinklerPro notification events</a></td>
+</tr>
+<tr>
+<td>OpenSprinklerPro, Zigbee, Matter, BLE, RainMaker, MCP</td>
+<td><a href="opensprinklerpro/">OpenSprinklerPro Extensions</a></td>
+</tr>
+<tr>
+<td>Fehleranalyse</td>
+<td><a href="troubleshooting/">Troubleshooting</a>, Sidebar -&gt; <strong>System Diagnostics</strong> in der Weboberfläche</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Welche Sprache?</p>
+<p>Die ausführlichen Benutzerhandbücher sind in <a href="2.2.1/221_4_manual/">English</a>, <a href="2.2.1/221_4_manual_de/">Deutsch</a>, <a href="2.2.1/221_4_manual_fr/">Français</a> und <a href="2.2.1/221_4_manual_it/">Italiano</a> verfügbar. Die technischen Pro-Erweiterungen sind ebenfalls in allen vier Sprachen verlinkt.</p>
+</div>
+<h2 id="produktfamilien-und-relevante-dokumentation">Produktfamilien und relevante Dokumentation</h2>
+<table>
+<thead>
+<tr>
+<th>Produkt</th>
+<th>Bild</th>
+<th>Kurzbeschreibung</th>
+<th>Relevante Abschnitte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://opensprinklershop.de/product/opensprinkler-pro/">OpenSprinkler Pro</a></td>
+<td><img alt="OpenSprinkler Pro" src="https://osshop.b-cdn.net/wp-content/uploads/2026/04/16432-scaled-e1777199276933-247x247.avif" width="120" /></td>
+<td>Aktuelle ESP32-C5-Generation mit WiFi 6, BLE, Zigbee- oder Matter-Firmwarevarianten. Für AC, DC und Latch erhältlich.</td>
+<td><a href="2.2.1/221_4_manual/">User Manual</a>, <a href="opensprinklerpro/">OpenSprinklerPro Extensions</a>, <a href="rainmaker-provisioning/">RainMaker</a>, <a href="mcp-server/">MCP</a></td>
+</tr>
+<tr>
+<td><a href="https://opensprinklershop.de/product/opensprinkler-3-0/">OpenSprinkler 3.x</a></td>
+<td><img alt="OpenSprinkler 3.x" src="https://osshop.b-cdn.net/wp-content/uploads/2018/12/OpenSprinkerDC1-247x247.avif" width="120" /></td>
+<td>Bewährte ESP8266-basierte Controller-Generation mit WiFi, Display, optionalem W5500-Ethernet und bis zu 72 Zonen.</td>
+<td><a href="2.2.1/221_4_manual/#installation">Installation</a>, <a href="#firmware-update">Firmware Update</a>, <a href="2.2.1/221_4_manual/#station-cards">Station Types</a></td>
+</tr>
+<tr>
+<td><a href="https://opensprinklershop.de/product/ospi20/">OpenSprinkler Pi / OSPi 2.0</a></td>
+<td><img alt="OpenSprinkler Pi 2.0" src="https://osshop.b-cdn.net/wp-content/uploads/2024/12/enclosure6-247x234.avif" width="120" /></td>
+<td>Raspberry-Pi-HAT mit OpenSprinkler-Firmware auf Linux/Raspberry Pi, inklusive Display und analogen Sensoroptionen.</td>
+<td><a href="#opensprinkler-pi-ospi">OSPi update notes</a>, <a href="2.2.1/221_4_manual/#sensor-setup">Sensor Setup</a>, <a href="mcp-server/">MCP external server</a></td>
+</tr>
+<tr>
+<td><a href="https://opensprinklershop.de/product/esp32-board-fuer-opensprinkler-3-3-upgrade/">ESP32-C5 Upgrade Board</a></td>
+<td><img alt="ESP32-C5 Upgrade Board" src="https://osshop.b-cdn.net/wp-content/uploads/2026/03/IMG_20260315_185118-scaled-e1773606716986-247x270.avif" width="120" /></td>
+<td>Upgrade-Board für OpenSprinkler 3.3 mit ESP32-C5, BLE, Zigbee/Matter-Varianten und moderner Online-Update-Unterstützung.</td>
+<td><a href="opensprinklerpro/">OpenSprinklerPro Extensions</a>, <a href="opensprinklerpro/#esp32-mode-and-radio-management">ESP32 mode and radio features</a></td>
+</tr>
+<tr>
+<td><a href="https://opensprinklershop.de/product/opensprinkler-zone-expander/">Zone Expander</a></td>
+<td><img alt="OpenSprinkler Zone Expander" src="https://osshop.b-cdn.net/wp-content/uploads/2018/12/osexp30_prod-jpg.avif" width="120" /></td>
+<td>Erweiterungsplatine mit 16 zusätzlichen Zonen; Varianten müssen zum Controller-Typ AC/DC/Latch passen.</td>
+<td><a href="2.2.1/221_4_manual/#zone-wiring-diagram">Zone wiring</a>, <a href="2.2.1/221_4_manual/#station-handling">Number of Stations</a></td>
+</tr>
+<tr>
+<td><a href="https://opensprinklershop.de/product/analog-sensor-board/">Analog Sensor Board</a> / <a href="https://opensprinklershop.de/product/truebner-rs485-adapter/">Truebner RS485 Adapter</a></td>
+<td><img alt="Analog Sensor Board" src="https://osshop.b-cdn.net/wp-content/uploads/2023/01/os3analogsensorboard2-247x247.avif" width="120" /></td>
+<td>Sensorerweiterungen für analoge Bodenfeuchte-/Temperatursensoren, SMT50/SMT100, RS485/Modbus und Monitoring.</td>
+<td><a href="2.2.1/221_4_manual/#sensor-setup">Sensor Setup</a>, <a href="opensprinklerpro/#monitors-and-local-alerts">OpenSprinklerPro monitoring</a>, <a href="fyta-sensors/">FYTA Sensors</a></td>
+</tr>
+</tbody>
+</table>
+<p>Produktbilder werden direkt aus dem OpenSprinklerShop eingebunden und nicht in diesem Repository kopiert.</p>
 <hr class="double">
 
 <h2 id="firmware-update">Firmware Update</h2>
@@ -270,5 +368,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-05-12 21:31:49.966690+00:00
+Build Date UTC : 2026-05-12 22:23:23.068248+00:00
 -->

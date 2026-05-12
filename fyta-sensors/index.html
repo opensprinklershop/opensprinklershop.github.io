@@ -71,6 +71,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro_it/">Panoramica (Italiano)</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">MCP Server</span></p>
               <ul>
@@ -86,6 +88,10 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">FYTA Sensors</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#quick-setup-english">Quick setup (English)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#einrichtung-deutsch">Einrichtung (Deutsch)</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#voraussetzungen">Voraussetzungen</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#schritt-1-fyta-anmeldedaten-hinterlegen">Schritt 1: FYTA-Anmeldedaten hinterlegen</a>
@@ -152,7 +158,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="fyta-pflanzensensoren-einrichten">FYTA Pflanzensensoren einrichten</h1>
+                <h1 id="fyta-plant-sensors-fyta-pflanzensensoren">FYTA plant sensors / FYTA Pflanzensensoren</h1>
+<h2 id="quick-setup-english">Quick setup (English)</h2>
+<p>FYTA sensors integrate soil moisture and soil temperature from the FYTA cloud into OpenSprinkler. The values can be used for sensor-program adjustments, monitors and notifications.</p>
+<ol>
+<li>Open <a href="https://web.fyta.de/api-token">https://web.fyta.de/api-token</a>, sign in and copy an API token.</li>
+<li>In the OpenSprinkler UI, open <strong>Settings -&gt; Sensor Settings -&gt; FYTA Setup</strong> and enter either the API token (recommended) or FYTA email/password.</li>
+<li>Add a new sensor and choose <strong>FYTA Moisture</strong> or <strong>FYTA Temperature</strong>.</li>
+<li>Click <strong>Select FYTA plant and sensor</strong>, choose a plant with an assigned FYTA sensor and save.</li>
+<li>Use the value in program adjustments or monitors. Recommended polling interval: 15-60 minutes.</li>
+</ol>
+<p>Platform notes: ESP32/ESP32-C5 and OSPi use HTTPS; ESP8266 uses HTTP because of platform TLS limits.</p>
+<hr />
+<h2 id="einrichtung-deutsch">Einrichtung (Deutsch)</h2>
 <p>FYTA-Sensoren ermöglichen es, Bodenfeuchtigkeit und Temperatur direkt aus dem FYTA-Cloud-Dienst in OpenSprinkler zu integrieren. Die Messwerte können dann für automatische Bewässerungsanpassungen oder Monitore genutzt werden.</p>
 <hr />
 <h2 id="voraussetzungen">Voraussetzungen</h2>

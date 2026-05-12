@@ -71,6 +71,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#online-ota-update">Online OTA update</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#esp32-mode-and-radio-management">ESP32 mode and radio management</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#zigbee-gateway-and-zigbee-client">Zigbee gateway and Zigbee client</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#gateway-mode">Gateway mode</a>
@@ -91,6 +93,8 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#https-certificates-and-acme">HTTPS certificates and ACME</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#mcp-server-and-ai-integration">MCP server and AI integration</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#built-in-firmware-mcp-endpoint-mcp">Built-in firmware MCP endpoint /mcp</a>
@@ -100,6 +104,10 @@
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#notification-events">Notification events</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#monitors-and-local-alerts">Monitors and local alerts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#system-diagnostics-and-water-usage">System diagnostics and water usage</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#ui-and-options-notes">UI and options notes</a>
     </li>
@@ -112,6 +120,8 @@
                   <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro_fr/">Présentation (Français)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro_it/">Panoramica (Italiano)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">MCP Server</span></p>
@@ -288,7 +298,7 @@
 <li>BLE endpoints require ESP32 and <code>OS_ENABLE_BLE</code>; ESP8266 has no BLE support.</li>
 <li>OSPi has the common REST, sensor, FYTA and monitor endpoints, but not ESP32 radio-stack endpoints.</li>
 </ul>
-<p>See also: <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/api_endpoint_platform_matrix.md">Platform matrix</a>, <a href="../CHANGELOG/">CHANGELOG</a>.</p>
+<p>See also: <a href="../pro-api-endpoints/">API and platform addendum</a>, <a href="../CHANGELOG/">CHANGELOG</a>.</p>
 <h2 id="online-ota-update">Online OTA update</h2>
 <p>The Pro firmware adds online update management in <code>online_update.cpp</code> / <code>online_update.h</code>. The controller can check an update manifest, detect available firmware versions, start an update and expose update or backup status through API endpoints.</p>
 <p>Platform notes:</p>
@@ -298,7 +308,19 @@
 <li><strong>OSPi:</strong> update through shell/Git/build scripts, not through the firmware web OTA flow.</li>
 <li>Online updates require a working Internet connection and a reachable update manifest.</li>
 </ul>
-<p>Before updating, export the controller configuration from the side menu. The UI also exposes logs and system diagnosis to confirm firmware version, flash and heap state after an update.</p>
+<p>Before updating, export the controller configuration from the side menu. On ESP32 and ESP8266 builds the current firmware also provides a full backup endpoint (<code>/ub</code>) used by the web UI before online updates. This backup is different from <code>/sx</code>, which only exports sensor configuration.</p>
+<p>The UI workflow checks for an update, creates a backup, downloads the selected firmware variant, flashes it, shows progress, and can restore the previous configuration after reboot. Advanced update calls can override firmware URLs and SHA-256 hashes (<code>zu</code>, <code>mu</code>, <code>fu</code>, <code>zs</code>, <code>ms</code>) and select the <code>zigbee</code> or <code>matter</code> variant with <code>vt</code>; this is intended for reinstall, downgrade, or recovery workflows. OSPi is not supported by these firmware OTA endpoints and should be updated through the Linux/Git workflow.</p>
+<p>Relevant endpoints: <code>/uc</code> check update, <code>/uu</code> start update, <code>/us</code> update status, <code>/ub</code> full configuration backup.</p>
+<h2 id="esp32-mode-and-radio-management">ESP32 mode and radio management</h2>
+<p>On ESP32-C5 builds the web UI exposes a mode screen for choosing the active radio role. Use it when switching between Matter, Zigbee Gateway, and Zigbee Client firmware modes. A mode change updates the IEEE 802.15.4 configuration and requires a reboot before the new radio stack starts.</p>
+<p>Practical guidance:</p>
+<ul>
+<li>Choose <strong>Zigbee Gateway</strong> when the controller should manage local Zigbee sensors/devices itself.</li>
+<li>Choose <strong>Zigbee Client</strong> when OpenSprinkler should join an existing Zigbee coordinator and expose local data points there.</li>
+<li>Choose <strong>Matter</strong> only on the Matter firmware variant; Matter and Zigbee cannot run at the same time on the ESP32-C5 radio.</li>
+<li>Prefer Ethernet for Zigbee-heavy installations because Wi-Fi, BLE and Zigbee share the 2.4 GHz radio environment.</li>
+</ul>
+<p>Relevant endpoints: <code>/ir</code> get radio mode, <code>/iw</code> set radio mode, <code>/zj</code> join, <code>/zg</code> manage gateway, <code>/zs</code> status.</p>
 <h2 id="zigbee-gateway-and-zigbee-client">Zigbee gateway and Zigbee client</h2>
 <p>Zigbee is an <strong>ESP32-C5 Zigbee firmware</strong> feature. It is not available on ESP32-C5 Matter builds, ESP8266 or OSPi.</p>
 <p>OpenSprinklerPro supports two Zigbee roles:</p>
@@ -348,7 +370,8 @@
 <p>Recommended polling is 15–60 minutes to avoid excessive FYTA API traffic. See <a href="../fyta-sensors/">FYTA sensors</a>.</p>
 <h2 id="matter-and-esp-rainmaker">Matter and ESP RainMaker</h2>
 <h3 id="matter">Matter</h3>
-<p>Matter is available only on ESP32 builds compiled with <code>ENABLE_MATTER</code>; in the Pro release set this is the <strong>ESP32-C5 Matter</strong> variant. It exposes pairing information through the JSON API, including QR code, manual pairing code and commissioning state (<code>/jm</code>). Matter is not available on ESP8266 or OSPi.</p>
+<p>Matter is available only on ESP32 builds compiled with <code>ENABLE_MATTER</code>; in the Pro release set this is the <strong>ESP32-C5 Matter</strong> variant. It exposes pairing information through the JSON API, including commissioning state, QR-code URL and manual pairing code (<code>/jm</code>). Matter is not available on ESP8266 or OSPi.</p>
+<p>To pair with Apple Home, Google Home, Alexa or another Matter controller, open the Matter page in the UI and open a commissioning window. The firmware endpoint <code>/mm</code> accepts an optional timeout parameter <code>t</code> in seconds (default <code>300</code>, maximum <code>900</code>). If pairing fails, close and reopen the commissioning window and make sure the controller and phone/hub are on reachable networks.</p>
 <h3 id="esp-rainmaker">ESP RainMaker</h3>
 <p>ESP RainMaker is available on ESP32 / ESP32-C5 builds. It is not available on ESP8266 or OSPi.</p>
 <p>RainMaker provisioning supports:</p>
@@ -358,7 +381,18 @@
 <li>Ethernet participation for network connectivity while BLE is used only for claiming,</li>
 <li>status via <code>/rk</code>, including provisioning state, BLE claiming, local control and the PoP PIN.</li>
 </ul>
-<p>During BLE claiming, BLE sensors wait until RainMaker releases BLE resources. See <a href="../rainmaker-provisioning/">RainMaker provisioning</a>.</p>
+<p>During BLE claiming, BLE sensors wait until RainMaker releases BLE resources. The status page also reports node ID, MQTT connection, user mapping, local-control state, certificate/key presence, whether sensors are deferred, Ethernet usage and provisioning service data. Maintenance actions are separate: <code>reset_mapping=1</code> clears the user mapping while keeping the device claimed; <code>factory_reset=1</code> performs a full RainMaker reset and reboots. <code>/ru</code> unlinks the account and also triggers reset/reboot behavior. See <a href="../rainmaker-provisioning/">RainMaker provisioning</a>.</p>
+<h2 id="https-certificates-and-acme">HTTPS certificates and ACME</h2>
+<p>ESP32 builds with HTTPS support can use the internal certificate, a custom PEM certificate/key, or an ACME/Let's Encrypt certificate. The UI certificate screen shows certificate type, subject, issuer and validity period.</p>
+<p>Available firmware endpoints:</p>
+<ul>
+<li><code>/tg</code> returns the active certificate information.</li>
+<li><code>/tl</code> uploads a custom PEM certificate and key; reboot after upload.</li>
+<li><code>/ta</code> returns ACME domain, email, server, enabled flag, status, next check and renewal settings.</li>
+<li><code>/tc</code> saves ACME configuration and can request a certificate immediately.</li>
+<li><code>/tx</code> deletes ACME data and reverts to the internal certificate.</li>
+</ul>
+<p>Use ACME only when the controller is reachable under a valid domain and the required challenge path can be reached from the Internet.</p>
 <h2 id="mcp-server-and-ai-integration">MCP server and AI integration</h2>
 <p>OpenSprinklerPro distinguishes two MCP options.</p>
 <h3 id="built-in-firmware-mcp-endpoint-mcp">Built-in firmware MCP endpoint <code>/mcp</code></h3>
@@ -389,22 +423,36 @@ Content-Type: application/json
 </ul>
 <p>Flow-related events require a configured flow sensor on SN1. Avoid enabling every event on every channel; many notifications can delay responses and may affect very short irrigation cycles.</p>
 <p>See <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Benachrichtigungs-Ereignisse.md">Notification events</a>.</p>
+<h2 id="monitors-and-local-alerts">Monitors and local alerts</h2>
+<p>The current UI contains monitor management for sensor values and local alert checks. Monitors let you watch configured sensor readings and create low, medium or high priority warnings when thresholds are crossed. Monitor warnings can also be used as notification events, so keep thresholds specific and avoid duplicate alerts on every channel.</p>
+<p>Typical workflow:</p>
+<ol>
+<li>Configure the underlying sensor first, for example FYTA, analog, RS485/Modbus, BLE, MQTT, remote or weather sensor.</li>
+<li>Add a monitor and select the source sensor/value.</li>
+<li>Define lower/upper thresholds and priority.</li>
+<li>Use system diagnostics and the notification bell to confirm whether warnings are active.</li>
+</ol>
+<p>The REST API exposes <code>/mc</code> for monitor configuration, <code>/ml</code> for the monitor list and <code>/mt</code> for supported monitor types.</p>
+<h2 id="system-diagnostics-and-water-usage">System diagnostics and water usage</h2>
+<p>The sidebar <strong>System Diagnostics</strong> popup reports runtime state such as firmware/hardware version, reboot reason, free storage, free memory, weather request/response state, OTC status and integration status for MQTT, InfluxDB and IFTTT. Use it after updates, network changes or integration setup.</p>
+<p>Water usage data is available separately through <code>/jw</code>, which returns the pulse rate, current month and stored monthly flow records. This complements normal watering logs and is useful for monthly reports.</p>
 <h2 id="ui-and-options-notes">UI and options notes</h2>
 <p>OpenSprinklerPro uses the normal OpenSprinkler web UI and mobile app workflow:</p>
 <ul>
 <li>The homepage shows zones, weather, watering percentage, device time and status footer.</li>
-<li>The side menu provides export/import, password change, reboot and system diagnosis.</li>
+<li>The first-time setup wizard guides new controllers through Wi-Fi/Ethernet/cloud choices and default-password handling.</li>
+<li>The side menu provides site management, export/import, password change, reboot and system diagnosis.</li>
 <li>The footer menu gives quick access to logs, rain delay, pause queue, run-once, program editing and options.</li>
 <li><strong>Options → Weather &amp; Sensors</strong> configures weather adjustment, binary sensors, flow sensor and sensor-based automation.</li>
 <li><strong>Options → Integrations</strong> configures OTC, MQTT, email, IFTTT and notification events.</li>
 <li>Sensor settings include FYTA credentials, sensor-program adjustments and monitors.</li>
 </ul>
-<p>The controller supports virtual station types such as RF, remote IP/OTC, GPIO, HTTP and HTTPS. HTTPS virtual stations are not available on ESP8266 or OSPi according to the platform matrix.</p>
+<p>The controller supports virtual station types such as RF, remote IP/OTC, GPIO, HTTP and HTTPS. Configure them in the station attributes dialog, advanced tab. GPIO is shown only when free GPIO pins are available; HTTPS virtual stations are not available on ESP8266 or OSPi according to the platform matrix.</p>
 <p>Useful UI references: <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Bedienoberfläche.md">Web UI</a>, <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Optionen.md">Options</a>, <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Home.md">Wiki home</a>.</p>
 <h2 id="api-and-documentation-references">API and documentation references</h2>
 <ul>
 <li><a href="../CHANGELOG/">CHANGELOG</a> — release notes for the Pro feature set.</li>
-<li><a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/api_endpoint_platform_matrix.md">Endpoint platform matrix</a> — exact REST endpoint/platform guards.</li>
+<li><a href="../pro-api-endpoints/">API and platform addendum</a> — current REST endpoint/platform notes.</li>
 <li><a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/mcp_firmware_api.md">Firmware MCP API</a> — built-in <code>/mcp</code> protocol details.</li>
 <li><a href="../mcp-server/">External MCP server</a> — Node.js MCP setup and tool list.</li>
 <li><a href="../rainmaker-provisioning/">RainMaker provisioning</a> — BLE claiming and on-network provisioning.</li>

@@ -77,6 +77,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#aggiornamento-ota-online">Aggiornamento OTA online</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#modalita-esp32-e-gestione-radio">Modalità ESP32 e gestione radio</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#gateway-e-client-zigbee">Gateway e client Zigbee</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#modalita-gateway">Modalità gateway</a>
@@ -97,6 +99,8 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#certificati-https-e-acme">Certificati HTTPS e ACME</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#server-mcp-e-integrazione-ia">Server MCP e integrazione IA</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#endpoint-mcp-integrato-nel-firmware-mcp">Endpoint MCP integrato nel firmware /mcp</a>
@@ -107,11 +111,17 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#eventi-di-notifica">Eventi di notifica</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#monitor-e-alert-locali">Monitor e alert locali</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#diagnostica-sistema-e-consumo-acqua">Diagnostica sistema e consumo acqua</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#note-su-ui-e-opzioni">Note su UI e opzioni</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#riferimenti-api-e-documentazione">Riferimenti API e documentazione</a>
     </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">MCP Server</span></p>
@@ -288,7 +298,7 @@
 <li>Gli endpoint BLE richiedono ESP32 e <code>OS_ENABLE_BLE</code>; ESP8266 non supporta BLE.</li>
 <li>OSPi dispone degli endpoint REST, sensori, FYTA e monitor comuni, ma non degli endpoint radio ESP32.</li>
 </ul>
-<p>Vedi anche: <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/api_endpoint_platform_matrix.md">matrice piattaforme</a>, <a href="../CHANGELOG/">CHANGELOG</a>.</p>
+<p>Vedi anche: <a href="../pro-api-endpoints/">addendum API e piattaforme</a>, <a href="../CHANGELOG/">CHANGELOG</a>.</p>
 <h2 id="aggiornamento-ota-online">Aggiornamento OTA online</h2>
 <p>Il firmware Pro aggiunge la gestione degli aggiornamenti online in <code>online_update.cpp</code> / <code>online_update.h</code>. Il controller può controllare un manifesto, rilevare versioni disponibili, avviare un aggiornamento ed esporre tramite API lo stato di update o backup.</p>
 <p>Disponibilità:</p>
@@ -298,7 +308,18 @@
 <li><strong>OSPi:</strong> aggiornamento via shell/Git/script di build, non tramite il flusso OTA web del firmware.</li>
 <li>Serve una connessione Internet funzionante e un manifesto raggiungibile.</li>
 </ul>
-<p>Prima dell’update esportare la configurazione dal menu laterale. Dopo l’aggiornamento, log e diagnostica di sistema aiutano a verificare versione firmware, flash e heap.</p>
+<p>Prima dell’update esportare la configurazione dal menu laterale. Su ESP32 ed ESP8266 il firmware fornisce anche <code>/ub</code> per un backup completo della configurazione; <code>/sx</code> è invece solo per la configurazione sensori.</p>
+<p>Il flusso UI controlla gli update, crea un backup, scarica la variante firmware, esegue il flash, mostra il progresso e può ripristinare la configurazione dopo il riavvio. Chiamate avanzate possono sostituire URL e hash SHA-256 (<code>zu</code>, <code>mu</code>, <code>fu</code>, <code>zs</code>, <code>ms</code>) e scegliere la variante <code>zigbee</code> o <code>matter</code> con <code>vt</code>; servono per reinstallazione, downgrade o recovery. OSPi non usa questi endpoint OTA firmware.</p>
+<p>Endpoint utili: <code>/uc</code>, <code>/uu</code>, <code>/us</code>, <code>/ub</code>.</p>
+<h2 id="modalita-esp32-e-gestione-radio">Modalità ESP32 e gestione radio</h2>
+<p>Su ESP32-C5 l’interfaccia espone una pagina modalità per Matter, Zigbee Gateway e Zigbee Client. Il cambio aggiorna la configurazione IEEE 802.15.4 e richiede riavvio.</p>
+<ul>
+<li><strong>Zigbee Gateway</strong> gestisce localmente dispositivi Zigbee.</li>
+<li><strong>Zigbee Client</strong> collega OpenSprinkler a un coordinatore Zigbee esistente.</li>
+<li><strong>Matter</strong> richiede la variante firmware Matter; Matter e Zigbee non possono funzionare insieme sulla stessa radio ESP32-C5.</li>
+<li>Per installazioni Zigbee importanti è consigliato Ethernet.</li>
+</ul>
+<p>Endpoint utili: <code>/ir</code>, <code>/iw</code>, <code>/zj</code>, <code>/zg</code>, <code>/zs</code>.</p>
 <h2 id="gateway-e-client-zigbee">Gateway e client Zigbee</h2>
 <p>Zigbee è una funzione del <strong>firmware ESP32-C5 Zigbee</strong>. Non è disponibile su ESP32-C5 Matter, ESP8266 o OSPi.</p>
 <p>OpenSprinklerPro supporta due ruoli Zigbee.</p>
@@ -348,7 +369,8 @@
 <p>È consigliato un intervallo di 15–60 minuti per evitare troppe chiamate API. Vedi <a href="../fyta-sensors/">sensori FYTA</a>.</p>
 <h2 id="matter-ed-esp-rainmaker">Matter ed ESP RainMaker</h2>
 <h3 id="matter">Matter</h3>
-<p>Matter è disponibile solo sui build ESP32 compilati con <code>ENABLE_MATTER</code>; nel set Pro corrisponde alla variante <strong>ESP32-C5 Matter</strong>. L’API JSON <code>/jm</code> espone informazioni di pairing: QR code, codice manuale e stato di commissioning. Matter non è disponibile su ESP8266 o OSPi.</p>
+<p>Matter è disponibile solo sui build ESP32 compilati con <code>ENABLE_MATTER</code>; nel set Pro corrisponde alla variante <strong>ESP32-C5 Matter</strong>. L’API JSON <code>/jm</code> espone stato commissioning, URL QR code e codice manuale. Matter non è disponibile su ESP8266 o OSPi.</p>
+<p>Per l’abbinamento con Apple Home, Google Home, Alexa o altro controller Matter, aprire la finestra di commissioning Matter nell’UI. <code>/mm</code> accetta <code>t</code> come timeout opzionale in secondi (default <code>300</code>, massimo <code>900</code>).</p>
 <h3 id="esp-rainmaker">ESP RainMaker</h3>
 <p>ESP RainMaker è disponibile su ESP32 / ESP32-C5, non su ESP8266 o OSPi.</p>
 <p>Il provisioning RainMaker supporta:</p>
@@ -358,7 +380,16 @@
 <li>Ethernet come rete dati mentre BLE viene usato solo per il claiming,</li>
 <li>stato via <code>/rk</code>, inclusi provisioning, BLE claiming, controllo locale e PIN PoP.</li>
 </ul>
-<p>Durante il BLE claiming, i sensori BLE attendono che RainMaker liberi le risorse BLE. Vedi <a href="../rainmaker-provisioning/">RainMaker provisioning</a>.</p>
+<p>Durante il BLE claiming, i sensori BLE attendono che RainMaker liberi le risorse BLE. La pagina stato mostra anche node ID, connessione MQTT, user mapping, local control, certificati, sensori differiti, uso Ethernet e dati provisioning. <code>reset_mapping=1</code> rimuove l’associazione utente; <code>factory_reset=1</code> esegue reset RainMaker con riavvio. <code>/ru</code> scollega l’account. Vedi <a href="../rainmaker-provisioning/">RainMaker provisioning</a>.</p>
+<h2 id="certificati-https-e-acme">Certificati HTTPS e ACME</h2>
+<p>I build ESP32 con HTTPS possono usare certificato interno, certificato/chiave PEM personalizzati o ACME/Let's Encrypt. L’UI mostra tipo, subject, issuer e validità.</p>
+<ul>
+<li><code>/tg</code> legge le informazioni certificato.</li>
+<li><code>/tl</code> carica certificato PEM e chiave; serve riavvio.</li>
+<li><code>/ta</code> legge configurazione e stato ACME.</li>
+<li><code>/tc</code> salva la configurazione ACME e può richiedere un certificato.</li>
+<li><code>/tx</code> elimina i dati ACME e torna al certificato interno.</li>
+</ul>
 <h2 id="server-mcp-e-integrazione-ia">Server MCP e integrazione IA</h2>
 <p>OpenSprinklerPro distingue due opzioni MCP.</p>
 <h3 id="endpoint-mcp-integrato-nel-firmware-mcp">Endpoint MCP integrato nel firmware <code>/mcp</code></h3>
@@ -389,22 +420,28 @@ Content-Type: application/json
 </ul>
 <p>Gli eventi legati al flusso richiedono un sensore di flusso configurato su SN1. Evitare di attivare tutti gli eventi su tutti i canali: troppe notifiche possono rallentare le risposte e disturbare cicli di irrigazione molto brevi.</p>
 <p>Vedi <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Benachrichtigungs-Ereignisse.md">eventi di notifica</a>.</p>
+<h2 id="monitor-e-alert-locali">Monitor e alert locali</h2>
+<p>L’UI attuale include gestione monitor per valori sensore e alert locali. Un monitor controlla un valore configurato e genera avvisi di priorità bassa, media o alta quando le soglie vengono superate. Gli avvisi possono anche alimentare gli eventi di notifica.</p>
+<p>Flusso tipico: configurare il sensore, creare un monitor con sorgente e soglie, scegliere priorità e verificare stato tramite campanella o diagnostica. API: <code>/mc</code>, <code>/ml</code>, <code>/mt</code>.</p>
+<h2 id="diagnostica-sistema-e-consumo-acqua">Diagnostica sistema e consumo acqua</h2>
+<p>Il menu laterale <strong>System Diagnostics</strong> mostra versione firmware/hardware, motivo riavvio, storage e memoria liberi, meteo, OTC e stato MQTT/InfluxDB/IFTTT. <code>/jw</code> fornisce consumo acqua mensile con pulse rate e record.</p>
 <h2 id="note-su-ui-e-opzioni">Note su UI e opzioni</h2>
 <p>OpenSprinklerPro usa la normale interfaccia web e app OpenSprinkler:</p>
 <ul>
 <li>Home con zone, meteo, percentuale irrigazione, ora dispositivo e footer di stato.</li>
-<li>Menu laterale per export/import, cambio password, riavvio e diagnostica sistema.</li>
+<li>Wizard iniziale per Wi-Fi/Ethernet/cloud e password.</li>
+<li>Menu laterale per gestione siti, export/import, cambio password, riavvio e diagnostica sistema.</li>
 <li>Menu inferiore per log, rain delay, pause queue, run-once, programmi e opzioni.</li>
 <li><strong>Options → Weather &amp; Sensors</strong> per regolazione meteo, sensori binari, sensore flusso e automazioni basate su sensori.</li>
 <li><strong>Options → Integrations</strong> per OTC, MQTT, e-mail, IFTTT ed eventi di notifica.</li>
 <li>Impostazioni sensori per credenziali FYTA, regolazioni programma e monitor.</li>
 </ul>
-<p>I tipi di stazioni virtuali includono RF, Remote IP/OTC, GPIO, HTTP e HTTPS. Secondo la matrice piattaforme, le stazioni HTTPS non sono disponibili su ESP8266 o OSPi.</p>
+<p>I tipi di stazioni virtuali includono RF, Remote IP/OTC, GPIO, HTTP e HTTPS. Si configurano nel tab avanzato degli attributi stazione. GPIO appare solo se esistono pin liberi; HTTPS non è disponibile su ESP8266 o OSPi.</p>
 <p>Riferimenti utili: <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Bedienoberfläche.md">interfaccia</a>, <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Optionen.md">opzioni</a>, <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Home.md">home wiki</a>.</p>
 <h2 id="riferimenti-api-e-documentazione">Riferimenti API e documentazione</h2>
 <ul>
 <li><a href="../CHANGELOG/">CHANGELOG</a> — note di rilascio delle funzioni Pro.</li>
-<li><a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/api_endpoint_platform_matrix.md">Matrice endpoint/piattaforme</a> — disponibilità esatta degli endpoint REST.</li>
+<li><a href="../pro-api-endpoints/">Addendum API e piattaforme</a> — note aggiornate su endpoint REST e piattaforme.</li>
 <li><a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/mcp_firmware_api.md">API MCP firmware</a> — dettagli del <code>/mcp</code> integrato.</li>
 <li><a href="../mcp-server/">Server MCP esterno</a> — setup Node.js MCP ed elenco strumenti.</li>
 <li><a href="../rainmaker-provisioning/">RainMaker provisioning</a> — BLE claiming e provisioning on-network.</li>
@@ -416,7 +453,7 @@ Content-Type: application/json
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../opensprinklerpro_fr/" class="btn btn-neutral float-left" title="Présentation (Français)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../mcp-server/" class="btn btn-neutral float-right" title="English">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../pro-api-endpoints/" class="btn btn-neutral float-right" title="API and platform addendum">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -446,7 +483,7 @@ Content-Type: application/json
       <span><a href="../opensprinklerpro_fr/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../mcp-server/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../pro-api-endpoints/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
