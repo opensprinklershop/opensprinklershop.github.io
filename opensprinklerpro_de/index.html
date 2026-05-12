@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/opensprinklerpro_de/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Übersicht (Deutsch) - OpenSprinkler Shop Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u00dcbersicht (Deutsch)";
+        var mkdocs_page_input_path = "opensprinklerpro_de.md";
+        var mkdocs_page_url = "/opensprinklerpro_de/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenSprinkler Shop Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Firmware v2.2.1(4)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_manual/">User Manual (English)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_manual_de/">Benutzerhandbuch (Deutsch)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_manual_fr/">Manuel utilisateur (Français)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_manual_it/">Manuale utente (Italiano)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_api/">API Reference</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OpenSprinklerPro Extensions</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro/">Overview (English)</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Übersicht (Deutsch)</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#uberblick">Überblick</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#plattform-verfugbarkeit">Plattform-Verfügbarkeit</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#online-ota-update">Online-OTA-Update</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#zigbee-gateway-und-zigbee-client">Zigbee-Gateway und Zigbee-Client</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#gateway-modus">Gateway-Modus</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#client-modus">Client-Modus</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ble-sensoren">BLE-Sensoren</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fyta-sensoren">FYTA-Sensoren</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#matter-und-esp-rainmaker">Matter und ESP RainMaker</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#matter">Matter</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#esp-rainmaker">ESP RainMaker</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mcp-server-und-ki-integration">MCP-Server und KI-Integration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#eingebauter-firmware-mcp-endpunkt-mcp">Eingebauter Firmware-MCP-Endpunkt /mcp</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#externer-nodejs-mcp-server">Externer Node.js-MCP-Server</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#benachrichtigungsereignisse">Benachrichtigungsereignisse</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hinweise-zu-ui-und-optionen">Hinweise zu UI und Optionen</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api-und-dokumentationsreferenzen">API- und Dokumentationsreferenzen</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro_fr/">Présentation (Français)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro_it/">Panoramica (Italiano)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MCP Server</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../mcp-server/">English</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mcp-server-de/">Deutsch</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../rainmaker-provisioning/">RainMaker Provisioning</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../fyta-sensors/">FYTA Sensors</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Archived</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../archive/">Previous Manuals and API docs</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenSprinkler Shop Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">OpenSprinklerPro Extensions</li>
+      <li class="breadcrumb-item active">Übersicht (Deutsch)</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/opensprinklerpro_de.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="opensprinklerpro-erweiterung">OpenSprinklerPro-Erweiterung</h1>
+<p>OpenSprinklerPro bezeichnet den erweiterten Funktionsumfang für OpenSprinkler-Installationen mit modernen Funkintegrationen, umfangreicher Sensorik, Online-Updates, KI/MCP-Zugriff und erweiterten Benachrichtigungen. Die Basisfunktionen bleiben unverändert: Zonen, Programme, Wetteranpassung, Protokolle, Fernzugriff und Web-/App-Bedienung.</p>
+<p>Diese Seite ist eigenständig lesbar und verweist nur dort auf Detailseiten, wo zusätzliche Referenzdaten hilfreich sind.</p>
+<h2 id="uberblick">Überblick</h2>
+<p>OpenSprinklerPro umfasst insbesondere:</p>
+<ul>
+<li><strong>Online-OTA-Updates</strong> mit Manifestprüfung, Update-Status und Backup-/Update-Endpunkten.</li>
+<li><strong>ESP32-C5-Funkfunktionen</strong>: Zigbee-Gateway/-Client und IEEE-802.15.4-Modusumschaltung.</li>
+<li><strong>BLE-Sensoren</strong> auf unterstützten ESP32-Builds und OSPi-Systemen mit Bluetooth.</li>
+<li><strong>FYTA-Cloud-Pflanzensensoren</strong> für Bodenfeuchte und Temperatur.</li>
+<li><strong>Matter und ESP RainMaker</strong> für Smart-Home- und Cloud-/App-Integration auf ESP32.</li>
+<li><strong>MCP-Zugriff</strong> für KI-Assistenten, direkt in der Firmware oder über den externen Node.js-Server.</li>
+<li><strong>Benachrichtigungsereignisse</strong> für MQTT, E-Mail, IFTTT und Monitoring.</li>
+</ul>
+<h2 id="plattform-verfugbarkeit">Plattform-Verfügbarkeit</h2>
+<p>OpenSprinklerPro ist nicht auf jeder Plattform identisch verfügbar. Entscheidend sind Hardware und Build-Flags.</p>
+<table>
+<thead>
+<tr>
+<th>Funktion</th>
+<th style="text-align: center;">ESP32-C5 Zigbee</th>
+<th style="text-align: center;">ESP32-C5 Matter</th>
+<th style="text-align: center;">ESP32 / non-C5</th>
+<th style="text-align: center;">ESP8266</th>
+<th style="text-align: center;">OSPi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kernfunktionen, Programme, Web-UI, Logs</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>Online-OTA über Web-UI</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td>Update per Skript/Git</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>HTTPS / ACME-Zertifikate</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">abhängig vom ESP32-Build</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td>Zigbee / IEEE 802.15.4</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td>BLE-Sensoren</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">build-flag-abhängig</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅ über Linux-Bluetooth</td>
+</tr>
+<tr>
+<td>Matter-Endpunkt</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">build-flag-abhängig</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td>ESP RainMaker</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">ESP32-abhängig</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td>FYTA-Sensoren</td>
+<td style="text-align: center;">✅ HTTPS</td>
+<td style="text-align: center;">✅ HTTPS</td>
+<td style="text-align: center;">✅ HTTPS</td>
+<td style="text-align: center;">✅ nur HTTP</td>
+<td style="text-align: center;">✅ HTTPS</td>
+</tr>
+<tr>
+<td>Eingebautes Firmware-MCP <code>/mcp</code></td>
+<td style="text-align: center;">✅ ESP32 + <code>USE_OTF</code></td>
+<td style="text-align: center;">✅ ESP32 + <code>USE_OTF</code></td>
+<td style="text-align: center;">✅ ESP32 + <code>USE_OTF</code></td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td>Externer Node.js-MCP-Server</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+</tr>
+</tbody>
+</table>
+<p>Hinweise:</p>
+<ul>
+<li>ESP32-C5-Zigbee und ESP32-C5-Matter sind getrennte Firmware-Varianten. Zigbee und Matter können auf demselben ESP32-C5-Funkmodul nicht gleichzeitig aktiv sein.</li>
+<li>Zigbee-Endpunkte benötigen ESP32-C5 und <code>OS_ENABLE_ZIGBEE</code>.</li>
+<li>BLE-Endpunkte benötigen ESP32 und <code>OS_ENABLE_BLE</code>; ESP8266 unterstützt kein BLE.</li>
+<li>OSPi besitzt die allgemeinen REST-, Sensor-, FYTA- und Monitor-Endpunkte, aber keine ESP32-Funkstack-Endpunkte.</li>
+</ul>
+<p>Siehe auch: <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/api_endpoint_platform_matrix.md">Plattform-Matrix</a>, <a href="../CHANGELOG/">CHANGELOG</a>.</p>
+<h2 id="online-ota-update">Online-OTA-Update</h2>
+<p>Die Pro-Firmware ergänzt eine Online-Update-Verwaltung in <code>online_update.cpp</code> / <code>online_update.h</code>. Der Controller kann ein Update-Manifest prüfen, verfügbare Firmware-Versionen erkennen, ein Update starten und Update- oder Backup-Status per API bereitstellen.</p>
+<p>Plattformhinweise:</p>
+<ul>
+<li><strong>ESP32-C5 / ESP32 und ESP8266:</strong> OTA-Update über Weboberfläche und manuellen Firmware-Upload.</li>
+<li><strong>ESP32-C5:</strong> Dual-OTA-Partitionen unterstützen rollback-orientierte Update-Layouts.</li>
+<li><strong>OSPi:</strong> Update über Shell/Git/Build-Skripte, nicht über den Firmware-Web-OTA-Dialog.</li>
+<li>Online-Updates benötigen Internetzugang und ein erreichbares Update-Manifest.</li>
+</ul>
+<p>Vor einem Update sollte die Konfiguration über das Seitenmenü exportiert werden. Nach dem Update helfen Systemdiagnose und Logs bei der Kontrolle von Firmware-Version, Flash und Heap.</p>
+<h2 id="zigbee-gateway-und-zigbee-client">Zigbee-Gateway und Zigbee-Client</h2>
+<p>Zigbee ist eine Funktion der <strong>ESP32-C5-Zigbee-Firmware</strong>. Sie ist nicht in ESP32-C5-Matter-Builds, nicht auf ESP8266 und nicht auf OSPi verfügbar.</p>
+<p>OpenSprinklerPro unterstützt zwei Zigbee-Rollen:</p>
+<h3 id="gateway-modus">Gateway-Modus</h3>
+<p>Im Gateway-Modus verwaltet der ESP32-C5 lokale Zigbee-Geräte:</p>
+<ul>
+<li>Gerätebeitritt erlauben,</li>
+<li>Geräte auflisten, abfragen und entfernen,</li>
+<li>Hersteller- und Modellinformationen übernehmen, soweit verfügbar,</li>
+<li>Tuya-Datenpunkte verarbeiten und möglichst auf Standardattribute abbilden.</li>
+</ul>
+<p>Wichtige REST-Endpunkte:</p>
+<ul>
+<li><code>/ir</code> und <code>/iw</code> für IEEE-802.15.4-Funkkonfiguration und Moduswechsel,</li>
+<li><code>/zg</code>, <code>/zd</code>, <code>/zo</code>, <code>/zc</code> für Gateway-Geräteverwaltung,</li>
+<li><code>/zs</code> für den Zigbee-Status.</li>
+</ul>
+<h3 id="client-modus">Client-Modus</h3>
+<p>Im Client-Modus tritt OpenSprinkler einem externen Zigbee-Koordinator bei und meldet lokale Datenpunkte wie Sensoren, Zonen, Programme und Regensensorstatus. ZCL-Endpunkte decken Temperatur, Feuchte, Durchfluss, Analogsensoren, Zonen, Programme und Regensensoren ab.</p>
+<p>Für Zigbee-lastige Installationen ist Ethernet empfehlenswert. Laut lokaler Dokumentation teilen sich Wi-Fi und Zigbee beim ESP32-C5 das 2,4-GHz-Band; während BLE-Scans wird die Zigbee-Priorität reduziert, um Störungen zu verringern.</p>
+<h2 id="ble-sensoren">BLE-Sensoren</h2>
+<p>BLE-Scanning und BLE-Sensorlisten sind auf ESP32-Builds mit aktiviertem BLE verfügbar, einschließlich der ESP32-C5-Pro-Varianten. OSPi kann den Bluetooth-Stack des Raspberry Pi nutzen; ESP8266 unterstützt BLE nicht.</p>
+<p>BLE-Funktionen:</p>
+<ul>
+<li>Geräteliste und Scansteuerung (<code>/bd</code>, <code>/bs</code>, <code>/bc</code> bei ESP32 + <code>OS_ENABLE_BLE</code>),</li>
+<li>Geräteinformationen wie Hersteller und Modell, sofern vom Sensor bereitgestellt,</li>
+<li>threadsicherer Zugriff auf erkannte BLE-Geräte,</li>
+<li>Koexistenzsteuerung mit Zigbee auf ESP32-C5.</li>
+</ul>
+<p>Während ESP-RainMaker-BLE-Claiming wird die BLE-Sensorinitialisierung bewusst zurückgestellt, bis die Provisionierung abgeschlossen ist.</p>
+<h2 id="fyta-sensoren">FYTA-Sensoren</h2>
+<p>FYTA-Pflanzensensoren integrieren Bodenfeuchte und Temperatur über die FYTA-Cloud. Die Werte werden nicht direkt vom Sensor gelesen, sondern über die FYTA Cloud API abgefragt.</p>
+<p>Plattform-Verfügbarkeit:</p>
+<ul>
+<li><strong>ESP32 / ESP32-C5:</strong> unterstützt per HTTPS.</li>
+<li><strong>ESP8266:</strong> unterstützt per HTTP, wegen TLS-Einschränkungen der Plattform.</li>
+<li><strong>OSPi:</strong> unterstützt per HTTPS.</li>
+</ul>
+<p>Typischer Ablauf:</p>
+<ol>
+<li>FYTA-API-Token auf <code>web.fyta.de</code> erzeugen oder kopieren.</li>
+<li>In der OpenSprinkler-Weboberfläche <strong>Einstellungen → Sensor-Einstellungen → FYTA Setup</strong> öffnen und Token oder Login-Daten speichern.</li>
+<li>Neuen Sensor als <strong>FYTA Moisture</strong> oder <strong>FYTA Temperature</strong> anlegen.</li>
+<li>FYTA-Pflanze mit zugeordnetem Sensor auswählen.</li>
+<li>Messwert in Programmanpassungen oder Monitoren verwenden.</li>
+</ol>
+<p>Empfohlenes Abfrageintervall: 15–60 Minuten, um die FYTA-API nicht unnötig zu belasten. Details: <a href="../fyta-sensors/">FYTA-Sensoren</a>.</p>
+<h2 id="matter-und-esp-rainmaker">Matter und ESP RainMaker</h2>
+<h3 id="matter">Matter</h3>
+<p>Matter ist nur auf ESP32-Builds mit <code>ENABLE_MATTER</code> verfügbar; im Pro-Release-Set ist dies die <strong>ESP32-C5-Matter</strong>-Variante. Der JSON-Endpunkt <code>/jm</code> liefert Pairing-Informationen wie QR-Code, manuellen Pairing-Code und Commissioning-Status. Matter ist nicht auf ESP8266 oder OSPi verfügbar.</p>
+<h3 id="esp-rainmaker">ESP RainMaker</h3>
+<p>ESP RainMaker ist auf ESP32 / ESP32-C5 verfügbar, nicht auf ESP8266 oder OSPi.</p>
+<p>RainMaker-Provisionierung unterstützt:</p>
+<ul>
+<li><strong>BLE Claiming</strong> bei Ersteinrichtung ohne TLS-Zertifikate,</li>
+<li><strong>On-Network-Provisionierung</strong>, wenn Zertifikate vorhanden sind und der Controller einem Benutzerkonto zugeordnet werden soll,</li>
+<li>Ethernet als Netzwerkverbindung, während BLE nur für Claiming genutzt wird,</li>
+<li>Status über <code>/rk</code>, inklusive Provisioning-Status, BLE Claiming, Local Control und PoP-PIN.</li>
+</ul>
+<p>Während BLE Claiming warten BLE-Sensoren, bis RainMaker die BLE-Ressourcen freigibt. Siehe <a href="../rainmaker-provisioning/">RainMaker Provisioning</a>.</p>
+<h2 id="mcp-server-und-ki-integration">MCP-Server und KI-Integration</h2>
+<p>OpenSprinklerPro unterscheidet zwei MCP-Varianten.</p>
+<h3 id="eingebauter-firmware-mcp-endpunkt-mcp">Eingebauter Firmware-MCP-Endpunkt <code>/mcp</code></h3>
+<p>Der eingebaute MCP-Server läuft direkt in ESP32-Firmware-Builds mit aktiviertem <code>USE_OTF</code>:</p>
+<pre><code class="language-http">POST http://&lt;controller-ip&gt;/mcp
+Content-Type: application/json
+</code></pre>
+<p>Er nutzt MCP Streamable-HTTP mit JSON-RPC 2.0 und akzeptiert denselben MD5-Passwort-Hash wie die REST-API: als <code>?pw=</code>, Header <code>X-OS-Password</code> oder Bearer Token. Enthalten ist ein kompakter Satz von Kern-Tools, z. B. <code>get_all</code>, <code>get_options</code>, <code>get_programs</code>, <code>get_station_status</code>, <code>manual_station_run</code>, <code>change_controller_variables</code> und <code>pause_queue</code>.</p>
+<p>Plattform: <strong>nur ESP32 / ESP32-C5</strong> mit <code>USE_OTF</code>; <strong>nicht</strong> ESP8266 und <strong>nicht</strong> OSPi.</p>
+<h3 id="externer-nodejs-mcp-server">Externer Node.js-MCP-Server</h3>
+<p>Der externe Server unter <code>tools/mcp-server/</code> läuft außerhalb der Firmware und stellt die REST-API per stdio als MCP-Tools bereit. Er funktioniert mit ESP8266-, ESP32- und OSPi-Controllern und bietet mehr als 40 Tools, einschließlich Sensoren, Monitoren, Zigbee, BLE und Systemressourcen, sofern die jeweiligen Endpunkte auf dem Zielcontroller vorhanden sind.</p>
+<p>Siehe <a href="../mcp-server-de/">MCP-Server</a> und <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/mcp_firmware_api.md">Firmware-MCP-API</a>.</p>
+<h2 id="benachrichtigungsereignisse">Benachrichtigungsereignisse</h2>
+<p>OpenSprinklerPro kann ausgewählte Ereignisse über MQTT, E-Mail und IFTTT versenden; InfluxDB kann Messdaten aufnehmen. Die Konfiguration erfolgt unter <strong>Optionen → Integrationen → Benachrichtigungsereignisse</strong>.</p>
+<p>Die lokale Dokumentation nennt 17 Ereignisse, darunter:</p>
+<ul>
+<li>Programmstart,</li>
+<li>Stationsstart und Stationsende,</li>
+<li>Regenverzögerung aktualisiert,</li>
+<li>Sensor 1 / Sensor 2 aktualisiert,</li>
+<li>Durchflusssensor aktualisiert,</li>
+<li>Wetteranpassung aktualisiert,</li>
+<li>Controller-Neustart,</li>
+<li>Flow Alert, No-Flow Alert und Rohrbruchwarnung,</li>
+<li>Unter-/Überstrom-Fehler,</li>
+<li>monatlicher Wasserbericht,</li>
+<li>Monitor-Warnungen niedrig, mittel und hoch.</li>
+</ul>
+<p>Durchflussbezogene Ereignisse benötigen einen korrekt eingerichteten Durchflusssensor an SN1. Nicht alle Ereignisse auf allen Kanälen gleichzeitig aktivieren: zu viele Benachrichtigungen können Antworten verzögern und sehr kurze Bewässerungszyklen beeinträchtigen.</p>
+<p>Siehe <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Benachrichtigungs-Ereignisse.md">Benachrichtigungs-Ereignisse</a> und <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki_de/benachrichtigungsereignisse.md">Benachrichtigungsereignisse</a>.</p>
+<h2 id="hinweise-zu-ui-und-optionen">Hinweise zu UI und Optionen</h2>
+<p>OpenSprinklerPro nutzt die normale OpenSprinkler-Weboberfläche und App:</p>
+<ul>
+<li>Startseite mit Zonen, Wetter, Bewässerungsprozent, Gerätezeit und Statusfußzeile.</li>
+<li>Seitenmenü für Export/Import, Passwortänderung, Neustart und Systemdiagnose.</li>
+<li>Fußleistenmenü für Logs, Regenverzögerung, Pause Queue, Einmal-Programm, Programme und Optionen.</li>
+<li><strong>Optionen → Wetter &amp; Sensoren</strong> für Wetteranpassung, binäre Sensoren, Durchflusssensor und Sensorautomatisierung.</li>
+<li><strong>Optionen → Integrationen</strong> für OTC, MQTT, E-Mail, IFTTT und Benachrichtigungsereignisse.</li>
+<li>Sensor-Einstellungen für FYTA-Zugangsdaten, Programmanpassungen und Monitore.</li>
+</ul>
+<p>Virtuelle Stationstypen umfassen RF, Remote IP/OTC, GPIO, HTTP und HTTPS. HTTPS-Stationen sind laut Plattform-Matrix nicht auf ESP8266 oder OSPi verfügbar.</p>
+<p>Nützliche UI-Referenzen: <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Bedienoberfläche.md">Bedienoberfläche</a>, <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Optionen.md">Optionen</a>, <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Home.md">Wiki-Startseite</a>.</p>
+<h2 id="api-und-dokumentationsreferenzen">API- und Dokumentationsreferenzen</h2>
+<ul>
+<li><a href="../CHANGELOG/">CHANGELOG</a> — Release-Hinweise zum Pro-Funktionsumfang.</li>
+<li><a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/api_endpoint_platform_matrix.md">Endpoint-Plattform-Matrix</a> — genaue REST-Endpunkt-/Plattform-Guards.</li>
+<li><a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/mcp_firmware_api.md">Firmware-MCP-API</a> — Details zum eingebauten <code>/mcp</code>.</li>
+<li><a href="../mcp-server-de/">Externer MCP-Server</a> — Node.js-MCP-Setup und Tool-Liste.</li>
+<li><a href="../rainmaker-provisioning/">RainMaker Provisioning</a> — BLE Claiming und On-Network-Provisionierung.</li>
+<li><a href="../fyta-sensors/">FYTA-Sensoren</a> — Einrichtung und Fehlersuche.</li>
+<li><a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Plattform-Verfügbarkeit.md">Plattform-Verfügbarkeit</a> — Hardware-Funktionsübersicht.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../opensprinklerpro/" class="btn btn-neutral float-left" title="Overview (English)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../opensprinklerpro_fr/" class="btn btn-neutral float-right" title="Présentation (Français)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../opensprinklerpro/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../opensprinklerpro_fr/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
