@@ -123,6 +123,18 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro_it/">Panoramica (Italiano)</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" >Analog Sensor Config</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../analog-sensor-config/">English</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../analog-sensor-config-de/">Deutsch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../analog-sensor-config-fr/">Français</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../analog-sensor-config-it/">Italiano</a>
+                </li>
+    </ul>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
                   </li>
               </ul>
@@ -562,6 +574,7 @@ Content-Type: application/json
 <p>Les événements liés au débit exigent un capteur de débit configuré sur SN1. Évitez d’activer tous les événements sur tous les canaux : trop de notifications peuvent ralentir les réponses et perturber des cycles d’arrosage très courts.</p>
 <p>Voir <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Benachrichtigungs-Ereignisse.md">événements de notification</a>.</p>
 <h2 id="monitors-et-alertes-locales">Monitors et alertes locales</h2>
+<p>La documentation UI détaillée pour définitions de capteurs, ajustements de programme, monitors, graphiques, FYTA et sauvegarde se trouve dans <a href="../analog-sensor-config-fr/">Configuration des capteurs analogiques</a>. Le modèle d’automatisation est décrit dans <a href="../sensor-automation-fr/">Automatisation capteurs et monitors</a>.</p>
 <p>L’UI actuelle contient la gestion des monitors pour valeurs capteur et alertes locales. Un monitor surveille une valeur configurée et déclenche un avertissement de priorité basse, moyenne ou haute lorsque les seuils sont dépassés. Ces avertissements peuvent aussi alimenter les événements de notification.</p>
 <p><strong>Fonction UI :</strong> ouvrir le menu inférieur et choisir <strong>Analog Sensor Configuration</strong>. Cette page regroupe valeurs capteur, définitions de capteurs, ajustements de programme, règles de monitor, graphiques, identifiants FYTA et sauvegarde/restauration des données capteur.</p>
 <p><img alt="Analog Sensor Configuration" class="mobile-screenshot" src="../assets/screenshots/pro/fr/sensor-config.png" /></p>

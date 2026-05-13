@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/mcp-server/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/analog-sensor-config-de/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>English - OpenSprinkler Shop Documentation</title>
+    <title>Deutsch - OpenSprinkler Shop Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,9 +13,9 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "English";
-        var mkdocs_page_input_path = "mcp-server.md";
-        var mkdocs_page_url = "/mcp-server/";
+        var mkdocs_page_name = "Deutsch";
+        var mkdocs_page_input_path = "analog-sensor-config-de.md";
+        var mkdocs_page_url = "/analog-sensor-config-de/";
       </script>
     
     <!--[if lt IE 9]>
@@ -62,7 +62,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">OpenSprinklerPro Extensions</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro/">Overview (English)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro_de/">Übersicht (Deutsch)</a>
@@ -71,11 +71,25 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro_it/">Panoramica (Italiano)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" >Analog Sensor Config</a>
-    <ul>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Analog Sensor Config</a>
+    <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="../analog-sensor-config/">English</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../analog-sensor-config-de/">Deutsch</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Deutsch</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#sensordefinitionen">Sensordefinitionen</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#programm-anpassungen">Programm-Anpassungen</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#monitore-und-lokale-warnungen">Monitore und lokale Warnungen</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sensor-diagramm-und-daten">Sensor-Diagramm und Daten</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fyta-einrichtung">FYTA-Einrichtung</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datensicherung-und-wiederherstellung">Datensicherung und Wiederherstellung</a>
+    </li>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../analog-sensor-config-fr/">Français</a>
                 </li>
@@ -87,38 +101,10 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">MCP and AI</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" >MCP Server</a>
-    <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">English</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#operating-modes">Operating modes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#built-in-firmware-mcp">Built-in firmware MCP</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#external-nodejs-mcp-server">External Node.js MCP server</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#install-and-build">Install and build</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#vs-code-github-copilot">VS Code / GitHub Copilot</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#claude-desktop">Claude Desktop</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#compute-the-password-hash">Compute the password hash</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tool-overview">Tool overview</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#useful-context-screens">Useful context screens</a>
-    </li>
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >MCP Server</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../mcp-server/">English</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../mcp-server-de/">Deutsch</a>
                 </li>
@@ -184,11 +170,11 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">MCP and AI</li>
-          <li class="breadcrumb-item">MCP Server</li>
-      <li class="breadcrumb-item active">English</li>
+          <li class="breadcrumb-item">OpenSprinklerPro Extensions</li>
+          <li class="breadcrumb-item">Analog Sensor Config</li>
+      <li class="breadcrumb-item active">Deutsch</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/mcp-server.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/analog-sensor-config-de.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -196,109 +182,91 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="mcp-server-ai-access-for-opensprinkler">MCP Server — AI Access for OpenSprinkler</h1>
-<p>The OpenSprinkler MCP (Model Context Protocol) integration lets AI assistants query and control an OpenSprinkler controller through documented tools.</p>
-<p>This page now covers only MCP setup and operating modes. Program creation and sensor automation are split into separate pages:</p>
-<ul>
-<li><a href="../ai-programming/">AI-guided program creation</a></li>
-<li><a href="../sensor-automation/">Sensor automation and monitors</a></li>
-</ul>
-<h2 id="operating-modes">Operating modes</h2>
-<h3 id="built-in-firmware-mcp">Built-in firmware MCP</h3>
-<p>The built-in MCP server runs directly in ESP32 firmware builds with <code>USE_OTF</code> enabled. It is accessed over Streamable HTTP:</p>
-<pre><code class="language-http">POST http://&lt;controller-ip&gt;/mcp
-Content-Type: application/json
-</code></pre>
-<p>Authentication uses the same admin password hash as the REST API, either as <code>?pw=</code>, <code>X-OS-Password</code> or bearer token.</p>
-<p>Platform availability: <strong>ESP32 / ESP32-C5 only</strong> with <code>USE_OTF</code>; not ESP8266 and not OSPi.</p>
-<h3 id="external-nodejs-mcp-server">External Node.js MCP server</h3>
-<p>The external server under <code>tools/mcp-server/</code> runs outside the firmware and proxies the REST API over stdio. It works with ESP8266, ESP32 and OSPi controllers and exposes a broader tool set, including sensors, monitors, Zigbee, BLE and system resources when supported by the target controller.</p>
-<h2 id="setup">Setup</h2>
-<h3 id="prerequisites">Prerequisites</h3>
-<ul>
-<li>Node.js 18 or newer.</li>
-<li>A reachable OpenSprinkler controller.</li>
-<li>The controller admin password as MD5 hash.</li>
-</ul>
-<h3 id="install-and-build">Install and build</h3>
-<pre><code class="language-bash">cd tools/mcp-server
-npm install
-npm run build
-</code></pre>
-<h3 id="vs-code-github-copilot">VS Code / GitHub Copilot</h3>
-<p>Add a server entry to <code>.vscode/mcp.json</code>:</p>
-<pre><code class="language-json">{
-  &quot;servers&quot;: {
-    &quot;opensprinkler&quot;: {
-      &quot;type&quot;: &quot;stdio&quot;,
-      &quot;command&quot;: &quot;node&quot;,
-      &quot;args&quot;: [&quot;tools/mcp-server/dist/index.js&quot;],
-      &quot;env&quot;: {
-        &quot;OS_BASE_URL&quot;: &quot;http://&lt;CONTROLLER-IP&gt;&quot;,
-        &quot;OS_PASSWORD_HASH&quot;: &quot;&lt;MD5-HASH&gt;&quot;
-      }
-    }
-  }
-}
-</code></pre>
-<h3 id="claude-desktop">Claude Desktop</h3>
-<p>Add a server entry to <code>~/.config/claude/claude_desktop_config.json</code>:</p>
-<pre><code class="language-json">{
-  &quot;mcpServers&quot;: {
-    &quot;opensprinkler&quot;: {
-      &quot;command&quot;: &quot;node&quot;,
-      &quot;args&quot;: [&quot;/full/path/to/tools/mcp-server/dist/index.js&quot;],
-      &quot;env&quot;: {
-        &quot;OS_BASE_URL&quot;: &quot;http://&lt;CONTROLLER-IP&gt;&quot;,
-        &quot;OS_PASSWORD_HASH&quot;: &quot;&lt;MD5-HASH&gt;&quot;
-      }
-    }
-  }
-}
-</code></pre>
-<h3 id="compute-the-password-hash">Compute the password hash</h3>
-<pre><code class="language-bash">echo -n &quot;your_admin_password&quot; | md5sum | awk '{print $1}'
-</code></pre>
-<h2 id="tool-overview">Tool overview</h2>
+                <h1 id="analog-sensor-konfiguration">Analog Sensor Konfiguration</h1>
+<p>Die <strong>Analog Sensor Konfiguration</strong> ist der OpenSprinklerPro-UI-Bereich zum Definieren von Sensorquellen und zum Verwenden ihrer Werte in der Bewässerungsautomation. Öffnen Sie ihn über das Fußmenü mit <strong>Analog Sensor Konfiguration</strong>.</p>
+<p><img alt="Analog Sensor Konfiguration" class="mobile-screenshot" src="../assets/screenshots/pro/de/sensor-config.png" /></p>
+<p>Verwandte Seiten: <a href="../sensor-automation-de/">Sensor-Automation und Monitore</a>, <a href="../fyta-sensors/">FYTA-Sensoren</a>, <a href="../opensprinklerpro_de/#monitore-und-lokale-warnungen">OpenSprinklerPro-Erweiterung</a>, <a href="../pro-api-endpoints/">API- und Plattform-Ergänzung</a>.</p>
+<h2 id="sensordefinitionen">Sensordefinitionen</h2>
+<p>Der erste Abschnitt definiert die Sensorliste. Jede Zeile enthält Sensornummer, Name, aktuellen Wert und Aktivstatus. <strong>Sensor hinzufügen</strong> öffnet den Editor für einen neuen Sensor; bestehende Sensoren werden über den Sensornamen bearbeitet.</p>
+<p><img alt="Neuer Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-sensor-editor.png" /></p>
+<p>Der Editor unterstützt viele Sensorfamilien, abhängig von Plattform und Firmware-Build:</p>
 <table>
 <thead>
 <tr>
-<th>Area</th>
-<th>Example tools</th>
+<th>Sensorfamilie</th>
+<th>Typische Verwendung</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Controller state</td>
-<td><code>get_all</code>, <code>get_controller_variables</code>, <code>get_options</code>, <code>get_debug</code>, <code>get_system_resources</code></td>
+<td>Analog-Erweiterungsboard</td>
+<td>Spannung oder Prozentwerte analoger Boden-/Feuchtesensoren</td>
 </tr>
 <tr>
-<td>Stations and programs</td>
-<td><code>get_stations</code>, <code>get_station_status</code>, <code>get_programs</code>, <code>manual_station_run</code>, <code>manual_program_start</code>, <code>change_program</code></td>
+<td>Truebner / RS485 / Modbus</td>
+<td>SMT50/SMT100/TH100 und generische Modbus-RTU-Werte</td>
 </tr>
 <tr>
-<td>Sensors and logs</td>
-<td><code>get_sensors</code>, <code>get_sensor_values</code>, <code>get_sensor_log</code>, <code>get_sensor_types</code>, <code>backup_sensor_config</code></td>
+<td>Zigbee</td>
+<td>ESP32-C5-Zigbee-Sensoren wie Temperatur, Feuchte oder Bodenwerte</td>
 </tr>
 <tr>
-<td>OpenSprinklerPro radios</td>
-<td><code>get_ieee802154_config</code>, <code>get_zigbee_devices</code>, <code>get_zigbee_status</code>, <code>get_ble_devices</code>, <code>get_rainmaker_status</code></td>
+<td>BLE</td>
+<td>Bluetooth-Low-Energy-Sensoren auf ESP32-Builds mit BLE</td>
 </tr>
 <tr>
-<td>Automation</td>
-<td><code>list_adjustments</code>, <code>configure_adjustment</code>, <code>list_monitors</code>, <code>configure_monitor</code></td>
+<td>MQTT</td>
+<td>Extern veröffentlichte Sensorwerte abonnieren</td>
+</tr>
+<tr>
+<td>FYTA</td>
+<td>Bodenfeuchte und Temperatur aus der FYTA-Cloud</td>
+</tr>
+<tr>
+<td>Remote OpenSprinkler</td>
+<td>Sensorwert von einem anderen Controller lesen</td>
+</tr>
+<tr>
+<td>Wetterdienst</td>
+<td>Temperatur, Feuchte, Niederschlag, Wind, ETo oder Strahlung</td>
+</tr>
+<tr>
+<td>Gruppensensoren</td>
+<td>Minimum, Maximum, Durchschnitt oder Summe anderer Sensoren</td>
+</tr>
+<tr>
+<td>Diagnose-Sensoren</td>
+<td>Freier Speicher, freier Speicherplatz oder ähnliche Controllerdiagnose</td>
 </tr>
 </tbody>
 </table>
-<h2 id="useful-context-screens">Useful context screens</h2>
-<p>The MCP server itself has no controller UI screen. For field diagnostics, use <strong>System Diagnostics</strong> to verify firmware version, memory and integrations before connecting external tools.</p>
-<p><img alt="System Diagnostics" class="mobile-screenshot" src="../assets/screenshots/pro/en/system-diagnostics.png" /></p>
+<p>Häufige Felder sind Sensornummer, Name, Gruppe, Typ, Einheit/Format, Leseintervall, Aktivstatus sowie Log- und Anzeigeoptionen. Typspezifische Felder erscheinen für Funk-, Cloud-, MQTT-, Modbus- und Remote-Sensoren.</p>
+<h2 id="programm-anpassungen">Programm-Anpassungen</h2>
+<p><strong>Programm-Anpassungen</strong> skalieren die Bewässerungsdauer eines Programms anhand eines Sensorwerts. Typische Beispiele sind weniger Bewässerung bei hoher Bodenfeuchte oder mehr Bewässerung bei hoher Temperatur.</p>
+<p><img alt="Programm-Anpassungen" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-program-adjustments.png" /></p>
+<p><img alt="Neue Programm-Anpassung" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-program-adjustment-editor.png" /></p>
+<p>Anpassungstypen sind <code>LINEAR</code>, <code>DIGITAL_MIN</code>, <code>DIGITAL_MAX</code> und <code>DIGITAL_MINMAX</code>. Funktionsmodell und Formeln stehen unter <a href="../sensor-automation-de/#sensorbasierte-programm-anpassungen">Sensor-Automation und Monitore</a>. MCP/API-Automation kann <code>configure_adjustment</code> verwenden; REST-Details stehen in der <a href="../pro-api-endpoints/">API- und Plattform-Ergänzung</a>.</p>
+<h2 id="monitore-und-lokale-warnungen">Monitore und lokale Warnungen</h2>
+<p><strong>Überwachung und Kontrolle</strong> erstellt Schwellwert- und Logikregeln aus Sensoren. Monitore können lokale Warnungen erzeugen, Benachrichtigungsereignisse speisen und Bedingungen wie „Boden ist trocken“ und „Zeitfenster ist morgens“ kombinieren.</p>
+<p><img alt="Überwachung und Kontrolle" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitors.png" /></p>
+<p><img alt="Neuer Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-monitor-editor.png" /></p>
+<p>Monitortypen umfassen Schwellwerte, digitale Regen-/Bodensensorregeln, Logikkombinationen, Zeitfenster und entfernte Monitorzustände. Siehe <a href="../sensor-automation-de/#monitore">Sensor-Automation und Monitore</a> für das Funktionsmodell.</p>
+<h2 id="sensor-diagramm-und-daten">Sensor-Diagramm und Daten</h2>
+<p>Das <strong>Sensor Diagramm</strong> zeigt protokollierte Sensorwerte. Nutzen Sie es, um Messwerte zu prüfen, bevor diese für Programm-Anpassungen oder Monitore verwendet werden. Die UI kann außerdem Logs herunterladen oder die Datentabelle öffnen.</p>
+<p><img alt="Sensor Diagramm" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-sensor-chart.png" /></p>
+<h2 id="fyta-einrichtung">FYTA-Einrichtung</h2>
+<p><strong>FYTA Einrichtung</strong> speichert FYTA-API-Token oder Login-Daten und ordnet FYTA-Pflanzensensoren OpenSprinkler-Sensoren zu. Details: <a href="../fyta-sensors/">FYTA-Sensoren</a>.</p>
+<p><img alt="FYTA Einrichtung" class="mobile-screenshot" src="../assets/screenshots/pro/de/fyta-setup.png" /></p>
+<p><img alt="FYTA-Zugangsdaten" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-fyta-credentials.png" /></p>
+<h2 id="datensicherung-und-wiederherstellung">Datensicherung und Wiederherstellung</h2>
+<p><strong>Datensicherung</strong> exportiert oder stellt Sensor-Konfiguration, Programm-Anpassungen und Monitore getrennt vom allgemeinen Controller-Backup wieder her. Nutzen Sie dies vor größeren Sensoränderungen oder Firmwaretests.</p>
+<p><img alt="Datensicherung" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-backup-restore.png" /></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../pro-api-endpoints/" class="btn btn-neutral float-left" title="API and platform addendum"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../mcp-server-de/" class="btn btn-neutral float-right" title="Deutsch">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../analog-sensor-config/" class="btn btn-neutral float-left" title="English"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../analog-sensor-config-fr/" class="btn btn-neutral float-right" title="Français">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -325,10 +293,10 @@ npm run build
         </span>
     
     
-      <span><a href="../pro-api-endpoints/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../analog-sensor-config/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../mcp-server-de/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../analog-sensor-config-fr/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

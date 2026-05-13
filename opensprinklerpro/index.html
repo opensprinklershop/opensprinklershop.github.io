@@ -123,6 +123,18 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro_it/">Panoramica (Italiano)</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" >Analog Sensor Config</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../analog-sensor-config/">English</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../analog-sensor-config-de/">Deutsch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../analog-sensor-config-fr/">Français</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../analog-sensor-config-it/">Italiano</a>
+                </li>
+    </ul>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
                   </li>
               </ul>
@@ -565,6 +577,7 @@ Content-Type: application/json
 <p>Flow-related events require a configured flow sensor on SN1. Avoid enabling every event on every channel; many notifications can delay responses and may affect very short irrigation cycles.</p>
 <p>See <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Benachrichtigungs-Ereignisse.md">Notification events</a>.</p>
 <h2 id="monitors-and-local-alerts">Monitors and local alerts</h2>
+<p>Detailed UI documentation for sensor definitions, program adjustments, monitors, charts, FYTA and backup/restore is available in <a href="../analog-sensor-config/">Analog Sensor Configuration</a>. The related automation model is described in <a href="../sensor-automation/">Sensor Automation and Monitors</a>.</p>
 <p>The current UI contains monitor management for sensor values and local alert checks. Monitors let you watch configured sensor readings and create low, medium or high priority warnings when thresholds are crossed. Monitor warnings can also be used as notification events, so keep thresholds specific and avoid duplicate alerts on every channel.</p>
 <p><strong>UI function:</strong> open the footer menu and choose <strong>Analog Sensor Configuration</strong>. The page is the central place for sensor values, sensor definitions, program adjustments, monitor rules, charts, FYTA credentials and sensor-specific backup/restore.</p>
 <p><img alt="Analog Sensor Configuration" class="mobile-screenshot" src="../assets/screenshots/pro/en/sensor-config.png" /></p>
