@@ -344,14 +344,49 @@
 <td><img alt="Configuration capteurs" class="mobile-screenshot" src="../assets/screenshots/pro/fr/sensor-config.png" /></td>
 </tr>
 <tr>
+<td>Ajouter ou modifier un capteur</td>
+<td>Menu inférieur → <strong>Analog Sensor Configuration</strong> → <strong>Add Sensor</strong></td>
+<td><img alt="Nouveau capteur" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-sensor-editor.png" /></td>
+</tr>
+<tr>
+<td>Ajustements de programme</td>
+<td>Menu inférieur → <strong>Analog Sensor Configuration</strong> → <strong>Program Adjustments</strong></td>
+<td><img alt="Program Adjustments" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-program-adjustments.png" /></td>
+</tr>
+<tr>
+<td>Ajouter un ajustement</td>
+<td>Menu inférieur → <strong>Analog Sensor Configuration</strong> → <strong>Program Adjustments</strong> → <strong>Add program adjustment</strong></td>
+<td><img alt="Nouvel ajustement" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-program-adjustment-editor.png" /></td>
+</tr>
+<tr>
 <td>Règles de monitoring locales</td>
 <td>Menu inférieur → <strong>Analog Sensor Configuration</strong> → <strong>Monitoring and Control</strong></td>
 <td><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitors.png" /></td>
 </tr>
 <tr>
+<td>Ajouter un monitor</td>
+<td>Menu inférieur → <strong>Analog Sensor Configuration</strong> → <strong>Monitoring and Control</strong> → <strong>Add monitor</strong></td>
+<td><img alt="Nouveau monitor" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-monitor-editor.png" /></td>
+</tr>
+<tr>
+<td>Graphique capteurs</td>
+<td>Menu inférieur → <strong>Analog Sensor Configuration</strong> → <strong>Sensor Chart</strong></td>
+<td><img alt="Sensor Chart" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-sensor-chart.png" /></td>
+</tr>
+<tr>
 <td>Configuration FYTA</td>
 <td>Menu inférieur → <strong>Analog Sensor Configuration</strong> → <strong>FYTA Setup</strong></td>
 <td><img alt="FYTA Setup" class="mobile-screenshot" src="../assets/screenshots/pro/fr/fyta-setup.png" /></td>
+</tr>
+<tr>
+<td>Identifiants FYTA</td>
+<td>Menu inférieur → <strong>Analog Sensor Configuration</strong> → <strong>FYTA Setup</strong> → <strong>Setup FYTA credentials</strong></td>
+<td><img alt="Identifiants FYTA" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-fyta-credentials.png" /></td>
+</tr>
+<tr>
+<td>Sauvegarde capteurs</td>
+<td>Menu inférieur → <strong>Analog Sensor Configuration</strong> → <strong>Backup and Restore</strong></td>
+<td><img alt="Backup and Restore" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-backup-restore.png" /></td>
 </tr>
 <tr>
 <td>Diagnostic système</td>
@@ -496,10 +531,21 @@ Content-Type: application/json
 <p>Voir <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Benachrichtigungs-Ereignisse.md">événements de notification</a>.</p>
 <h2 id="monitors-et-alertes-locales">Monitors et alertes locales</h2>
 <p>L’UI actuelle contient la gestion des monitors pour valeurs capteur et alertes locales. Un monitor surveille une valeur configurée et déclenche un avertissement de priorité basse, moyenne ou haute lorsque les seuils sont dépassés. Ces avertissements peuvent aussi alimenter les événements de notification.</p>
-<p><strong>Fonction UI :</strong> ouvrir le menu inférieur et choisir <strong>Analog Sensor Configuration</strong>. <strong>Monitoring and Control</strong> gère les règles de monitor; <strong>FYTA Setup</strong> enregistre les identifiants FYTA et le choix des plantes.</p>
+<p><strong>Fonction UI :</strong> ouvrir le menu inférieur et choisir <strong>Analog Sensor Configuration</strong>. Cette page regroupe valeurs capteur, définitions de capteurs, ajustements de programme, règles de monitor, graphiques, identifiants FYTA et sauvegarde/restauration des données capteur.</p>
 <p><img alt="Analog Sensor Configuration" class="mobile-screenshot" src="../assets/screenshots/pro/fr/sensor-config.png" /></p>
+<p><strong>Add Sensor</strong> crée une nouvelle entrée capteur. L’éditeur contient type, groupe, unité/format, intervalle de lecture, options activation/log/affichage et réglages propres à Modbus, Zigbee, BLE, MQTT, remote ou FYTA.</p>
+<p><img alt="Nouveau capteur" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-sensor-editor.png" /></p>
+<p><strong>Program Adjustments</strong> relie les valeurs capteur aux programmes d’arrosage. Un ajustement associe un capteur à un programme et mappe la plage capteur vers les facteurs d’arrosage minimum/maximum.</p>
+<p><img alt="Program Adjustments" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-program-adjustments.png" /></p>
+<p><img alt="Nouvel ajustement" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-program-adjustment-editor.png" /></p>
+<p><strong>Sensor Chart</strong> affiche les données de capteurs journalisées, permet le téléchargement des logs ou l’ouverture du tableau de données. Les options incluent conversion de température et affichage combiné humidité/température quand disponible.</p>
+<p><img alt="Sensor Chart" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-sensor-chart.png" /></p>
 <p><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitors.png" /></p>
+<p><img alt="Nouveau monitor" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-monitor-editor.png" /></p>
 <p><img alt="FYTA Setup" class="mobile-screenshot" src="../assets/screenshots/pro/fr/fyta-setup.png" /></p>
+<p><img alt="Identifiants FYTA" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-fyta-credentials.png" /></p>
+<p><strong>Backup and Restore</strong> exporte ou restaure configuration capteur, ajustements de programme et monitors indépendamment de la sauvegarde générale du contrôleur.</p>
+<p><img alt="Backup and Restore" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-backup-restore.png" /></p>
 <p>Flux typique : configurer le capteur, créer un monitor avec source et seuils, choisir la priorité, puis vérifier l’état via la cloche ou le diagnostic système.</p>
 <p>Note API : <code>/mc</code> expose la configuration monitor, <code>/ml</code> la liste et <code>/mt</code> les types pris en charge.</p>
 <h2 id="diagnostic-systeme-et-consommation-deau">Diagnostic système et consommation d’eau</h2>

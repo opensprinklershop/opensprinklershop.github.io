@@ -344,14 +344,49 @@
 <td><img alt="Sensor configuration" class="mobile-screenshot" src="../assets/screenshots/pro/en/sensor-config.png" /></td>
 </tr>
 <tr>
+<td>Add or edit sensor</td>
+<td>Footer menu → <strong>Analog Sensor Configuration</strong> → <strong>Add Sensor</strong></td>
+<td><img alt="New Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-sensor-editor.png" /></td>
+</tr>
+<tr>
+<td>Program adjustments</td>
+<td>Footer menu → <strong>Analog Sensor Configuration</strong> → <strong>Program Adjustments</strong></td>
+<td><img alt="Program Adjustments" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-program-adjustments.png" /></td>
+</tr>
+<tr>
+<td>Add program adjustment</td>
+<td>Footer menu → <strong>Analog Sensor Configuration</strong> → <strong>Program Adjustments</strong> → <strong>Add program adjustment</strong></td>
+<td><img alt="New Program Adjustment" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-program-adjustment-editor.png" /></td>
+</tr>
+<tr>
 <td>Local monitor rules</td>
 <td>Footer menu → <strong>Analog Sensor Configuration</strong> → <strong>Monitoring and Control</strong></td>
 <td><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitors.png" /></td>
 </tr>
 <tr>
+<td>Add monitor</td>
+<td>Footer menu → <strong>Analog Sensor Configuration</strong> → <strong>Monitoring and Control</strong> → <strong>Add monitor</strong></td>
+<td><img alt="New Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-monitor-editor.png" /></td>
+</tr>
+<tr>
+<td>Sensor chart</td>
+<td>Footer menu → <strong>Analog Sensor Configuration</strong> → <strong>Sensor Chart</strong></td>
+<td><img alt="Sensor Chart" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-sensor-chart.png" /></td>
+</tr>
+<tr>
 <td>FYTA setup</td>
 <td>Footer menu → <strong>Analog Sensor Configuration</strong> → <strong>FYTA Setup</strong></td>
 <td><img alt="FYTA Setup" class="mobile-screenshot" src="../assets/screenshots/pro/en/fyta-setup.png" /></td>
+</tr>
+<tr>
+<td>FYTA credentials</td>
+<td>Footer menu → <strong>Analog Sensor Configuration</strong> → <strong>FYTA Setup</strong> → <strong>Setup FYTA credentials</strong></td>
+<td><img alt="Setup FYTA credentials" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-fyta-credentials.png" /></td>
+</tr>
+<tr>
+<td>Sensor backup and restore</td>
+<td>Footer menu → <strong>Analog Sensor Configuration</strong> → <strong>Backup and Restore</strong></td>
+<td><img alt="Backup and Restore" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-backup-restore.png" /></td>
 </tr>
 <tr>
 <td>System diagnostics</td>
@@ -499,10 +534,21 @@ Content-Type: application/json
 <p>See <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Benachrichtigungs-Ereignisse.md">Notification events</a>.</p>
 <h2 id="monitors-and-local-alerts">Monitors and local alerts</h2>
 <p>The current UI contains monitor management for sensor values and local alert checks. Monitors let you watch configured sensor readings and create low, medium or high priority warnings when thresholds are crossed. Monitor warnings can also be used as notification events, so keep thresholds specific and avoid duplicate alerts on every channel.</p>
-<p><strong>UI function:</strong> open the footer menu and choose <strong>Analog Sensor Configuration</strong>. Use <strong>Monitoring and Control</strong> for monitor rules and <strong>FYTA Setup</strong> for FYTA credentials and plant selection.</p>
+<p><strong>UI function:</strong> open the footer menu and choose <strong>Analog Sensor Configuration</strong>. The page is the central place for sensor values, sensor definitions, program adjustments, monitor rules, charts, FYTA credentials and sensor-specific backup/restore.</p>
 <p><img alt="Analog Sensor Configuration" class="mobile-screenshot" src="../assets/screenshots/pro/en/sensor-config.png" /></p>
+<p>Use <strong>Add Sensor</strong> to create a new sensor entry. The editor selects the sensor type, group, unit/format, read interval, enable/log/show flags and type-specific options such as Modbus, Zigbee, BLE, MQTT, remote or FYTA mapping.</p>
+<p><img alt="New Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-sensor-editor.png" /></p>
+<p>Use <strong>Program Adjustments</strong> to let sensor values influence watering programs. An adjustment links a sensor to a program and maps the configured sensor range to min/max watering factors.</p>
+<p><img alt="Program Adjustments" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-program-adjustments.png" /></p>
+<p><img alt="New Program Adjustment" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-program-adjustment-editor.png" /></p>
+<p>Use <strong>Sensor Chart</strong> to inspect logged sensor data, download logs or open the data table. Chart options include temperature conversion and combined moisture/temperature display where supported.</p>
+<p><img alt="Sensor Chart" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-sensor-chart.png" /></p>
 <p><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitors.png" /></p>
+<p><img alt="New Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-monitor-editor.png" /></p>
 <p><img alt="FYTA Setup" class="mobile-screenshot" src="../assets/screenshots/pro/en/fyta-setup.png" /></p>
+<p><img alt="Setup FYTA credentials" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-fyta-credentials.png" /></p>
+<p>Use <strong>Backup and Restore</strong> to export or restore sensor configuration, program adjustments and monitors independently from the general controller backup.</p>
+<p><img alt="Backup and Restore" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-backup-restore.png" /></p>
 <p>Typical workflow:</p>
 <ol>
 <li>Configure the underlying sensor first, for example FYTA, analog, RS485/Modbus, BLE, MQTT, remote or weather sensor.</li>

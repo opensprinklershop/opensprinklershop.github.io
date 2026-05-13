@@ -344,14 +344,49 @@
 <td><img alt="Configurazione sensori" class="mobile-screenshot" src="../assets/screenshots/pro/it/sensor-config.png" /></td>
 </tr>
 <tr>
+<td>Aggiungere o modificare un sensore</td>
+<td>Menu inferiore → <strong>Analog Sensor Configuration</strong> → <strong>Add Sensor</strong></td>
+<td><img alt="Nuovo sensore" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-sensor-editor.png" /></td>
+</tr>
+<tr>
+<td>Regolazioni programma</td>
+<td>Menu inferiore → <strong>Analog Sensor Configuration</strong> → <strong>Program Adjustments</strong></td>
+<td><img alt="Program Adjustments" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-program-adjustments.png" /></td>
+</tr>
+<tr>
+<td>Aggiungere una regolazione</td>
+<td>Menu inferiore → <strong>Analog Sensor Configuration</strong> → <strong>Program Adjustments</strong> → <strong>Add program adjustment</strong></td>
+<td><img alt="Nuova regolazione" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-program-adjustment-editor.png" /></td>
+</tr>
+<tr>
 <td>Regole monitor locali</td>
 <td>Menu inferiore → <strong>Analog Sensor Configuration</strong> → <strong>Monitoring and Control</strong></td>
 <td><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitors.png" /></td>
 </tr>
 <tr>
+<td>Aggiungere un monitor</td>
+<td>Menu inferiore → <strong>Analog Sensor Configuration</strong> → <strong>Monitoring and Control</strong> → <strong>Add monitor</strong></td>
+<td><img alt="Nuovo monitor" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-monitor-editor.png" /></td>
+</tr>
+<tr>
+<td>Grafico sensori</td>
+<td>Menu inferiore → <strong>Analog Sensor Configuration</strong> → <strong>Sensor Chart</strong></td>
+<td><img alt="Sensor Chart" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-sensor-chart.png" /></td>
+</tr>
+<tr>
 <td>Configurazione FYTA</td>
 <td>Menu inferiore → <strong>Analog Sensor Configuration</strong> → <strong>FYTA Setup</strong></td>
 <td><img alt="FYTA Setup" class="mobile-screenshot" src="../assets/screenshots/pro/it/fyta-setup.png" /></td>
+</tr>
+<tr>
+<td>Credenziali FYTA</td>
+<td>Menu inferiore → <strong>Analog Sensor Configuration</strong> → <strong>FYTA Setup</strong> → <strong>Setup FYTA credentials</strong></td>
+<td><img alt="Credenziali FYTA" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-fyta-credentials.png" /></td>
+</tr>
+<tr>
+<td>Backup sensori</td>
+<td>Menu inferiore → <strong>Analog Sensor Configuration</strong> → <strong>Backup and Restore</strong></td>
+<td><img alt="Backup and Restore" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-backup-restore.png" /></td>
 </tr>
 <tr>
 <td>Diagnostica sistema</td>
@@ -496,10 +531,21 @@ Content-Type: application/json
 <p>Vedi <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Benachrichtigungs-Ereignisse.md">eventi di notifica</a>.</p>
 <h2 id="monitor-e-alert-locali">Monitor e alert locali</h2>
 <p>L’UI attuale include gestione monitor per valori sensore e alert locali. Un monitor controlla un valore configurato e genera avvisi di priorità bassa, media o alta quando le soglie vengono superate. Gli avvisi possono anche alimentare gli eventi di notifica.</p>
-<p><strong>Funzione UI:</strong> aprire il menu inferiore e scegliere <strong>Analog Sensor Configuration</strong>. <strong>Monitoring and Control</strong> gestisce le regole monitor; <strong>FYTA Setup</strong> salva credenziali FYTA e selezione piante.</p>
+<p><strong>Funzione UI:</strong> aprire il menu inferiore e scegliere <strong>Analog Sensor Configuration</strong>. Questa pagina centralizza valori sensore, definizioni sensori, regolazioni programma, regole monitor, grafici, credenziali FYTA e backup/ripristino dei dati sensore.</p>
 <p><img alt="Analog Sensor Configuration" class="mobile-screenshot" src="../assets/screenshots/pro/it/sensor-config.png" /></p>
+<p><strong>Add Sensor</strong> crea una nuova voce sensore. L’editor contiene tipo, gruppo, unità/formato, intervallo di lettura, opzioni attivo/log/visibile e impostazioni specifiche per Modbus, Zigbee, BLE, MQTT, remote o FYTA.</p>
+<p><img alt="Nuovo sensore" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-sensor-editor.png" /></p>
+<p><strong>Program Adjustments</strong> collega i valori sensore ai programmi di irrigazione. Una regolazione associa un sensore a un programma e mappa l’intervallo del sensore sui fattori di irrigazione minimo/massimo.</p>
+<p><img alt="Program Adjustments" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-program-adjustments.png" /></p>
+<p><img alt="Nuova regolazione" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-program-adjustment-editor.png" /></p>
+<p><strong>Sensor Chart</strong> mostra i dati sensore registrati, permette di scaricare i log o aprire la tabella dati. Le opzioni includono conversione temperatura e visualizzazione combinata umidità/temperatura dove disponibile.</p>
+<p><img alt="Sensor Chart" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-sensor-chart.png" /></p>
 <p><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitors.png" /></p>
+<p><img alt="Nuovo monitor" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-monitor-editor.png" /></p>
 <p><img alt="FYTA Setup" class="mobile-screenshot" src="../assets/screenshots/pro/it/fyta-setup.png" /></p>
+<p><img alt="Credenziali FYTA" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-fyta-credentials.png" /></p>
+<p><strong>Backup and Restore</strong> esporta o ripristina configurazione sensori, regolazioni programma e monitor separatamente dal backup generale del controller.</p>
+<p><img alt="Backup and Restore" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-backup-restore.png" /></p>
 <p>Flusso tipico: configurare il sensore, creare un monitor con sorgente e soglie, scegliere priorità e verificare stato tramite campanella o diagnostica.</p>
 <p>Nota API: <code>/mc</code> espone la configurazione monitor, <code>/ml</code> la lista e <code>/mt</code> i tipi supportati.</p>
 <h2 id="diagnostica-sistema-e-consumo-acqua">Diagnostica sistema e consumo acqua</h2>

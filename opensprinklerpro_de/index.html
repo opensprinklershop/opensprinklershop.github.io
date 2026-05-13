@@ -344,14 +344,49 @@
 <td><img alt="Analog Sensor Konfiguration" class="mobile-screenshot" src="../assets/screenshots/pro/de/sensor-config.png" /></td>
 </tr>
 <tr>
+<td>Sensor hinzufügen oder bearbeiten</td>
+<td>Fußmenü → <strong>Analog Sensor Konfiguration</strong> → <strong>Sensor hinzufügen</strong></td>
+<td><img alt="Neuer Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-sensor-editor.png" /></td>
+</tr>
+<tr>
+<td>Programm-Anpassungen</td>
+<td>Fußmenü → <strong>Analog Sensor Konfiguration</strong> → <strong>Programm-Anpassungen</strong></td>
+<td><img alt="Programm-Anpassungen" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-program-adjustments.png" /></td>
+</tr>
+<tr>
+<td>Programm-Anpassung hinzufügen</td>
+<td>Fußmenü → <strong>Analog Sensor Konfiguration</strong> → <strong>Programm-Anpassungen</strong> → <strong>Programmanpassung hinzufügen</strong></td>
+<td><img alt="Neue Programm-Anpassung" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-program-adjustment-editor.png" /></td>
+</tr>
+<tr>
 <td>Lokale Monitor-Regeln</td>
 <td>Fußmenü → <strong>Analog Sensor Konfiguration</strong> → <strong>Überwachung und Kontrolle</strong></td>
 <td><img alt="Überwachung und Kontrolle" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitors.png" /></td>
 </tr>
 <tr>
+<td>Monitor hinzufügen</td>
+<td>Fußmenü → <strong>Analog Sensor Konfiguration</strong> → <strong>Überwachung und Kontrolle</strong> → <strong>Monitor hinzufügen</strong></td>
+<td><img alt="Neuer Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-monitor-editor.png" /></td>
+</tr>
+<tr>
+<td>Sensor-Diagramm</td>
+<td>Fußmenü → <strong>Analog Sensor Konfiguration</strong> → <strong>Sensor Diagramm</strong></td>
+<td><img alt="Sensor Diagramm" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-sensor-chart.png" /></td>
+</tr>
+<tr>
 <td>FYTA-Einrichtung</td>
 <td>Fußmenü → <strong>Analog Sensor Konfiguration</strong> → <strong>FYTA Einrichtung</strong></td>
 <td><img alt="FYTA Einrichtung" class="mobile-screenshot" src="../assets/screenshots/pro/de/fyta-setup.png" /></td>
+</tr>
+<tr>
+<td>FYTA-Zugangsdaten</td>
+<td>Fußmenü → <strong>Analog Sensor Konfiguration</strong> → <strong>FYTA Einrichtung</strong> → <strong>FYTA-Zugangsdaten einrichten</strong></td>
+<td><img alt="FYTA-Zugangsdaten" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-fyta-credentials.png" /></td>
+</tr>
+<tr>
+<td>Sensor-Datensicherung</td>
+<td>Fußmenü → <strong>Analog Sensor Konfiguration</strong> → <strong>Datensicherung</strong></td>
+<td><img alt="Datensicherung" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-backup-restore.png" /></td>
 </tr>
 <tr>
 <td>Systemdiagnose</td>
@@ -497,10 +532,21 @@ Content-Type: application/json
 <p>Siehe <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Benachrichtigungs-Ereignisse.md">Benachrichtigungs-Ereignisse</a> und <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki_de/benachrichtigungsereignisse.md">Benachrichtigungsereignisse</a>.</p>
 <h2 id="monitore-und-lokale-warnungen">Monitore und lokale Warnungen</h2>
 <p>Die aktuelle UI enthält Monitor-Verwaltung für Sensorwerte und lokale Warnprüfungen. Monitore überwachen konfigurierte Sensorwerte und erzeugen Warnungen mit niedriger, mittlerer oder hoher Priorität, wenn Schwellwerte überschritten werden. Monitor-Warnungen können auch als Benachrichtigungsereignisse verwendet werden.</p>
-<p><strong>UI-Funktion:</strong> Fußmenü öffnen und <strong>Analog Sensor Konfiguration</strong> wählen. <strong>Überwachung und Kontrolle</strong> verwaltet Monitor-Regeln; <strong>FYTA Einrichtung</strong> speichert FYTA-Zugangsdaten und Pflanzenauswahl.</p>
+<p><strong>UI-Funktion:</strong> Fußmenü öffnen und <strong>Analog Sensor Konfiguration</strong> wählen. Die Seite ist die zentrale Stelle für Sensorwerte, Sensordefinitionen, Programm-Anpassungen, Monitor-Regeln, Diagramme, FYTA-Zugangsdaten und sensorbezogene Sicherung/Wiederherstellung.</p>
 <p><img alt="Analog Sensor Konfiguration" class="mobile-screenshot" src="../assets/screenshots/pro/de/sensor-config.png" /></p>
+<p>Mit <strong>Sensor hinzufügen</strong> wird ein neuer Sensoreintrag erstellt. Der Editor enthält Sensortyp, Gruppe, Einheit/Format, Leseintervall, Aktiv-/Log-/Anzeigeoptionen und typspezifische Optionen für Modbus, Zigbee, BLE, MQTT, Remote oder FYTA.</p>
+<p><img alt="Neuer Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-sensor-editor.png" /></p>
+<p><strong>Programm-Anpassungen</strong> verknüpfen Sensorwerte mit Bewässerungsprogrammen. Eine Anpassung ordnet einen Sensor einem Programm zu und bildet den konfigurierten Sensorbereich auf minimale/maximale Bewässerungsfaktoren ab.</p>
+<p><img alt="Programm-Anpassungen" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-program-adjustments.png" /></p>
+<p><img alt="Neue Programm-Anpassung" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-program-adjustment-editor.png" /></p>
+<p>Im <strong>Sensor Diagramm</strong> werden protokollierte Sensordaten angezeigt; zusätzlich können Logs geladen oder als Tabelle geöffnet werden. Diagrammoptionen unterstützen Temperaturumrechnung und kombinierte Feuchte-/Temperaturansicht, soweit verfügbar.</p>
+<p><img alt="Sensor Diagramm" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-sensor-chart.png" /></p>
 <p><img alt="Überwachung und Kontrolle" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitors.png" /></p>
+<p><img alt="Neuer Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-monitor-editor.png" /></p>
 <p><img alt="FYTA Einrichtung" class="mobile-screenshot" src="../assets/screenshots/pro/de/fyta-setup.png" /></p>
+<p><img alt="FYTA-Zugangsdaten" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-fyta-credentials.png" /></p>
+<p>Über <strong>Datensicherung</strong> lassen sich Sensor-Konfiguration, Programm-Anpassungen und Monitore getrennt vom allgemeinen Controller-Backup exportieren oder wiederherstellen.</p>
+<p><img alt="Datensicherung" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-backup-restore.png" /></p>
 <p>Typischer Ablauf: Sensor konfigurieren, Monitor mit Quelle und Schwellwerten anlegen, Priorität setzen und Warnstatus über Glocke/Systemdiagnose prüfen.</p>
 <p>API-Hinweis für Automatisierung: <code>/mc</code> stellt Monitor-Konfiguration bereit, <code>/ml</code> die Monitor-Liste und <code>/mt</code> die unterstützten Monitor-Typen.</p>
 <h2 id="systemdiagnose-und-wasserverbrauch">Systemdiagnose und Wasserverbrauch</h2>
