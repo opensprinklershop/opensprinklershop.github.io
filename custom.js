@@ -12,7 +12,7 @@ function initLanguageSelector() {
   };
 
   var pageMap = {
-    index: { en: "index", de: "index", fr: "index", it: "index" },
+    index: { en: "index", de: "index-de", fr: "index-fr", it: "index-it" },
     faq: { en: "faq", de: "faq-de", fr: "faq-fr", it: "faq-it" },
     manual: {
       en: "2.2.1/221_4_manual",
@@ -141,7 +141,7 @@ function initLanguageSelector() {
 
   var current = findCurrentPage(pageMap);
   var storedLanguage = localStorage.getItem("os-docs-language");
-  var selectedLanguage = current.language && current.language !== "en" ? current.language : storedLanguage || current.language || "en";
+  var selectedLanguage = current.key ? current.language : storedLanguage || current.language || "en";
   if (!languages[selectedLanguage]) {
     selectedLanguage = "en";
   }
