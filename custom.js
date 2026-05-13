@@ -20,6 +20,12 @@ function initLanguageSelector() {
       fr: "2.2.1/221_4_manual_fr",
       it: "2.2.1/221_4_manual_it"
     },
+    api: {
+      en: "2.2.1/221_4_api",
+      de: "2.2.1/221_4_api_de",
+      fr: "2.2.1/221_4_api_fr",
+      it: "2.2.1/221_4_api_it"
+    },
     opensprinklerpro: {
       en: "opensprinklerpro",
       de: "opensprinklerpro_de",

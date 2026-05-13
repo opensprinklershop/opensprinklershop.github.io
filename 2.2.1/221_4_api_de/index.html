@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/2.2.1/221_4_api_de/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>221 4 api de - OpenSprinkler Shop Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "221 4 api de";
+        var mkdocs_page_input_path = "2.2.1/221_4_api_de.md";
+        var mkdocs_page_url = "/2.2.1/221_4_api_de/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> OpenSprinkler Shop Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Base Manual v2.2.1(4)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../221_4_manual/">User Manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../221_4_api/">API Reference</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OpenSprinklerPro Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../opensprinklerpro/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../analog-sensor-config/">Analog Sensor Config</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../pro-api-endpoints/">API and platform addendum</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MCP and AI</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mcp-server/">MCP Server</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ai-programming/">AI Program Creation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sensor-automation/">Sensor Automation</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../rainmaker-provisioning/">RainMaker Provisioning</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../fyta-sensors/">FYTA Sensors</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Archived</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../archive/">Previous Manuals and API docs</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">OpenSprinkler Shop Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">221 4 api de</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/2.2.1/221_4_api_de.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="firmware-2214-api-referenz-1-november-2025">Firmware 2.2.1(4) API-Referenz [1. November 2025]</h2>
+<p>Diese übersetzte Referenz beschreibt die OpenSprinkler-Firmware-API. API-Pfade, Parameter, Variablennamen und JSON-Felder bleiben absichtlich unverändert, damit Beispiele direkt mit der Firmware funktionieren.</p>
+<h3 id="0-ubersicht">0. Übersicht</h3>
+<ul>
+<li><strong>Authentifizierung</strong> (<code>pw</code>): Alle API-Aufrufe benötigen das Gerätepasswort im Parameter <code>pw</code>. Der Wert ist der kleingeschriebene MD5-Hash des Passworts. App und Weboberfläche erzeugen diesen Hash automatisch.</li>
+<li><strong>Geräteadresse</strong>: <code>os-ip</code> steht in dieser Referenz für IP-Adresse oder Hostname des Controllers.</li>
+<li><strong>Parameterreihenfolge</strong>: Parameter können in beliebiger Reihenfolge gesendet werden. Nicht übergebene Parameter behalten ihren aktuellen Wert.</li>
+<li><strong>Rückgaben</strong>: Antworten sind JSON, z. B. <code>{"fwv":221}</code> oder <code>{"result":1}</code>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Erfolg</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>2</code></td>
+<td style="text-align: left;">Nicht autorisiert: Passwort fehlt oder ist falsch</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>3</code></td>
+<td style="text-align: left;">Neue Passwortwerte stimmen nicht überein</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>16</code></td>
+<td style="text-align: left;">Pflichtdaten fehlen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>17</code></td>
+<td style="text-align: left;">Wert außerhalb des gültigen Bereichs</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>18</code></td>
+<td style="text-align: left;">Datenformatfehler</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>19</code></td>
+<td style="text-align: left;">RF-Code-Formatfehler</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>32</code></td>
+<td style="text-align: left;">Seite/Datei nicht gefunden</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>48</code></td>
+<td style="text-align: left;">Nicht erlaubt, z. B. Station darf nicht geschaltet werden</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>64</code></td>
+<td style="text-align: left;">Upload fehlgeschlagen, z. B. OTA-Update</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-wichtige-anderungen">1. Wichtige Änderungen</h3>
+<ul>
+<li><strong>OpenSprinkler v3.4 DC</strong>: Neue USB-PD-Werte <code>tpdv</code> (Zielspannung in <code>/jo</code>) und <code>apdv</code> (aktive Spannung in <code>/jc</code>).</li>
+<li><strong>Warteschlangenoption für manuelle Läufe</strong>: <code>/cm</code>, <code>/cr</code> und <code>/mp</code> unterstützen <code>qo</code>, um neue Läufe anzuhängen, vorzuziehen oder bestehende Läufe zu ersetzen.</li>
+<li><span class="hl">Grün markierte Passagen</span> kennzeichnen Änderungen gegenüber der vorherigen Firmware.</li>
+</ul>
+<h3 id="2-controller-variablen-abfragen-jc">2. Controller-Variablen abfragen <code>/jc</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/jc?<strong>pw</strong>=xxx</code></p>
+<p>Wichtige Rückgabefelder:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>devt</code></td>
+<td style="text-align: left;">Gerätezeit als Unix-Epoch-Sekunden, lokal zeitzonenbereinigt</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nbrd</code></td>
+<td style="text-align: left;">Anzahl 8-Zonen-Gruppen inklusive Hauptcontroller</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>en</code></td>
+<td style="text-align: left;">Betrieb aktiviert (<code>1</code>) oder deaktiviert (<code>0</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sn1</code>, <code>sn2</code></td>
+<td style="text-align: left;">Status von Sensor 1/2</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rd</code>, <code>rdst</code></td>
+<td style="text-align: left;">Regenverzögerung aktiv und Endzeit</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sunrise</code>, <code>sunset</code></td>
+<td style="text-align: left;">Sonnenauf-/untergang in Minuten seit Mitternacht</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lwc</code>, <code>lswc</code></td>
+<td style="text-align: left;">Zeitstempel der letzten Wetteranfrage/-antwort</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lrbtc</code></td>
+<td style="text-align: left;">Ursache des letzten Neustarts, siehe <a href="#24-liste-der-neustartursachen">Neustartursachen</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lrun</code></td>
+<td style="text-align: left;">Letzter Lauf: <code>[station_index, program_index, duration, end_time_epoch]</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>RSSI</code>, <code>mac</code>, <code>loc</code></td>
+<td style="text-align: left;">WLAN-Signal, MAC-Adresse, Standort</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jsp</code>, <code>wsp</code>, <code>wto</code>, <code>wtdata</code>, <code>wterr</code></td>
+<td style="text-align: left;">UI-/Wetterdienst-URLs, Wetteroptionen, Rohdaten, Wetterfehler</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>mqtt</code>, <code>email</code>, <code>ifkey</code>, <code>otc</code>, <code>otcs</code></td>
+<td style="text-align: left;">Integrationen und Verbindungsstatus</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>curr</code>, <code>ocs</code></td>
+<td style="text-align: left;">Gesamtstrom und Überstromstatus</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sbits</code>, <code>ps</code>, <code>nq</code></td>
+<td style="text-align: left;">Stationsbits, Programmlaufstatus und Queue-Länge</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>flwrt</code>, <code>flcrt</code>, <code>flcto</code></td>
+<td style="text-align: left;">Durchflussfenster, aktuelle und kumulative Impulse</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pq</code>, <code>pt</code></td>
+<td style="text-align: left;">Pausenzustand und Restzeit</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>gpio</code></td>
+<td style="text-align: left;">Freie GPIO-Pins</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>wtrestr</code>, <code>wls</code></td>
+<td style="text-align: left;">Wettereinschränkungen und mehrtägige Bewässerungswerte</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>apdv</code></td>
+<td style="text-align: left;"><span class="hl">Aktive USB-PD-Spannung in Volt, nur DC v3.4.</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-controller-variablen-andern-cv">3. Controller-Variablen ändern <code>/cv</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/cv?<strong>pw</strong>=xxx&amp;<strong>rsn</strong>=x&amp;<strong>rrsn</strong>=x&amp;<strong>rbt</strong>=x&amp;<strong>en</strong>=x&amp;<strong>rd</strong>=x&amp;<strong>re</strong>=x&amp;<strong>update</strong>=x&amp;<strong>ap</strong>=x&amp;<strong>rocs</strong>=x</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>rsn</code></td>
+<td style="text-align: left;">Alle laufenden und wartenden Stationen zurücksetzen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rrsn</code></td>
+<td style="text-align: left;">Nur laufende Stationen zurücksetzen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rbt</code></td>
+<td style="text-align: left;">Controller neu starten</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>en</code></td>
+<td style="text-align: left;">Betrieb aktivieren/deaktivieren</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rd</code></td>
+<td style="text-align: left;">Regenverzögerung in Stunden setzen, <code>0</code> löscht sie</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>re</code></td>
+<td style="text-align: left;">Remote-Extension-Modus setzen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ap</code></td>
+<td style="text-align: left;">WiFi-Konfiguration neu starten/AP-Modus, ohne Einstellungen zu löschen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>update</code></td>
+<td style="text-align: left;">Firmware-Update auslösen (OSPi/Linux)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rocs</code></td>
+<td style="text-align: left;">Überstromstatus löschen</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-optionen-abfragen-jo">4. Optionen abfragen <code>/jo</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/jo?<strong>pw</strong>=xxx</code></p>
+<p>Optionen mit <strong>RO</strong> sind nur lesbar und können nicht per <code>/co</code> geändert werden.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>fwv</code>, <code>fwm</code></td>
+<td style="text-align: left;">Firmware-Version und Minor-Version (<strong>RO</strong>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tz</code></td>
+<td style="text-align: left;">Zeitzone (<code>offset_hours*4+48</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dhcp</code>, <code>ip*</code>, <code>gw*</code>, <code>dns*</code>, <code>subn*</code></td>
+<td style="text-align: left;">Netzwerk-/IP-Konfiguration</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ntp</code>, <code>ntp*</code></td>
+<td style="text-align: left;">NTP-Nutzung und eigener NTP-Server</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hp0</code>, <code>hp1</code></td>
+<td style="text-align: left;">HTTP-Port als Low-/High-Byte</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hwv</code>, <code>hwt</code></td>
+<td style="text-align: left;">Hardwareversion und Hardwaretyp (<strong>RO</strong>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ext</code>, <code>dexp</code>, <code>mexp</code></td>
+<td style="text-align: left;">Zonen-Erweiterungen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sdt</code></td>
+<td style="text-align: left;">Stationsverzögerung</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>mas</code>, <code>mas2</code>, <code>mton*</code>, <code>mtof*</code></td>
+<td style="text-align: left;">Masterstationen und Einschalt-/Ausschaltversatz</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sn1t</code>, <code>sn1o</code>, <code>sn1on</code>, <code>sn1of</code>, <code>sn2*</code></td>
+<td style="text-align: left;">Sensortypen und Sensorverzögerungen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>wl</code>, <code>uwt</code>, <code>wto</code></td>
+<td style="text-align: left;">Bewässerungsniveau und Wettermethode</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lg</code>, <code>fpr*</code></td>
+<td style="text-align: left;">Logging und Durchflussimpulsrate</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ife</code>, <code>ife2</code></td>
+<td style="text-align: left;">Benachrichtigungsereignisse</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>imin</code>, <code>imax</code></td>
+<td style="text-align: left;">Unter-/Überstromschwellen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tpdv</code></td>
+<td style="text-align: left;"><span class="hl">USB-PD-Zielspannung in Dezivolt für DC v3.4+.</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-optionen-andern-co">5. Optionen ändern <code>/co</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/co?<strong>pw</strong>=xxx&amp;<strong>[opn]</strong>=[opv]&amp;<strong>loc</strong>=x&amp;<strong>wto</strong>=x&amp;<strong>ifkey</strong>=x&amp;<strong>ttt</strong>=x&amp;<strong>otc</strong>=x&amp;<strong>dname</strong>=x&amp;<strong>mqtt</strong>=x&amp;<strong>email</strong>=x</code></p>
+<p><code>[opn]</code> ist der Optionsname aus <code>/jo</code>, <code>[opv]</code> der neue Wert. Mehrere Optionen können in einem Aufruf kombiniert werden. JSON-Werte wie <code>wto</code>, <code>otc</code>, <code>mqtt</code> und <code>email</code> werden URL-kodiert und ohne äußere <code>{}</code> gesendet.</p>
+<h3 id="6-geratepasswort-setzen-sp">6. Gerätepasswort setzen <code>/sp</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/sp?<strong>pw</strong>=xxx&amp;<strong>npw</strong>=xxx&amp;<strong>cpw</strong>=xxx</code></p>
+<p><code>npw</code> und <code>cpw</code> sind MD5-Hashes des neuen Passworts. Fehlt einer der Werte, wird <code>Data Missing</code> zurückgegeben; stimmen sie nicht überein, <code>Mismatch</code>.</p>
+<h3 id="7-stationsnamen-und-attribute-abfragen-jn">7. Stationsnamen und Attribute abfragen <code>/jn</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/jn?<strong>pw</strong>=xxx</code></p>
+<p>Rückgabe u. a. <code>snames</code>, <code>maxlen</code>, <code>stn_grp</code>, <code>masop</code>, <code>masop2</code>, <code>ignore_rain</code>, <code>ignore_sn1</code>, <code>ignore_sn2</code>, <code>stn_dis</code> und <code>stn_spe</code>.</p>
+<h3 id="8-spezialstationsdaten-abfragen-je">8. Spezialstationsdaten abfragen <code>/je</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/je?<strong>pw</strong>=xxx</code></p>
+<p>Antwortformat: <code>{"0":{"st":xxx,"sd":"xxx"}, ...}</code>. Nur Stationen mit gesetztem Spezialstationsbit erscheinen.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><code>st</code></th>
+<th style="text-align: left;">Typ</th>
+<th style="text-align: left;">Datenformat <code>sd</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">RF</td>
+<td style="text-align: left;">16-Byte Legacy- oder 25-Byte-Code mit <code>H</code>-Präfix</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>2</code></td>
+<td style="text-align: left;">Remote-IP</td>
+<td style="text-align: left;">14-Byte-Hex: IP, Port, Station</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>3</code></td>
+<td style="text-align: left;">GPIO</td>
+<td style="text-align: left;">GPIO-Index und aktiver Zustand</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>4</code></td>
+<td style="text-align: left;">HTTP</td>
+<td style="text-align: left;"><code>server,port,on_cmd,off_cmd</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>5</code></td>
+<td style="text-align: left;">HTTPS</td>
+<td style="text-align: left;">wie HTTP, aber HTTPS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>6</code></td>
+<td style="text-align: left;">Remote OTC</td>
+<td style="text-align: left;">OTC-Token plus Stationsindex</td>
+</tr>
+</tbody>
+</table>
+<h3 id="9-stationsnamen-und-attribute-andern-cs">9. Stationsnamen und Attribute ändern <code>/cs</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/cs?<strong>pw</strong>=xxx&amp;<strong>s?</strong>=x&amp;<strong>m?</strong>=x&amp;<strong>i?</strong>=x&amp;<strong>j?</strong>=x&amp;<strong>k?</strong>=x&amp;<strong>n?</strong>=x&amp;<strong>d?</strong>=x&amp;<strong>p?</strong>=x&amp;<strong>g?</strong>=x&amp;<strong>sid</strong>=xx&amp;<strong>st</strong>=xx&amp;<strong>sd</strong>=xx</code></p>
+<p><code>s?</code> setzt Stationsnamen, <code>m?</code>/<code>n?</code> Masterbits, <code>i?</code>/<code>j?</code>/<code>k?</code> Ignorieren-Bits, <code>d?</code> deaktivierte Stationen, <code>p?</code> Spezialstationen, <code>g?</code> sequentielle Gruppen und <code>sid/st/sd</code> Spezialstationsdaten.</p>
+<h3 id="10-stationsstatus-abfragen-js">10. Stationsstatus abfragen <code>/js</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/js?<strong>pw</strong>=xxx</code></p>
+<p>Gibt <code>sn</code> als Array von <code>1</code>/<code>0</code> für alle Stationen und <code>nstations</code> als Gesamtanzahl zurück.</p>
+<h3 id="11-manuelle-station-starten-cm">11. Manuelle Station starten <code>/cm</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/cm?<strong>pw</strong>=xxx&amp;<strong>sid</strong>=xx&amp;<strong>en</strong>=x&amp;<strong>t</strong>=xxx&amp;<strong>ssta</strong>=x&amp;<strong>qo</strong>=x</code></p>
+<p><code>sid</code> ist der 0-basierte Stationsindex, <code>en</code> öffnet/schließt, <code>t</code> ist die Laufzeit in Sekunden, <code>qo</code> steuert die Warteschlange und <code>ssta</code> verschiebt Reststationen derselben sequentiellen Gruppe beim Schließen.</p>
+<h3 id="12-programm-manuell-starten-mp">12. Programm manuell starten <code>/mp</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/mp?<strong>pw</strong>=xxx&amp;<strong>pid</strong>=xx&amp;<strong>uwt</strong>=x&amp;<strong>qo</strong>=x</code></p>
+<p><code>pid</code> ist der Programmindex, <code>uwt</code> nutzt das aktuelle Bewässerungsniveau, <code>qo</code> hängt an (<code>0</code>), zieht vor (<code>1</code>) oder ersetzt (<code>2</code>, Standard).</p>
+<h3 id="13-programmdaten-abfragen-jp">13. Programmdaten abfragen <code>/jp</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/jp?<strong>pw</strong>=xxx</code></p>
+<p>Gibt <code>nprogs</code>, <code>nboards</code>, Grenzwerte und <code>pd</code> zurück. Jeder Programmeintrag hat die Struktur <code>[flag, days0, days1, [start0..start3], [dur...], name, [endr, from, to]]</code>. <code>flag</code> enthält Aktivierung, Wetternutzung, Tagesart, Startzeitart und Datumsbereich.</p>
+<h3 id="14-programmdaten-andern-cp">14. Programmdaten ändern <code>/cp</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/cp?<strong>pw</strong>=xxx&amp;<strong>pid</strong>=xx&amp;<strong>en</strong>=x&amp;<strong>uwt</strong>=x&amp;<strong>name</strong>=xxx&amp;<strong>v</strong>=[...]&amp;<strong>from</strong>=xxx&amp;<strong>to</strong>=xxx</code></p>
+<p><code>pid=-1</code> legt ein neues Programm an. <code>en</code> oder <code>uwt</code> ändern nur einzelne Bits; <code>v</code> enthält den Programmkörper ohne Name und Datumsbereich.</p>
+<h3 id="15-programme-loschen-dp">15. Programme löschen <code>/dp</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/dp?<strong>pw</strong>=xxx&amp;<strong>pid</strong>=x</code></p>
+<p><code>pid</code> ist der Programmindex. <code>pid=-1</code> löscht alle Programme.</p>
+<h3 id="16-programm-nach-oben-verschieben-up">16. Programm nach oben verschieben <code>/up</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/up?<strong>pw</strong>=xxx&amp;<strong>pid</strong>=x</code></p>
+<p>Verschiebt Programm <code>pid</code> vor das vorherige Programm. <code>pid=0</code> hat keine Wirkung.</p>
+<h3 id="17-einmalprogramm-starten-cr">17. Einmalprogramm starten <code>/cr</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/cr?<strong>pw</strong>=xxx&amp;<strong>t</strong>=[x,x,...]&amp;<strong>cnt</strong>=xxx&amp;<strong>int</strong>=xxx&amp;<strong>uwt</strong>=xxx&amp;<strong>anno</strong>=xxx&amp;<strong>qo</strong>=x</code></p>
+<p><code>t</code> enthält Laufzeiten je Station. <code>cnt</code>/<code>int</code> definieren Wiederholungen, <code>uwt</code> nutzt Wetteranpassung, <code>anno</code> hängt eine Programmanmerkung an, <code>qo</code> steuert die Warteschlange.</p>
+<h3 id="18-logdaten-abfragen-jl">18. Logdaten abfragen <code>/jl</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/jl?<strong>pw</strong>=xxx&amp;<strong>start</strong>=xxx&amp;<strong>end</strong>=xxx&amp;<strong>type</strong>=x</code> oder <code>http://os-ip/jl?<strong>pw</strong>=xxx&amp;<strong>hist</strong>=n&amp;<strong>type</strong>=x</code></p>
+<p>Logeinträge haben <code>[pid,sid,dur,end]</code> oder mit Durchfluss <code>[pid,sid,dur,end,flow]</code>. Spezialereignisse nutzen <code>pid=0</code> und <code>sid</code> wie <code>s1</code>, <code>s2</code>, <code>rd</code>, <code>fl</code>, <code>wl</code>.</p>
+<h3 id="19-logdaten-loschen-dl">19. Logdaten löschen <code>/dl</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/dl?<strong>pw</strong>=xxx&amp;<strong>day</strong>=n</code></p>
+<p><code>day</code> ist <code>floor(epoch_seconds/86400)</code>. <code>day=all</code> löscht alle Logs.</p>
+<h3 id="20-skript-url-andern-cu">20. Skript-URL ändern <code>/cu</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/cu?<strong>pw</strong>=xxx&amp;<strong>jsp</strong>=xxx&amp;<strong>wsp</strong>=xxx</code></p>
+<p><code>jsp</code> setzt den UI-/JavaScript-Pfad, <code>wsp</code> den Wetterdienstpfad.</p>
+<h3 id="21-alles-abfragen-ja">21. Alles abfragen <code>/ja</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/ja?<strong>pw</strong>=xxx</code></p>
+<p>Kombiniert <code>/jc</code>, <code>/jo</code>, <code>/jn</code>, <code>/js</code> und <code>/jp</code> in einem JSON mit <code>settings</code>, <code>options</code>, <code>stations</code>, <code>status</code> und <code>programs</code>.</p>
+<h3 id="22-warteschlange-pausieren-pq">22. Warteschlange pausieren <code>/pq</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/pq?<strong>pw</strong>=xxx&amp;<strong>dur</strong>=x&amp;<strong>repl</strong>=x</code></p>
+<p><code>dur</code> schaltet eine Pause um, <code>repl</code> setzt oder ersetzt eine Pause mit fester Dauer. <code>repl=0</code> beendet die Pause.</p>
+<h3 id="23-debug-ausgabe-db">23. Debug-Ausgabe <code>/db</code></h3>
+<p><strong>Verwendung</strong>: <code>http://os-ip/db</code></p>
+<p>Gibt Diagnosedaten wie Build-Datum, Zeit und freien Heap/RAM zurück. Kein <code>pw</code> erforderlich.</p>
+<h3 id="24-liste-der-neustartursachen">24. Liste der Neustartursachen</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Ursache</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Keine/unbekannt</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Werksreset</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>2</code></td>
+<td style="text-align: left;">Taste ausgelöst</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>3</code></td>
+<td style="text-align: left;">Reset in AP-Modus</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>4</code></td>
+<td style="text-align: left;">API/Timer</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>5</code></td>
+<td style="text-align: left;">API-Neustart</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>6</code></td>
+<td style="text-align: left;">Wechsel von AP zu Client</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>7</code></td>
+<td style="text-align: left;">Firmware-Update</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>8</code></td>
+<td style="text-align: left;">Wetteraufruf länger als 24 h fehlgeschlagen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>9</code></td>
+<td style="text-align: left;">Netzwerk zu oft fehlgeschlagen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>10</code></td>
+<td style="text-align: left;">NTP-Sync-Neustart</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>99</code></td>
+<td style="text-align: left;">Einschalten</td>
+</tr>
+</tbody>
+</table>
+<h3 id="25-liste-der-wetterfehlercodes">25. Liste der Wetterfehlercodes</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Erfolg</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-1</code></td>
+<td style="text-align: left;">Anfrage nicht empfangen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-2</code></td>
+<td style="text-align: left;">Verbindung zum Wetterserver nicht möglich</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-3</code></td>
+<td style="text-align: left;">Zeitüberschreitung</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-4</code></td>
+<td style="text-align: left;">Leere Antwort empfangen</td>
+</tr>
+</tbody>
+</table>
+<p>Positive Codes sind Anwendungsfehler des Wetterdienstes.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../custom.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
