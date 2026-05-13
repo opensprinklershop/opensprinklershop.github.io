@@ -161,6 +161,16 @@
     <li class="toctree-l2"><a class="reference internal" href="#journaux">Journaux</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#mise-a-jour-du-firmware">Mise à jour du firmware</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#opensprinklerpro-ota-en-ligne">OpenSprinklerPro OTA en ligne</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#opensprinkler-v3x">OpenSprinkler v3.x</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#opensprinkler-v23">OpenSprinkler v2.3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#opensprinkler-pi-ospi_1">OpenSprinkler Pi (OSPi)</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#liens-et-ressources">Liens et ressources</a>
     </li>
@@ -1123,7 +1133,24 @@ Exemple : si les zones 1–3 sont dans le groupe <code>A</code>, et 4–6 dans l
 <hr class="double">
 
 <h3 id="mise-a-jour-du-firmware">Mise à jour du firmware</h3>
-<p>Suivez les <a href="../../#firmware-update">instructions de mise à jour du firmware</a>.</p>
+<h4 class="hltitle" id="opensprinklerpro-ota-en-ligne">OpenSprinklerPro OTA en ligne</h4>
+<p>OpenSprinklerPro utilise <strong>Menu latéral → Online Update</strong>. Le dialogue vérifie le manifeste, crée une sauvegarde, choisit la variante firmware correcte et affiche la progression. C’est le chemin recommandé pour OpenSprinklerPro et les builds ESP32-C5.</p>
+<p><img alt="OpenSprinklerPro Online Update" class="mobile-screenshot" src="../../assets/screenshots/pro/fr/online-update.png" /></p>
+<p>Pour les détails sur sauvegarde, variantes firmware et plateformes, voir <a href="../../opensprinklerpro_fr/#mise-a-jour-ota-en-ligne">OpenSprinklerPro OTA en ligne</a>.</p>
+<h4 class="hltitle" id="opensprinkler-v3x">OpenSprinkler v3.x</h4>
+<p>Le firmware OpenSprinkler v3.x classique se met à jour via la page d’envoi intégrée :</p>
+<ol>
+<li>Exportez d’abord la configuration depuis le menu latéral.</li>
+<li>Téléchargez le fichier firmware <code>.bin</code> correspondant.</li>
+<li>Ouvrez <code>http://&lt;controller-ip&gt;/update</code>.</li>
+<li>Sélectionnez le fichier, saisissez le mot de passe et envoyez.</li>
+<li>Attendez le redémarrage du contrôleur.</li>
+</ol>
+<p>En mode WiFi AP, connectez-vous au point d’accès du contrôleur et ouvrez <code>http://192.168.4.1/update</code>.</p>
+<h4 class="hltitle" id="opensprinkler-v23">OpenSprinkler v2.3</h4>
+<p>OpenSprinkler v2.3 nécessite un câble USB pour les mises à jour. Suivez les anciennes <a href="https://openthings.freshdesk.com/a/solutions/articles/5000832311">instructions de mise à jour v2.3</a>.</p>
+<h4 class="hltitle" id="opensprinkler-pi-ospi_1">OpenSprinkler Pi (OSPi)</h4>
+<p>OSPi se met à jour directement sur le Raspberry Pi via shell/Git/scripts de build, pas via le dialogue web OTA du firmware. Suivez les <a href="https://openthings.freshdesk.com/support/solutions/articles/5000631599-installing-and-updating-the-unified-firmware-on-ospi">instructions OSPi</a>.</p>
 <hr class="double">
 
 <h3 id="liens-et-ressources">Liens et ressources</h3>
