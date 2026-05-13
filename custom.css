@@ -111,6 +111,18 @@ ul > li {
   padding: 0.2rem 0.5rem;
 }
 
+.wy-menu-vertical li.current > ul[data-generated-heading-links] {
+  display: block;
+}
+
+.wy-menu-vertical ul[data-generated-heading-links] a {
+  color: #404040;
+}
+
+.wy-menu-vertical ul[data-generated-heading-links] a:hover {
+  color: #2980b9;
+}
+
 img.mobile-screenshot,
 .rst-content img.mobile-screenshot,
 .wy-table-responsive table td img.mobile-screenshot {
