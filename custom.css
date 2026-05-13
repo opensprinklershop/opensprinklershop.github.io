@@ -86,3 +86,14 @@ ul > li {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 }
+
+.mobile-screenshot {
+  display: block;
+  max-width: 390px;
+  width: 100%;
+  height: auto;
+  margin: 0.75rem auto 1.25rem auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}

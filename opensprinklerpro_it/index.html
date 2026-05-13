@@ -75,6 +75,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#disponibilita-per-piattaforma">Disponibilità per piattaforma</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nomi-funzioni-ui-e-screenshot-mobile">Nomi funzioni UI e screenshot mobile</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#aggiornamento-ota-online">Aggiornamento OTA online</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#modalita-esp32-e-gestione-radio">Modalità ESP32 e gestione radio</a>
@@ -300,8 +302,68 @@
 <li>OSPi dispone degli endpoint REST, sensori, FYTA e monitor comuni, ma non degli endpoint radio ESP32.</li>
 </ul>
 <p>Vedi anche: <a href="../pro-api-endpoints/">addendum API e piattaforme</a>, <a href="../CHANGELOG/">CHANGELOG</a>.</p>
+<h2 id="nomi-funzioni-ui-e-screenshot-mobile">Nomi funzioni UI e screenshot mobile</h2>
+<p>Le estensioni OpenSprinklerPro si usano dalla normale interfaccia web/app. Gli endpoint REST sono pensati soprattutto per automazione, diagnostica e integrazioni; il flusso utente parte da queste funzioni UI.</p>
+<table>
+<thead>
+<tr>
+<th>Estensione</th>
+<th>Funzione UI / percorso menu</th>
+<th>Screenshot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aggiornamento firmware online</td>
+<td>Menu laterale → <strong>Online Update</strong></td>
+<td><img alt="Online Update" class="mobile-screenshot" src="../assets/screenshots/pro/it/online-update.png" /></td>
+</tr>
+<tr>
+<td>Modalità radio ESP32-C5 / variante Matter</td>
+<td>Menu laterale → <strong>Setup ESP32 Mode</strong></td>
+<td><img alt="Setup ESP32 Mode" class="mobile-screenshot" src="../assets/screenshots/pro/it/esp32-mode.png" /></td>
+</tr>
+<tr>
+<td>Gateway Zigbee</td>
+<td>Menu laterale → <strong>ZigBee Gateway</strong></td>
+<td><img alt="ZigBee Gateway" class="mobile-screenshot" src="../assets/screenshots/pro/it/zigbee-gateway.png" /></td>
+</tr>
+<tr>
+<td>ESP RainMaker</td>
+<td>Menu laterale → <strong>RainMaker</strong></td>
+<td><img alt="RainMaker" class="mobile-screenshot" src="../assets/screenshots/pro/it/rainmaker.png" /></td>
+</tr>
+<tr>
+<td>MQTT, e-mail, IFTTT ed eventi</td>
+<td>Menu inferiore → <strong>Edit Options</strong> → <strong>Integrations</strong></td>
+<td><img alt="Integrations" class="mobile-screenshot" src="../assets/screenshots/pro/it/options-integrations.png" /></td>
+</tr>
+<tr>
+<td>Configurazione sensori, FYTA e monitor</td>
+<td>Menu inferiore → <strong>Analog Sensor Configuration</strong></td>
+<td><img alt="Configurazione sensori" class="mobile-screenshot" src="../assets/screenshots/pro/it/sensor-config.png" /></td>
+</tr>
+<tr>
+<td>Regole monitor locali</td>
+<td>Menu inferiore → <strong>Analog Sensor Configuration</strong> → <strong>Monitoring and Control</strong></td>
+<td><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitors.png" /></td>
+</tr>
+<tr>
+<td>Configurazione FYTA</td>
+<td>Menu inferiore → <strong>Analog Sensor Configuration</strong> → <strong>FYTA Setup</strong></td>
+<td><img alt="FYTA Setup" class="mobile-screenshot" src="../assets/screenshots/pro/it/fyta-setup.png" /></td>
+</tr>
+<tr>
+<td>Diagnostica sistema</td>
+<td>Menu laterale → <strong>System Diagnostics</strong></td>
+<td><img alt="System Diagnostics" class="mobile-screenshot" src="../assets/screenshots/pro/it/system-diagnostics.png" /></td>
+</tr>
+</tbody>
+</table>
 <h2 id="aggiornamento-ota-online">Aggiornamento OTA online</h2>
 <p>Il firmware Pro aggiunge la gestione degli aggiornamenti online in <code>online_update.cpp</code> / <code>online_update.h</code>. Il controller può controllare un manifesto, rilevare versioni disponibili, avviare un aggiornamento ed esporre tramite API lo stato di update o backup.</p>
+<p><strong>Funzione UI:</strong> aprire il menu laterale e scegliere <strong>Online Update</strong>. È il flusso consigliato per gli utenti perché riunisce controllo versione, backup, scelta firmware, progresso e ripristino dopo il riavvio.</p>
+<p><img alt="Online Update" class="mobile-screenshot" src="../assets/screenshots/pro/it/online-update.png" /></p>
 <p>Disponibilità:</p>
 <ul>
 <li><strong>ESP32-C5 / ESP32 ed ESP8266:</strong> OTA disponibile tramite interfaccia web e upload manuale del firmware.</li>
@@ -311,16 +373,18 @@
 </ul>
 <p>Prima dell’update esportare la configurazione dal menu laterale. Su ESP32 ed ESP8266 il firmware fornisce anche <code>/ub</code> per un backup completo della configurazione; <code>/sx</code> è invece solo per la configurazione sensori.</p>
 <p>Il flusso UI controlla gli update, crea un backup, scarica la variante firmware, esegue il flash, mostra il progresso e può ripristinare la configurazione dopo il riavvio. Chiamate avanzate possono sostituire URL e hash SHA-256 (<code>zu</code>, <code>mu</code>, <code>fu</code>, <code>zs</code>, <code>ms</code>) e scegliere la variante <code>zigbee</code> o <code>matter</code> con <code>vt</code>; servono per reinstallazione, downgrade o recovery. OSPi non usa questi endpoint OTA firmware.</p>
-<p>Endpoint utili: <code>/uc</code>, <code>/uu</code>, <code>/us</code>, <code>/ub</code>.</p>
+<p>Nota API per automazione e recovery: <code>/uc</code> controlla gli update, <code>/uu</code> avvia l’update, <code>/us</code> restituisce lo stato e <code>/ub</code> crea un backup completo.</p>
 <h2 id="modalita-esp32-e-gestione-radio">Modalità ESP32 e gestione radio</h2>
 <p>Su ESP32-C5 l’interfaccia espone una pagina modalità per Matter, Zigbee Gateway e Zigbee Client. Il cambio aggiorna la configurazione IEEE 802.15.4 e richiede riavvio.</p>
+<p><strong>Funzione UI:</strong> aprire il menu laterale e scegliere <strong>Setup ESP32 Mode</strong>. Usare <strong>Apply Mode</strong> solo quando si vuole cambiare intenzionalmente ruolo firmware/radio.</p>
+<p><img alt="Setup ESP32 Mode" class="mobile-screenshot" src="../assets/screenshots/pro/it/esp32-mode.png" /></p>
 <ul>
 <li><strong>Zigbee Gateway</strong> gestisce localmente dispositivi Zigbee.</li>
 <li><strong>Zigbee Client</strong> collega OpenSprinkler a un coordinatore Zigbee esistente.</li>
 <li><strong>Matter</strong> richiede la variante firmware Matter; Matter e Zigbee non possono funzionare insieme sulla stessa radio ESP32-C5.</li>
 <li>Per installazioni Zigbee importanti è consigliato Ethernet.</li>
 </ul>
-<p>Endpoint utili: <code>/ir</code>, <code>/iw</code>, <code>/zj</code>, <code>/zg</code>, <code>/zs</code>.</p>
+<p>Nota API per integrazioni avanzate: <code>/ir</code> legge la modalità radio, <code>/iw</code> la imposta, <code>/zj</code> gestisce il join client, <code>/zg</code> i dati gateway e <code>/zs</code> lo stato Zigbee.</p>
 <h2 id="gateway-e-client-zigbee">Gateway e client Zigbee</h2>
 <p>Zigbee è una funzione del <strong>firmware ESP32-C5 Zigbee</strong>. Non è disponibile su ESP32-C5 Matter, ESP8266 o OSPi.</p>
 <p>OpenSprinklerPro supporta due ruoli Zigbee.</p>
@@ -332,7 +396,9 @@
 <li>arricchire i dati con produttore e modello quando disponibili,</li>
 <li>elaborare report Tuya e mapparli su attributi standard quando possibile.</li>
 </ul>
-<p>Endpoint REST utili:</p>
+<p><strong>Funzione UI:</strong> aprire il menu laterale e scegliere <strong>ZigBee Gateway</strong>. La pagina mostra i dispositivi associati e l’azione utente per consentire nuovi join.</p>
+<p><img alt="ZigBee Gateway" class="mobile-screenshot" src="../assets/screenshots/pro/it/zigbee-gateway.png" /></p>
+<p>Nota API per automazione e diagnostica:</p>
 <ul>
 <li><code>/ir</code> e <code>/iw</code> per configurazione radio IEEE 802.15.4 e cambio modalità,</li>
 <li><code>/zg</code>, <code>/zd</code>, <code>/zo</code>, <code>/zc</code> per gestione dispositivi gateway,</li>
@@ -371,17 +437,22 @@
 <h2 id="matter-ed-esp-rainmaker">Matter ed ESP RainMaker</h2>
 <h3 id="matter">Matter</h3>
 <p>Matter è disponibile solo sui build ESP32 compilati con <code>ENABLE_MATTER</code>; nel set Pro corrisponde alla variante <strong>ESP32-C5 Matter</strong>. L’API JSON <code>/jm</code> espone stato commissioning, URL QR code e codice manuale. Matter non è disponibile su ESP8266 o OSPi.</p>
-<p>Per l’abbinamento con Apple Home, Google Home, Alexa o altro controller Matter, aprire la finestra di commissioning Matter nell’UI. <code>/mm</code> accetta <code>t</code> come timeout opzionale in secondi (default <code>300</code>, massimo <code>900</code>).</p>
+<p><strong>Funzione UI:</strong> sulla variante firmware Matter aprire <strong>Setup Matter</strong> nel menu laterale. Sulla variante Zigbee l’UI mostra invece <strong>Setup ESP32 Mode</strong>, dove la variante Matter può essere selezionata prima del riavvio.</p>
+<p>Per l’abbinamento con Apple Home, Google Home, Alexa o altro controller Matter, aprire la finestra di commissioning Matter nell’UI.</p>
+<p>Nota API: <code>/jm</code> restituisce stato commissioning, URL QR code e codice manuale; <code>/mm</code> apre una finestra di commissioning e accetta <code>t</code> come timeout opzionale (default <code>300</code>, massimo <code>900</code>).</p>
 <h3 id="esp-rainmaker">ESP RainMaker</h3>
 <p>ESP RainMaker è disponibile su ESP32 / ESP32-C5, non su ESP8266 o OSPi.</p>
+<p><strong>Funzione UI:</strong> aprire il menu laterale e scegliere <strong>RainMaker</strong>. La pagina mostra stato provisioning, PIN PoP, stato nodo/account e l’azione sicura di aggiornamento stato.</p>
+<p><img alt="RainMaker" class="mobile-screenshot" src="../assets/screenshots/pro/it/rainmaker.png" /></p>
 <p>Il provisioning RainMaker supporta:</p>
 <ul>
 <li><strong>BLE claiming</strong> alla prima configurazione senza certificati TLS,</li>
 <li><strong>provisioning on-network</strong> quando i certificati esistono e il dispositivo deve essere collegato a un account utente,</li>
 <li>Ethernet come rete dati mentre BLE viene usato solo per il claiming,</li>
-<li>stato via <code>/rk</code>, inclusi provisioning, BLE claiming, controllo locale e PIN PoP.</li>
+<li>visualizzazione stato, inclusi provisioning, BLE claiming, controllo locale e PIN PoP.</li>
 </ul>
-<p>Durante il BLE claiming, i sensori BLE attendono che RainMaker liberi le risorse BLE. La pagina stato mostra anche node ID, connessione MQTT, user mapping, local control, certificati, sensori differiti, uso Ethernet e dati provisioning. <code>reset_mapping=1</code> rimuove l’associazione utente; <code>factory_reset=1</code> esegue reset RainMaker con riavvio. <code>/ru</code> scollega l’account. Vedi <a href="../rainmaker-provisioning/">RainMaker provisioning</a>.</p>
+<p>Durante il BLE claiming, i sensori BLE attendono che RainMaker liberi le risorse BLE. La pagina stato mostra anche node ID, connessione MQTT, user mapping, local control, certificati, sensori differiti, uso Ethernet e dati provisioning. Vedi <a href="../rainmaker-provisioning/">RainMaker provisioning</a>.</p>
+<p>Nota API per manutenzione: <code>/rk</code> restituisce lo stato RainMaker. <code>reset_mapping=1</code> rimuove l’associazione utente; <code>factory_reset=1</code> esegue reset RainMaker con riavvio. <code>/ru</code> scollega l’account.</p>
 <h2 id="certificati-https-e-acme">Certificati HTTPS e ACME</h2>
 <p>I build ESP32 con HTTPS possono usare certificato interno, certificato/chiave PEM personalizzati o ACME/Let's Encrypt. L’UI mostra tipo, subject, issuer e validità.</p>
 <ul>
@@ -405,6 +476,8 @@ Content-Type: application/json
 <p>Vedi <a href="../mcp-server/">MCP server</a> e <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/mcp_firmware_api.md">API MCP firmware</a>.</p>
 <h2 id="eventi-di-notifica">Eventi di notifica</h2>
 <p>OpenSprinklerPro può inviare eventi selezionati tramite MQTT, e-mail e IFTTT; InfluxDB può ricevere dati di misura. La configurazione è in <strong>Options → Integrations → Notification Events</strong>.</p>
+<p><strong>Funzione UI:</strong> aprire il menu inferiore, scegliere <strong>Edit Options</strong>, espandere <strong>Integrations</strong> e aprire <strong>Configure Events</strong> sotto il canale desiderato.</p>
+<p><img alt="Integrations" class="mobile-screenshot" src="../assets/screenshots/pro/it/options-integrations.png" /></p>
 <p>La documentazione locale elenca 17 eventi, tra cui:</p>
 <ul>
 <li>avvio programma,</li>
@@ -423,9 +496,16 @@ Content-Type: application/json
 <p>Vedi <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Benachrichtigungs-Ereignisse.md">eventi di notifica</a>.</p>
 <h2 id="monitor-e-alert-locali">Monitor e alert locali</h2>
 <p>L’UI attuale include gestione monitor per valori sensore e alert locali. Un monitor controlla un valore configurato e genera avvisi di priorità bassa, media o alta quando le soglie vengono superate. Gli avvisi possono anche alimentare gli eventi di notifica.</p>
-<p>Flusso tipico: configurare il sensore, creare un monitor con sorgente e soglie, scegliere priorità e verificare stato tramite campanella o diagnostica. API: <code>/mc</code>, <code>/ml</code>, <code>/mt</code>.</p>
+<p><strong>Funzione UI:</strong> aprire il menu inferiore e scegliere <strong>Analog Sensor Configuration</strong>. <strong>Monitoring and Control</strong> gestisce le regole monitor; <strong>FYTA Setup</strong> salva credenziali FYTA e selezione piante.</p>
+<p><img alt="Analog Sensor Configuration" class="mobile-screenshot" src="../assets/screenshots/pro/it/sensor-config.png" /></p>
+<p><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitors.png" /></p>
+<p><img alt="FYTA Setup" class="mobile-screenshot" src="../assets/screenshots/pro/it/fyta-setup.png" /></p>
+<p>Flusso tipico: configurare il sensore, creare un monitor con sorgente e soglie, scegliere priorità e verificare stato tramite campanella o diagnostica.</p>
+<p>Nota API: <code>/mc</code> espone la configurazione monitor, <code>/ml</code> la lista e <code>/mt</code> i tipi supportati.</p>
 <h2 id="diagnostica-sistema-e-consumo-acqua">Diagnostica sistema e consumo acqua</h2>
-<p>Il menu laterale <strong>System Diagnostics</strong> mostra versione firmware/hardware, motivo riavvio, storage e memoria liberi, meteo, OTC e stato MQTT/InfluxDB/IFTTT. <code>/jw</code> fornisce consumo acqua mensile con pulse rate e record.</p>
+<p>Il menu laterale <strong>System Diagnostics</strong> mostra versione firmware/hardware, motivo riavvio, storage e memoria liberi, meteo, OTC e stato MQTT/InfluxDB/IFTTT.</p>
+<p><img alt="System Diagnostics" class="mobile-screenshot" src="../assets/screenshots/pro/it/system-diagnostics.png" /></p>
+<p>Nota API: <code>/jw</code> fornisce consumo acqua mensile con pulse rate e record.</p>
 <h2 id="note-su-ui-e-opzioni">Note su UI e opzioni</h2>
 <p>OpenSprinklerPro usa la normale interfaccia web e app OpenSprinkler:</p>
 <ul>
