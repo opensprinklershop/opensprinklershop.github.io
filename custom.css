@@ -89,8 +89,8 @@ ul > li {
 
 .mobile-screenshot {
   display: block;
-  width: 300px;
-  max-width: 100%;
+  width: 300px !important;
+  max-width: 300px !important;
   height: auto;
   margin: 0.75rem auto 1.25rem auto;
   border: 1px solid #ccc;
