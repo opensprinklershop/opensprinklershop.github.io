@@ -112,13 +112,20 @@ ul > li {
 }
 
 .wy-menu-vertical .sidebar-page-outline {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.5rem;
+  background: #24292f;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  margin: 0.4rem 0 0.9rem 0;
+  padding: 0.35rem 0 0.45rem 0;
 }
 
 .wy-menu-vertical .sidebar-page-outline p.caption {
+  color: #ffffff !important;
   margin-bottom: 0.25rem;
+}
+
+.wy-menu-vertical .sidebar-page-outline .caption-text {
+  color: #ffffff !important;
 }
 
 .wy-menu-vertical .sidebar-page-outline ul {
@@ -132,7 +139,7 @@ ul > li {
 }
 
 .wy-menu-vertical .sidebar-page-outline a {
-  color: #d9d9d9;
+  color: #ffffff !important;
   display: block;
   font-size: 90%;
   line-height: 1.25;
@@ -140,14 +147,14 @@ ul > li {
 }
 
 .wy-menu-vertical .sidebar-page-outline .toctree-l3 a {
-  color: #bfc6cc;
+  color: #d7ecff !important;
   font-size: 85%;
   padding-left: 2.35rem;
 }
 
 .wy-menu-vertical .sidebar-page-outline a:hover {
-  background: #4e4a4a;
-  color: #fff;
+  background: #0366d6 !important;
+  color: #ffffff !important;
 }
 
 img.mobile-screenshot,

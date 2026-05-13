@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  initLanguageSelector();
   initSidebarPageOutline();
+  initLanguageSelector();
   initScreenshotLightbox();
 });
 
