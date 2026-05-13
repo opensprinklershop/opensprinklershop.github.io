@@ -126,11 +126,43 @@
                   <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">MCP Server</span></p>
+              <p class="caption"><span class="caption-text">MCP and AI</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../mcp-server/">English</a>
+                  <li class="toctree-l1"><a class="reference internal" >MCP Server</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../mcp-server/">English</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../mcp-server-de/">Deutsch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../mcp-server-fr/">Français</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../mcp-server-it/">Italiano</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../mcp-server-de/">Deutsch</a>
+                  <li class="toctree-l1"><a class="reference internal" >AI Program Creation</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../ai-programming/">English</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ai-programming-de/">Deutsch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ai-programming-fr/">Français</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ai-programming-it/">Italiano</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensor Automation</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../sensor-automation/">English</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../sensor-automation-de/">Deutsch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../sensor-automation-fr/">Français</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../sensor-automation-it/">Italiano</a>
+                </li>
+    </ul>
                   </li>
               </ul>
               <ul>
@@ -508,7 +540,7 @@ Content-Type: application/json
 <p>Plateformes : <strong>ESP32 / ESP32-C5 uniquement</strong> avec <code>USE_OTF</code>; <strong>pas</strong> ESP8266 et <strong>pas</strong> OSPi.</p>
 <h3 id="serveur-mcp-nodejs-externe">Serveur MCP Node.js externe</h3>
 <p>Le serveur externe dans <code>tools/mcp-server/</code> tourne hors du firmware et publie l’API REST sous forme d’outils MCP via stdio. Il fonctionne avec les contrôleurs ESP8266, ESP32 et OSPi et offre plus de 40 outils, y compris capteurs, monitors, Zigbee, BLE et ressources système lorsque les endpoints existent sur le contrôleur cible.</p>
-<p>Voir <a href="../mcp-server/">MCP server</a> et <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/mcp_firmware_api.md">API MCP firmware</a>.</p>
+<p>Voir <a href="../mcp-server-fr/">serveur MCP</a>, <a href="../ai-programming-fr/">création de programmes par IA</a>, <a href="../sensor-automation-fr/">automatisation capteurs</a> et <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/mcp_firmware_api.md">API MCP firmware</a>.</p>
 <h2 id="evenements-de-notification">Événements de notification</h2>
 <p>OpenSprinklerPro peut envoyer des événements sélectionnés via MQTT, e-mail et IFTTT; InfluxDB peut recevoir les mesures. La configuration se trouve dans <strong>Options → Integrations → Notification Events</strong>.</p>
 <p><strong>Fonction UI :</strong> ouvrir le menu inférieur, choisir <strong>Edit Options</strong>, déplier <strong>Integrations</strong>, puis ouvrir <strong>Configure Events</strong> sous le canal souhaité.</p>
@@ -570,7 +602,9 @@ Content-Type: application/json
 <li><a href="../CHANGELOG/">CHANGELOG</a> — notes de version des fonctions Pro.</li>
 <li><a href="../pro-api-endpoints/">Addendum API et plateformes</a> — notes actuelles sur endpoints et plateformes.</li>
 <li><a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/as_api_docs/mcp_firmware_api.md">API MCP firmware</a> — détails du <code>/mcp</code> intégré.</li>
-<li><a href="../mcp-server/">Serveur MCP externe</a> — configuration Node.js MCP et liste d’outils.</li>
+<li><a href="../mcp-server-fr/">Serveur MCP externe</a> — configuration Node.js MCP et liste d’outils.</li>
+<li><a href="../ai-programming-fr/">Création de programmes par IA</a> — programmer l’arrosage via MCP.</li>
+<li><a href="../sensor-automation-fr/">Automatisation capteurs</a> — ajustements et monitors via MCP.</li>
 <li><a href="../rainmaker-provisioning/">RainMaker provisioning</a> — BLE claiming et provisionnement on-network.</li>
 <li><a href="../fyta-sensors/">Capteurs FYTA</a> — configuration et dépannage.</li>
 <li><a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/blob/master/docs/wiki/Plattform-Verfügbarkeit.md">Disponibilité plateformes</a> — vue matériel/fonctions.</li>

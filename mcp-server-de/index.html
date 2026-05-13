@@ -74,106 +74,70 @@
                   <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">MCP Server</span></p>
+              <p class="caption"><span class="caption-text">MCP and AI</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../mcp-server/">English</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Deutsch</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" >MCP Server</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#zwei-betriebsmodi">Zwei Betriebsmodi</a>
+                <li class="toctree-l2"><a class="reference internal" href="../mcp-server/">English</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Deutsch</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#betriebsarten">Betriebsarten</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#1-eingebauter-firmware-mcp-nur-esp32">1. Eingebauter Firmware-MCP (nur ESP32)</a>
+    <li class="toctree-l4"><a class="reference internal" href="#eingebauter-firmware-mcp">Eingebauter Firmware-MCP</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2-externer-nodejs-mcp-server-alle-plattformen">2. Externer Node.js MCP-Server (alle Plattformen)</a>
+    <li class="toctree-l4"><a class="reference internal" href="#externer-nodejs-mcp-server">Externer Node.js-MCP-Server</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#einrichtung">Einrichtung</a>
+    <li class="toctree-l3"><a class="reference internal" href="#einrichtung">Einrichtung</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#voraussetzungen">Voraussetzungen</a>
+    <li class="toctree-l4"><a class="reference internal" href="#voraussetzungen">Voraussetzungen</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
+    <li class="toctree-l4"><a class="reference internal" href="#installation-und-build">Installation und Build</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#konfiguration-in-vs-code-github-copilot">Konfiguration in VS Code (GitHub Copilot)</a>
+    <li class="toctree-l4"><a class="reference internal" href="#vs-code-github-copilot">VS Code / GitHub Copilot</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#konfiguration-in-claude-desktop">Konfiguration in Claude Desktop</a>
+    <li class="toctree-l4"><a class="reference internal" href="#claude-desktop">Claude Desktop</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#passwort-hash-berechnen">Passwort-Hash berechnen</a>
+    <li class="toctree-l4"><a class="reference internal" href="#passwort-hash-berechnen">Passwort-Hash berechnen</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#verfugbare-tools">Verfügbare Tools</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#lese-tools-abfragen">Lese-Tools (Abfragen)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#tool-uberblick">Tool-Überblick</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#schreib-steuerungstools">Schreib-/Steuerungstools</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#programmverwaltung">Programmverwaltung</a>
+    <li class="toctree-l3"><a class="reference internal" href="#nutzliche-kontextansicht">Nützliche Kontextansicht</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#stationssteuerung">Stationssteuerung</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#controller-verwaltung">Controller-Verwaltung</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#sensorkonfiguration">Sensorkonfiguration</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#system">System</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ki-gestutzte-programmerstellung">KI-gestützte Programmerstellung</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#so-funktioniert-es">So funktioniert es</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#programm-kodierung">Programm-Kodierung</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#flag-bits">Flag-Bits</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#tage-kodierung">Tage-Kodierung</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#startzeit">Startzeit</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#beispiel">Beispiel</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#sensorbasierte-programmanpassungen">Sensorbasierte Programmanpassungen</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#anpassungstypen">Anpassungstypen</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#lineare-formel-typ-1">Lineare Formel (Typ 1)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#beispiel-weniger-bewasserung-bei-feuchterem-boden">Beispiel: Weniger Bewässerung bei feuchterem Boden</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#beispiel-mehr-bewasserung-bei-hoherer-temperatur">Beispiel: Mehr Bewässerung bei höherer Temperatur</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#beispiel-regen-abschaltung-digital">Beispiel: Regen-Abschaltung (Digital)</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#monitor-system">Monitor-System</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#monitor-typen">Monitor-Typen</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#minmax-parameter-typen-1-2">MIN/MAX-Parameter (Typen 1, 2)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#logik-gatter-parameter-typen-10-11-12">Logik-Gatter-Parameter (Typen 10, 11, 12)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#time-parameter-typ-14">TIME-Parameter (Typ 14)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#beispiel-nur-bewassern-wenn-trocken-und-morgens">Beispiel: Nur bewässern wenn trocken UND morgens</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#beispiel-frost-hitzeschutz">Beispiel: Frost-/Hitzeschutz</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#mcp-ressourcen">MCP-Ressourcen</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#sensortypen-ubersicht">Sensortypen-Übersicht</a>
-    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../mcp-server-fr/">Français</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../mcp-server-it/">Italiano</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >AI Program Creation</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../ai-programming/">English</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ai-programming-de/">Deutsch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ai-programming-fr/">Français</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ai-programming-it/">Italiano</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensor Automation</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../sensor-automation/">English</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../sensor-automation-de/">Deutsch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../sensor-automation-fr/">Français</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../sensor-automation-it/">Italiano</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -208,6 +172,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">MCP and AI</li>
           <li class="breadcrumb-item">MCP Server</li>
       <li class="breadcrumb-item active">Deutsch</li>
     <li class="wy-breadcrumbs-aside">
@@ -219,34 +184,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="mcp-server-ki-integration-fur-opensprinkler">MCP Server — KI-Integration für OpenSprinkler</h1>
-<p>Der OpenSprinkler MCP (Model Context Protocol) Server ermöglicht es KI-Assistenten wie <strong>GitHub Copilot</strong>, <strong>Claude</strong> und <strong>ChatGPT</strong>, dein Bewässerungssystem direkt abzufragen und zu steuern.</p>
-<hr />
-<h2 id="zwei-betriebsmodi">Zwei Betriebsmodi</h2>
-<h3 id="1-eingebauter-firmware-mcp-nur-esp32">1. Eingebauter Firmware-MCP (nur ESP32)</h3>
-<p>Die ESP32-Firmware enthält einen eingebauten MCP-HTTP-Endpunkt direkt auf dem Gerät:</p>
-<pre><code>POST http://&lt;controller-ip&gt;/mcp
+                <h1 id="mcp-server-ki-zugriff-fur-opensprinkler">MCP-Server — KI-Zugriff für OpenSprinkler</h1>
+<p>Die OpenSprinkler-MCP-Integration (Model Context Protocol) ermöglicht KI-Assistenten, einen OpenSprinkler-Controller über dokumentierte Tools abzufragen und zu steuern.</p>
+<p>Diese Seite behandelt nur MCP-Einrichtung und Betriebsarten. Programmerstellung und Sensor-Automation sind ausgelagert:</p>
+<ul>
+<li><a href="../ai-programming-de/">KI-gestützte Programmerstellung</a></li>
+<li><a href="../sensor-automation-de/">Sensor-Automation und Monitore</a></li>
+</ul>
+<h2 id="betriebsarten">Betriebsarten</h2>
+<h3 id="eingebauter-firmware-mcp">Eingebauter Firmware-MCP</h3>
+<p>Der eingebaute MCP-Server läuft direkt in ESP32-Firmware-Builds mit aktiviertem <code>USE_OTF</code>:</p>
+<pre><code class="language-http">POST http://&lt;controller-ip&gt;/mcp
 Content-Type: application/json
 </code></pre>
-<p><strong>Vorteile:</strong> Kein Node.js nötig, kein separater Prozess — die KI kommuniziert direkt mit dem Controller via HTTP (Streamable-HTTP-Transport, JSON-RPC 2.0).</p>
-<p><strong>Verfügbare Tools (10):</strong> <code>get_all</code>, <code>get_controller_variables</code>, <code>get_options</code>, <code>get_stations</code>, <code>get_station_status</code>, <code>get_programs</code>, <code>get_debug</code>, <code>manual_station_run</code>, <code>change_controller_variables</code>, <code>pause_queue</code></p>
-<h3 id="2-externer-nodejs-mcp-server-alle-plattformen">2. Externer Node.js MCP-Server (alle Plattformen)</h3>
-<p>Der Node.js-Server unter <code>tools/mcp-server/</code> stellt die <strong>komplette REST-API</strong> (40+ Tools) via stdio-Transport bereit.</p>
-<p><strong>Vorteile:</strong> Vollständige Abdeckung aller API-Endpunkte inklusive Sensoren, Programme, Monitore und Anpassungen.</p>
-<hr />
+<p>Die Authentifizierung nutzt denselben Admin-Passwort-Hash wie die REST-API: <code>?pw=</code>, Header <code>X-OS-Password</code> oder Bearer Token.</p>
+<p>Plattform: <strong>nur ESP32 / ESP32-C5</strong> mit <code>USE_OTF</code>; nicht ESP8266 und nicht OSPi.</p>
+<h3 id="externer-nodejs-mcp-server">Externer Node.js-MCP-Server</h3>
+<p>Der externe Server unter <code>tools/mcp-server/</code> läuft außerhalb der Firmware und stellt die REST-API über stdio bereit. Er funktioniert mit ESP8266-, ESP32- und OSPi-Controllern und bietet einen größeren Tool-Satz inklusive Sensoren, Monitoren, Zigbee, BLE und Systemressourcen, sofern der Zielcontroller diese unterstützt.</p>
 <h2 id="einrichtung">Einrichtung</h2>
 <h3 id="voraussetzungen">Voraussetzungen</h3>
 <ul>
-<li><strong>Node.js</strong> ≥ 18</li>
-<li>Ein erreichbarer <strong>OpenSprinkler-Controller</strong> im Netzwerk</li>
+<li>Node.js 18 oder neuer.</li>
+<li>Ein erreichbarer OpenSprinkler-Controller.</li>
+<li>Das Admin-Passwort als MD5-Hash.</li>
 </ul>
-<h3 id="installation">Installation</h3>
+<h3 id="installation-und-build">Installation und Build</h3>
 <pre><code class="language-bash">cd tools/mcp-server
 npm install
 npm run build
 </code></pre>
-<h3 id="konfiguration-in-vs-code-github-copilot">Konfiguration in VS Code (GitHub Copilot)</h3>
-<p>In <code>.vscode/mcp.json</code> einfügen:</p>
+<h3 id="vs-code-github-copilot">VS Code / GitHub Copilot</h3>
+<p>In <code>.vscode/mcp.json</code> eintragen:</p>
 <pre><code class="language-json">{
   &quot;servers&quot;: {
     &quot;opensprinkler&quot;: {
@@ -261,8 +229,8 @@ npm run build
   }
 }
 </code></pre>
-<h3 id="konfiguration-in-claude-desktop">Konfiguration in Claude Desktop</h3>
-<p>In <code>~/.config/claude/claude_desktop_config.json</code> einfügen:</p>
+<h3 id="claude-desktop">Claude Desktop</h3>
+<p>In <code>~/.config/claude/claude_desktop_config.json</code> eintragen:</p>
 <pre><code class="language-json">{
   &quot;mcpServers&quot;: {
     &quot;opensprinkler&quot;: {
@@ -279,705 +247,46 @@ npm run build
 <h3 id="passwort-hash-berechnen">Passwort-Hash berechnen</h3>
 <pre><code class="language-bash">echo -n &quot;dein_admin_passwort&quot; | md5sum | awk '{print $1}'
 </code></pre>
-<hr />
-<h2 id="verfugbare-tools">Verfügbare Tools</h2>
-<h3 id="lese-tools-abfragen">Lese-Tools (Abfragen)</h3>
+<h2 id="tool-uberblick">Tool-Überblick</h2>
 <table>
 <thead>
 <tr>
-<th>Tool</th>
-<th>Endpunkt</th>
-<th>Beschreibung</th>
+<th>Bereich</th>
+<th>Beispiel-Tools</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>get_all</code></td>
-<td><code>/ja</code></td>
-<td>Alle Daten (Variablen, Optionen, Stationen, Status, Programme)</td>
+<td>Controller-Status</td>
+<td><code>get_all</code>, <code>get_controller_variables</code>, <code>get_options</code>, <code>get_debug</code>, <code>get_system_resources</code></td>
 </tr>
 <tr>
-<td><code>get_controller_variables</code></td>
-<td><code>/jc</code></td>
-<td>Gerätezeit, Regenverzögerung, Durchfluss, Warteschlange, MQTT/OTC</td>
+<td>Stationen und Programme</td>
+<td><code>get_stations</code>, <code>get_station_status</code>, <code>get_programs</code>, <code>manual_station_run</code>, <code>manual_program_start</code>, <code>change_program</code></td>
 </tr>
 <tr>
-<td><code>get_options</code></td>
-<td><code>/jo</code></td>
-<td>Firmware-Version, Zeitzone, Netzwerkkonfiguration, Sensoren</td>
+<td>Sensoren und Logs</td>
+<td><code>get_sensors</code>, <code>get_sensor_values</code>, <code>get_sensor_log</code>, <code>get_sensor_types</code>, <code>backup_sensor_config</code></td>
 </tr>
 <tr>
-<td><code>get_stations</code></td>
-<td><code>/jn</code></td>
-<td>Stationsnamen, Master-Ops, Regen-/Sensor-Ignore-Flags</td>
+<td>OpenSprinklerPro-Funk</td>
+<td><code>get_ieee802154_config</code>, <code>get_zigbee_devices</code>, <code>get_zigbee_status</code>, <code>get_ble_devices</code>, <code>get_rainmaker_status</code></td>
 </tr>
 <tr>
-<td><code>get_station_status</code></td>
-<td><code>/js</code></td>
-<td>Aktueller Ein/Aus-Status aller Stationen</td>
-</tr>
-<tr>
-<td><code>get_programs</code></td>
-<td><code>/jp</code></td>
-<td>Alle Programme: Zeitpläne, Dauern, Flags, Namen</td>
-</tr>
-<tr>
-<td><code>get_special_stations</code></td>
-<td><code>/je</code></td>
-<td>RF-, Remote-, GPIO-, HTTP/HTTPS-, OTC-Stationen</td>
-</tr>
-<tr>
-<td><code>get_log</code></td>
-<td><code>/jl</code></td>
-<td>Bewässerungslog (Zeitraum oder Verlaufsfenster)</td>
-</tr>
-<tr>
-<td><code>get_debug</code></td>
-<td><code>/db</code></td>
-<td>Build-Info, Heap, Flash, WiFi RSSI, PSRAM</td>
-</tr>
-<tr>
-<td><code>get_sensors</code></td>
-<td><code>/sl</code></td>
-<td>Alle konfigurierten Sensoren mit aktuellen Werten</td>
-</tr>
-<tr>
-<td><code>get_sensor_values</code></td>
-<td><code>/sg</code></td>
-<td>Sensorwerte (optional nach Sensornummer filtern)</td>
-</tr>
-<tr>
-<td><code>get_sensor_log</code></td>
-<td><code>/so</code></td>
-<td>Sensor-Logdaten (JSON/CSV, Zeitraum)</td>
-</tr>
-<tr>
-<td><code>get_sensor_types</code></td>
-<td><code>/sf</code></td>
-<td>Verfügbare Sensortypen</td>
-</tr>
-<tr>
-<td><code>list_adjustments</code></td>
-<td><code>/se</code></td>
-<td>Sensorbasierte Programmanpassungen</td>
-</tr>
-<tr>
-<td><code>list_monitors</code></td>
-<td><code>/ml</code></td>
-<td>Sensor-Monitore (Schwellwert-Trigger)</td>
-</tr>
-<tr>
-<td><code>get_ieee802154_config</code></td>
-<td><code>/ir</code></td>
-<td>IEEE 802.15.4 Funkmodul-Konfiguration (ESP32-C5)</td>
-</tr>
-<tr>
-<td><code>get_zigbee_devices</code></td>
-<td><code>/zg</code></td>
-<td>ZigBee-Geräteliste (ESP32-C5)</td>
-</tr>
-<tr>
-<td><code>get_zigbee_status</code></td>
-<td><code>/zs</code></td>
-<td>ZigBee-Funkstatus (ESP32-C5)</td>
-</tr>
-<tr>
-<td><code>get_ble_devices</code></td>
-<td><code>/bd</code></td>
-<td>BLE-Geräte-Scan/Liste (ESP32)</td>
-</tr>
-<tr>
-<td><code>get_rainmaker_status</code></td>
-<td><code>/rk</code></td>
-<td>ESP RainMaker-Status (ESP32)</td>
-</tr>
-<tr>
-<td><code>backup_sensor_config</code></td>
-<td><code>/sx</code></td>
-<td>Sensor-/Anpassungs-/Monitor-Konfiguration exportieren</td>
-</tr>
-<tr>
-<td><code>get_system_resources</code></td>
-<td><code>/du</code></td>
-<td>Systemspeicher und Speichernutzung</td>
+<td>Automation</td>
+<td><code>list_adjustments</code>, <code>configure_adjustment</code>, <code>list_monitors</code>, <code>configure_monitor</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="schreib-steuerungstools">Schreib-/Steuerungstools</h3>
-<h4 id="programmverwaltung">Programmverwaltung</h4>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Endpunkt</th>
-<th>Beschreibung</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>change_program</code></td>
-<td><code>/cp</code></td>
-<td>Bewässerungsprogramme erstellen oder ändern</td>
-</tr>
-<tr>
-<td><code>delete_program</code></td>
-<td><code>/dp</code></td>
-<td>Programm(e) löschen</td>
-</tr>
-<tr>
-<td><code>move_program_up</code></td>
-<td><code>/up</code></td>
-<td>Programm in der Liste umordnen</td>
-</tr>
-<tr>
-<td><code>manual_program_start</code></td>
-<td><code>/mp</code></td>
-<td>Gespeichertes Programm manuell starten</td>
-</tr>
-</tbody>
-</table>
-<h4 id="stationssteuerung">Stationssteuerung</h4>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Endpunkt</th>
-<th>Beschreibung</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>manual_station_run</code></td>
-<td><code>/cm</code></td>
-<td>Station manuell öffnen/schließen</td>
-</tr>
-<tr>
-<td><code>run_once</code></td>
-<td><code>/cr</code></td>
-<td>Einmal-Programm mit eigenen Dauern ausführen</td>
-</tr>
-<tr>
-<td><code>change_station</code></td>
-<td><code>/cs</code></td>
-<td>Stationsnamen und -attribute ändern</td>
-</tr>
-</tbody>
-</table>
-<h4 id="controller-verwaltung">Controller-Verwaltung</h4>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Endpunkt</th>
-<th>Beschreibung</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>change_controller_variables</code></td>
-<td><code>/cv</code></td>
-<td>Aktivieren/Deaktivieren, Regenverzögerung, Neustart</td>
-</tr>
-<tr>
-<td><code>change_options</code></td>
-<td><code>/co</code></td>
-<td>Zeitzone, Netzwerk, Sensoren, Master-Stationen</td>
-</tr>
-<tr>
-<td><code>pause_queue</code></td>
-<td><code>/pq</code></td>
-<td>Bewässerungswarteschlange pausieren/fortsetzen</td>
-</tr>
-</tbody>
-</table>
-<h4 id="sensorkonfiguration">Sensorkonfiguration</h4>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Endpunkt</th>
-<th>Beschreibung</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>configure_sensor</code></td>
-<td><code>/sc</code></td>
-<td>Sensoren hinzufügen/ändern/löschen</td>
-</tr>
-<tr>
-<td><code>read_sensor_now</code></td>
-<td><code>/sr</code></td>
-<td>Sofortige Sensorablesung auslösen</td>
-</tr>
-<tr>
-<td><code>configure_adjustment</code></td>
-<td><code>/sb</code></td>
-<td>Sensorbasierte Programmanpassung konfigurieren</td>
-</tr>
-<tr>
-<td><code>configure_monitor</code></td>
-<td><code>/mc</code></td>
-<td>Sensor-Schwellwertmonitor konfigurieren</td>
-</tr>
-</tbody>
-</table>
-<h4 id="system">System</h4>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Endpunkt</th>
-<th>Beschreibung</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>set_password</code></td>
-<td><code>/sp</code></td>
-<td>Geräte-Passwort ändern</td>
-</tr>
-<tr>
-<td><code>change_script_urls</code></td>
-<td><code>/cu</code></td>
-<td>UI-/Wetter-Script-URLs ändern</td>
-</tr>
-<tr>
-<td><code>delete_log</code></td>
-<td><code>/dl</code></td>
-<td>Logdaten löschen</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="ki-gestutzte-programmerstellung">KI-gestützte Programmerstellung</h2>
-<p>Ein KI-Assistent kann vollständige Bewässerungsprogramme aus natürlichsprachlichen Anfragen erstellen.</p>
-<h3 id="so-funktioniert-es">So funktioniert es</h3>
-<ol>
-<li>Die KI ruft <code>get_stations</code> auf → lernt Stationsnamen und Anzahl</li>
-<li>Die KI ruft <code>get_options</code> auf → lernt Zeitzone, Sonnenauf-/untergangseinstellungen</li>
-<li>Die KI ruft <code>get_programs</code> auf → sieht bestehende Programme (Konfliktvermeidung)</li>
-<li>Die KI ruft <code>change_program</code> mit <code>pid=-1</code> auf → erstellt ein neues Programm</li>
-</ol>
-<h3 id="programm-kodierung">Programm-Kodierung</h3>
-<p>Das <code>change_program</code>-Tool verwendet dieses Format:</p>
-<pre><code>v=[flag, days0, days1, [start0,start1,start2,start3], [dauer0,dauer1,...]]
-</code></pre>
-<h4 id="flag-bits">Flag-Bits</h4>
-<table>
-<thead>
-<tr>
-<th>Bit</th>
-<th>Bedeutung</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>Aktiviert (1=ein)</td>
-</tr>
-<tr>
-<td>1</td>
-<td>Wetteranpassung verwenden (1=ja)</td>
-</tr>
-<tr>
-<td>2-3</td>
-<td>Einschränkung: 0=keine, 1=ungerade Tage, 2=gerade Tage</td>
-</tr>
-<tr>
-<td>4-5</td>
-<td>Zeitplantyp: 0=wöchentlich, 1=einmalig, 2=monatlich, 3=Intervall</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Startzeit-Typ: 0=wiederholend, 1=feste Zeiten</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Datumsbereich aktivieren</td>
-</tr>
-</tbody>
-</table>
-<h4 id="tage-kodierung">Tage-Kodierung</h4>
-<ul>
-<li><strong>Wöchentlich:</strong> days0 = Wochentag-Bitmaske (Bit0=Mo, Bit1=Di, … Bit6=So)</li>
-<li><strong>Intervall:</strong> days0 = Rest, days1 = Intervall in Tagen</li>
-<li><strong>Monatlich:</strong> days0 = Tag des Monats (1–31, 32=letzter Tag)</li>
-</ul>
-<h4 id="startzeit">Startzeit</h4>
-<ul>
-<li>Minuten ab Mitternacht (0–1439)</li>
-<li>Sonnenaufgang: Bit14 gesetzt, Bit12=Vorzeichen, Bits 0–11=Offset</li>
-<li>Sonnenuntergang: Bit13 gesetzt, Bit12=Vorzeichen, Bits 0–11=Offset</li>
-</ul>
-<h3 id="beispiel">Beispiel</h3>
-<p>Benutzer sagt: <em>„Bewässere den Rasen (Station 0) und die Blumenbeete (Station 1) jeden Morgen um 6 Uhr, 15 und 20 Minuten, Mo–Fr, mit Wetteranpassung"</em></p>
-<pre><code class="language-json">{
-  &quot;pid&quot;: -1,
-  &quot;name&quot;: &quot;Morgenbewässerung&quot;,
-  &quot;v&quot;: &quot;[67,31,0,[360,-1,-1,-1],[900,1200,0,0,0,0,0,0]]&quot;
-}
-</code></pre>
-<ul>
-<li><code>flag=67</code> (aktiviert + Wetter + feste Startzeiten)</li>
-<li><code>days0=31</code> (Mo–Fr)</li>
-<li><code>start0=360</code> (6:00 Uhr)</li>
-<li><code>dauer0=900</code> (15 Min), <code>dauer1=1200</code> (20 Min)</li>
-</ul>
-<hr />
-<h2 id="sensorbasierte-programmanpassungen">Sensorbasierte Programmanpassungen</h2>
-<p>Bewässerungsdauer automatisch anhand von Live-Sensorwerten skalieren.</p>
-<h3 id="anpassungstypen">Anpassungstypen</h3>
-<table>
-<thead>
-<tr>
-<th>Typ</th>
-<th>Name</th>
-<th>Verhalten</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>LINEAR</td>
-<td>Lineare Interpolation: Sensor min→max wird auf Faktor1→Faktor2 abgebildet</td>
-</tr>
-<tr>
-<td>2</td>
-<td>DIGITAL_MIN</td>
-<td>Wenn Sensor ≤ min: Faktor1, sonst: Faktor2</td>
-</tr>
-<tr>
-<td>3</td>
-<td>DIGITAL_MAX</td>
-<td>Wenn Sensor ≥ max: Faktor2, sonst: Faktor1</td>
-</tr>
-<tr>
-<td>4</td>
-<td>DIGITAL_MINMAX</td>
-<td>Wenn Sensor ≤ min ODER ≥ max: Faktor1, sonst: Faktor2</td>
-</tr>
-</tbody>
-</table>
-<h3 id="lineare-formel-typ-1">Lineare Formel (Typ 1)</h3>
-<p>Die Faktorwerte sind Bewässerungsmultiplikatoren (1.0 = 100%, 0.5 = 50%, 2.0 = 200%).</p>
-<p>Wenn Faktor1 &gt; Faktor2 (abnehmend): <code>Ergebnis = (max - Sensor) / (max - min) × (Faktor1 - Faktor2) + Faktor2</code></p>
-<p>Wenn Faktor1 &lt; Faktor2 (zunehmend): <code>Ergebnis = (Sensor - min) / (max - min) × (Faktor2 - Faktor1) + Faktor1</code></p>
-<h3 id="beispiel-weniger-bewasserung-bei-feuchterem-boden">Beispiel: Weniger Bewässerung bei feuchterem Boden</h3>
-<pre><code class="language-json">{
-  &quot;nr&quot;: 1,
-  &quot;type&quot;: 1,
-  &quot;sensor&quot;: 1,
-  &quot;prog&quot;: 0,
-  &quot;min&quot;: 10,
-  &quot;max&quot;: 90,
-  &quot;factor1&quot;: 2.0,
-  &quot;factor2&quot;: 0.0,
-  &quot;name&quot;: &quot;Feuchtigkeitsanpassung&quot;
-}
-</code></pre>
-<p>Bei 10% Feuchtigkeit → 200% Bewässerung. Bei 50% → 100%. Bei 90% → 0% (überspringen).</p>
-<h3 id="beispiel-mehr-bewasserung-bei-hoherer-temperatur">Beispiel: Mehr Bewässerung bei höherer Temperatur</h3>
-<pre><code class="language-json">{
-  &quot;nr&quot;: 2,
-  &quot;type&quot;: 1,
-  &quot;sensor&quot;: 2,
-  &quot;prog&quot;: 0,
-  &quot;min&quot;: 15,
-  &quot;max&quot;: 40,
-  &quot;factor1&quot;: 0.5,
-  &quot;factor2&quot;: 1.5,
-  &quot;name&quot;: &quot;Temperaturanpassung&quot;
-}
-</code></pre>
-<p>Bei 15°C → 50% Bewässerung. Bei 27,5°C → 100%. Bei 40°C → 150%.</p>
-<h3 id="beispiel-regen-abschaltung-digital">Beispiel: Regen-Abschaltung (Digital)</h3>
-<pre><code class="language-json">{
-  &quot;nr&quot;: 3,
-  &quot;type&quot;: 2,
-  &quot;sensor&quot;: 3,
-  &quot;prog&quot;: 0,
-  &quot;min&quot;: 5,
-  &quot;factor1&quot;: 0,
-  &quot;factor2&quot;: 1,
-  &quot;name&quot;: &quot;Regen-Stopp&quot;
-}
-</code></pre>
-<p>Regen ≤ 5mm → Bewässerung stoppen (Faktor 0). Regen &gt; 5mm → Normalbetrieb.</p>
-<hr />
-<h2 id="monitor-system">Monitor-System</h2>
-<p>Monitore überwachen Sensorwerte und lösen Programme basierend auf Bedingungen aus oder blockieren sie.</p>
-<h3 id="monitor-typen">Monitor-Typen</h3>
-<table>
-<thead>
-<tr>
-<th>Typ</th>
-<th>Name</th>
-<th>Beschreibung</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>MIN</td>
-<td>Auslösen wenn Sensor ≤ Schwellwert</td>
-</tr>
-<tr>
-<td>2</td>
-<td>MAX</td>
-<td>Auslösen wenn Sensor ≥ Schwellwert</td>
-</tr>
-<tr>
-<td>3</td>
-<td>SENSOR12</td>
-<td>Digitalen Regen-/Bodensensor lesen</td>
-</tr>
-<tr>
-<td>4</td>
-<td>SET_SENSOR12</td>
-<td>Digitalen OS-Sensor setzen</td>
-</tr>
-<tr>
-<td>10</td>
-<td>AND</td>
-<td>Logisches UND von bis zu 4 Monitoren</td>
-</tr>
-<tr>
-<td>11</td>
-<td>OR</td>
-<td>Logisches ODER von bis zu 4 Monitoren</td>
-</tr>
-<tr>
-<td>12</td>
-<td>XOR</td>
-<td>Logisches XOR von bis zu 4 Monitoren</td>
-</tr>
-<tr>
-<td>13</td>
-<td>NOT</td>
-<td>Logisches NICHT eines Monitors</td>
-</tr>
-<tr>
-<td>14</td>
-<td>TIME</td>
-<td>Zeitfenster (Wochentag + Zeitbereich)</td>
-</tr>
-<tr>
-<td>100</td>
-<td>REMOTE</td>
-<td>Monitor auf einem anderen OpenSprinkler</td>
-</tr>
-</tbody>
-</table>
-<h3 id="minmax-parameter-typen-1-2">MIN/MAX-Parameter (Typen 1, 2)</h3>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Typ</th>
-<th>Beschreibung</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>value1</code></td>
-<td>double</td>
-<td>Schwellwert</td>
-</tr>
-<tr>
-<td><code>value2</code></td>
-<td>double</td>
-<td>Sekundärwert (Hysterese)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="logik-gatter-parameter-typen-10-11-12">Logik-Gatter-Parameter (Typen 10, 11, 12)</h3>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Typ</th>
-<th>Beschreibung</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>monitor1</code>–<code>monitor4</code></td>
-<td>uint16</td>
-<td>Monitor-IDs (bis zu 4)</td>
-</tr>
-<tr>
-<td><code>invers1</code>–<code>invers4</code></td>
-<td>0/1</td>
-<td>Logik pro Eingang invertieren</td>
-</tr>
-</tbody>
-</table>
-<h3 id="time-parameter-typ-14">TIME-Parameter (Typ 14)</h3>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Typ</th>
-<th>Beschreibung</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>from</code></td>
-<td>uint16</td>
-<td>Startzeit als HHMM (z.B. 0630 = 6:30)</td>
-</tr>
-<tr>
-<td><code>to</code></td>
-<td>uint16</td>
-<td>Endzeit als HHMM (z.B. 1800 = 18:00)</td>
-</tr>
-<tr>
-<td><code>wdays</code></td>
-<td>uint8</td>
-<td>Wochentag-Bitmaske (Bit0=Mo … Bit6=So)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="beispiel-nur-bewassern-wenn-trocken-und-morgens">Beispiel: Nur bewässern wenn trocken UND morgens</h3>
-<pre><code>Monitor A (MIN):  sensor=Feuchtigkeit, value1=30 → löst aus wenn &lt;30%
-Monitor B (TIME): from=0600, to=1000, wdays=127 → 6–10 Uhr täglich
-Monitor C (AND):  monitor1=A, monitor2=B → Programm nur wenn beide erfüllt
-</code></pre>
-<h3 id="beispiel-frost-hitzeschutz">Beispiel: Frost-/Hitzeschutz</h3>
-<pre><code class="language-json">{
-  &quot;nr&quot;: 10,
-  &quot;type&quot;: 4,
-  &quot;sensor&quot;: 2,
-  &quot;prog&quot;: 0,
-  &quot;min&quot;: 3,
-  &quot;max&quot;: 35,
-  &quot;factor1&quot;: 0,
-  &quot;factor2&quot;: 1,
-  &quot;name&quot;: &quot;Frost-Hitzeschutz&quot;
-}
-</code></pre>
-<p>Unter 3°C oder über 35°C → Bewässerung stoppen. Sonst → Normalbetrieb.</p>
-<hr />
-<h2 id="mcp-ressourcen">MCP-Ressourcen</h2>
-<p>Der MCP-Server stellt zwei dynamische Ressourcen bereit, die KI-Assistenten für Kontext lesen können:</p>
-<table>
-<thead>
-<tr>
-<th>Ressource</th>
-<th>URI</th>
-<th>Inhalt</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>api-overview</code></td>
-<td><code>opensprinkler://api-overview</code></td>
-<td>Vollständige API-Referenz: Programmkodierung, Sensortypen, Anpassungen, Monitore</td>
-</tr>
-<tr>
-<td><code>controller-summary</code></td>
-<td><code>opensprinkler://controller-summary</code></td>
-<td>Live-Daten: Firmware, Stationen, Programme, Status, WiFi</td>
-</tr>
-</tbody>
-</table>
-<p>Diese Ressourcen geben der KI alle Dokumentation, die sie braucht, um das System zu verstehen und Programme zu erstellen, Sensoren zu konfigurieren sowie Anpassungen und Monitore korrekt einzurichten.</p>
-<hr />
-<h2 id="sensortypen-ubersicht">Sensortypen-Übersicht</h2>
-<table>
-<thead>
-<tr>
-<th>ID</th>
-<th>Name</th>
-<th>Beschreibung</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1–5</td>
-<td>SMT100/TH100</td>
-<td>Truebner RS485 Sensoren (Feuchtigkeit, Temperatur, Permittivität)</td>
-</tr>
-<tr>
-<td>9</td>
-<td>MODBUS_RTU</td>
-<td>Allgemeiner Modbus RTU Sensor</td>
-</tr>
-<tr>
-<td>10–11</td>
-<td>ANALOG_EXT</td>
-<td>Analoge Erweiterungsplatine (Spannung / Prozent)</td>
-</tr>
-<tr>
-<td>15–18</td>
-<td>SMT50/SMT100</td>
-<td>Analoge Bodenfeuchte- und Temperatursensoren</td>
-</tr>
-<tr>
-<td>30–32</td>
-<td>Vegetronix</td>
-<td>VH400, THERM200, Aquaplumb</td>
-</tr>
-<tr>
-<td>49</td>
-<td>USERDEF</td>
-<td>Benutzerdefiniert (eigene Formel)</td>
-</tr>
-<tr>
-<td>50–54</td>
-<td>OSPI</td>
-<td>OSPi Analog-Sensoren + interne Temperatur</td>
-</tr>
-<tr>
-<td>60–61</td>
-<td>FYTA</td>
-<td>FYTA Cloud Sensoren (Feuchtigkeit, Temperatur)</td>
-</tr>
-<tr>
-<td>90</td>
-<td>MQTT</td>
-<td>MQTT-Subscriber</td>
-</tr>
-<tr>
-<td>95</td>
-<td>ZIGBEE</td>
-<td>ZigBee-Sensor (ESP32-C5)</td>
-</tr>
-<tr>
-<td>96</td>
-<td>BLE</td>
-<td>Bluetooth Low Energy Sensor (ESP32)</td>
-</tr>
-<tr>
-<td>100</td>
-<td>REMOTE</td>
-<td>Remote OpenSprinkler Sensor</td>
-</tr>
-<tr>
-<td>101–110</td>
-<td>WEATHER</td>
-<td>Wetterdienst (Temp, Feuchte, Niederschlag, Wind, ETO, Strahlung)</td>
-</tr>
-<tr>
-<td>1000–1003</td>
-<td>GROUP</td>
-<td>Sensorgruppen (Min, Max, Durchschnitt, Summe)</td>
-</tr>
-<tr>
-<td>10000–10001</td>
-<td>DIAG</td>
-<td>Diagnose (Freier Speicher, Freier Speicherplatz)</td>
-</tr>
-</tbody>
-</table>
+<h2 id="nutzliche-kontextansicht">Nützliche Kontextansicht</h2>
+<p>Der MCP-Server selbst hat keinen Controller-UI-Dialog. Für Diagnose vor Ort hilft <strong>System-Diagnose</strong>, um Firmwareversion, Speicher und Integrationen zu prüfen.</p>
+<p><img alt="System-Diagnose" class="mobile-screenshot" src="../assets/screenshots/pro/de/system-diagnostics.png" /></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../mcp-server/" class="btn btn-neutral float-left" title="English"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../rainmaker-provisioning/" class="btn btn-neutral float-right" title="RainMaker Provisioning">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../mcp-server-fr/" class="btn btn-neutral float-right" title="Français">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -1007,7 +316,7 @@ Monitor C (AND):  monitor1=A, monitor2=B → Programm nur wenn beide erfüllt
       <span><a href="../mcp-server/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../rainmaker-provisioning/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../mcp-server-fr/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

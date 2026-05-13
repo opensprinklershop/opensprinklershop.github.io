@@ -74,91 +74,71 @@
                   <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">MCP Server</span></p>
+              <p class="caption"><span class="caption-text">MCP and AI</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">English</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" >MCP Server</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#two-operating-modes">Two Operating Modes</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">English</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#operating-modes">Operating modes</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#1-built-in-firmware-mcp-esp32-only">1. Built-in Firmware MCP (ESP32 only)</a>
+    <li class="toctree-l4"><a class="reference internal" href="#built-in-firmware-mcp">Built-in firmware MCP</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2-external-nodejs-mcp-server-all-platforms">2. External Node.js MCP Server (all platforms)</a>
+    <li class="toctree-l4"><a class="reference internal" href="#external-nodejs-mcp-server">External Node.js MCP server</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a>
+    <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a>
+    <li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
+    <li class="toctree-l4"><a class="reference internal" href="#install-and-build">Install and build</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#configuration-in-vs-code-github-copilot">Configuration in VS Code (GitHub Copilot)</a>
+    <li class="toctree-l4"><a class="reference internal" href="#vs-code-github-copilot">VS Code / GitHub Copilot</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#configuration-in-claude-desktop">Configuration in Claude Desktop</a>
+    <li class="toctree-l4"><a class="reference internal" href="#claude-desktop">Claude Desktop</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#computing-the-password-hash">Computing the Password Hash</a>
+    <li class="toctree-l4"><a class="reference internal" href="#compute-the-password-hash">Compute the password hash</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#available-tools">Available Tools</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#read-only-tools">Read-Only Tools</a>
+    <li class="toctree-l3"><a class="reference internal" href="#tool-overview">Tool overview</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#write-control-tools">Write / Control Tools</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#program-management">Program Management</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#station-control">Station Control</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#controller-management">Controller Management</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#sensor-configuration">Sensor Configuration</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#system">System</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ai-guided-program-creation">AI-Guided Program Creation</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#how-it-works">How It Works</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#program-encoding">Program Encoding</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#flag-bits">Flag Bits</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#days-encoding">Days Encoding</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#start-time">Start-time</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#example">Example</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#sensor-based-program-adjustments">Sensor-Based Program Adjustments</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#adjustment-types">Adjustment Types</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#example-reduce-watering-as-soil-gets-wetter">Example: Reduce Watering as Soil Gets Wetter</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#monitor-system">Monitor System</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#monitor-types">Monitor Types</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#example-water-only-when-dry-and-during-morning-hours">Example: Water Only When Dry AND During Morning Hours</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#mcp-resources">MCP Resources</a>
+    <li class="toctree-l3"><a class="reference internal" href="#useful-context-screens">Useful context screens</a>
     </li>
     </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../mcp-server-de/">Deutsch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../mcp-server-fr/">Français</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../mcp-server-it/">Italiano</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../mcp-server-de/">Deutsch</a>
+                  <li class="toctree-l1"><a class="reference internal" >AI Program Creation</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../ai-programming/">English</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ai-programming-de/">Deutsch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ai-programming-fr/">Français</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ai-programming-it/">Italiano</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensor Automation</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../sensor-automation/">English</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../sensor-automation-de/">Deutsch</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../sensor-automation-fr/">Français</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../sensor-automation-it/">Italiano</a>
+                </li>
+    </ul>
                   </li>
               </ul>
               <ul>
@@ -192,6 +172,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">MCP and AI</li>
           <li class="breadcrumb-item">MCP Server</li>
       <li class="breadcrumb-item active">English</li>
     <li class="wy-breadcrumbs-aside">
@@ -203,34 +184,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="mcp-server-ai-integration-for-opensprinkler">MCP Server — AI Integration for OpenSprinkler</h1>
-<p>The OpenSprinkler MCP (Model Context Protocol) server enables AI assistants like <strong>GitHub Copilot</strong>, <strong>Claude</strong>, and <strong>ChatGPT</strong> to directly query and control your irrigation system.</p>
-<hr />
-<h2 id="two-operating-modes">Two Operating Modes</h2>
-<h3 id="1-built-in-firmware-mcp-esp32-only">1. Built-in Firmware MCP (ESP32 only)</h3>
-<p>The ESP32 firmware includes a built-in MCP HTTP endpoint directly on the device:</p>
-<pre><code>POST http://&lt;controller-ip&gt;/mcp
+                <h1 id="mcp-server-ai-access-for-opensprinkler">MCP Server — AI Access for OpenSprinkler</h1>
+<p>The OpenSprinkler MCP (Model Context Protocol) integration lets AI assistants query and control an OpenSprinkler controller through documented tools.</p>
+<p>This page now covers only MCP setup and operating modes. Program creation and sensor automation are split into separate pages:</p>
+<ul>
+<li><a href="../ai-programming/">AI-guided program creation</a></li>
+<li><a href="../sensor-automation/">Sensor automation and monitors</a></li>
+</ul>
+<h2 id="operating-modes">Operating modes</h2>
+<h3 id="built-in-firmware-mcp">Built-in firmware MCP</h3>
+<p>The built-in MCP server runs directly in ESP32 firmware builds with <code>USE_OTF</code> enabled. It is accessed over Streamable HTTP:</p>
+<pre><code class="language-http">POST http://&lt;controller-ip&gt;/mcp
 Content-Type: application/json
 </code></pre>
-<p><strong>Advantages:</strong> No Node.js required, no separate process — the AI communicates directly with the controller via HTTP (Streamable-HTTP transport, JSON-RPC 2.0).</p>
-<p><strong>Available Tools (10):</strong> <code>get_all</code>, <code>get_controller_variables</code>, <code>get_options</code>, <code>get_stations</code>, <code>get_station_status</code>, <code>get_programs</code>, <code>get_debug</code>, <code>manual_station_run</code>, <code>change_controller_variables</code>, <code>pause_queue</code></p>
-<h3 id="2-external-nodejs-mcp-server-all-platforms">2. External Node.js MCP Server (all platforms)</h3>
-<p>The Node.js server at <code>tools/mcp-server/</code> provides the <strong>full REST API</strong> (40+ tools) via stdio transport.</p>
-<p><strong>Advantages:</strong> Complete coverage of all API endpoints including sensors, programs, monitors, and adjustments.</p>
-<hr />
+<p>Authentication uses the same admin password hash as the REST API, either as <code>?pw=</code>, <code>X-OS-Password</code> or bearer token.</p>
+<p>Platform availability: <strong>ESP32 / ESP32-C5 only</strong> with <code>USE_OTF</code>; not ESP8266 and not OSPi.</p>
+<h3 id="external-nodejs-mcp-server">External Node.js MCP server</h3>
+<p>The external server under <code>tools/mcp-server/</code> runs outside the firmware and proxies the REST API over stdio. It works with ESP8266, ESP32 and OSPi controllers and exposes a broader tool set, including sensors, monitors, Zigbee, BLE and system resources when supported by the target controller.</p>
 <h2 id="setup">Setup</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li><strong>Node.js</strong> ≥ 18</li>
-<li>An accessible <strong>OpenSprinkler controller</strong> on your network</li>
+<li>Node.js 18 or newer.</li>
+<li>A reachable OpenSprinkler controller.</li>
+<li>The controller admin password as MD5 hash.</li>
 </ul>
-<h3 id="installation">Installation</h3>
+<h3 id="install-and-build">Install and build</h3>
 <pre><code class="language-bash">cd tools/mcp-server
 npm install
 npm run build
 </code></pre>
-<h3 id="configuration-in-vs-code-github-copilot">Configuration in VS Code (GitHub Copilot)</h3>
-<p>Add to <code>.vscode/mcp.json</code>:</p>
+<h3 id="vs-code-github-copilot">VS Code / GitHub Copilot</h3>
+<p>Add a server entry to <code>.vscode/mcp.json</code>:</p>
 <pre><code class="language-json">{
   &quot;servers&quot;: {
     &quot;opensprinkler&quot;: {
@@ -245,8 +229,8 @@ npm run build
   }
 }
 </code></pre>
-<h3 id="configuration-in-claude-desktop">Configuration in Claude Desktop</h3>
-<p>Add to <code>~/.config/claude/claude_desktop_config.json</code>:</p>
+<h3 id="claude-desktop">Claude Desktop</h3>
+<p>Add a server entry to <code>~/.config/claude/claude_desktop_config.json</code>:</p>
 <pre><code class="language-json">{
   &quot;mcpServers&quot;: {
     &quot;opensprinkler&quot;: {
@@ -260,493 +244,43 @@ npm run build
   }
 }
 </code></pre>
-<h3 id="computing-the-password-hash">Computing the Password Hash</h3>
+<h3 id="compute-the-password-hash">Compute the password hash</h3>
 <pre><code class="language-bash">echo -n &quot;your_admin_password&quot; | md5sum | awk '{print $1}'
 </code></pre>
-<hr />
-<h2 id="available-tools">Available Tools</h2>
-<h3 id="read-only-tools">Read-Only Tools</h3>
+<h2 id="tool-overview">Tool overview</h2>
 <table>
 <thead>
 <tr>
-<th>Tool</th>
-<th>Endpoint</th>
-<th>Description</th>
+<th>Area</th>
+<th>Example tools</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>get_all</code></td>
-<td><code>/ja</code></td>
-<td>All data (variables, options, stations, status, programs)</td>
+<td>Controller state</td>
+<td><code>get_all</code>, <code>get_controller_variables</code>, <code>get_options</code>, <code>get_debug</code>, <code>get_system_resources</code></td>
 </tr>
 <tr>
-<td><code>get_controller_variables</code></td>
-<td><code>/jc</code></td>
-<td>Device time, rain delay, flow, queue status, MQTT/OTC</td>
+<td>Stations and programs</td>
+<td><code>get_stations</code>, <code>get_station_status</code>, <code>get_programs</code>, <code>manual_station_run</code>, <code>manual_program_start</code>, <code>change_program</code></td>
 </tr>
 <tr>
-<td><code>get_options</code></td>
-<td><code>/jo</code></td>
-<td>Firmware version, timezone, network config, sensors</td>
+<td>Sensors and logs</td>
+<td><code>get_sensors</code>, <code>get_sensor_values</code>, <code>get_sensor_log</code>, <code>get_sensor_types</code>, <code>backup_sensor_config</code></td>
 </tr>
 <tr>
-<td><code>get_stations</code></td>
-<td><code>/jn</code></td>
-<td>Station names, master ops, ignore rain/sensor flags</td>
+<td>OpenSprinklerPro radios</td>
+<td><code>get_ieee802154_config</code>, <code>get_zigbee_devices</code>, <code>get_zigbee_status</code>, <code>get_ble_devices</code>, <code>get_rainmaker_status</code></td>
 </tr>
 <tr>
-<td><code>get_station_status</code></td>
-<td><code>/js</code></td>
-<td>Current on/off status of all stations</td>
-</tr>
-<tr>
-<td><code>get_programs</code></td>
-<td><code>/jp</code></td>
-<td>All programs: schedules, durations, flags, names</td>
-</tr>
-<tr>
-<td><code>get_special_stations</code></td>
-<td><code>/je</code></td>
-<td>RF, remote, GPIO, HTTP/HTTPS, OTC stations</td>
-</tr>
-<tr>
-<td><code>get_log</code></td>
-<td><code>/jl</code></td>
-<td>Watering log (time range or history window)</td>
-</tr>
-<tr>
-<td><code>get_debug</code></td>
-<td><code>/db</code></td>
-<td>Build info, heap, flash, WiFi RSSI, PSRAM</td>
-</tr>
-<tr>
-<td><code>get_sensors</code></td>
-<td><code>/sl</code></td>
-<td>All configured sensors with current values</td>
-</tr>
-<tr>
-<td><code>get_sensor_values</code></td>
-<td><code>/sg</code></td>
-<td>Sensor values (optional filter by sensor number)</td>
-</tr>
-<tr>
-<td><code>get_sensor_log</code></td>
-<td><code>/so</code></td>
-<td>Sensor log data (JSON/CSV, time range)</td>
-</tr>
-<tr>
-<td><code>get_sensor_types</code></td>
-<td><code>/sf</code></td>
-<td>Available sensor types</td>
-</tr>
-<tr>
-<td><code>list_adjustments</code></td>
-<td><code>/se</code></td>
-<td>Sensor-based program adjustments</td>
-</tr>
-<tr>
-<td><code>list_monitors</code></td>
-<td><code>/ml</code></td>
-<td>Sensor monitors (threshold triggers)</td>
-</tr>
-<tr>
-<td><code>get_ieee802154_config</code></td>
-<td><code>/ir</code></td>
-<td>IEEE 802.15.4 radio config (ESP32-C5)</td>
-</tr>
-<tr>
-<td><code>get_zigbee_devices</code></td>
-<td><code>/zg</code></td>
-<td>ZigBee device list (ESP32-C5)</td>
-</tr>
-<tr>
-<td><code>get_zigbee_status</code></td>
-<td><code>/zs</code></td>
-<td>ZigBee radio status (ESP32-C5)</td>
-</tr>
-<tr>
-<td><code>get_ble_devices</code></td>
-<td><code>/bd</code></td>
-<td>BLE device scan/list (ESP32)</td>
-</tr>
-<tr>
-<td><code>get_rainmaker_status</code></td>
-<td><code>/rk</code></td>
-<td>ESP RainMaker status (ESP32)</td>
-</tr>
-<tr>
-<td><code>backup_sensor_config</code></td>
-<td><code>/sx</code></td>
-<td>Export sensor/adjustment/monitor config</td>
-</tr>
-<tr>
-<td><code>get_system_resources</code></td>
-<td><code>/du</code></td>
-<td>System memory and storage usage</td>
+<td>Automation</td>
+<td><code>list_adjustments</code>, <code>configure_adjustment</code>, <code>list_monitors</code>, <code>configure_monitor</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="write-control-tools">Write / Control Tools</h3>
-<h4 id="program-management">Program Management</h4>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Endpoint</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>change_program</code></td>
-<td><code>/cp</code></td>
-<td>Create or modify irrigation programs</td>
-</tr>
-<tr>
-<td><code>delete_program</code></td>
-<td><code>/dp</code></td>
-<td>Delete program(s)</td>
-</tr>
-<tr>
-<td><code>move_program_up</code></td>
-<td><code>/up</code></td>
-<td>Reorder program in list</td>
-</tr>
-<tr>
-<td><code>manual_program_start</code></td>
-<td><code>/mp</code></td>
-<td>Manually start a saved program</td>
-</tr>
-</tbody>
-</table>
-<h4 id="station-control">Station Control</h4>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Endpoint</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>manual_station_run</code></td>
-<td><code>/cm</code></td>
-<td>Open/close station manually</td>
-</tr>
-<tr>
-<td><code>run_once</code></td>
-<td><code>/cr</code></td>
-<td>Run one-time program with custom durations</td>
-</tr>
-<tr>
-<td><code>change_station</code></td>
-<td><code>/cs</code></td>
-<td>Change station names and attributes</td>
-</tr>
-</tbody>
-</table>
-<h4 id="controller-management">Controller Management</h4>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Endpoint</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>change_controller_variables</code></td>
-<td><code>/cv</code></td>
-<td>Enable/disable, rain delay, reboot</td>
-</tr>
-<tr>
-<td><code>change_options</code></td>
-<td><code>/co</code></td>
-<td>Timezone, network, sensors, master stations</td>
-</tr>
-<tr>
-<td><code>pause_queue</code></td>
-<td><code>/pq</code></td>
-<td>Pause/resume irrigation queue</td>
-</tr>
-</tbody>
-</table>
-<h4 id="sensor-configuration">Sensor Configuration</h4>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Endpoint</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>configure_sensor</code></td>
-<td><code>/sc</code></td>
-<td>Add/modify/delete sensors</td>
-</tr>
-<tr>
-<td><code>read_sensor_now</code></td>
-<td><code>/sr</code></td>
-<td>Trigger immediate sensor read</td>
-</tr>
-<tr>
-<td><code>configure_adjustment</code></td>
-<td><code>/sb</code></td>
-<td>Configure sensor program adjustments</td>
-</tr>
-<tr>
-<td><code>configure_monitor</code></td>
-<td><code>/mc</code></td>
-<td>Configure sensor threshold monitors</td>
-</tr>
-</tbody>
-</table>
-<h4 id="system">System</h4>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Endpoint</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>set_password</code></td>
-<td><code>/sp</code></td>
-<td>Change device password</td>
-</tr>
-<tr>
-<td><code>change_script_urls</code></td>
-<td><code>/cu</code></td>
-<td>Change UI/weather script URLs</td>
-</tr>
-<tr>
-<td><code>delete_log</code></td>
-<td><code>/dl</code></td>
-<td>Delete log data</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="ai-guided-program-creation">AI-Guided Program Creation</h2>
-<p>An AI assistant can create complete irrigation programs by understanding natural language requests.</p>
-<h3 id="how-it-works">How It Works</h3>
-<ol>
-<li>The AI calls <code>get_stations</code> to learn station names and count</li>
-<li>The AI calls <code>get_options</code> to learn timezone, sunrise/sunset settings</li>
-<li>The AI calls <code>get_programs</code> to see existing programs (avoid conflicts)</li>
-<li>The AI calls <code>change_program</code> with <code>pid=-1</code> to create a new program</li>
-</ol>
-<h3 id="program-encoding">Program Encoding</h3>
-<p>The <code>change_program</code> tool uses this format:</p>
-<pre><code>v=[flag, days0, days1, [start0,start1,start2,start3], [dur0,dur1,...]]
-</code></pre>
-<h4 id="flag-bits">Flag Bits</h4>
-<table>
-<thead>
-<tr>
-<th>Bit</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>Enable (1=on)</td>
-</tr>
-<tr>
-<td>1</td>
-<td>Use weather adjustment (1=yes)</td>
-</tr>
-<tr>
-<td>2-3</td>
-<td>Restriction: 0=none, 1=odd days, 2=even days</td>
-</tr>
-<tr>
-<td>4-5</td>
-<td>Schedule type: 0=weekly, 1=single-run, 2=monthly, 3=interval</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Start-time type: 0=repeating, 1=fixed</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Date range enable</td>
-</tr>
-</tbody>
-</table>
-<h4 id="days-encoding">Days Encoding</h4>
-<ul>
-<li><strong>Weekly:</strong> days0 = weekday bitmask (bit0=Mon, bit1=Tue, … bit6=Sun)</li>
-<li><strong>Interval:</strong> days0 = remainder, days1 = interval in days</li>
-<li><strong>Monthly:</strong> days0 = day of month (1–31, 32=last day)</li>
-</ul>
-<h4 id="start-time">Start-time</h4>
-<ul>
-<li>Minutes from midnight (0–1439)</li>
-<li>Sunrise: bit14 set, bit12=sign, bits 0–11=offset</li>
-<li>Sunset: bit13 set, bit12=sign, bits 0–11=offset</li>
-</ul>
-<h3 id="example">Example</h3>
-<p>User says: <em>"Water the lawn (station 0) and flower beds (station 1) every morning at 6 AM, 15 and 20 minutes, Mon–Fri, with weather adjustment"</em></p>
-<pre><code class="language-json">{
-  &quot;pid&quot;: -1,
-  &quot;name&quot;: &quot;Morning Watering&quot;,
-  &quot;v&quot;: &quot;[67,31,0,[360,-1,-1,-1],[900,1200,0,0,0,0,0,0]]&quot;
-}
-</code></pre>
-<ul>
-<li><code>flag=67</code> (enabled + weather + fixed start times)</li>
-<li><code>days0=31</code> (Mon–Fri)</li>
-<li><code>start0=360</code> (6:00 AM)</li>
-<li><code>dur0=900</code> (15 min), <code>dur1=1200</code> (20 min)</li>
-</ul>
-<hr />
-<h2 id="sensor-based-program-adjustments">Sensor-Based Program Adjustments</h2>
-<p>Automatically scale watering duration based on live sensor readings.</p>
-<h3 id="adjustment-types">Adjustment Types</h3>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Name</th>
-<th>Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>LINEAR</td>
-<td>Linear interpolation: sensor min→max maps to factor1→factor2</td>
-</tr>
-<tr>
-<td>2</td>
-<td>DIGITAL_MIN</td>
-<td>If sensor ≤ min: factor1, else: factor2</td>
-</tr>
-<tr>
-<td>3</td>
-<td>DIGITAL_MAX</td>
-<td>If sensor ≥ max: factor2, else: factor1</td>
-</tr>
-<tr>
-<td>4</td>
-<td>DIGITAL_MINMAX</td>
-<td>If sensor ≤ min OR ≥ max: factor1, else: factor2</td>
-</tr>
-</tbody>
-</table>
-<h3 id="example-reduce-watering-as-soil-gets-wetter">Example: Reduce Watering as Soil Gets Wetter</h3>
-<pre><code class="language-json">{
-  &quot;nr&quot;: 1,
-  &quot;type&quot;: 1,
-  &quot;sensor&quot;: 1,
-  &quot;prog&quot;: 0,
-  &quot;min&quot;: 10,
-  &quot;max&quot;: 90,
-  &quot;factor1&quot;: 2.0,
-  &quot;factor2&quot;: 0.0,
-  &quot;name&quot;: &quot;Moisture Adjustment&quot;
-}
-</code></pre>
-<p>At 10% moisture → 200% watering. At 50% → 100%. At 90% → 0% (skip).</p>
-<hr />
-<h2 id="monitor-system">Monitor System</h2>
-<p>Monitors watch sensor values and trigger/block programs based on conditions.</p>
-<h3 id="monitor-types">Monitor Types</h3>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>MIN</td>
-<td>Trigger if sensor ≤ threshold</td>
-</tr>
-<tr>
-<td>2</td>
-<td>MAX</td>
-<td>Trigger if sensor ≥ threshold</td>
-</tr>
-<tr>
-<td>3</td>
-<td>SENSOR12</td>
-<td>Read digital rain/soil sensor</td>
-</tr>
-<tr>
-<td>10</td>
-<td>AND</td>
-<td>Logical AND of up to 4 monitors</td>
-</tr>
-<tr>
-<td>11</td>
-<td>OR</td>
-<td>Logical OR of up to 4 monitors</td>
-</tr>
-<tr>
-<td>12</td>
-<td>XOR</td>
-<td>Logical XOR of up to 4 monitors</td>
-</tr>
-<tr>
-<td>13</td>
-<td>NOT</td>
-<td>Logical NOT of one monitor</td>
-</tr>
-<tr>
-<td>14</td>
-<td>TIME</td>
-<td>Time window (weekday + time range)</td>
-</tr>
-<tr>
-<td>100</td>
-<td>REMOTE</td>
-<td>Monitor on another OpenSprinkler</td>
-</tr>
-</tbody>
-</table>
-<h3 id="example-water-only-when-dry-and-during-morning-hours">Example: Water Only When Dry AND During Morning Hours</h3>
-<pre><code>Monitor A (MIN):  sensor=moisture, value1=30 → triggers when &lt;30%
-Monitor B (TIME): from=0600, to=1000, wdays=127 → 6–10 AM every day
-Monitor C (AND):  monitor1=A, monitor2=B → triggers program only when both met
-</code></pre>
-<hr />
-<h2 id="mcp-resources">MCP Resources</h2>
-<p>The MCP server provides two dynamic resources that AI assistants can read for context:</p>
-<table>
-<thead>
-<tr>
-<th>Resource</th>
-<th>URI</th>
-<th>Content</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>api-overview</code></td>
-<td><code>opensprinkler://api-overview</code></td>
-<td>Complete API reference: program encoding, sensor types, adjustments, monitors</td>
-</tr>
-<tr>
-<td><code>controller-summary</code></td>
-<td><code>opensprinkler://controller-summary</code></td>
-<td>Live data: firmware, stations, programs, status, WiFi</td>
-</tr>
-</tbody>
-</table>
-<p>These resources give the AI all the documentation it needs to understand the system and create programs, configure sensors, and set up adjustments/monitors correctly.</p>
+<h2 id="useful-context-screens">Useful context screens</h2>
+<p>The MCP server itself has no controller UI screen. For field diagnostics, use <strong>System Diagnostics</strong> to verify firmware version, memory and integrations before connecting external tools.</p>
+<p><img alt="System Diagnostics" class="mobile-screenshot" src="../assets/screenshots/pro/en/system-diagnostics.png" /></p>
               
             </div>
           </div><footer>
