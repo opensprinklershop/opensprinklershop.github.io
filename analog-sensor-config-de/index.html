@@ -118,29 +118,9 @@
 <p>Die <strong>Analog Sensor Konfiguration</strong> ist der OpenSprinklerPro-UI-Bereich zum Definieren von Sensorquellen und zum Verwenden ihrer Werte in der Bewässerungsautomation. Öffnen Sie ihn über das Fußmenü mit <strong>Analog Sensor Konfiguration</strong>.</p>
 <p><img alt="Analog Sensor Konfiguration" class="mobile-screenshot" src="../assets/screenshots/pro/de/sensor-config.png" /></p>
 <p>Verwandte Seiten: <a href="../sensor-automation-de/">Sensor-Automation und Monitore</a>, <a href="../fyta-sensors/">FYTA-Sensoren</a>, <a href="../opensprinklerpro_de/#monitore-und-lokale-warnungen">OpenSprinklerPro-Erweiterung</a>, <a href="../pro-api-endpoints/">API- und Plattform-Ergänzung</a>.</p>
-<h2 id="inhalt">Inhalt</h2>
-<ul>
-<li><a href="#sensordefinitionen">Sensordefinitionen</a></li>
-<li><a href="#programm-anpassungen">Programm-Anpassungen</a></li>
-<li><a href="#monitore-und-lokale-warnungen">Monitore und lokale Warnungen</a></li>
-<li><a href="#sensor-diagramm-und-daten">Sensor-Diagramm und Daten</a></li>
-<li><a href="#fyta-einrichtung">FYTA-Einrichtung</a></li>
-<li><a href="#datensicherung-und-wiederherstellung">Datensicherung und Wiederherstellung</a></li>
-</ul>
 <h2 id="sensordefinitionen">Sensordefinitionen</h2>
 <p>Der erste Abschnitt definiert die Sensorliste. Jede Zeile enthält Sensornummer, Name, aktuellen Wert und Aktivstatus. <strong>Sensor hinzufügen</strong> öffnet den Editor für einen neuen Sensor; bestehende Sensoren werden über den Sensornamen bearbeitet.</p>
 <p><img alt="Neuer Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-sensor-editor.png" /></p>
-<p>Gliederung dieses Abschnitts:</p>
-<ul>
-<li><a href="#editor-felder">Editor-Felder</a></li>
-<li><a href="#rs485-modbus">RS485 / Modbus</a></li>
-<li><a href="#analog-sensor-board-asb">Analog Sensor Board (ASB)</a></li>
-<li><a href="#ospi-analogeingange">OSPi-Analogeingänge</a></li>
-<li><a href="#funk-cloud-und-remote-quellen">Funk-, Cloud- und Remote-Quellen</a></li>
-<li><a href="#wetterdaten">Wetterdaten</a></li>
-<li><a href="#gruppensensoren">Gruppensensoren</a></li>
-<li><a href="#diagnose">Diagnose</a></li>
-</ul>
 <h3 id="editor-felder">Editor-Felder</h3>
 <table>
 <thead>
@@ -444,11 +424,6 @@
 <p><strong>Programm-Anpassungen</strong> skalieren die Bewässerungsdauer eines Programms anhand eines Sensorwerts. Typische Beispiele sind weniger Bewässerung bei hoher Bodenfeuchte oder mehr Bewässerung bei hoher Temperatur.</p>
 <p><img alt="Programm-Anpassungen" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-program-adjustments.png" /></p>
 <p><img alt="Neue Programm-Anpassung" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-program-adjustment-editor.png" /></p>
-<p>Gliederung dieses Abschnitts:</p>
-<ul>
-<li><a href="#anpassungsmodell">Anpassungsmodell</a></li>
-<li><a href="#anpassungstypen">Anpassungstypen</a></li>
-</ul>
 <h3 id="anpassungsmodell">Anpassungsmodell</h3>
 <p>Jede Anpassung verbindet einen Sensor mit einem Bewässerungsprogramm und berechnet einen Prozentfaktor. Aktivieren Sie zunächst das Logging des Sensors und prüfen Sie den Wertebereich, bevor reale Bewässerung beeinflusst wird.</p>
 <h3 id="anpassungstypen">Anpassungstypen</h3>
@@ -483,11 +458,6 @@
 <p><strong>Überwachung und Kontrolle</strong> erstellt Schwellwert- und Logikregeln aus Sensoren. Monitore können lokale Warnungen erzeugen, Benachrichtigungsereignisse speisen und Bedingungen wie „Boden ist trocken“ und „Zeitfenster ist morgens“ kombinieren.</p>
 <p><img alt="Überwachung und Kontrolle" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitors.png" /></p>
 <p><img alt="Neuer Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-monitor-editor.png" /></p>
-<p>Gliederung dieses Abschnitts:</p>
-<ul>
-<li><a href="#regelaufbau">Regelaufbau</a></li>
-<li><a href="#logik-und-zeitfenster">Logik und Zeitfenster</a></li>
-</ul>
 <h3 id="regelaufbau">Regelaufbau</h3>
 <p>Monitorregeln wählen einen Sensor, vergleichen ihn mit einem Schwellwert oder Zustand und definieren, was bei erfüllter Bedingung geschehen soll. Klare Namen machen spätere Warnungen verständlich.</p>
 <h3 id="logik-und-zeitfenster">Logik und Zeitfenster</h3>
@@ -495,11 +465,6 @@
 <h2 id="sensor-diagramm-und-daten">Sensor-Diagramm und Daten</h2>
 <p>Das <strong>Sensor Diagramm</strong> zeigt protokollierte Sensorwerte. Nutzen Sie es, um Messwerte zu prüfen, bevor diese für Programm-Anpassungen oder Monitore verwendet werden. Die UI kann außerdem Logs herunterladen oder die Datentabelle öffnen.</p>
 <p><img alt="Sensor Diagramm" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-sensor-chart.png" /></p>
-<p>Gliederung dieses Abschnitts:</p>
-<ul>
-<li><a href="#diagramme-lesen">Diagramme lesen</a></li>
-<li><a href="#daten-herunterladen">Daten herunterladen</a></li>
-</ul>
 <h3 id="diagramme-lesen">Diagramme lesen</h3>
 <p>Achten Sie auf fehlende Messpunkte, unerwartete Spitzen und falsch gewählte Einheiten. Vergleichen Sie verwandte Sensoren in derselben Gruppe, bevor sie automatische Entscheidungen steuern.</p>
 <h3 id="daten-herunterladen">Daten herunterladen</h3>
@@ -508,11 +473,6 @@
 <p><strong>FYTA Einrichtung</strong> speichert FYTA-API-Token oder Login-Daten und ordnet FYTA-Pflanzensensoren OpenSprinkler-Sensoren zu. Details: <a href="../fyta-sensors/">FYTA-Sensoren</a>.</p>
 <p><img alt="FYTA Einrichtung" class="mobile-screenshot" src="../assets/screenshots/pro/de/fyta-setup.png" /></p>
 <p><img alt="FYTA-Zugangsdaten" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-fyta-credentials.png" /></p>
-<p>Gliederung dieses Abschnitts:</p>
-<ul>
-<li><a href="#zugangsdaten">Zugangsdaten</a></li>
-<li><a href="#pflanzen-zuordnen">Pflanzen zuordnen</a></li>
-</ul>
 <h3 id="zugangsdaten">Zugangsdaten</h3>
 <p>Tragen Sie API-Token oder Login-Daten ein, die Ihre Firmware-Version benötigt. Halten Sie Zugangsdaten privat und aktualisieren Sie sie, wenn sich der FYTA-Zugriff ändert.</p>
 <h3 id="pflanzen-zuordnen">Pflanzen zuordnen</h3>
@@ -520,11 +480,6 @@
 <h2 id="datensicherung-und-wiederherstellung">Datensicherung und Wiederherstellung</h2>
 <p><strong>Datensicherung</strong> exportiert oder stellt Sensor-Konfiguration, Programm-Anpassungen und Monitore getrennt vom allgemeinen Controller-Backup wieder her. Nutzen Sie dies vor größeren Sensoränderungen oder Firmwaretests.</p>
 <p><img alt="Datensicherung" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-backup-restore.png" /></p>
-<p>Gliederung dieses Abschnitts:</p>
-<ul>
-<li><a href="#enthaltene-daten">Enthaltene Daten</a></li>
-<li><a href="#sicherer-wiederherstellungsablauf">Sicherer Wiederherstellungsablauf</a></li>
-</ul>
 <h3 id="enthaltene-daten">Enthaltene Daten</h3>
 <p>Backups enthalten Sensordefinitionen, Anpassungsregeln und Monitorregeln. Sie ersetzen kein vollständiges Controller-Backup für andere Einstellungen.</p>
 <h3 id="sicherer-wiederherstellungsablauf">Sicherer Wiederherstellungsablauf</h3>

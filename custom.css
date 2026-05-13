@@ -111,52 +111,6 @@ ul > li {
   padding: 0.2rem 0.5rem;
 }
 
-.wy-menu-vertical .sidebar-page-outline {
-  background: #24292f;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
-  margin: 0.4rem 0 0.9rem 0;
-  padding: 0.35rem 0 0.45rem 0;
-}
-
-.wy-menu-vertical .sidebar-page-outline p.caption {
-  color: #ffffff !important;
-  margin-bottom: 0.25rem;
-}
-
-.wy-menu-vertical .sidebar-page-outline .caption-text {
-  color: #ffffff !important;
-}
-
-.wy-menu-vertical .sidebar-page-outline ul {
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
-}
-
-.wy-menu-vertical .sidebar-page-outline li {
-  margin: 0;
-}
-
-.wy-menu-vertical .sidebar-page-outline a {
-  color: #ffffff !important;
-  display: block;
-  font-size: 90%;
-  line-height: 1.25;
-  padding: 0.32rem 1.618rem;
-}
-
-.wy-menu-vertical .sidebar-page-outline .toctree-l3 a {
-  color: #d7ecff !important;
-  font-size: 85%;
-  padding-left: 2.35rem;
-}
-
-.wy-menu-vertical .sidebar-page-outline a:hover {
-  background: #0366d6 !important;
-  color: #ffffff !important;
-}
-
 img.mobile-screenshot,
 .rst-content img.mobile-screenshot,
 .wy-table-responsive table td img.mobile-screenshot {

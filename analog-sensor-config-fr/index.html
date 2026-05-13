@@ -118,29 +118,9 @@
 <p><strong>Analog Sensor Configuration</strong> est la zone UI OpenSprinklerPro pour définir les sources de capteurs et utiliser leurs valeurs dans l’automatisation de l’arrosage. Elle s’ouvre depuis le menu inférieur avec <strong>Analog Sensor Configuration</strong>.</p>
 <p><img alt="Configuration capteurs" class="mobile-screenshot" src="../assets/screenshots/pro/fr/sensor-config.png" /></p>
 <p>Pages liées : <a href="../sensor-automation-fr/">Automatisation capteurs et monitors</a>, <a href="../fyta-sensors/">Capteurs FYTA</a>, <a href="../opensprinklerpro_fr/#monitors-et-alertes-locales">Extension OpenSprinklerPro</a>, <a href="../pro-api-endpoints/">addendum API et plateformes</a>.</p>
-<h2 id="sommaire">Sommaire</h2>
-<ul>
-<li><a href="#definitions-de-capteurs">Définitions de capteurs</a></li>
-<li><a href="#ajustements-de-programme">Ajustements de programme</a></li>
-<li><a href="#monitors-et-alertes-locales">Monitors et alertes locales</a></li>
-<li><a href="#graphiques-et-donnees-capteur">Graphiques et données capteur</a></li>
-<li><a href="#configuration-fyta">Configuration FYTA</a></li>
-<li><a href="#sauvegarde-et-restauration">Sauvegarde et restauration</a></li>
-</ul>
 <h2 id="definitions-de-capteurs">Définitions de capteurs</h2>
 <p>La première section définit la liste des capteurs. Chaque ligne contient numéro, nom, valeur actuelle et état actif. <strong>Add Sensor</strong> ouvre l’éditeur d’un nouveau capteur; les capteurs existants se modifient en touchant leur nom.</p>
 <p><img alt="Nouveau capteur" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-sensor-editor.png" /></p>
-<p>Sommaire de cette section :</p>
-<ul>
-<li><a href="#champs-de-lediteur">Champs de l’éditeur</a></li>
-<li><a href="#rs485-modbus">RS485 / Modbus</a></li>
-<li><a href="#carte-de-capteurs-analogiques-asb">Carte de capteurs analogiques (ASB)</a></li>
-<li><a href="#entrees-analogiques-ospi">Entrées analogiques OSPi</a></li>
-<li><a href="#sources-sans-fil-cloud-et-distantes">Sources sans fil, cloud et distantes</a></li>
-<li><a href="#donnees-meteo">Données météo</a></li>
-<li><a href="#capteurs-de-groupe">Capteurs de groupe</a></li>
-<li><a href="#diagnostics">Diagnostics</a></li>
-</ul>
 <h3 id="champs-de-lediteur">Champs de l’éditeur</h3>
 <table>
 <thead>
@@ -444,11 +424,6 @@
 <p>Les <strong>Program Adjustments</strong> adaptent la durée d’arrosage d’un programme à partir d’une valeur capteur. Exemples typiques : réduire l’arrosage quand le sol est humide ou l’augmenter quand la température est élevée.</p>
 <p><img alt="Program Adjustments" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-program-adjustments.png" /></p>
 <p><img alt="Nouvel ajustement" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-program-adjustment-editor.png" /></p>
-<p>Sommaire de cette section :</p>
-<ul>
-<li><a href="#modele-dajustement">Modèle d’ajustement</a></li>
-<li><a href="#types-dajustement">Types d’ajustement</a></li>
-</ul>
 <h3 id="modele-dajustement">Modèle d’ajustement</h3>
 <p>Chaque ajustement relie un capteur à un programme d’arrosage et calcule un modificateur en pourcentage. Activez d’abord la journalisation du capteur et vérifiez sa plage avant d’influencer l’arrosage réel.</p>
 <h3 id="types-dajustement">Types d’ajustement</h3>
@@ -483,11 +458,6 @@
 <p><strong>Monitoring and Control</strong> crée des règles de seuil et de logique à partir des capteurs. Les monitors peuvent générer des avertissements locaux, alimenter les notifications et combiner des conditions comme « sol sec » et « créneau du matin ».</p>
 <p><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitors.png" /></p>
 <p><img alt="Nouveau monitor" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-monitor-editor.png" /></p>
-<p>Sommaire de cette section :</p>
-<ul>
-<li><a href="#structure-des-regles">Structure des règles</a></li>
-<li><a href="#logique-et-fenetres-horaires">Logique et fenêtres horaires</a></li>
-</ul>
 <h3 id="structure-des-regles">Structure des règles</h3>
 <p>Une règle choisit un capteur, le compare à un seuil ou état, puis définit l’action lorsque la condition est vraie. Des noms clairs rendent les alertes compréhensibles.</p>
 <h3 id="logique-et-fenetres-horaires">Logique et fenêtres horaires</h3>
@@ -495,11 +465,6 @@
 <h2 id="graphiques-et-donnees-capteur">Graphiques et données capteur</h2>
 <p><strong>Sensor Chart</strong> affiche les valeurs journalisées. Utilisez-le pour vérifier la plausibilité des mesures avant les ajustements ou monitors. L’UI peut aussi télécharger les logs ou ouvrir la table de données.</p>
 <p><img alt="Sensor Chart" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-sensor-chart.png" /></p>
-<p>Sommaire de cette section :</p>
-<ul>
-<li><a href="#lire-les-graphiques">Lire les graphiques</a></li>
-<li><a href="#telecharger-les-donnees">Télécharger les données</a></li>
-</ul>
 <h3 id="lire-les-graphiques">Lire les graphiques</h3>
 <p>Cherchez échantillons manquants, pics inattendus et erreurs d’unité. Comparez les capteurs liés du même groupe avant toute décision automatique.</p>
 <h3 id="telecharger-les-donnees">Télécharger les données</h3>
@@ -508,11 +473,6 @@
 <p><strong>FYTA Setup</strong> stocke le jeton API ou les identifiants FYTA et mappe les capteurs de plantes vers OpenSprinkler. Voir <a href="../fyta-sensors/">Capteurs FYTA</a>.</p>
 <p><img alt="FYTA Setup" class="mobile-screenshot" src="../assets/screenshots/pro/fr/fyta-setup.png" /></p>
 <p><img alt="Identifiants FYTA" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-fyta-credentials.png" /></p>
-<p>Sommaire de cette section :</p>
-<ul>
-<li><a href="#identifiants">Identifiants</a></li>
-<li><a href="#association-des-plantes">Association des plantes</a></li>
-</ul>
 <h3 id="identifiants">Identifiants</h3>
 <p>Saisissez le jeton API ou les identifiants requis par votre firmware. Gardez-les privés et mettez-les à jour si l’accès FYTA change.</p>
 <h3 id="association-des-plantes">Association des plantes</h3>
@@ -520,11 +480,6 @@
 <h2 id="sauvegarde-et-restauration">Sauvegarde et restauration</h2>
 <p><strong>Backup and Restore</strong> exporte ou restaure configuration capteurs, ajustements de programme et monitors séparément de la sauvegarde générale.</p>
 <p><img alt="Backup and Restore" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-backup-restore.png" /></p>
-<p>Sommaire de cette section :</p>
-<ul>
-<li><a href="#contenu-inclus">Contenu inclus</a></li>
-<li><a href="#restauration-sure">Restauration sûre</a></li>
-</ul>
 <h3 id="contenu-inclus">Contenu inclus</h3>
 <p>Les sauvegardes incluent définitions de capteurs, règles d’ajustement et règles de monitor. Elles ne remplacent pas une sauvegarde complète du contrôleur pour les autres réglages.</p>
 <h3 id="restauration-sure">Restauration sûre</h3>
