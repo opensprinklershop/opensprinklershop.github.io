@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   initLanguageSelector();
+  initSidebarPageOutline();
   initScreenshotLightbox();
 });
 
@@ -72,7 +73,8 @@ function initLanguageSelector() {
       "Archived": "Archived",
       "Previous Manuals and API docs": "Previous Manuals and API docs",
       "FAQ": "FAQ",
-      "Language": "Language"
+      "Language": "Language",
+      "On this page": "On this page"
     },
     de: {
       "Home": "Startseite",
@@ -93,7 +95,8 @@ function initLanguageSelector() {
       "Archived": "Archiv",
       "Previous Manuals and API docs": "Frühere Handbücher und API-Dokumente",
       "FAQ": "FAQ",
-      "Language": "Sprache"
+      "Language": "Sprache",
+      "On this page": "Auf dieser Seite"
     },
     fr: {
       "Home": "Accueil",
@@ -114,7 +117,8 @@ function initLanguageSelector() {
       "Archived": "Archives",
       "Previous Manuals and API docs": "Anciens manuels et docs API",
       "FAQ": "FAQ",
-      "Language": "Langue"
+      "Language": "Langue",
+      "On this page": "Sur cette page"
     },
     it: {
       "Home": "Home",
@@ -135,7 +139,8 @@ function initLanguageSelector() {
       "Archived": "Archivio",
       "Previous Manuals and API docs": "Manuali e documenti API precedenti",
       "FAQ": "FAQ",
-      "Language": "Lingua"
+      "Language": "Lingua",
+      "On this page": "In questa pagina"
     }
   };
 
@@ -155,10 +160,12 @@ function initLanguageSelector() {
     }
     updateNavigation(pageMap, labels, language, active.prefix);
     updateLanguageSelectorLabel(labels, language);
+    updateSidebarPageOutlineLabel(labels, language);
   });
 
   updateNavigation(pageMap, labels, selectedLanguage, current.prefix);
   updateLanguageSelectorLabel(labels, selectedLanguage);
+  updateSidebarPageOutlineLabel(labels, selectedLanguage);
 }
 
 function normalizePath(pathname) {
@@ -271,6 +278,88 @@ function updateNavigation(pageMap, labels, language, prefix) {
       link.setAttribute("href", buildPageUrl(prefix, pageMap[targetKey][language]));
     }
   });
+}
+
+function initSidebarPageOutline() {
+  var nav = document.querySelector(".wy-menu-vertical");
+  var content = document.querySelector(".rst-content");
+  if (!nav || !content) {
+    return;
+  }
+
+  var oldOutline = nav.querySelector(".sidebar-page-outline");
+  if (oldOutline) {
+    oldOutline.remove();
+  }
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll("h2, h3")).filter(function (heading) {
+    return heading.id && heading.textContent.trim();
+  });
+  if (!headings.length) {
+    return;
+  }
+
+  var wrapper = document.createElement("div");
+  wrapper.className = "sidebar-page-outline";
+
+  var caption = document.createElement("p");
+  caption.className = "caption";
+  var captionText = document.createElement("span");
+  captionText.className = "caption-text";
+  captionText.setAttribute("data-original-label", "On this page");
+  captionText.textContent = "On this page";
+  caption.appendChild(captionText);
+  wrapper.appendChild(caption);
+
+  var topList = document.createElement("ul");
+  topList.className = "sidebar-page-outline__list";
+  var currentH2Item = null;
+
+  headings.forEach(function (heading) {
+    var item = document.createElement("li");
+    item.className = heading.tagName === "H3" ? "toctree-l3" : "toctree-l2";
+
+    var link = document.createElement("a");
+    link.className = "reference internal";
+    link.href = "#" + heading.id;
+    link.textContent = heading.textContent.trim();
+    item.appendChild(link);
+
+    if (heading.tagName === "H2") {
+      topList.appendChild(item);
+      currentH2Item = item;
+      return;
+    }
+
+    if (!currentH2Item) {
+      topList.appendChild(item);
+      return;
+    }
+
+    var nested = currentH2Item.querySelector("ul");
+    if (!nested) {
+      nested = document.createElement("ul");
+      nested.className = "sidebar-page-outline__sublist";
+      currentH2Item.appendChild(nested);
+    }
+    nested.appendChild(item);
+  });
+
+  wrapper.appendChild(topList);
+
+  var firstCaption = nav.querySelector("p.caption");
+  if (firstCaption) {
+    nav.insertBefore(wrapper, firstCaption);
+  } else {
+    nav.insertBefore(wrapper, nav.firstChild);
+  }
+}
+
+function updateSidebarPageOutlineLabel(labels, language) {
+  var label = document.querySelector('.sidebar-page-outline [data-original-label="On this page"]');
+  if (label) {
+    label.textContent = (labels[language] && labels[language]["On this page"]) || "On this page";
+  }
 }
 
 function getPageKeyFromHref(href, pageMap) {
