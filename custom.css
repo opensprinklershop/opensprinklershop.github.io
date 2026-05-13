@@ -89,11 +89,43 @@ ul > li {
 
 .mobile-screenshot {
   display: block;
-  max-width: 390px;
+  max-width: 300px;
   width: 100%;
   height: auto;
   margin: 0.75rem auto 1.25rem auto;
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  cursor: zoom-in;
+}
+
+.screenshot-lightbox {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.88);
+  cursor: zoom-out;
+  display: none;
+  inset: 0;
+  justify-content: center;
+  padding: 16px;
+  position: fixed;
+  z-index: 9999;
+}
+
+.screenshot-lightbox.is-open {
+  display: flex;
+}
+
+.screenshot-lightbox img {
+  max-height: 96vh;
+  max-width: 96vw;
+  object-fit: contain;
+}
+
+.screenshot-lightbox__close {
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  position: fixed;
+  right: 18px;
+  top: 12px;
 }
