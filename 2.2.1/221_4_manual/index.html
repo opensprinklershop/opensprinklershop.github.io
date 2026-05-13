@@ -250,6 +250,7 @@
 <ul>
 <li><strong>OpenSprinkler v3</strong> – Features built-in WiFi, two independent sensor ports, and an optional wired Ethernet module. It is fully assembled and pre-loaded with firmware.</li>
 <li><strong>OpenSprinkler Pi (OSPi)</strong> – Powered by a Raspberry Pi (RPi), requiring some assembly (such as connecting the RPi) and firmware installation.</li>
+<li><strong>OpenSprinklerPro</strong> – Uses the same valve, COM, sensor and power wiring principles as <strong>OpenSprinkler v3.0-3.3</strong>, but runs the further-developed OpenSprinklerShop firmware for ESP32-C5 with Pro extensions. The current OpenSprinklerShop/OpenSprinklerPro firmware line is <strong>2.4.0(199)</strong>.</li>
 </ul>
 <p>Each controller provides 8 zones, with expansion possible via zone expanders (each adding 16 zones): <strong>OpenSprinkler v3</strong> supports up to <strong>72</strong> zones, and <strong>OSPi</strong> supports up to <strong>200</strong> zones.
 <a id="power-models"></a>
@@ -279,7 +280,7 @@ In addition, OpenSprinkler v3 is available in three power models:</p>
 
 <h3 id="hardware-interface">Hardware Interface</h3>
 <h4 class="hltitle" id="opensprinklerpro">OpenSprinklerPro</h4>
-<p>OpenSprinklerPro uses the ESP32-C5 hardware platform with WiFi 6, BLE and either Zigbee or Matter firmware variants. The hardware interface differs from the classic OpenSprinkler v3.x layout; use this diagram when wiring or identifying Pro connectors.</p>
+<p>OpenSprinklerPro uses the ESP32-C5 hardware platform with WiFi 6, BLE and either Zigbee or Matter firmware variants. Wire valves, COM, sensors and power like <strong>OpenSprinkler v3.0-3.3</strong>; the connector positions and additional Pro interfaces are shown in this diagram. The software is the further-developed OpenSprinklerShop firmware with Pro functions, not the older base firmware described by the original upstream manual.</p>
 <p><img alt="OpenSprinklerPro Hardware Interface" src="../../assets/ospro.png" /></p>
 <hr>
 
@@ -344,6 +345,7 @@ In addition, OpenSprinkler v3 is available in three power models:</p>
 <p>OpenSprinkler uses <strong>removable terminal blocks</strong> for easy wiring. To detach a block, grab one end firmly, gently wiggle, and pull it out. Insert wires fully, then tighten the screws securely.</p>
 <p><strong>Power:</strong></p>
 <ul>
+<li><strong>OpenSprinklerPro:</strong> Connect it like <strong>OpenSprinkler v3.0-3.3</strong>. For AC models, connect the 24VAC wires to the power terminal block; for DC/Latch-style wiring, follow the v3.0-3.3 DC/Latch polarity notes. The Pro software and UI are newer and include additional OpenSprinklerPro functions.</li>
 <li><strong>OpenSprinkler v3.4 AC:</strong> Plug the 24VAC transformer to the <span class="hl_red"><strong>Red</strong></span> barrel jack.<ul>
 <li>If your transformer has bare wire, use the included screw-terminal-to-plug adapter.</li>
 </ul>

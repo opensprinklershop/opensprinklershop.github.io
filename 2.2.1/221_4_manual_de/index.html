@@ -121,6 +121,7 @@
 <ul>
 <li><strong>OpenSprinkler v3</strong> – Mit integriertem WLAN, zwei unabhängigen Sensoranschlüssen und einem optionalen kabelgebundenen Ethernet-Modul. Das Gerät ist komplett montiert und mit Firmware vorinstalliert.</li>
 <li><strong>OpenSprinkler Pi (OSPi)</strong> – Wird von einem Raspberry Pi (RPi) betrieben und erfordert einige Montagearbeiten (z. B. den Anschluss des RPi) sowie die Installation der Firmware.</li>
+<li><strong>OpenSprinklerPro</strong> – Wird bei Ventilen, COM, Sensoren und Stromversorgung wie <strong>OpenSprinkler v3.0-3.3</strong> angeschlossen, verwendet aber die weiterentwickelte OpenSprinklerShop-Firmware für ESP32-C5 mit Pro-Erweiterungen. Die aktuelle OpenSprinklerShop-/OpenSprinklerPro-Firmwarelinie ist <strong>2.4.0(199)</strong>.</li>
 </ul>
 <p>Jeder Controller verfügt standardmäßig über 8 Zonen, die durch Zonen-Erweiterungen (jeweils um 16 Zonen) erweitert werden können. <strong>OpenSprinkler v3</strong> unterstützt bis zu <strong>72</strong> Zonen, <strong>OSPi</strong> bis zu <strong>200</strong> Zonen.
 <a id="power-models"></a>
@@ -157,7 +158,7 @@ Darüber hinaus ist OpenSprinkler v3 in drei Leistungsvarianten erhältlich:</p>
 
 <h3 id="hardware-schnittstelle">Hardware-Schnittstelle</h3>
 <h4 class="hltitle" id="opensprinklerpro">OpenSprinklerPro</h4>
-<p>OpenSprinklerPro basiert auf der ESP32-C5-Hardwareplattform mit WiFi 6, BLE und wahlweise Zigbee- oder Matter-Firmwarevariante. Die Hardware-Schnittstelle unterscheidet sich vom klassischen OpenSprinkler-v3.x-Layout; verwenden Sie dieses Diagramm zum Verdrahten und Identifizieren der Pro-Anschlüsse.</p>
+<p>OpenSprinklerPro basiert auf der ESP32-C5-Hardwareplattform mit WiFi 6, BLE und wahlweise Zigbee- oder Matter-Firmwarevariante. Ventile, COM, Sensoren und Stromversorgung werden wie bei <strong>OpenSprinkler v3.0-3.3</strong> angeschlossen; die Positionen der Anschlüsse und die zusätzlichen Pro-Schnittstellen zeigt dieses Diagramm. Die Software ist die weiterentwickelte OpenSprinklerShop-Firmware mit Pro-Funktionen, nicht die ältere Basis-Firmware des ursprünglichen Upstream-Handbuchs.</p>
 <p><img alt="OpenSprinklerPro Hardware-Schnittstelle" src="../../assets/ospro.png" /></p>
 <hr>
 
@@ -222,6 +223,7 @@ Darüber hinaus ist OpenSprinkler v3 in drei Leistungsvarianten erhältlich:</p>
 <p>OpenSprinkler verwendet <strong>abnehmbare Klemmenblöcke</strong> für einfache Verkabelung. Zum Entnehmen fassen Sie ein Ende fest an, wackeln vorsichtig und ziehen es heraus. Stecken Sie die Drähte vollständig ein und ziehen Sie die Schrauben fest an.</p>
 <p><strong>Stromversorgung:</strong></p>
 <ul>
+<li><strong>OpenSprinklerPro:</strong> Schließen Sie ihn wie <strong>OpenSprinkler v3.0-3.3</strong> an. Bei AC-Modellen werden die 24-VAC-Drähte an den Strom-Anschlussblock geführt; bei DC-/Latch-artiger Verdrahtung gelten die Polaritätshinweise von v3.0-3.3 DC/Latch. Die Pro-Software und die UI sind neuer und enthalten zusätzliche OpenSprinklerPro-Funktionen.</li>
 <li><strong>OpenSprinkler v3.4 AC:</strong> Stecken Sie den 24-VAC-Transformator in den <span class="hl_red"><strong>roten</strong></span> Stromanschluss.<ul>
 <li>Bei abisolierten Drähten verwenden Sie den mitgelieferten Schraubklemmen-Stecker-Adapter.</li>
 </ul>

@@ -121,6 +121,7 @@
 <ul>
 <li><strong>OpenSprinkler v3</strong> – Dispose du WiFi intégré, de deux ports de capteurs indépendants et d’un module Ethernet filaire optionnel. Il est entièrement assemblé et préchargé avec le firmware.</li>
 <li><strong>OpenSprinkler Pi (OSPi)</strong> – Alimenté par un Raspberry Pi (RPi), nécessitant un certain assemblage (par exemple la connexion du RPi) et l’installation du firmware.</li>
+<li><strong>OpenSprinklerPro</strong> – Se câble selon les mêmes principes que <strong>OpenSprinkler v3.0-3.3</strong> pour les vannes, COM, capteurs et l’alimentation, mais exécute le firmware OpenSprinklerShop plus évolué pour ESP32-C5 avec les extensions Pro. La ligne actuelle du firmware OpenSprinklerShop/OpenSprinklerPro est <strong>2.4.0(199)</strong>.</li>
 </ul>
 <p>Chaque contrôleur fournit 8 zones, avec une extension possible via des extensions de zones (chacune ajoutant 16 zones) : <strong>OpenSprinkler v3</strong> prend en charge jusqu’à <strong>72</strong> zones, et <strong>OSPi</strong> jusqu’à <strong>200</strong> zones.
 <a id="power-models"></a>
@@ -150,7 +151,7 @@ En outre, OpenSprinkler v3 est disponible en trois modèles d’alimentation :</
 
 <h3 id="hardware-interface">Interface matérielle</h3>
 <h4 class="hltitle" id="opensprinklerpro">OpenSprinklerPro</h4>
-<p>OpenSprinklerPro utilise la plateforme ESP32-C5 avec WiFi 6, BLE et des variantes firmware Zigbee ou Matter. L’interface matérielle diffère du schéma OpenSprinkler v3.x classique; utilisez ce diagramme pour le câblage et l’identification des connecteurs Pro.</p>
+<p>OpenSprinklerPro utilise la plateforme ESP32-C5 avec WiFi 6, BLE et des variantes firmware Zigbee ou Matter. Les vannes, COM, capteurs et l’alimentation se câblent comme sur <strong>OpenSprinkler v3.0-3.3</strong>; ce diagramme montre la position des connecteurs et les interfaces Pro supplémentaires. Le logiciel est le firmware OpenSprinklerShop plus évolué avec les fonctions Pro, et non l’ancien firmware de base décrit par le manuel upstream d’origine.</p>
 <p><img alt="Interface matérielle OpenSprinklerPro" src="../../assets/ospro.png" /></p>
 <hr>
 
@@ -215,6 +216,7 @@ En outre, OpenSprinkler v3 est disponible en trois modèles d’alimentation :</
 <p>OpenSprinkler utilise des <strong>borniers amovibles</strong> pour faciliter le câblage. Pour détacher un bornier, saisissez fermement une extrémité, remuez doucement et tirez. Insérez complètement les fils, puis serrez solidement les vis.</p>
 <p><strong>Alimentation :</strong></p>
 <ul>
+<li><strong>OpenSprinklerPro :</strong> Câblez-le comme <strong>OpenSprinkler v3.0-3.3</strong>. Pour les modèles AC, connectez les fils 24VAC au bornier d’alimentation; pour un câblage de type DC/Latch, suivez les indications de polarité v3.0-3.3 DC/Latch. Le logiciel Pro et l’interface utilisateur sont plus récents et incluent des fonctions OpenSprinklerPro supplémentaires.</li>
 <li><strong>OpenSprinkler v3.4 AC :</strong> Branchez le transformateur 24VAC dans la prise cylindrique <span class="hl_red"><strong>Rouge</strong></span>.<ul>
 <li>Si votre transformateur a des fils dénudés, utilisez l’adaptateur bornier-à-fiche inclus.</li>
 </ul>
