@@ -87,9 +87,12 @@ ul > li {
   border-radius: 4px;
 }
 
-.mobile-screenshot {
+img.mobile-screenshot,
+.rst-content img.mobile-screenshot,
+.wy-table-responsive table td img.mobile-screenshot {
   display: block;
   width: 300px !important;
+  min-width: 300px !important;
   max-width: 300px !important;
   height: auto;
   margin: 0.75rem auto 1.25rem auto;
