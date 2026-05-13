@@ -195,6 +195,17 @@
 <h2 id="sensor-definitions">Sensor definitions</h2>
 <p>The first section defines the sensor list. Each row has a sensor number, name, current value and enable state. <strong>Add Sensor</strong> opens the editor for a new sensor; existing sensors are edited by tapping the sensor name.</p>
 <p><img alt="New Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-sensor-editor.png" /></p>
+<p>Section outline:</p>
+<ul>
+<li><a href="#editor-fields">Editor fields</a></li>
+<li><a href="#rs485-modbus">RS485 / Modbus</a></li>
+<li><a href="#analog-sensor-board-asb">Analog Sensor Board (ASB)</a></li>
+<li><a href="#ospi-analog-inputs">OSPi analog inputs</a></li>
+<li><a href="#wireless-cloud-and-remote-sources">Wireless, cloud and remote sources</a></li>
+<li><a href="#weather-data">Weather data</a></li>
+<li><a href="#group-sensors">Group sensors</a></li>
+<li><a href="#diagnostics">Diagnostics</a></li>
+</ul>
 <h3 id="editor-fields">Editor fields</h3>
 <table>
 <thead>
@@ -498,6 +509,11 @@
 <p><strong>Program Adjustments</strong> let a sensor scale the watering duration of a program. Typical examples are reducing watering when soil moisture is high or increasing watering when temperature is high.</p>
 <p><img alt="Program Adjustments" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-program-adjustments.png" /></p>
 <p><img alt="New Program Adjustment" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-program-adjustment-editor.png" /></p>
+<p>Section outline:</p>
+<ul>
+<li><a href="#adjustment-model">Adjustment model</a></li>
+<li><a href="#adjustment-types">Adjustment types</a></li>
+</ul>
 <h3 id="adjustment-model">Adjustment model</h3>
 <p>Each adjustment connects one sensor to one irrigation program and calculates a percentage modifier. Start with logging enabled on the sensor, then verify the value range before applying it to real watering.</p>
 <h3 id="adjustment-types">Adjustment types</h3>
@@ -532,6 +548,11 @@
 <p><strong>Monitoring and Control</strong> creates threshold and logic rules from sensors. Monitors can produce local warnings, feed notification events and combine conditions such as “soil is dry” and “current time is morning”.</p>
 <p><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitors.png" /></p>
 <p><img alt="New Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-monitor-editor.png" /></p>
+<p>Section outline:</p>
+<ul>
+<li><a href="#rule-structure">Rule structure</a></li>
+<li><a href="#logic-and-time-windows">Logic and time windows</a></li>
+</ul>
 <h3 id="rule-structure">Rule structure</h3>
 <p>Monitor rules select a sensor, compare it with a threshold or state and define what should happen when the condition is true. Use clear names so warnings are understandable later.</p>
 <h3 id="logic-and-time-windows">Logic and time windows</h3>
@@ -539,6 +560,11 @@
 <h2 id="sensor-chart-and-data">Sensor chart and data</h2>
 <p><strong>Sensor Chart</strong> displays logged sensor values. Use it to check whether readings are plausible before using them for program adjustments or monitors. The UI can also download logs or open the logged data table.</p>
 <p><img alt="Sensor Chart" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-sensor-chart.png" /></p>
+<p>Section outline:</p>
+<ul>
+<li><a href="#reading-charts">Reading charts</a></li>
+<li><a href="#downloading-data">Downloading data</a></li>
+</ul>
 <h3 id="reading-charts">Reading charts</h3>
 <p>Check for missing samples, unexpected spikes and unit mismatches. Compare related sensors in the same group before using them for automatic decisions.</p>
 <h3 id="downloading-data">Downloading data</h3>
@@ -547,6 +573,11 @@
 <p><strong>FYTA Setup</strong> stores a FYTA API token or login credentials and lets FYTA plant sensors be mapped into OpenSprinkler sensors. See <a href="../fyta-sensors/">FYTA Sensors</a> for setup and troubleshooting details.</p>
 <p><img alt="FYTA Setup" class="mobile-screenshot" src="../assets/screenshots/pro/en/fyta-setup.png" /></p>
 <p><img alt="Setup FYTA credentials" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-fyta-credentials.png" /></p>
+<p>Section outline:</p>
+<ul>
+<li><a href="#credentials">Credentials</a></li>
+<li><a href="#mapping-plants">Mapping plants</a></li>
+</ul>
 <h3 id="credentials">Credentials</h3>
 <p>Enter the FYTA API token or login data required by your firmware version. Keep credentials private and update them if FYTA access changes.</p>
 <h3 id="mapping-plants">Mapping plants</h3>
@@ -554,6 +585,11 @@
 <h2 id="backup-and-restore">Backup and restore</h2>
 <p><strong>Backup and Restore</strong> exports or restores sensor configuration, program adjustments and monitors separately from the general controller backup. Use this before large sensor changes or firmware tests.</p>
 <p><img alt="Backup and Restore" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-backup-restore.png" /></p>
+<p>Section outline:</p>
+<ul>
+<li><a href="#what-is-included">What is included</a></li>
+<li><a href="#safe-restore-workflow">Safe restore workflow</a></li>
+</ul>
 <h3 id="what-is-included">What is included</h3>
 <p>Backups include sensor definitions, adjustment rules and monitor rules. They do not replace a full controller backup for unrelated settings.</p>
 <h3 id="safe-restore-workflow">Safe restore workflow</h3>

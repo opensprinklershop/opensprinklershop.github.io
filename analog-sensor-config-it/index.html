@@ -130,6 +130,17 @@
 <h2 id="definizioni-sensori">Definizioni sensori</h2>
 <p>La prima sezione definisce la lista sensori. Ogni riga contiene numero, nome, valore corrente e stato attivo. <strong>Add Sensor</strong> apre l’editor di un nuovo sensore; i sensori esistenti si modificano toccando il nome.</p>
 <p><img alt="Nuovo sensore" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-sensor-editor.png" /></p>
+<p>Indice di questa sezione:</p>
+<ul>
+<li><a href="#campi-delleditor">Campi dell’editor</a></li>
+<li><a href="#rs485-modbus">RS485 / Modbus</a></li>
+<li><a href="#scheda-sensori-analogici-asb">Scheda sensori analogici (ASB)</a></li>
+<li><a href="#ingressi-analogici-ospi">Ingressi analogici OSPi</a></li>
+<li><a href="#sorgenti-wireless-cloud-e-remote">Sorgenti wireless, cloud e remote</a></li>
+<li><a href="#dati-meteo">Dati meteo</a></li>
+<li><a href="#sensori-di-gruppo">Sensori di gruppo</a></li>
+<li><a href="#diagnostica">Diagnostica</a></li>
+</ul>
 <h3 id="campi-delleditor">Campi dell’editor</h3>
 <table>
 <thead>
@@ -433,6 +444,11 @@
 <p><strong>Program Adjustments</strong> adatta la durata di irrigazione di un programma in base a un valore sensore. Esempi tipici sono ridurre l’irrigazione con suolo umido o aumentarla con temperatura alta.</p>
 <p><img alt="Program Adjustments" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-program-adjustments.png" /></p>
 <p><img alt="Nuova regolazione" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-program-adjustment-editor.png" /></p>
+<p>Indice di questa sezione:</p>
+<ul>
+<li><a href="#modello-di-regolazione">Modello di regolazione</a></li>
+<li><a href="#tipi-di-regolazione">Tipi di regolazione</a></li>
+</ul>
 <h3 id="modello-di-regolazione">Modello di regolazione</h3>
 <p>Ogni regolazione collega un sensore a un programma di irrigazione e calcola un modificatore percentuale. Prima registrare il sensore e verificare il suo intervallo di valori, poi applicarlo all’irrigazione reale.</p>
 <h3 id="tipi-di-regolazione">Tipi di regolazione</h3>
@@ -467,6 +483,11 @@
 <p><strong>Monitoring and Control</strong> crea regole di soglia e logica dai sensori. I monitor possono generare avvisi locali, alimentare notifiche e combinare condizioni come “suolo asciutto” e “fascia mattutina”.</p>
 <p><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitors.png" /></p>
 <p><img alt="Nuovo monitor" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-monitor-editor.png" /></p>
+<p>Indice di questa sezione:</p>
+<ul>
+<li><a href="#struttura-delle-regole">Struttura delle regole</a></li>
+<li><a href="#logica-e-finestre-orarie">Logica e finestre orarie</a></li>
+</ul>
 <h3 id="struttura-delle-regole">Struttura delle regole</h3>
 <p>Una regola seleziona un sensore, lo confronta con soglia o stato e definisce cosa succede quando la condizione è vera. Nomi chiari rendono gli avvisi comprensibili.</p>
 <h3 id="logica-e-finestre-orarie">Logica e finestre orarie</h3>
@@ -474,6 +495,11 @@
 <h2 id="grafici-e-dati-sensore">Grafici e dati sensore</h2>
 <p><strong>Sensor Chart</strong> mostra i valori registrati. Usarlo per verificare la plausibilità delle misure prima di regolazioni o monitor. L’UI può anche scaricare i log o aprire la tabella dati.</p>
 <p><img alt="Sensor Chart" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-sensor-chart.png" /></p>
+<p>Indice di questa sezione:</p>
+<ul>
+<li><a href="#lettura-dei-grafici">Lettura dei grafici</a></li>
+<li><a href="#scaricare-i-dati">Scaricare i dati</a></li>
+</ul>
 <h3 id="lettura-dei-grafici">Lettura dei grafici</h3>
 <p>Controllare campioni mancanti, picchi inattesi e unità errate. Confrontare sensori correlati nello stesso gruppo prima di decisioni automatiche.</p>
 <h3 id="scaricare-i-dati">Scaricare i dati</h3>
@@ -482,6 +508,11 @@
 <p><strong>FYTA Setup</strong> salva token API o credenziali FYTA e mappa i sensori pianta in OpenSprinkler. Vedi <a href="../fyta-sensors/">Sensori FYTA</a>.</p>
 <p><img alt="FYTA Setup" class="mobile-screenshot" src="../assets/screenshots/pro/it/fyta-setup.png" /></p>
 <p><img alt="Credenziali FYTA" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-fyta-credentials.png" /></p>
+<p>Indice di questa sezione:</p>
+<ul>
+<li><a href="#credenziali">Credenziali</a></li>
+<li><a href="#mappatura-piante">Mappatura piante</a></li>
+</ul>
 <h3 id="credenziali">Credenziali</h3>
 <p>Inserire token API o credenziali richiesti dalla versione firmware. Mantenerli privati e aggiornarli se l’accesso FYTA cambia.</p>
 <h3 id="mappatura-piante">Mappatura piante</h3>
@@ -489,6 +520,11 @@
 <h2 id="backup-e-ripristino">Backup e ripristino</h2>
 <p><strong>Backup and Restore</strong> esporta o ripristina configurazione sensori, regolazioni programma e monitor separatamente dal backup generale.</p>
 <p><img alt="Backup and Restore" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-backup-restore.png" /></p>
+<p>Indice di questa sezione:</p>
+<ul>
+<li><a href="#contenuto-incluso">Contenuto incluso</a></li>
+<li><a href="#ripristino-sicuro">Ripristino sicuro</a></li>
+</ul>
 <h3 id="contenuto-incluso">Contenuto incluso</h3>
 <p>I backup includono definizioni sensore, regole di regolazione e regole monitor. Non sostituiscono un backup completo del controller per altre impostazioni.</p>
 <h3 id="ripristino-sicuro">Ripristino sicuro</h3>
