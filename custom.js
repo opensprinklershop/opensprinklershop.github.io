@@ -147,9 +147,15 @@ function initLanguageSelector() {
 
   var current = findCurrentPage(pageMap);
   var storedLanguage = localStorage.getItem("os-docs-language");
-  var selectedLanguage = current.key ? current.language : storedLanguage || current.language || "en";
+  var browserLanguage = getBrowserLanguage(languages);
+  var selectedLanguage = getSelectedLanguage(current, storedLanguage, browserLanguage, languages);
   if (!languages[selectedLanguage]) {
     selectedLanguage = "en";
+  }
+
+  if (current.key && pageMap[current.key][selectedLanguage] && pageMap[current.key][selectedLanguage] !== current.path) {
+    window.location.replace(buildPageUrl(current.prefix, pageMap[current.key][selectedLanguage], window.location.search + window.location.hash));
+    return;
   }
 
   insertLanguageSelector(languages, labels, selectedLanguage, function (language) {
@@ -167,6 +173,35 @@ function initLanguageSelector() {
   updateNavigation(pageMap, labels, selectedLanguage, current.prefix);
   updateCurrentPageHeadingLinks(pageMap, current, selectedLanguage);
   updateLanguageSelectorLabel(labels, selectedLanguage);
+}
+
+function getSelectedLanguage(current, storedLanguage, browserLanguage, languages) {
+  if (current.key && current.language && current.language !== "en") {
+    return current.language;
+  }
+
+  if (storedLanguage && languages[storedLanguage]) {
+    return storedLanguage;
+  }
+
+  if (browserLanguage && languages[browserLanguage]) {
+    return browserLanguage;
+  }
+
+  return current.language || "en";
+}
+
+function getBrowserLanguage(languages) {
+  var browserLanguages = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || navigator.userLanguage];
+
+  for (var i = 0; i < browserLanguages.length; i += 1) {
+    var language = (browserLanguages[i] || "").toLowerCase().split("-")[0];
+    if (languages[language]) {
+      return language;
+    }
+  }
+
+  return "en";
 }
 
 function normalizePath(pathname) {

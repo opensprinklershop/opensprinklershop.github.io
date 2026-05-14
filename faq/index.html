@@ -151,7 +151,7 @@ Homeowners and business owners, including growers, farms, business parks, ranche
 <p><a id="hardware-versions"></a>
 <strong>Q: What hardware versions are available?</strong>
 <br>
-We currently offer the classic <strong>OpenSprinkler 3.x</strong> line (WiFi; optional wired Ethernet module), <strong>OpenSprinklerPro / OpenSprinklerShop ESP32-C5</strong> firmware builds with extended radio, sensor and OTA features, and <strong>OpenSprinkler Pi</strong> (OSPi, driven by Raspberry Pi). OpenSprinkler 3.x provides three valve-output variants:</p>
+We currently offer <strong>OpenSprinkler 3.x</strong> (WiFi; optional wired Ethernet module) and <strong>OpenSprinkler Pi</strong> (OSPi, driven by Raspberry Pi). Furthermore, OpenSprinkler 3.x provides three variants:</p>
 <ul>
 <li><strong>AC-powered:</strong> Operates standard 24VAC sprinkler valves and is powered by a 24VAC adapter.</li>
 <li><strong>DC-powered:</strong> Also operates 24VAC sprinkler valves, but is powered by a DC adapter. This is convenient for international customers or for off-grid / solar-powered setups.</li>
@@ -214,9 +214,8 @@ OS v3.x is compatible with 2.4GHz WiFi. It does <strong>NOT</strong> support 5GH
 <hr />
 <p><strong>Q: Where are OpenSprinkler's documents and source code?</strong></p>
 <ul>
-<li><a href="../2.2.1/221_4_manual/">User Manual</a></li>
-<li><a href="../2.2.1/221_4_api/">API Reference</a></li>
-<li><a href="../opensprinklerpro/">OpenSprinklerPro Extensions</a></li>
+<li><a href="https://opensprinkler.github.io/OpenSprinkler-Firmware/2.2.1/221_4_manual/">User Manual</a></li>
+<li><a href="https://opensprinkler.github.io/OpenSprinkler-Firmware/2.2.1/221_4_api/">API Reference</a></li>
 <li><a href="https://openthings.freshdesk.com/support/solutions/articles/5000860920-videos-introduction-to-opensprinkler-v3">Video Tutorials</a></li>
 <li><a href="https://github.com/opensprinkler">GitHub Repository</a></li>
 </ul>
@@ -294,9 +293,9 @@ OpenSprinkler has two sensor ports. Each can be independently configured as a:</
 <li><strong>Program start button</strong></li>
 </ul>
 <hr />
-<p><strong>Q: Do you support analog soil sensors?</strong>
+<p><strong>Q: Do you support analog soil sensors?</strong> 
 <br>
-Classic OpenSprinkler controller sensor ports are digital inputs, so they directly accept on/off sensors such as rain, flow pulse or digital soil-moisture outputs. OpenSprinklerShop / OpenSprinklerPro firmware supports analog sensor extensions and sensor-derived automation through <a href="../analog-sensor-config/">Analog Sensor Configuration</a> and <a href="../sensor-automation/">Sensor Automation and Monitors</a>. For classic digital-only inputs, an analog-to-digital adapter can still convert an analog probe to an on/off signal.</p>
+Not yet. OpenSprinkler currently only accepts sensors that output a digital (high or low) signal. Development is underway to enable analog sensors. Meanwhile, you can use our <a href="https://opensprinkler.com/product/a2dadapter/">Analog-to-Digital (A2D) adapter</a> to digitize an analog sensor to on/off signal.</p>
 <hr />
 <p><strong>Q: What is the maximum distance between the controller and valves?</strong>
 Depends on the wire gauge (AWG) you use.</p>
@@ -342,7 +341,7 @@ Yes. Current firmware supports an adjustable overcurrent limit, which stops zone
 <h3 id="web-connections-and-integration">Web Connections and Integration</h3>
 <p><strong>Q: Does it have built-in wireless? What about wired Ethernet?</strong>
 <br>
-Yes. OpenSprinkler v3.x includes 2.4 GHz WiFi (ESP8266), and a wired Ethernet module is an optional add-on. OpenSprinklerPro / ESP32-C5 builds add modern ESP32 networking and radio capabilities depending on the selected firmware variant. OpenSprinkler Pi's network options depend on your Raspberry Pi.</p>
+Yes, OpenSprinkler v3.x includes WiFi (ESP8266). A wired Ethernet module is an optional add-on. OpenSprinkler Pi's network options depend on your Raspberry Pi.</p>
 <hr />
 <p><strong>Q: Do I need a WiFi router?</strong>
 <br>
@@ -369,79 +368,96 @@ Yes. The firmware supports "Remote Stations", a feature that allows one OpenSpri
 <h3 id="technical">Technical</h3>
 <p><strong>Q: What are the differences between the product versions?</strong>
 <br>
-OpenSprinkler v3.x is fully assembled and works out of the box. OpenSprinklerPro / OpenSprinklerShop ESP32-C5 builds add online OTA updates, Zigbee or Matter variants, BLE, richer sensor automation and MCP/AI integration where supported. OpenSprinkler Pi (OSPi) is based on Raspberry Pi (RPi) and requires experience with RPi and basic Linux commands. See detailed comparisons below:</p>
+OpenSprinkler v3.x is fully assembled and works out of the box. OpenSprinkler Pi (OSPi) is based on Raspberry Pi (RPi) and requires exprience with RPi and basic Linux commands. See detailed comparisons below:</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;"></th>
 <th style="text-align: left;">OS v3.x AC/DC/Latch</th>
-<th style="text-align: left;">OpenSprinklerPro / ESP32-C5</th>
 <th style="text-align: left;">OSPi</th>
+<th style="text-align: left;">OSBee</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><em>Valve Compatibility</em></td>
-<td style="text-align: left;"><strong>AC/DC</strong> models both operate 24VAC valves. <strong>DC</strong> additionally supports DC non-latching. <strong>Latch</strong> only supports DC latching valves.</td>
-<td style="text-align: left;">Depends on the underlying AC/DC/Latch hardware; Pro firmware adds sensor/radio/software features.</td>
+<td style="text-align: left;"><strong>AC/DC</strong> models both operate 24VAC valves. <strong>DC</strong> additionally support DC non-latching. <strong>Latch</strong> only supports DC latching valves.</td>
 <td style="text-align: left;">24VAC valves only</td>
+<td style="text-align: left;">DC Latching valves only</td>
 </tr>
 <tr>
 <td style="text-align: left;"><em>Power Source</em></td>
 <td style="text-align: left;"><strong>AC</strong> model works with 24VAC adapter only; <strong>DC/Latch</strong> work with DC (6-24V) adapter.</td>
-<td style="text-align: left;">Depends on hardware variant.</td>
 <td style="text-align: left;">24VAC only</td>
+<td style="text-align: left;">USB</td>
 </tr>
 <tr>
 <td style="text-align: left;"><em>Number of Stations</em></td>
 <td style="text-align: left;"><code>8</code> on main controller, expandable to <code>72</code> by linking expanders</td>
-<td style="text-align: left;">Same station model as the controller hardware; Pro firmware adds extended sensor automation.</td>
 <td style="text-align: left;"><code>8</code> on main controller, expandable to <code>200</code>.</td>
+<td style="text-align: left;"><code>3</code>, not expandable</td>
 </tr>
 <tr>
 <td style="text-align: left;"><em>Processor</em></td>
 <td style="text-align: left;">ESP8266</td>
-<td style="text-align: left;">ESP32-C5 / ESP32-class builds</td>
 <td style="text-align: left;">RPi (user-supplied)</td>
+<td style="text-align: left;">ESP8266</td>
 </tr>
 <tr>
 <td style="text-align: left;"><em>Connectivity</em></td>
 <td style="text-align: left;">WiFi 2.4GHz (and optional wired Ethernet)</td>
-<td style="text-align: left;">WiFi plus variant-dependent Zigbee, BLE, Matter/RainMaker and online OTA features</td>
 <td style="text-align: left;">RPi's connectivity</td>
+<td style="text-align: left;">WiFi 2.4GHz only</td>
 </tr>
 <tr>
 <td style="text-align: left;"><em>Assembly</em></td>
 <td style="text-align: left;">Fully assembled commercial product in injection-molded enclosure</td>
-<td style="text-align: left;">OpenSprinklerShop/Pro firmware and supported controller hardware</td>
-<td style="text-align: left;">User provides RPi, SD card, and enclosure</td>
+<td style="text-align: left;">User provides RPi, SD card, and 3D printed enclosure</td>
+<td style="text-align: left;">Fully assembled in 3D printed enclosure</td>
 </tr>
 <tr>
 <td style="text-align: left;"><em>Weather</em></td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No</td>
 </tr>
 <tr>
 <td style="text-align: left;"><em>Physical Interface</em></td>
 <td style="text-align: left;">128x64 LCD, 3 buttons</td>
-<td style="text-align: left;">Controller-dependent web/app UI plus Pro extension pages</td>
 <td style="text-align: left;">128x64 LCD, 3 buttons</td>
+<td style="text-align: left;">128x64 LCD, 1 button</td>
 </tr>
 <tr>
 <td style="text-align: left;"><em>Target</em></td>
-<td style="text-align: left;">General irrigation control</td>
-<td style="text-align: left;">Advanced sensor, radio, automation and AI/MCP integrations</td>
+<td style="text-align: left;">Everyone</td>
 <td style="text-align: left;">RPi enthusiasts, tinkerers</td>
+<td style="text-align: left;">Small garden projects</td>
+</tr>
+<tr>
+<td style="text-align: left;"><em>Price</em></td>
+<td style="text-align: left;">~$150 USD</td>
+<td style="text-align: left;">~$70 USD (plus the cost of RPi and accessories)</td>
+<td style="text-align: left;">$62 USD</td>
+</tr>
+<tr>
+<td style="text-align: left;"><em>Power Draw</em></td>
+<td style="text-align: left;">0.5-0.9 W</td>
+<td style="text-align: left;">0.5 W + RPi's power</td>
+<td style="text-align: left;">0.5 W</td>
+</tr>
+<tr>
+<td style="text-align: left;"><em>Dimensions</em></td>
+<td style="text-align: left;"><strong>v3.0-3.3</strong>: 140×56×33 mm<br><strong>v3.4</strong>: 125×79×25 mm</td>
+<td style="text-align: left;">135×105×38 mm</td>
+<td style="text-align: left;">65×65×20 mm</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <p><strong>Q: How do I upgrade the firmware?</strong></p>
 <ul>
-<li><strong>OS v3.x:</strong> Use the local manual firmware update workflow in the <a href="../2.2.1/221_4_manual/#firmware-update">User Manual</a>.</li>
-<li><strong>OpenSprinklerPro / ESP32-C5:</strong> Use <strong>Online Update</strong> in the UI when available; see <a href="../opensprinklerpro/#online-ota-update">OpenSprinklerPro Online OTA</a>. Manual update details are also in the <a href="../2.2.1/221_4_manual/#firmware-update">User Manual</a>.</li>
-<li><strong>OSPi:</strong> Network or script-based firmware updates; see the OSPi note in the <a href="../2.2.1/221_4_manual/#firmware-update">User Manual</a>.</li>
+<li><strong>OS v3.x:</strong> Over-the-Air (OTA) update (via either WiFi or wired Ethernet).</li>
+<li><strong>OSPi:</strong> Network or script-based firmware updates.</li>
 </ul>
 <hr />
 <p><strong>Q: Will firmware update erase my settings?</strong></p>

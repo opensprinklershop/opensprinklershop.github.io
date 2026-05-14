@@ -43,9 +43,23 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#start-compass-for-new-customers">Start Compass for New Customers</a>
+    <li class="toctree-l2"><a class="reference internal" href="#firmware-update">Firmware Update</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#opensprinkler-v3">OpenSprinkler v3</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#product-families-and-relevant-documentation">Product Families and Relevant Documentation</a>
+    <li class="toctree-l3"><a class="reference internal" href="#opensprinkler-v23">OpenSprinkler v2.3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#opensprinkler-pi-ospi">OpenSprinkler Pi (OSPi)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#firmware-compilation">Firmware Compilation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#environment-setup">Environment Setup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building-the-firmware">Building the Firmware</a>
+    </li>
+        </ul>
     </li>
     </ul>
                 </li>
@@ -120,97 +134,83 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="opensprinkler-shop-firmware-and-documentation">OpenSprinkler Shop Firmware and Documentation</h1>
-<p>This site contains documentation for OpenSprinkler firmware and the OpenSprinklerPro extensions maintained by OpenSprinklerShop.</p>
-<div class="admonition info">
-<p class="admonition-title">OpenSprinklerShop firmware version</p>
-<p>The OpenSprinklerShop firmware, including OpenSprinklerPro, uses its own firmware version numbering independent of the upstream OpenSprinkler firmware line. The current OpenSprinklerShop firmware version is <strong>2.4.0(199)</strong>.</p>
-</div>
+                <h1 id="opensprinkler-firmware-and-documentation">OpenSprinkler Firmware and Documentation</h1>
+<p>This Github repository contains the firmware source code and documentation for OpenSprinkler.</p>
 <ul>
-<li>User manual: <a href="2.2.1/221_4_manual/">English</a>, <a href="2.2.1/221_4_manual_de/">Deutsch</a>, <a href="2.2.1/221_4_manual_fr/">Français</a>, <a href="2.2.1/221_4_manual_it/">Italiano</a>.</li>
-<li>OpenSprinklerPro extensions: <a href="opensprinklerpro/">English</a>, <a href="opensprinklerpro_de/">Deutsch</a>, <a href="opensprinklerpro_fr/">Français</a>, <a href="opensprinklerpro_it/">Italiano</a>.</li>
-<li>Firmware release notes: <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/releases">OpenSprinklerShop Firmware Releases</a>.</li>
+<li>For product details, visit <a href="https://opensprinkler.com">https://opensprinkler.com</a>.</li>
+<li>For firmware release notes, visit the <a href="https://github.com/OpenSprinkler/OpenSprinkler-Firmware/releases">OpenSprinkler Firmware Releases</a> page on GitHub.</li>
 </ul>
 <hr class="double">
 
-<h2 id="start-compass-for-new-customers">Start Compass for New Customers</h2>
-<table>
-<thead>
-<tr>
-<th>Goal</th>
-<th>Recommended entry point</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Connect a new device</td>
-<td><a href="2.2.1/221_4_manual/#installation">Installation and Hardware</a>, including WiFi/Ethernet first setup</td>
-</tr>
-<tr>
-<td>Create zones and watering programs</td>
-<td><a href="2.2.1/221_4_manual/#station-cards">Station Cards</a>, <a href="2.2.1/221_4_manual/#programs">Programs</a></td>
-</tr>
-<tr>
-<td>Use weather, sensors and flow</td>
-<td><a href="2.2.1/221_4_manual/#weather-adjustment">Weather Adjustment</a>, <a href="2.2.1/221_4_manual/#sensor-setup">Sensor Setup</a>, <a href="fyta-sensors/">FYTA Sensors</a></td>
-</tr>
-<tr>
-<td>Remote access and notifications</td>
-<td><a href="2.2.1/221_4_manual/#integration">Integration</a>, <a href="opensprinklerpro/#notification-events">OpenSprinklerPro notifications</a></td>
-</tr>
-<tr>
-<td>OpenSprinklerPro, Zigbee, Matter, BLE, RainMaker, MCP</td>
-<td><a href="opensprinklerpro/">OpenSprinklerPro Extensions</a>, <a href="mcp-server/">MCP Server</a></td>
-</tr>
-<tr>
-<td>Troubleshooting</td>
-<td><a href="troubleshooting/">Troubleshooting</a>, side menu -&gt; <strong>System Diagnostics</strong></td>
-</tr>
-</tbody>
-</table>
-<h2 id="product-families-and-relevant-documentation">Product Families and Relevant Documentation</h2>
-<table>
-<thead>
-<tr>
-<th>Product</th>
-<th>Image</th>
-<th>Summary</th>
-<th>Relevant sections</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://opensprinklershop.de/product/opensprinkler-pro/">OpenSprinkler Pro</a></td>
-<td><img alt="OpenSprinkler Pro" src="https://osshop.b-cdn.net/wp-content/uploads/2026/04/16432-scaled-e1777199276933-247x247.avif" width="120" /></td>
-<td>ESP32-C5 generation with WiFi 6, BLE and Zigbee or Matter firmware variants.</td>
-<td><a href="opensprinklerpro/">OpenSprinklerPro</a>, <a href="2.2.1/221_4_manual/#hardware-interface">Hardware Interface</a>, <a href="2.2.1/221_4_manual/#firmware-update">Firmware Update</a></td>
-</tr>
-<tr>
-<td><a href="https://opensprinklershop.de/product/opensprinkler-3-0/">OpenSprinkler 3.x</a></td>
-<td><img alt="OpenSprinkler 3.x" src="https://osshop.b-cdn.net/wp-content/uploads/2018/12/OpenSprinkerDC1-247x247.avif" width="120" /></td>
-<td>ESP8266 controller generation with WiFi, display and optional Ethernet.</td>
-<td><a href="2.2.1/221_4_manual/#installation">Installation</a>, <a href="2.2.1/221_4_manual/#firmware-update">Firmware Update</a></td>
-</tr>
-<tr>
-<td><a href="https://opensprinklershop.de/product/ospi20/">OpenSprinkler Pi / OSPi 2.0</a></td>
-<td><img alt="OpenSprinkler Pi 2.0" src="https://osshop.b-cdn.net/wp-content/uploads/2024/12/enclosure6-247x234.avif" width="120" /></td>
-<td>Raspberry Pi HAT running OpenSprinkler firmware on Linux/Raspberry Pi.</td>
-<td><a href="2.2.1/221_4_manual/#firmware-update">OSPi update</a>, <a href="2.2.1/221_4_manual/#sensor-setup">Sensor Setup</a></td>
-</tr>
-<tr>
-<td><a href="https://opensprinklershop.de/product/esp32-board-fuer-opensprinkler-3-3-upgrade/">ESP32-C5 Upgrade Board</a></td>
-<td><img alt="ESP32-C5 Upgrade Board" src="https://osshop.b-cdn.net/wp-content/uploads/2026/03/IMG_20260315_185118-scaled-e1773606716986-247x270.avif" width="120" /></td>
-<td>Upgrade board for OpenSprinkler 3.3 with ESP32-C5, BLE, Zigbee/Matter and online update.</td>
-<td><a href="opensprinklerpro/#esp32-mode-and-radio-management">ESP32 mode</a>, <a href="opensprinklerpro/#online-ota-update">Online OTA</a></td>
-</tr>
-<tr>
-<td><a href="https://opensprinklershop.de/product/analog-sensor-board/">Analog Sensor Board</a> / <a href="https://opensprinklershop.de/product/truebner-rs485-adapter/">Truebner RS485 Adapter</a></td>
-<td><img alt="Analog Sensor Board" src="https://osshop.b-cdn.net/wp-content/uploads/2023/01/os3analogsensorboard2-247x247.avif" width="120" /></td>
-<td>Sensor extensions for soil moisture, temperature, RS485/Modbus and monitoring.</td>
-<td><a href="analog-sensor-config/">Analog Sensor Configuration</a>, <a href="sensor-automation/">Sensor Automation</a>, <a href="fyta-sensors/">FYTA Sensors</a></td>
-</tr>
-</tbody>
-</table>
+<h2 id="firmware-update">Firmware Update</h2>
+<h3 class="hltitle" id="opensprinkler-v3">OpenSprinkler v3</h3>
+<p>Supports <strong>OTA (over-the-air)</strong> updates - you can upload a firmware directly via the web UI.</p>
+<div class="admonition warning">
+<p class="admonition-title">Back Up Before Updating</p>
+<p>Before update, please back up your configurations (Sidebar → <strong>Export Configuration</strong>) so you can quickly restore programs and settings if needed.</p>
+<ul>
+<li>A <strong>Dotted Version Update</strong>, e.g. 2.2.0→2.2.1, triggers a factory reset and <strong>erases all settings</strong>.</li>
+<li>A <strong>Build Number Update</strong>, e.g. 2.2.1(2)→2.2.1(4), <strong>preserves all settings</strong>.</li>
+</ul>
+</div>
+<ol>
+<li><a href="https://raysfiles.com/os_compiled_firmware/v3.x/"><strong>Download</strong> a firmware file</a> (<code>.bin</code> format). The latest is <code>os_221_rev4.bin</code>.</li>
+<li><strong>Open a browser</strong> and enter <code>http://os-ip/update</code> where <code>os-ip</code> is your device's IP.<ul>
+<li>To find the IP: click button <strong>B1</strong> on the controller.</li>
+<li>If your device is in <strong>WiFi AP</strong> (Access Point) mode, connect your computer/phone to the AP SSID shown on the LCD, and the update page is at <code>http://192.168.4.1/update</code>.</li>
+</ul>
+</li>
+<li>At the update page, select the <code>.bin</code> file, enter your device password, and <strong>Submit</strong>.</li>
+<li>Wait for completion. The controller will reboot automatically once it finishes.<ul>
+<li>If the upload fails, retry the process.</li>
+<li>If the device hangs, unplug and replug the power, then try again.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Troubleshooting</strong></p>
+<ul>
+<li><strong>Blank Homepage:</strong> If the device homepage is blank or showing an error, and you need to export configuration before updating, see <a href="troubleshooting/#ui-app-time-and-lcd">Blank Page Troubleshooting</a>.</li>
+<li><strong>Update via Wired Ethernet:</strong> If your controller is connected via wired Ethernet:<ul>
+<li>If it runs firmware <code>2.2.0</code> or newer, follow the same stesps as WiFi.</li>
+<li>If it runs <code>2.1.9</code> or earlier, update must be done in WiFi mode:<ol>
+<li>Power off the controller.</li>
+<li>Remove the Ethernet module.</li>
+<li>Power on - it will boot into WiFi AP mode.</li>
+<li>Follow the AP-mode update instructions above.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>AP Mode Password Issues:</strong> When updating in AP mode, if your password fails, try its <strong>MD5 hash</strong> instead (e.g. the MD5 hash of <code>opendoor</code> is <code>a6d82bced638de3def1e9bbb4983225c</code>).</li>
+<li><strong>Firmware Corruption / Device Not Booting</strong>: If device fails to boot after an update, you'll need to re-flash the firmware using a <a href="https://opensprinkler.com/product/usb-programmer/">USB-Serial Programmer</a>.</li>
+</ul>
+<hr />
+<h3 class="hltitle" id="opensprinkler-v23">OpenSprinkler v2.3</h3>
+<p>Requires a USB cable for firmware update. Follow the legacy <a href="https://openthings.freshdesk.com/a/solutions/articles/5000832311">v2.3 Firmware Update Instructions</a>.</p>
+<hr />
+<h3 class="hltitle" id="opensprinkler-pi-ospi">OpenSprinkler Pi (OSPi)</h3>
+<p>Update is done directly on the RPi. Follow <a href="https://openthings.freshdesk.com/a/solutions/articles/5000631599">OSPi Firmware Update Instructions</a>.</p>
+<hr class="double">
+
+<h2 id="firmware-compilation">Firmware Compilation</h2>
+<p>The firmware compilation instructions below are for OpenSprinkler <strong>v3.x and v2.3</strong> only.
+<br>For RPi and Linux-based OpenSprinkler (OSPi), follow the <a href="https://openthings.freshdesk.com/support/solutions/articles/5000631599-installing-and-updating-the-unified-firmware-on-ospi">instructions are here</a>.</p>
+<h3 id="environment-setup">Environment Setup</h3>
+<ol>
+<li>Download and unzip (or git clone) this (<code>OpenSprinkler-Firmware</code>) repository.</li>
+<li>Install the latest LTS version of Node.js from <a href="https://nodejs.org/">https://nodejs.org/</a> if you don't already have it.</li>
+<li>In your terminal, navigate to the <code>OpenSprinkler-Firmware</code> folder (the source code folder) and run <code>npm install html-minifier-terser</code>.</li>
+<li>Install Visual Studio Code (VS Code) from <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>, if you don't already have it.</li>
+<li>Launch VS Code and install the <strong>PlatformIO</strong> extension.</li>
+</ol>
+<h3 id="building-the-firmware">Building the Firmware</h3>
+<ol>
+<li>In VS Code, click <code>File -&gt; Open Folder</code> and select the <code>OpenSprinkler-Firmware</code> folder.</li>
+<li>PlatformIO will recognize the <code>platformio.ini</code> file in that folder, which contains all the libraries and settings needed to compile the firmware.</li>
+<li>Click the <strong>PlatformIO: Build</strong> button (with the checkmark icon ✓) in the blue status bar at the bottom of the screen to build the firmware.</li>
+<li>The default build environment is for OpenSprinkler v3.x (<code>env:os3x_esp8266</code>). To build for OpenSprinkler v2.3, switch to <code>env:os23_atmega1284p</code>.</li>
+</ol>
+<hr class="double">
               
             </div>
           </div><footer>
@@ -264,5 +264,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-05-13 20:37:12.778680+00:00
+Build Date UTC : 2026-05-14 07:40:47.810474+00:00
 -->
