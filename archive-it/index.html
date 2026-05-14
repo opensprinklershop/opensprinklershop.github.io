@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/mcp-server-it/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/archive-it/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Server MCP — accesso IA per OpenSprinkler - OpenSprinkler Shop Documentation</title>
+    <title>Manuali e riferimenti API archiviati - OpenSprinkler Shop Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,9 +13,9 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Server MCP \u2014 accesso IA per OpenSprinkler";
-        var mkdocs_page_input_path = "mcp-server-it.md";
-        var mkdocs_page_url = "/mcp-server-it/";
+        var mkdocs_page_name = "Manuali e riferimenti API archiviati";
+        var mkdocs_page_input_path = "archive-it.md";
+        var mkdocs_page_url = "/archive-it/";
       </script>
     
     <!--[if lt IE 9]>
@@ -104,9 +104,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Server MCP — accesso IA per OpenSprinkler</li>
+      <li class="breadcrumb-item active">Manuali e riferimenti API archiviati</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/mcp-server-it.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/archive-it.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -114,79 +114,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="server-mcp-accesso-ia-per-opensprinkler">Server MCP — accesso IA per OpenSprinkler</h1>
-<p>L’integrazione MCP (Model Context Protocol) consente agli assistenti IA di interrogare e controllare un controller OpenSprinkler tramite strumenti documentati.</p>
-<p>Questa pagina copre solo configurazione MCP e modalità operative. Gli altri temi sono separati:</p>
+                <h1 id="manuali-e-riferimenti-api-archiviati">Manuali e riferimenti API archiviati</h1>
+<p>Documenti per versioni precedenti del firmware OpenSprinkler nel formato PDF originale.</p>
+<p>These documents are for older versions of the OpenSprinkler firmware and are provided in their original PDF format. For the latest documentation, please use the versioned navigation at the top of the page.</p>
+<hr />
+<h3 id="firmware-2213">Firmware 2.2.1(3)</h3>
 <ul>
-<li><a href="../ai-programming-it/">Creazione programmi con IA</a></li>
-<li><a href="../sensor-automation-it/">Automazione sensori e monitor</a></li>
+<li><a href="https://raysfiles.com/os_compiled_firmware/docs/2.2.1/OSUserManual221_3.pdf">Manuale utente (PDF)</a></li>
+<li><a href="https://raysfiles.com/os_compiled_firmware/docs/2.2.1/OSAPI2.2.1_3.pdf">Riferimento API (PDF)</a></li>
 </ul>
-<h2 id="modalita-operative">Modalità operative</h2>
-<h3 id="mcp-integrato-nel-firmware">MCP integrato nel firmware</h3>
-<p>Il server MCP integrato funziona direttamente nei firmware ESP32 con <code>USE_OTF</code>:</p>
-<pre><code class="language-http">POST http://&lt;controller-ip&gt;/mcp
-Content-Type: application/json
-</code></pre>
-<p>L’autenticazione usa lo stesso hash della password amministratore dell’API REST: <code>?pw=</code>, header <code>X-OS-Password</code> o bearer token.</p>
-<p>Disponibilità: <strong>solo ESP32 / ESP32-C5</strong> con <code>USE_OTF</code>; non ESP8266 e non OSPi.</p>
-<h3 id="server-mcp-nodejs-esterno">Server MCP Node.js esterno</h3>
-<p>Il server esterno in <code>tools/mcp-server/</code> gira fuori dal firmware e pubblica l’API REST via stdio. Funziona con ESP8266, ESP32 e OSPi, con strumenti per sensori, monitor, Zigbee, BLE e risorse sistema quando supportati dal controller.</p>
-<h2 id="configurazione">Configurazione</h2>
-<pre><code class="language-bash">cd tools/mcp-server
-npm install
-npm run build
-</code></pre>
-<p>Esempio VS Code / GitHub Copilot:</p>
-<pre><code class="language-json">{
-  &quot;servers&quot;: {
-    &quot;opensprinkler&quot;: {
-      &quot;type&quot;: &quot;stdio&quot;,
-      &quot;command&quot;: &quot;node&quot;,
-      &quot;args&quot;: [&quot;tools/mcp-server/dist/index.js&quot;],
-      &quot;env&quot;: {
-        &quot;OS_BASE_URL&quot;: &quot;http://&lt;CONTROLLER-IP&gt;&quot;,
-        &quot;OS_PASSWORD_HASH&quot;: &quot;&lt;MD5-HASH&gt;&quot;
-      }
-    }
-  }
-}
-</code></pre>
-<p>Calcolo hash:</p>
-<pre><code class="language-bash">echo -n &quot;password_admin&quot; | md5sum | awk '{print $1}'
-</code></pre>
-<h2 id="panoramica-strumenti">Panoramica strumenti</h2>
-<table>
-<thead>
-<tr>
-<th>Area</th>
-<th>Esempi di strumenti</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Stato controller</td>
-<td><code>get_all</code>, <code>get_controller_variables</code>, <code>get_options</code>, <code>get_debug</code>, <code>get_system_resources</code></td>
-</tr>
-<tr>
-<td>Stazioni e programmi</td>
-<td><code>get_stations</code>, <code>get_station_status</code>, <code>get_programs</code>, <code>manual_station_run</code>, <code>change_program</code></td>
-</tr>
-<tr>
-<td>Sensori e log</td>
-<td><code>get_sensors</code>, <code>get_sensor_values</code>, <code>get_sensor_log</code>, <code>backup_sensor_config</code></td>
-</tr>
-<tr>
-<td>Radio OpenSprinklerPro</td>
-<td><code>get_ieee802154_config</code>, <code>get_zigbee_devices</code>, <code>get_zigbee_status</code>, <code>get_ble_devices</code>, <code>get_rainmaker_status</code></td>
-</tr>
-<tr>
-<td>Automazione</td>
-<td><code>list_adjustments</code>, <code>configure_adjustment</code>, <code>list_monitors</code>, <code>configure_monitor</code></td>
-</tr>
-</tbody>
-</table>
-<p>Il server MCP non ha una schermata UI propria. Per la diagnostica locale usare <strong>Diagnostica di sistema</strong>.</p>
-<p><img alt="Diagnostica di sistema" class="mobile-screenshot" src="../assets/screenshots/pro/it/system-diagnostics.png" /></p>
+<hr />
+<h3 id="firmware-2212">Firmware 2.2.1(2)</h3>
+<ul>
+<li><a href="https://raysfiles.com/os_compiled_firmware/docs/2.2.1/OSUserManual221_2.pdf">Manuale utente (PDF)</a></li>
+<li><a href="https://raysfiles.com/os_compiled_firmware/docs/2.2.1/OSAPI2.2.1_1.pdf">Riferimento API (PDF)</a></li>
+</ul>
+<hr />
+<h3 id="firmware-2211">Firmware 2.2.1(1)</h3>
+<ul>
+<li><a href="https://raysfiles.com/os_compiled_firmware/docs/2.2.1/OSUserManual221_1.pdf">Manuale utente (PDF)</a></li>
+<li><a href="https://raysfiles.com/os_compiled_firmware/docs/2.2.1/OSAPI2.2.1_1.pdf">Riferimento API (PDF)</a></li>
+</ul>
+<hr />
+<h3 id="firmware-2210">Firmware 2.2.1(0)</h3>
+<ul>
+<li><a href="https://raysfiles.com/os_compiled_firmware/docs/2.2.1/OSUserManual221(0).pdf">Manuale utente (PDF)</a></li>
+<li><a href="https://raysfiles.com/os_compiled_firmware/docs/2.2.1/OSAPI2.2.1(0).pdf">Riferimento API (PDF)</a></li>
+</ul>
+<hr />
+<h3 id="firmware-220">Firmware 2.2.0</h3>
+<ul>
+<li><a href="https://raysfiles.com/os_compiled_firmware/docs/2.2.0/OSUserManual220(1).pdf">Manuale utente (PDF)</a></li>
+<li><a href="https://raysfiles.com/os_compiled_firmware/docs/2.2.0/OSAPI2.2.0(1).pdf">Riferimento API (PDF)</a></li>
+</ul>
+<hr />
               
             </div>
           </div><footer>

@@ -38,6 +38,12 @@ function initLanguageSelector() {
       fr: "analog-sensor-config-fr",
       it: "analog-sensor-config-it"
     },
+    "pro-api-endpoints": {
+      en: "pro-api-endpoints",
+      de: "pro-api-endpoints-de",
+      fr: "pro-api-endpoints-fr",
+      it: "pro-api-endpoints-it"
+    },
     "mcp-server": {
       en: "mcp-server",
       de: "mcp-server-de",
@@ -55,6 +61,30 @@ function initLanguageSelector() {
       de: "sensor-automation-de",
       fr: "sensor-automation-fr",
       it: "sensor-automation-it"
+    },
+    "rainmaker-provisioning": {
+      en: "rainmaker-provisioning",
+      de: "rainmaker-provisioning-de",
+      fr: "rainmaker-provisioning-fr",
+      it: "rainmaker-provisioning-it"
+    },
+    "fyta-sensors": {
+      en: "fyta-sensors",
+      de: "fyta-sensors-de",
+      fr: "fyta-sensors-fr",
+      it: "fyta-sensors-it"
+    },
+    troubleshooting: {
+      en: "troubleshooting",
+      de: "troubleshooting-de",
+      fr: "troubleshooting-fr",
+      it: "troubleshooting-it"
+    },
+    archive: {
+      en: "archive",
+      de: "archive-de",
+      fr: "archive-fr",
+      it: "archive-it"
     }
   };
 

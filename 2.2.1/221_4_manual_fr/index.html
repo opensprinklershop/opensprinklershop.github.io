@@ -286,7 +286,7 @@ En outre, OpenSprinkler v3 est disponible en trois modèles d’alimentation :</
 </ul>
 <p><strong><u>Sélectionner le nombre de zones</u> :</strong> Le firmware détecte automatiquement l’index d’extension le plus élevé, mais vous devez quand même <strong>définir manuellement le nombre total de zones</strong> dans les paramètres logiciels. Vous pouvez activer plus de zones que celles physiquement disponibles, afin de les utiliser comme <strong>zones virtuelles</strong> (Remote/HTTP(S)/RF). Voir <a href="#station-cards">Types de stations</a>.</p>
 <hr />
-<h4 id="etape-4-configuration-du-wifi-ethernet">Étape 4 : Configuration du WiFi / Ethernet</h4>
+<h4 id="step-4-setting-up-wifi-ethernet">Étape 4 : Configuration du WiFi / Ethernet</h4>
 <p><strong>WiFi (OpenSprinkler v3 toutes versions)</strong></p>
 <ol>
 <li>Au premier démarrage (ou après une réinitialisation WiFi), OpenSprinkler démarre en <strong>mode AP (point d’accès)</strong>, diffusant un SSID comme <code>OS_xxxxxx</code> affiché sur l’écran LCD. Connectez votre téléphone/ordinateur à ce SSID ouvert.<ul>
@@ -484,7 +484,7 @@ En outre, OpenSprinkler v3 est disponible en trois modèles d’alimentation :</
 <li><strong>Disable Operation :</strong> Désactiver les opérations de zones. Utilisez-le lorsque le système restera inactif pendant une période prolongée.</li>
 <li><strong>Change Password :</strong> Changer le mot de passe de l’appareil.</li>
 <li><strong>Reboot OpenSprinkler :</strong> Effectuer un redémarrage logiciel.</li>
-<li><strong>System Diagnostics :</strong> Afficher des données de diagnostic détaillées, notamment l’horodatage et la raison du dernier redémarrage, le dernier appel météo, le code de réponse, les données météo et l’état de connexion OpenThings Cloud (OTC).</li>
+<li><strong>Diagnostics du système :</strong> Afficher des données de diagnostic détaillées, notamment l’horodatage et la raison du dernier redémarrage, le dernier appel météo, le code de réponse, les données météo et l’état de connexion OpenThings Cloud (OTC).</li>
 </ul>
 <hr />
 <h4 id="etat-de-lappareil">État de l’appareil</h4>
@@ -654,7 +654,7 @@ Si d’autres zones sont en file d’attente dans le <strong>même groupe séque
 <li><strong>Adjust Interval Programs using Multi-Day Average :</strong> Cette option est disponible pour les méthodes <strong>Zimmerman ou ETo</strong>. L’activer permet à <strong>tous les programmes à intervalle</strong> d’appliquer le <strong>niveau d’arrosage moyen</strong> sur l’intervalle du programme, plutôt que seulement celui du jour précédent. Par exemple, un programme qui s’exécute tous les <code>4</code> jours utilise la moyenne sur 4 jours. Pour les programmes qui ne s’exécutent pas quotidiennement, cela fournit des ajustements plus précis reflétant tous les changements météo depuis la dernière exécution.<ul>
 <li>S’applique uniquement si l’indicateur <strong>Use Weather</strong> est activé pour ce programme.</li>
 <li>Limité par les données historiques du fournisseur (par ex. Apple = <code>10</code> jours). Si la longueur de l’intervalle dépasse les données météo disponibles, la plage maximale disponible est utilisée.</li>
-<li>Le tableau des moyennes multi-jours est affiché dans <strong>System Diagnostics</strong>.</li>
+<li>Le tableau des moyennes multi-jours est affiché dans <strong>Diagnostics du système</strong>.</li>
 </ul>
 </li>
 <li>
@@ -663,7 +663,7 @@ Si d’autres zones sont en file d’attente dans le <strong>même groupe séque
 <li><strong>Rain :</strong> Ignorer l’arrosage si <strong>Total Forecast Rain</strong> &gt; une quantité définie sur un nombre de jours défini par l’utilisateur (par ex. <code>0.5in</code> dans les <code>3</code> prochains jours). Définir l’une ou l’autre valeur à <code>0</code> désactive cette règle.<br>La capacité de prévision est limitée par le fournisseur météo sélectionné (Apple = <code>10</code> jours). Si le nombre de jours de prévision dépasse les données, la plage maximale disponible est utilisée.</li>
 <li><strong>Temperature :</strong> Ignorer l’arrosage si <strong>Current Temperature</strong> &lt; une valeur définie (par ex. <code>50°F</code> ou <code>10°C</code>). Une valeur de <code>-40</code> (en °F ou °C) désactive cette règle.</li>
 <li><strong>California Rule :</strong> Ancienne règle qui ignore l’arrosage si les précipitations sont <code>&gt;0.1"</code> au cours des dernières <code>48</code> heures.</li>
-<li>Les <strong>restrictions météo actives</strong> apparaissent à la fois sur la page d’accueil et dans System Diagnostics.</li>
+<li>Les <strong>restrictions météo actives</strong> apparaissent à la fois sur la page d’accueil et dans Diagnostics du système.</li>
 </ul>
 </li>
 <li>
@@ -883,7 +883,8 @@ Les heures de démarrage répétées peuvent également se prolonger pendant la 
 <hr />
 <h4 id="program-name-annotations">Annotations de nom de programme</h4>
 <p>Les noms de programmes peuvent inclure des annotations pour personnaliser l’ordre d’exécution des stations ou déclencher des actions spéciales.</p>
-<p><span class="hllight"><strong>Annotation d’ordre des stations</strong></span> Par défaut, un programme exécute les stations dans l’ordre croissant de leur index (du plus bas au plus haut). Pour modifier ce comportement, ajoutez au nom du programme un <code>&gt;</code> suivi de l’une des lettres suivantes. </p>
+<p><a id="program-name-annotations"></a>
+<span class="hllight"><strong>Annotation d’ordre des stations</strong></span> Par défaut, un programme exécute les stations dans l’ordre croissant de leur index (du plus bas au plus haut). Pour modifier ce comportement, ajoutez au nom du programme un <code>&gt;</code> suivi de l’une des lettres suivantes. </p>
 <ul>
 <li><code>I</code> : Décroissant par index de station (du plus élevé au plus bas)</li>
 <li><code>n</code> : Croissant par nom de station</li>
@@ -924,7 +925,7 @@ Les heures de démarrage répétées peuvent également se prolonger pendant la 
 </li>
 </ul>
 <hr />
-<h4 id="attribut-de-groupe-dune-zone">Attribut de groupe d’une zone</h4>
+<h4 id="zones-group-attribute">Attribut de groupe d’une zone</h4>
 <p>OpenSprinkler prend en charge les opérations de zones <strong>séquentielles</strong> (l’une après l’autre) et <strong>parallèles</strong> (concurrentes), gérées par l’attribut <strong>Sequential Group</strong> de chaque zone.</p>
 <ul>
 <li>
@@ -953,7 +954,8 @@ Exemple : si les zones 1–3 sont dans le groupe <code>A</code>, et 4–6 dans l
 <p>Pour plus de détails sur le format des données de journal et des scripts d’exemple pour exporter les journaux (par ex. sous forme de feuilles de calcul), reportez-vous à la <a href="../221_4_api/#18-get-log-data-jl">documentation de l’API OpenSprinkler</a>.</p>
 <hr class="double">
 
-<h3 id="mise-a-jour-du-firmware">Mise à jour du firmware</h3>
+<p><a id="mise-a-jour-du-firmware"></a></p>
+<h3 id="firmware-update">Mise à jour du firmware</h3>
 <h4 class="hltitle" id="opensprinklerpro-ota-en-ligne">OpenSprinklerPro OTA en ligne</h4>
 <p>OpenSprinklerPro utilise <strong>Menu latéral → Online Update</strong>. Le dialogue vérifie le manifeste, crée une sauvegarde, choisit la variante firmware correcte et affiche la progression. C’est le chemin recommandé pour OpenSprinklerPro et les builds ESP32-C5.</p>
 <p><img alt="OpenSprinklerPro Online Update" class="mobile-screenshot" src="../../assets/screenshots/pro/fr/online-update.png" /></p>

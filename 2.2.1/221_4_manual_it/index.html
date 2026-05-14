@@ -286,7 +286,7 @@ Inoltre, OpenSprinkler v3 è disponibile in tre modelli di alimentazione:</p>
 </ul>
 <p><strong><u>Selezionare il numero di zone</u>:</strong> il firmware rileva automaticamente l'indice più alto dell'espansore, ma è comunque <strong>necessario impostare manualmente il numero totale di zone</strong> nelle impostazioni software. È possibile abilitare più zone di quelle fisicamente disponibili, per usarle come <strong>zone virtuali</strong> (Remote/HTTP(S)/RF). Vedere <a href="#station-cards">Tipi di stazione</a>.</p>
 <hr />
-<h4 id="passo-4-configurazione-wifi-ethernet">Passo 4: Configurazione WiFi / Ethernet</h4>
+<h4 id="step-4-setting-up-wifi-ethernet">Passo 4: Configurazione WiFi / Ethernet</h4>
 <p><strong>WiFi (tutte le versioni OpenSprinkler v3)</strong></p>
 <ol>
 <li>Al primo avvio (o dopo il reset WiFi), OpenSprinkler si avvia in <strong>modalità AP (Access Point)</strong>, trasmettendo un SSID come <code>OS_xxxxxx</code> mostrato sul LCD. Collegare il telefono/computer a questo SSID aperto.<ul>
@@ -484,7 +484,7 @@ Inoltre, OpenSprinkler v3 è disponibile in tre modelli di alimentazione:</p>
 <li><strong>Disable Operation:</strong> disabilita le operazioni delle zone. Usarlo quando il sistema rimarrà inattivo per un periodo prolungato.</li>
 <li><strong>Change Password:</strong> cambia la password del dispositivo.</li>
 <li><strong>Reboot OpenSprinkler:</strong> esegue un riavvio software.</li>
-<li><strong>System Diagnostics:</strong> visualizza dati diagnostici dettagliati, inclusi timestamp e motivo dell'ultimo riavvio, ultima chiamata meteo, codice di risposta, dati meteo e stato della connessione OpenThings Cloud (OTC).</li>
+<li><strong>Diagnostica di sistema:</strong> visualizza dati diagnostici dettagliati, inclusi timestamp e motivo dell'ultimo riavvio, ultima chiamata meteo, codice di risposta, dati meteo e stato della connessione OpenThings Cloud (OTC).</li>
 </ul>
 <hr />
 <h4 id="stato-del-dispositivo">Stato del dispositivo</h4>
@@ -654,7 +654,7 @@ Se ci sono altre zone in coda nello <strong>stesso gruppo sequenziale</strong>, 
 <li><strong>Adjust Interval Programs using Multi-Day Average:</strong> questa opzione è disponibile per i metodi <strong>Zimmerman o ETo</strong>. Abilitarla consente a <strong>tutti i programmi a intervallo</strong> di applicare il <strong>livello medio di irrigazione</strong> sull'intervallo del programma, anziché solo quello del giorno precedente. Ad esempio, un programma che viene eseguito ogni <code>4</code> giorni usa la media di 4 giorni. Per i programmi che non vengono eseguiti quotidianamente, questo fornisce regolazioni più accurate che riflettono tutti i cambiamenti meteo dall'ultima esecuzione.<ul>
 <li>Si applica solo se il flag <strong>Use Weather</strong> è abilitato per quel programma.</li>
 <li>Limitato dai dati storici del provider (ad es. Apple = <code>10</code> giorni). Se la lunghezza dell'intervallo supera i dati meteo disponibili, viene usato l'intervallo massimo disponibile.</li>
-<li>L'array delle medie multi-giorno viene mostrato in <strong>System Diagnostics</strong>.</li>
+<li>L'array delle medie multi-giorno viene mostrato in <strong>Diagnostica di sistema</strong>.</li>
 </ul>
 </li>
 <li>
@@ -663,7 +663,7 @@ Se ci sono altre zone in coda nello <strong>stesso gruppo sequenziale</strong>, 
 <li><strong>Rain:</strong> salta l'irrigazione se <strong>Total Forecast Rain</strong> &gt; una quantità impostata su un numero di giorni definito dall'utente (ad es. <code>0.5in</code> nei prossimi <code>3</code> giorni). Impostare uno dei due valori a <code>0</code> disabilita questa regola.<br>La capacità di previsione è limitata dal provider meteo selezionato (Apple = <code>10</code> giorni). Se il numero di giorni di previsione supera i dati, viene usato l'intervallo massimo disponibile.</li>
 <li><strong>Temperature:</strong> salta l'irrigazione se <strong>Current Temperature</strong> &lt; un valore impostato (ad es. <code>50°F</code> o <code>10°C</code>). Un valore di <code>-40</code> (sia °F sia °C) disabilita questa regola.</li>
 <li><strong>California Rule:</strong> regola legacy che salta l'irrigazione se <code>&gt;0.1"</code> di pioggia nelle ultime <code>48</code> ore.</li>
-<li>Le <strong>restrizioni meteo attive</strong> appaiono sia sulla homepage sia in System Diagnostics.</li>
+<li>Le <strong>restrizioni meteo attive</strong> appaiono sia sulla homepage sia in Diagnostica di sistema.</li>
 </ul>
 </li>
 <li>
@@ -938,7 +938,8 @@ Esempio: se le zone 1–3 sono nel gruppo <code>A</code>, e 4–6 nel gruppo <co
 <p><strong>Gruppo parallelo:</strong> funziona indipendentemente da tutte le altre zone, utile per luci, pompe, riscaldatori o altri dispositivi non di irrigazione (che possono funzionare in parallelo).</p>
 </li>
 </ul>
-<p><u><strong>NOTA</strong></u>: i <strong>firmware precedenti</strong> usavano un singolo flag <strong>Sequential</strong> per tutte le zone, che di fatto metteva tutte le zone in un unico gruppo sequenziale. Quel flag è stato sostituito qui dal sistema multi-gruppo, che offre maggiore flessibilità consentendo più gruppi indipendenti.</p>
+<p><a id="zones-group-attribute"></a>
+<u><strong>NOTA</strong></u>: i <strong>firmware precedenti</strong> usavano un singolo flag <strong>Sequential</strong> per tutte le zone, che di fatto metteva tutte le zone in un unico gruppo sequenziale. Quel flag è stato sostituito qui dal sistema multi-gruppo, che offre maggiore flessibilità consentendo più gruppi indipendenti.</p>
 <hr class="double">
 
 <h3 id="log">Log</h3>
@@ -953,7 +954,8 @@ Esempio: se le zone 1–3 sono nel gruppo <code>A</code>, e 4–6 nel gruppo <co
 <p>Per dettagli sul formato dei dati di log e script di esempio per esportare i log (ad es. come fogli di calcolo), consultare la <a href="../221_4_api/#18-get-log-data-jl">documentazione API OpenSprinkler</a>.</p>
 <hr class="double">
 
-<h3 id="aggiornamento-firmware">Aggiornamento firmware</h3>
+<p><a id="aggiornamento-firmware"></a></p>
+<h3 id="firmware-update">Aggiornamento firmware</h3>
 <h4 class="hltitle" id="opensprinklerpro-ota-online">OpenSprinklerPro OTA online</h4>
 <p>OpenSprinklerPro usa <strong>Menu laterale → Online Update</strong>. Il dialogo controlla il manifesto, crea un backup, sceglie la variante firmware corretta e mostra il progresso. È il percorso consigliato per OpenSprinklerPro e build ESP32-C5.</p>
 <p><img alt="OpenSprinklerPro Online Update" class="mobile-screenshot" src="../../assets/screenshots/pro/it/online-update.png" /></p>

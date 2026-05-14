@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/troubleshooting/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/troubleshooting-de/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Troubleshooting - OpenSprinkler Shop Documentation</title>
+    <title>Troubleshooting de - OpenSprinkler Shop Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,9 +13,9 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Troubleshooting";
-        var mkdocs_page_input_path = "troubleshooting.md";
-        var mkdocs_page_url = "/troubleshooting/";
+        var mkdocs_page_name = "Troubleshooting de";
+        var mkdocs_page_input_path = "troubleshooting-de.md";
+        var mkdocs_page_url = "/troubleshooting-de/";
       </script>
     
     <!--[if lt IE 9]>
@@ -77,24 +77,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../fyta-sensors/">FYTA Sensors</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Troubleshooting</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#identify-your-hardware-firmware">Identify Your Hardware &amp; Firmware</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#wiring-and-solenoids">Wiring and Solenoids</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#power-and-expander">Power and Expander</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#reset-and-configurations">Reset and Configurations</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#connectivity">Connectivity</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ui-app-time-and-lcd">UI, App, Time, and LCD</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ospi-specific">OSPi Specific</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Archived</span></p>
@@ -120,9 +104,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Troubleshooting</li>
+      <li class="breadcrumb-item active">Troubleshooting de</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/troubleshooting.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/troubleshooting-de.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -130,16 +114,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="troubleshooting-instructions">Troubleshooting Instructions</h2>
+                <h2 id="fehlerbehebung">Fehlerbehebung</h2>
+<p>Diese vollständige deutsche Seite fasst die wichtigsten Schritte zur Fehlerbehebung zusammen. Technische Menü- und API-Bezeichnungen bleiben dort unverändert, wo sie exakt in der UI erscheinen.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This page covers the most common troubleshooting steps. For additional technical support, visit the <a href="https://support.openthings.io">Support Portal</a> or the <a href="https://opensprinkler.com/forums/">Community Forums</a>. Before submitting a support ticket, make sure you have carefully read the <a href="https://opensprinkler.github.io/OpenSprinkler-Firmware/2.2.1/221_4_manual/">User Manual</a>, <a href="https://opensprinkler.github.io/OpenSprinkler-Firmware/faq/">FAQs</a>, and common issues listed on this page.</p>
 </div>
-<h3 id="identify-your-hardware-firmware">Identify Your Hardware &amp; Firmware</h3>
+<h3 id="hardware-und-firmware-identifizieren">Hardware und Firmware identifizieren</h3>
 <p>Before seeking support, you must identify your OpenSprinkler's hardware and firmware versions.</p>
 <p><strong>Find your Hardware Version</strong></p>
 <ul>
-<li><strong>From App/Web UI:</strong> At the homepage, swipe left to right to open the side menu. Tap <strong>About</strong>; you will see the hardware version listed there.</li>
+<li><strong>From App/Web UI:</strong> At the homepage, swipe left to right to open the Seitenmenü. Tap <strong>About</strong>; you will see the hardware version listed there.</li>
 <li><strong>During Reboot:</strong> Power cycle the controller; the hardware version is briefly shown on the LCD during booting.</li>
 <li><strong>Check Label:</strong> The back panel of your controller usually has a label showing the version.</li>
 <li><strong>Otherwise:</strong> Check your order details, attach a clear photo of your controller in a support ticket.</li>
@@ -147,7 +132,7 @@
 <hr />
 <p><strong>Find your Firmware Version</strong></p>
 <ul>
-<li><strong>From App/Web UI:</strong> At the homepage, swipe left to right to open the side menu. Tap <strong>About</strong>, you will see the firmware version listed there.</li>
+<li><strong>From App/Web UI:</strong> At the homepage, swipe left to right to open the Seitenmenü. Tap <strong>About</strong>, you will see the firmware version listed there.</li>
 <li><strong>During Reboot:</strong> Power cycle the controller; the firmware version is briefly shown on the LCD during booting.</li>
 </ul>
 <hr />
@@ -161,7 +146,8 @@ The <strong>About</strong> page shows three different version numbers:</p>
 </ul>
 <hr class="double">
 
-<h3 id="wiring-and-solenoids">Wiring and Solenoids</h3>
+<p><a id="wiring-and-solenoids"></a></p>
+<h3 id="verkabelung-und-magnetventile">Verkabelung und Magnetventile</h3>
 <p><strong>Solenoid Resistance Test</strong>
 <span class="vsp1"></span>
 Before powering on the system for the first time, please perform a solenoid resistance test. This test can quickly and effectively determine if a problem is with faulty solenoids and wiring. You will need a <strong>multimeter</strong> set to measure <strong>Resistance</strong> (Ω).</p>
@@ -202,7 +188,7 @@ Same root cause as above: you likely used a <strong>DC adapter</strong> on an <s
 First, perform a <a href="#wiring-and-solenoids">solenoid resistance test</a> to rule out solenoid or wiring faults. If readings are normal, open the controller enclosure, take a clear photo of the PCB, and check for visible damage (burn marks/discoloration, bulged components). If you’re unsure, open a support ticket and attach the photo — include your hardware/firmware versions and describe the symptoms.</p>
 <hr class="double">
 
-<h3 id="power-and-expander">Power and Expander</h3>
+<h3 id="stromversorgung-und-erweiterungen">Stromversorgung und Erweiterungen</h3>
 <p><strong>My controller doesn't power on.</strong>
 <span class="vsp1"></span>
 If the controller no longer powers on (and the LCD displays nothing), follow these steps:</p>
@@ -257,7 +243,8 @@ First confirm the expander is detected (see the question above). Note that detec
 </ul>
 <hr class="double">
 
-<h3 id="reset-and-configurations">Reset and Configurations</h3>
+<p><a id="reset-and-configurations"></a></p>
+<h3 id="reset-und-konfiguration">Reset und Konfiguration</h3>
 <p><strong>What's the default device password?</strong>
 <span class="vsp1"></span>
 After a factory reset, the default password is <code>opendoor</code>. There is NO username. This password is for accessing OpenSprinkler's homepage / UI. It's <strong>NOT</strong> your <code>opensprinkler.com</code> login credential, nor your WiFi password. For security, please change this password after your first login.</p>
@@ -274,7 +261,7 @@ You can use buttons on the controller to bypass the device password. To do so:</
 <hr />
 <p><strong>I changed my WiFi router/SSID/password. How do I reset WiFi?</strong>
 <span class="vsp1"></span>
-<strong>Reset to AP (Access Point) mode</strong>: hold <strong>B3</strong>, then press <strong>B2</strong> within 1-2 seconds (similar to pressing Ctrl+C on a keyboard). Confirm on the LCD when prompted. The unit will reboot into AP mode. Follow the <a href="../2.2.1/221_4_manual/#step-4-setting-up-wifi-ethernet">WiFi Configuration step</a> in the user manual.</p>
+<strong>Reset to AP (Access Point) mode</strong>: hold <strong>B3</strong>, then press <strong>B2</strong> within 1-2 seconds (similar to pressing Ctrl+C on a keyboard). Confirm on the LCD when prompted. The unit will reboot into AP mode. Follow the <a href="../2.2.1/221_4_manual_de/#step-4-setting-up-wifi-ethernet">WiFi Configuration step</a> in the user manual.</p>
 <p>If Reset to AP doesn't work, perform a Factory Reset (see below).</p>
 <hr />
 <p><strong>How to perform a factory reset?</strong></p>
@@ -296,14 +283,14 @@ You can use buttons on the controller to bypass the device password. To do so:</
 <p class="admonition-title">Info</p>
 <p>Regular exports make it easy to restore programs and settings later. They’re also helpful to attach when opening a support ticket so we can reproduce software-related issues.</p>
 </div>
-<p>At the controller's homepage, swipe left to right (or tap the upper-left menu icon) to open the side menu, then tap <strong>Export Configuration</strong> to a file.</p>
+<p>At the controller's homepage, swipe left to right (or tap the upper-left menu icon) to open the Seitenmenü, then tap <strong>Konfiguration exportieren</strong> to a file.</p>
 <hr />
 <p><strong>I get a blank page when accessing the controller. How do I save the configurations?</strong>
 <span class="vsp1"></span>
 See <a href="#ui-app-time-and-lcd">Blank page troubleshooting</a> below. In Step 4, use the <code>/ja</code> endpoint to fetch your settings directly, and save them as a file.</p>
 <hr class="double">
 
-<h3 id="connectivity">Connectivity</h3>
+<h3 id="verbindung">Verbindung</h3>
 <p><strong>WiFi connection issues</strong>
 <span class="vsp1"></span>
 If your OpenSprinkler v3.x fails to join or stay connected to your WiFi network, try these steps:</p>
@@ -339,19 +326,20 @@ If your controller can't connect or stay connected via wired Ethernet, try these
 <li><strong>Disable PoE</strong> (Power-over-Ethernet) on that port: OpenSprinkler’s wired module is <strong>not PoE-compatible</strong>. PoE-enabled port can cause it to malfunction.</li>
 <li><strong>DHCP Setting:</strong> Leave the controller on DHCP, and set a <strong>DHCP reservation</strong> (IP-to-Mac) on your router to assign it a fixed IP. If you must use Static IP, verify <strong>Gateway IP, DNS, Subnet Mask</strong> are all correct and compatible with your router settings.</li>
 <li><strong>Use a dedicated router:</strong> If your wired network is very busy, the most effective solution is to place OpenSprinkler on a dedicated router to isolate it from heavy traffic. </li>
-<li><strong>Set an auto-reboot program:</strong> If the controller connects initially but doesn't stay connected, a work-around is to set an auto-reboot program (daily or any regular interval of your choice). See <a href="../2.2.1/221_4_manual/#program-name-annotations">Program Name Annotation</a> in the user manual.</li>
+<li><strong>Set an auto-reboot program:</strong> If the controller connects initially but doesn't stay connected, a work-around is to set an auto-reboot program (daily or any regular interval of your choice). See <a href="../2.2.1/221_4_manual_de/#program-name-annotations">Program Name Annotation</a> in the user manual.</li>
 </ol>
 <p><strong><u>For OSPi</u>:</strong> Networking is managed by RPi. Ensure RPi has adequate power (OSPi supplies up to 500 mA. RPi 3/4/5 may need extra power via USB, otherwise network may be unstable).</p>
 <hr />
 <p><strong>I can access the controller on my local network, but not when I am away.</strong>
 <span class="vsp1"></span>
-Remote access requires using an <strong>OpenThings Cloud (OTC) token</strong>. To check OTC status, from the homepage, swipe left to right to open the side menu, tap <strong>System Diagnostics</strong>. Make sure OTC status is <strong>Connected</strong>. In the OpenSprinkler mobile app, use the OTC token (instead of the controller's IP address) for remote access.</p>
+Remote access requires using an <strong>OpenThings Cloud (OTC) token</strong>. To check OTC status, from the homepage, swipe left to right to open the Seitenmenü, tap <strong>System-Diagnose</strong>. Make sure OTC status is <strong>Connected</strong>. In the OpenSprinkler mobile app, use the OTC token (instead of the controller's IP address) for remote access.</p>
 <hr class="double">
 
-<h3 id="ui-app-time-and-lcd">UI, App, Time, and LCD</h3>
+<p><a id="ui-app-time-and-lcd"></a></p>
+<h3 id="ui-app-zeit-und-lcd">UI, App, Zeit und LCD</h3>
 <p><strong>Blank page when opening the controller's homepage</strong></p>
 <ol>
-<li><strong>Firmware too old:</strong> If your controller's firmware is <strong>older than <code>2.2.0</code></strong>, update to the latest. Older firmwares can't parse newer weather data format, causing corruption and blank homepage. See <a href="../2.2.1/221_4_manual/#firmware-update">firmware update instructions</a>.</li>
+<li><strong>Firmware too old:</strong> If your controller's firmware is <strong>older than <code>2.2.0</code></strong>, update to the latest. Older firmwares can't parse newer weather data format, causing corruption and blank homepage. See <a href="../2.2.1/221_4_manual_de/#firmware-update">firmware update instructions</a>.</li>
 <li><strong>Check for errors:</strong> On a desktop/laptop, open a browser window, turn on <strong>Developer Console</strong> (e.g. in Chrome, go to <strong>Settings</strong> → <strong>More Tools</strong> → <strong>Developer Tools</strong> → click the <strong>Console</strong> tab). Open the controller's homepage and note any errors in the console window.</li>
 <li><strong>Reset UI Source:</strong> If you used a custom UI, reset it to the default: visit <code>http://os-ip/su</code> where <code>os-ip</code> is your controller's IP address. Reset the <code>UI Source</code> to the default.</li>
 <li><strong>Diagnose with API test script:</strong> <a download="TestOSAPI220.html" href="../assets/scripts/TestOSAPI220.html">Download the API test script</a>. Open it in a browser, test your controller with the <code>/ja</code> (JSON All) endpoint. If you see an <strong>INVALID JSON</strong> error, the stored data is corrupted, which is why the homepage hangs.</li>
@@ -370,7 +358,7 @@ Starting with firmware 2.2.0, the old <strong>Sequential</strong> flag is replac
 <li>Each zone can be assigned to <strong>one of four Sequential groups</strong> or to the <strong>Parallel</strong> group.</li>
 <li>Putting a zone in <strong>Parallel</strong> group is equivalent to removing the <strong>Sequential</strong> flag in older firmwares.</li>
 </ul>
-<p>For details, refer to the <a href="../2.2.1/221_4_manual/#zones-group-attribute">Firmware User Manual</a> and the <a href="https://openthings.freshdesk.com/support/solutions/articles/5000860920-videos-introduction-to-opensprinkler-v3">Video Tutorial</a>.</p>
+<p>For details, refer to the <a href="../2.2.1/221_4_manual_de/#zones-group-attribute">Firmware User Manual</a> and the <a href="https://openthings.freshdesk.com/support/solutions/articles/5000860920-videos-introduction-to-opensprinkler-v3">Video Tutorial</a>.</p>
 <hr />
 <p><strong>I am getting an error when accessing the logs.</strong>
 <span class="vsp1"></span>
@@ -427,7 +415,7 @@ This is usually caused by that zone being set to <code>Ignore Rain</code> or <co
 <hr />
 <p><strong>How do I verify the Weather Adjustment is working?</strong>
 <span class="vsp1"></span>
-From the homepage, swipe left to right to open the side menu, tap <strong>System Diagnostics</strong>. It shows <strong>Weather Service Details</strong> including error message, if any.</p>
+From the homepage, swipe left to right to open the Seitenmenü, tap <strong>System-Diagnose</strong>. It shows <strong>Weather Service Details</strong> including error message, if any.</p>
 <hr />
 <p><strong>How do I save log data as a spreadsheet?</strong>
 <span class="vsp1"></span>
@@ -440,7 +428,8 @@ If you purchased your OpenSprinkler within one year, it’s covered under warran
 <p>To replace: power off the controller; open the enclosure; carefully unplug the existing LCD; plug in the new LCD to the same position; power on and verify.</p>
 <hr class="double">
 
-<h3 id="ospi-specific">OSPi Specific</h3>
+<p><a id="ospi-specific"></a></p>
+<h3 id="ospi-spezifisch">OSPi-spezifisch</h3>
 <p><strong>Firmware compilation errors</strong>
 <span class="vsp1"></span>
 The OpenSprinkler firmware compiles on modern Raspberry Pi OS (Debian Bullseye/Bookworm/Trixie). Most compilation errors come from an out-of-date OS/toolchain. Upgrading your RPi OS should fix the errors. If issues persist, look up the compilation error message on Google or generative AI for suggested fixes.</p>
@@ -485,10 +474,6 @@ To run a debug build of the firmware:</p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../fyta-sensors/" class="btn btn-neutral float-left" title="FYTA Sensors"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../archive/" class="btn btn-neutral float-right" title="Previous Manuals and API docs">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -514,10 +499,6 @@ To run a debug build of the firmware:</p>
         </span>
     
     
-      <span><a href="../fyta-sensors/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../archive/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -293,7 +293,7 @@ Darüber hinaus ist OpenSprinkler v3 in drei Leistungsvarianten erhältlich:</p>
 </ul>
 <p><strong><u>Anzahl der Zonen festlegen</u>:</strong> Die Firmware erkennt automatisch den höchsten Expander-Index, Sie müssen aber <strong>die Gesamtzahl der Zonen</strong> manuell in den Software-Einstellungen festlegen. Sie können auch mehr Zonen aktivieren, als physisch vorhanden sind, um sie als <strong>Virtuelle Zonen</strong> (Remote/HTTP(S)/RF) zu nutzen. Siehe <a href="#zonenattribute">Stationstypen</a>.</p>
 <hr />
-<h4 id="schritt-4-wlan-ethernet-einrichten">Schritt 4: WLAN / Ethernet einrichten</h4>
+<h4 id="step-4-setting-up-wifi-ethernet">Schritt 4: WLAN / Ethernet einrichten</h4>
 <p><strong>WLAN (OpenSprinkler v3, alle Versionen)</strong></p>
 <ol>
 <li>Beim ersten Einschalten (oder nach WLAN-Reset) startet OpenSprinkler im <strong>AP-Modus (Access Point)</strong> und sendet eine SSID wie <code>OS_xxxxxx</code>, die auf dem LCD angezeigt wird. Verbinden Sie Ihr Smartphone/Computer mit diesem offenen WLAN.<ul>
@@ -1079,7 +1079,8 @@ Wiederholte Startzeiten können sich auch über Nacht auf den nächsten Tag erst
 <hr />
 <h4 id="programmname-anmerkungen">Programmname-Anmerkungen</h4>
 <p>Programmnamen können Anmerkungen enthalten, um die Stationsreihenfolge anzupassen oder spezielle Aktionen auszulösen.</p>
-<p><span class="hllight"><strong>Anmerkung zur Stationsreihenfolge</strong></span> Standardmäßig führt ein Programm Stationen aufsteigend nach Index aus. Um dies zu ändern, fügen Sie dem Programmnamen ein <code>&gt;</code> gefolgt von einem der folgenden Buchstaben hinzu:</p>
+<p><a id="program-name-annotations"></a>
+<span class="hllight"><strong>Anmerkung zur Stationsreihenfolge</strong></span> Standardmäßig führt ein Programm Stationen aufsteigend nach Index aus. Um dies zu ändern, fügen Sie dem Programmnamen ein <code>&gt;</code> gefolgt von einem der folgenden Buchstaben hinzu:</p>
 <ul>
 <li><code>I</code>: Absteigend nach Stationsindex</li>
 <li><code>n</code>: Aufsteigend nach Stationsname</li>
@@ -1134,7 +1135,8 @@ Beispiel: Zonen 1–3 in Gruppe <code>A</code>, Zonen 4–6 in Gruppe <code>B</c
 <p><strong>Parallelgruppe:</strong> Läuft unabhängig von allen anderen Zonen – nützlich für Lampen, Pumpen, Heizungen oder andere Nicht-Sprinkler-Geräte.</p>
 </li>
 </ul>
-<p><u><strong>HINWEIS</strong></u>: <strong>Frühere Firmwares</strong> verwendeten ein einzelnes <strong>Sequential-Flag</strong> für alle Zonen (eine einzige sequentielle Gruppe). Dieses Flag wurde durch das Multi-Gruppen-System ersetzt, das mehr Flexibilität bietet.</p>
+<p><a id="zones-group-attribute"></a>
+<u><strong>HINWEIS</strong></u>: <strong>Frühere Firmwares</strong> verwendeten ein einzelnes <strong>Sequential-Flag</strong> für alle Zonen (eine einzige sequentielle Gruppe). Dieses Flag wurde durch das Multi-Gruppen-System ersetzt, das mehr Flexibilität bietet.</p>
 <hr class="double">
 
 <h3 id="protokollierung">Protokollierung</h3>
