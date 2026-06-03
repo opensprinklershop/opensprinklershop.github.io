@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/zigbee-de/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Zigbee-Gateway-Integration - OpenSprinkler Shop Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Zigbee-Gateway-Integration";
+        var mkdocs_page_input_path = "zigbee-de.md";
+        var mkdocs_page_url = "/zigbee-de/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenSprinkler Shop Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Base Manual v2.2.1(4)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_manual/">User Manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_api/">API Reference</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OpenSprinklerPro Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../zigbee/">Zigbee Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../analog-sensor-config/">Analog Sensor Config</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MCP and AI</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../mcp-server/">MCP Server</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ai-programming/">AI Program Creation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sensor-automation/">Sensor Automation</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../rainmaker-provisioning/">RainMaker Provisioning</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../fyta-sensors/">FYTA Sensors</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Archived</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../archive/">Previous Manuals and API docs</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenSprinkler Shop Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Zigbee-Gateway-Integration</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/zigbee-de.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="zigbee-gateway-integration">Zigbee-Gateway-Integration</h1>
+<p>OpenSprinklerPro bietet native Zigbee-Koordinierungsfunktionen direkt auf dem ESP32-C5-Board. Die Ein-Chip-Lösung des ESP32-C5 unterstützt 2,4 GHz Dual-Band Wi-Fi 6, Bluetooth 5 (LE) und 802.15.4 (Zigbee 3.0 / Thread).</p>
+<p>Mit der Zigbee-Variante der Firmware fungiert Ihr OpenSprinkler-Controller als vollwertiger Zigbee-Koordinator. Er kann mit Hausautomationssensoren, intelligenten Ventilen, Bodenfeuchtesensoren und Temperaturwächtern gekoppelt werden, um Ihre Bewässerungspläne basierend auf lokalen Echtzeitbedingungen anzupassen.</p>
+<hr />
+<h2 id="gefuhrter-einrichtungs-workflow">📸 Geführter Einrichtungs-Workflow</h2>
+<p>Diese Schritt-für-Schritt-Anleitung zeigt, wie Sie den Funkmodus konfigurieren, Zigbee-Geräte koppeln und deren Attribute analogen Sensoren zuweisen.</p>
+<h3 id="schritt-1-konfiguration-des-funkmodus">Schritt 1: Konfiguration des Funkmodus</h3>
+<p>Stellen Sie zunächst sicher, dass Ihr ESP32-C5-Controller auf den richtigen Funkmodus eingestellt ist. Standardmäßig kann der ESP32-C5 in verschiedenen Modi betrieben werden. Rufen Sie die Modus-Einstellungen über das Seitenmenü unter <strong>Setup ESP32 Mode</strong> auf.</p>
+<p><img alt="Setup ESP32 Mode" class="mobile-screenshot" src="../assets/screenshots/pro/de/esp32-mode.png" /></p>
+<p>Um Zigbee zu nutzen, aktivieren Sie den Modus <strong>Zigbee Gateway / Coordinator</strong>. Dadurch wird das native 802.15.4-Funkmodul für das Zigbee-Kanalmanagement, das Geräte-Routing und den Netzwerkaufbau initialisiert.</p>
+<h3 id="schritt-2-gerate-verbinden-koppeln">Schritt 2: Geräte verbinden &amp; koppeln</h3>
+<p>Sobald der Zigbee-Modus aktiv ist, können Sie über das Seitenmenü auf die Seite <strong>ZigBee Gateway</strong> zugreifen. Auf dieser Seite steuern Sie das Kopplungsfenster und verwalten registrierte physische Geräte.</p>
+<p><img alt="ZigBee Gateway" class="mobile-screenshot" src="../assets/screenshots/pro/de/zigbee-gateway.png" /></p>
+<ol>
+<li>Klicken Sie auf <strong>Permit Join</strong> (Verbinden erlauben, normalerweise für 60 Sekunden), um das Netzwerk für neue Geräte zu öffnen.</li>
+<li>Versetzen Sie Ihr Zigbee-Gerät (z. B. GIEX-Bewässerungsventil, Tuya-Bodensensor oder Xiaomi-Temperatursensor) in den Kopplungsmodus (meist durch Drücken der Kopplungstaste für 5 Sekunden).</li>
+<li>Das Gerät wird erkannt, erhält eine Kurzadresse und wird mit seiner 64-Bit-IEEE-Adresse, dem Gerätetyp und der Signalqualität (LQI) aufgelistet.</li>
+</ol>
+<h3 id="schritt-3-globale-integrations-optionen">Schritt 3: Globale Integrations-Optionen</h3>
+<p>Stellen Sie unter <strong>Optionen bearbeiten</strong> → <strong>Integrationen</strong> (Integrations) sicher, dass Zigbee-Meldungen und Koordinatenbindungen aktiv sind. Dies ermöglicht es dem Controller, externe Statussignale sauber in die lokale Bewässerungssteuerung zu übertragen.</p>
+<p><img alt="Integrations options" class="mobile-screenshot" src="../assets/screenshots/pro/de/options-integrations.png" /></p>
+<h3 id="schritt-4-multi-sensor-und-kalibrierungskonfiguration">Schritt 4: Multi-Sensor- und Kalibrierungskonfiguration</h3>
+<p>Um die Sensordaten für Programmanpassungen zu verwenden, wechseln Sie über das Fußzeilenmenü zu <strong>Analoge Sensoren</strong> (Analog Sensor Configuration). Diese Übersicht zeigt alle aktiven logischen Sensoren, deren physikalische Bindung sowie den Batteriestatus.</p>
+<p><img alt="Sensor configuration" class="mobile-screenshot" src="../assets/screenshots/pro/de/sensor-config.png" /></p>
+<h3 id="schritt-5-hinzufugenbearbeiten-eines-zigbee-sensors">Schritt 5: Hinzufügen/Bearbeiten eines Zigbee-Sensors</h3>
+<p>Klicken Sie auf <strong>Sensor hinzufügen</strong> (Add Sensor) oder bearbeiten Sie einen vorhandenen Sensor, um ein bestimmtes Attribut des Zigbee-Geräts (wie Bodenfeuchtigkeit in Prozent oder Temperatur) einem analogen Sensor-Steckplatz zuzuweisen.</p>
+<p><img alt="New Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-sensor-editor.png" /></p>
+<p>In diesem Editor können Sie:
+- Dem Sensor einen leicht erkennbaren <strong>Namen</strong> geben.
+- Den <strong>Sensortyp</strong> auswählen (z. B. Feuchtigkeit, Temperatur, Batterie usw.).
+- Das <strong>Quellgerät</strong> (Source Device) aus der Dropdown-Liste der gekoppelten Zigbee-Knoten auswählen.
+- Eigene Kalibrierungs-Offsets sowie Schwellenwerte für Auslöser festlegen.</p>
+<hr />
+<h2 id="unterstutzte-gerate-und-technische-details">🛠️ Unterstützte Geräte und technische Details</h2>
+<p>Die interne Firmware unterstützt standardmäßige Zigbee 3.0-Cluster:
+- <strong>0x0402</strong>: Temperaturmessung (Tuya, Xiaomi, Sonoff)
+- <strong>0x0405</strong>: Relative Luftfeuchtigkeit / Bodenfeuchtigkeit (GIEX, Tuya, Moes)
+- <strong>0x0001</strong>: Stromversorgungskonfiguration (Batteriestatus-Berichte)</p>
+<h3 id="multi-kanal-geratezuordnung">Multi-Kanal-Gerätezuordnung</h3>
+<p>Bei Verwendung komplexer mehrkanaliger Ventile (wie dem GIEX GX02 Zweiwege-Beweässerungsventil) teilt der Koordinator die einzelnen Ventilzustände und Telemetriekanäle in separate logische Untergeräte auf. So kann jede Zone vollkommen unabhängig gesteuert und skaliert werden.</p>
+<h3 id="koexistenz-der-funkmodule-coexistence">Koexistenz der Funkmodule (Coexistence)</h3>
+<p>Der ESP32-C5 verwaltet BLE-Scans, Wi-Fi 6 und Zigbee 802.15.4-Pakete gleichzeitig. Während eines BLE-Sensor-Scans senkt das Zigbee Packet Traffic Arbitration (PTA)-Protokoll vorübergehend die Priorität der Zigbee-Endpunkte, um Kollisionen in der Luft und Paketverluste zu vermeiden, und stellt sie sofort wieder her, sobald der aktive Scan pausiert.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../custom.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
