@@ -120,357 +120,357 @@
 <p>Diese vollständige deutsche Seite fasst die wichtigsten Schritte zur Fehlerbehebung zusammen. Technische Menü- und API-Bezeichnungen bleiben dort unverändert, wo sie exakt in der UI erscheinen.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This page covers the most common troubleshooting steps. For additional technical support, visit the <a href="https://support.openthings.io">Support Portal</a> or the <a href="https://opensprinkler.com/forums/">Community Forums</a>. Before submitting a support ticket, make sure you have carefully read the <a href="https://opensprinkler.github.io/OpenSprinkler-Firmware/2.2.1/221_4_manual/">User Manual</a>, <a href="https://opensprinkler.github.io/OpenSprinkler-Firmware/faq/">FAQs</a>, and common issues listed on this page.</p>
+<p>Diese Seite behandelt die häufigsten Schritte zur Fehlerbehebung. Für zusätzlichen technischen Support besuchen Sie das <a href="https://support.openthings.io">Support-Portal</a> oder die <a href="https://opensprinkler.com/forums/">Community-Foren</a>. Bevor Sie ein Support-Ticket einreichen, stellen Sie sicher, dass Sie das <a href="https://opensprinkler.github.io/OpenSprinkler-Firmware/2.2.1/221_4_manual/">Benutzerhandbuch</a>, die <a href="https://opensprinkler.github.io/OpenSprinkler-Firmware/faq/">FAQs</a> und die auf dieser Seite aufgeführten häufigen Probleme sorgfältig gelesen haben.</p>
 </div>
 <h3 id="hardware-und-firmware-identifizieren">Hardware und Firmware identifizieren</h3>
-<p>Before seeking support, you must identify your OpenSprinkler's hardware and firmware versions.</p>
-<p><strong>Find your Hardware Version</strong></p>
+<p>Bevor Sie Support suchen, müssen Sie die Hardware- und Firmware-Versionen Ihres OpenSprinklers identifizieren.</p>
+<p><strong>Finden Sie Ihre Hardware-Version</strong></p>
 <ul>
-<li><strong>From App/Web UI:</strong> At the homepage, swipe left to right to open the Seitenmenü. Tap <strong>About</strong>; you will see the hardware version listed there.</li>
-<li><strong>During Reboot:</strong> Power cycle the controller; the hardware version is briefly shown on the LCD during booting.</li>
-<li><strong>Check Label:</strong> The back panel of your controller usually has a label showing the version.</li>
-<li><strong>Otherwise:</strong> Check your order details, attach a clear photo of your controller in a support ticket.</li>
+<li><strong>Über die App/Web-Oberfläche:</strong> Wischen Sie auf der Startseite von links nach rechts, um das Seitenmenü zu öffnen. Tippen Sie auf <strong>About</strong>; dort finden Sie die Hardware-Version aufgeführt.</li>
+<li><strong>Beim Neustart:</strong> Trennen Sie den Controller kurz vom Strom (Power Cycle); die Hardware-Version wird beim Booten kurz auf dem LCD-Display angezeigt.</li>
+<li><strong>Aufkleber überprüfen:</strong> Auf der Rückseite des Controllers befindet sich in der Regel ein Aufkleber mit der Versionsangabe.</li>
+<li><strong>Andernfalls:</strong> Überprüfen Sie Ihre Bestelldetails oder hängen Sie ein klares Foto Ihres Controllers an ein Support-Ticket an.</li>
 </ul>
 <hr />
-<p><strong>Find your Firmware Version</strong></p>
+<p><strong>Finden Sie Ihre Firmware-Version</strong></p>
 <ul>
-<li><strong>From App/Web UI:</strong> At the homepage, swipe left to right to open the Seitenmenü. Tap <strong>About</strong>, you will see the firmware version listed there.</li>
-<li><strong>During Reboot:</strong> Power cycle the controller; the firmware version is briefly shown on the LCD during booting.</li>
+<li><strong>Über die App/Web-Oberfläche:</strong> Wischen Sie auf der Startseite von links nach rechts, um das Seitenmenü zu öffnen. Tippen Sie auf <strong>About</strong>, dort finden Sie die Firmware-Version aufgeführt.</li>
+<li><strong>Beim Neustart:</strong> Trennen Sie den Controller kurz vom Strom; die Firmware-Version wird beim Booten kurz auf dem LCD-Display angezeigt.</li>
 </ul>
 <hr />
-<p><strong>Understanding Hardware, Firmware, and App Versions</strong>
+<p><strong>Hardware-, Firmware- und App-Versionen verstehen</strong>
 <span class="vsp1"></span>
-The <strong>About</strong> page shows three different version numbers:</p>
+Die Seite <strong>About</strong> zeigt drei verschiedene Versionsnummern:</p>
 <ul>
-<li><strong>Hardware</strong> refers to the physical version. Example: <code>v3.3</code>, <code>OSPi</code>. The only way to upgrade hardware is to buy a new controller.</li>
-<li><strong>Firmware</strong> refers to the software running on the controller. Example: <code>2.2.1(3)</code>. It consists of a <strong>dotted version</strong> (e.g. <code>2.2.1</code>) and <strong>build number</strong> in parentheses. Firmware can be updated, though it is not automatic: you must manually upload a new firmware to it.</li>
-<li><strong>App</strong> refers to the mobile app or web UI running on your phone or browser. Example: <code>2.4.90</code>. The app/UI updates automatically on your phone when a new release is available.</li>
+<li><strong>Hardware</strong> bezieht sich auf die physische Version des Geräts. Beispiel: <code>v3.3</code>, <code>OSPi</code>. Der einzige Weg, ein Upgrade der Hardware durchzuführen, ist der Kauf eines neuen Controllers.</li>
+<li><strong>Firmware</strong> bezieht sich auf die Software, die auf dem Controller läuft. Beispiel: <code>2.2.1(3)</code>. Sie besteht aus einer <strong>durch Punkte getrennten Version</strong> (z. B. <code>2.2.1</code>) und einer <strong>Build-Nummer</strong> in Klammern. Die Firmware kann aktualisiert werden, dies geschieht jedoch nicht automatisch: Sie müssen manuell eine neue Firmware hochladen.</li>
+<li><strong>App</strong> bezieht sich auf die mobile App oder die Web-Benutzeroberfläche, die auf Ihrem Telefon oder im Browser läuft. Beispiel: <code>2.4.90</code>. Die App/Benutzeroberfläche wird automatisch auf Ihrem Telefon aktualisiert, sobald eine neue Version verfügbar ist.</li>
 </ul>
 <hr class="double">
 
 <p><a id="wiring-and-solenoids"></a></p>
 <h3 id="verkabelung-und-magnetventile">Verkabelung und Magnetventile</h3>
-<p><strong>Solenoid Resistance Test</strong>
+<p><strong>Magnetventil-Widerstandstest</strong>
 <span class="vsp1"></span>
-Before powering on the system for the first time, please perform a solenoid resistance test. This test can quickly and effectively determine if a problem is with faulty solenoids and wiring. You will need a <strong>multimeter</strong> set to measure <strong>Resistance</strong> (Ω).</p>
+Bevor Sie das System zum ersten Mal einschalten, führen Sie bitte einen Magnetventil-Widerstandstest durch. Dieser Test kann schnell und effektiv feststellen, ob ein Problem an defekten Magnetventilen oder der Verkabelung liegt. Sie benötigen dazu ein <strong>Multimeter</strong>, das auf <strong>Widerstand</strong> (Ω) eingestellt ist.</p>
 <ol>
-<li>Power off the system. Do <strong>NOT</strong> measure resistance when the system is alive.</li>
-<li>Measure the resistance between the <strong>COM</strong> (common) wire and <strong>each zone</strong> wire individually.</li>
-<li>Check results:<ul>
-<li>A <strong>Normal</strong> 24VAC solenoid should measure 20-60 Ω.</li>
-<li><strong>Very low</strong> resistance (~0 Ω) indicates a shorted solenoid or wiring.</li>
-<li><strong>Very high</strong> resistance (&gt;1000 Ω) indicates a burnt-out solenoid or broken wire.</li>
-<li><strong>Low but not 0</strong> resistance (4-10 Ω) indicates Latching solenoid valves. You should confirm by checking the valve body to see if there is any 'Latch/Latching' label.</li>
+<li>Schalten Sie das System aus. Messen Sie den Widerstand <strong>NICHT</strong>, wenn das System unter Spannung steht.</li>
+<li>Messen Sie den Widerstand zwischen dem <strong>COM</strong>-Draht (gemeinsamer Rückleiter) und <strong>jedem einzelnen Zonen-Draht</strong>.</li>
+<li>Ergebnisse überprüfen:<ul>
+<li>Ein <strong>normales</strong> 24VAC-Magnetventil sollte einen Widerstand von 20–60 Ω aufweisen.</li>
+<li>Ein <strong>sehr niedriger</strong> Widerstand (~0 Ω) weist auf einen Kurzschluss im Magnetventil oder in der Verkabelung hin.</li>
+<li>Ein <strong>sehr hoher</strong> Widerstand (&gt;1000 Ω) weist auf ein durchgebranntes Magnetventil oder einen Kabelbruch hin.</li>
+<li>Ein <strong>niedriger, aber nicht 0</strong> Ω betragender Widerstand (4–10 Ω) weist auf Impuls-Magnetventile (Latching) hin. Überprüfen Sie dies, indem Sie auf dem Ventilgehäuse nach einer Aufschrift wie „Latch“ oder „Latching“ suchen.</li>
 </ul>
 </li>
 </ol>
 <hr />
-<p><strong>AC voltage is present between COM and a zone even when that zone is OFF.</strong>
+<p><strong>Wechselspannung (AC) liegt zwischen COM und einer Zone an, obwohl diese Zone AUS ist.</strong>
 <span class="vsp1"></span>
-If there is no load (i.e. solenoid) connected to the controller, it's normal to measure <strong>stray (floating) voltage</strong>, even when no zone is turned on. This does <strong>NOT</strong> indicate a faulty controller. The stray voltage disappears once solenoids are connected.</p>
+Wenn keine Last (d. h. kein Magnetventil) an den Controller angeschlossen ist, ist es normal, dass eine <strong>Streuspannung (Kriechspannung)</strong> gemessen wird, selbst wenn keine Zone eingeschaltet ist. Dies deutet <strong>NICHT</strong> auf einen defekten Controller hin. Die Streuspannung verschwindet, sobald Magnetventile angeschlossen sind.</p>
 <hr />
-<p><strong>Multiple zones turn on as soon as power is applied.</strong>
+<p><strong>Mehrere Zonen schalten sich ein, sobald Strom angelegt wird.</strong>
 <span class="vsp1"></span>
-You likely used a <strong>DC adapter</strong> on an <strong>AC-powered</strong> controller. AC models require an <strong>AC output</strong> adapter: check the adapter label to see if it specifies <strong>AC</strong> on the output voltage (e.g. 24V<strong>AC</strong>). If unsure, verify with a multimeter. </p>
+Sie haben wahrscheinlich ein <strong>Gleichstrom-Netzteil (DC)</strong> an einem für <strong>Wechselstrom (AC)</strong> ausgelegten Controller verwendet. AC-Modelle benötigen ein Netzteil mit <strong>AC-Ausgang</strong>: Überprüfen Sie das Etikett des Netzteils, ob es <strong>AC</strong> bei der Ausgangsspannung angibt (z. B. 24V<strong>AC</strong>). Wenn Sie unsicher sind, überprüfen Sie dies mit einem Multimeter. </p>
 <hr />
-<p><strong>Zones can turn on but won’t turn off unless power is removed.</strong>
+<p><strong>Zonen lassen sich einschalten, schalten sich aber erst aus, wenn der Strom getrennt wird.</strong>
 <span class="vsp1"></span>
-Same root cause as above: you likely used a <strong>DC adapter</strong> on an <strong>AC-powered</strong> unit.</p>
+Gleiche Ursache wie oben: Sie haben wahrscheinlich ein <strong>DC-Netzteil</strong> an einem <strong>AC-betriebenen</strong> Gerät verwendet.</p>
 <hr />
-<p><strong>None of my zones turns on, or the current draw is very low (e.g. &lt;100mA).</strong></p>
+<p><strong>Keine meiner Zonen schaltet sich ein, oder die Stromaufnahme ist sehr gering (z. B. &lt;100mA).</strong></p>
 <ul>
-<li>Check if the controller still powers on (e.g. if the LCD displays anything). If not, the power adapter may be dead and need to be replaced. Verify with a multimeter.</li>
-<li>Double-check the <strong>COM</strong> (common) wire - a loose or broken COM wire prevents all zones from activating.</li>
-<li>Inspect the <strong>fuse</strong> inside the controller: unplug power, open the enclosure, and inspect the fuse on the lower-left of the circuit board. If the fuse is burnt, replace it with a similar rating.</li>
-<li>Generally, a broken fuse indicates a shorted solenoid, wiring, or opening too many zones at the same time. Perform a <a href="#wiring-and-solenoids">solenoid resistance test</a> right away.</li>
+<li>Überprüfen Sie, ob der Controller überhaupt noch einschaltet (z. B. ob das LCD etwas anzeigt). Wenn nicht, ist das Netzteil möglicherweise defekt und muss ersetzt werden. Überprüfen Sie dies mit einem Multimeter.</li>
+<li>Überprüfen Sie das <strong>COM</strong>-Kabel (gemeinsamer Rückleiter) – ein loses oder gebrochenes COM-Kabel verhindert, dass Zonen aktiviert werden können.</li>
+<li>Überprüfen Sie die <strong>Sicherung</strong> im Controller: Ziehen Sie den Netzstecker, öffnen Sie das Gehäuse und prüfen Sie die Sicherung unten links auf der Leiterplatte. Wenn die Sicherung durchgebrannt ist, ersetzen Sie sie durch eine Sicherung mit dem gleichen Wert.</li>
+<li>Im Allgemeinen deutet eine durchgebrannte Sicherung auf ein kurzgeschlossenes Magnetventil, eine defekte Verkabelung oder das gleichzeitige Öffnen von zu vielen Zonen hin. Führen Sie sofort einen <a href="#wiring-and-solenoids">Magnetventil-Widerstandstest</a> durch.</li>
 </ul>
 <hr />
-<p><strong>Some zones can turn on but others won't.</strong>
+<p><strong>Einige Zonen lassen sich einschalten, andere nicht.</strong>
 <span class="vsp1"></span>
-First, perform a <a href="#wiring-and-solenoids">solenoid resistance test</a> to rule out solenoid or wiring faults. If readings are normal, open the controller enclosure, take a clear photo of the PCB, and check for visible damage (burn marks/discoloration, bulged components). If you’re unsure, open a support ticket and attach the photo — include your hardware/firmware versions and describe the symptoms.</p>
+Führen Sie zuerst einen <a href="#wiring-and-solenoids">Magnetventil-Widerstandstest</a> durch, um Ventil- oder Verkabelungsfehler auszuschließen. Wenn die Messwerte normal sind, öffnen Sie das Controller-Gehäuse, machen Sie ein klares Foto der Leiterplatte und prüfen Sie sie auf sichtbare Schäden (Brandspuren/Verfärbungen, aufgeblähte Komponenten). Wenn Sie sich unsicher sind, eröffnen Sie ein Support-Ticket und hängen Sie das Foto an – geben Sie Ihre Hardware- und Firmware-Versionen an und beschreiben Sie die Symptome.</p>
 <hr class="double">
 
 <h3 id="stromversorgung-und-erweiterungen">Stromversorgung und Erweiterungen</h3>
-<p><strong>My controller doesn't power on.</strong>
+<p><strong>Mein Controller schaltet sich nicht ein.</strong>
 <span class="vsp1"></span>
-If the controller no longer powers on (and the LCD displays nothing), follow these steps:</p>
+Wenn sich der Controller nicht mehr einschaltet (und das LCD nichts anzeigt), führen Sie die folgenden Schritte aus:</p>
 <ol>
-<li><strong>Disconnect everything:</strong> Unplug power and remove all peripherals (expanders, wired Ethernet module, sensors).</li>
-<li><strong>Check the power adapter:</strong> Use a multimeter to check the output of your power adapter. For example, a 24VAC power adapter should output an <strong>AC</strong> voltage about 24-30V; a 7.5VDC adapter should output a DC voltage of 7.5V. If it reads 0 or very low, replace it.</li>
-<li><strong>Visual inspection</strong>: Open the enclosure, visually inspect the components. Check the fuse, and visible damage (burn marks/discoloration, bulged components).</li>
-<li><strong>Contact support:</strong> If the adapter is good and there is no visual damage, plug in power again (but keep all other peripherals disconnected for now). If the problem persists, submit a support ticket and attach a clear, well-lit photo of the circuit board.</li>
+<li><strong>Alles trennen:</strong> Ziehen Sie den Netzstecker und entfernen Sie alle Peripheriegeräte (Erweiterungsmodule, kabelgebundenes Ethernet-Modul, Sensoren).</li>
+<li><strong>Netzteil überprüfen:</strong> Verwenden Sie ein Multimeter, um die Ausgangsspannung Ihres Netzteils zu prüfen. Ein 24VAC-Netzteil sollte eine <strong>AC</strong>-Spannung von etwa 24–30V liefern; ein 7,5VDC-Netzteil sollte eine DC-Spannung von 7,5V aufweisen. Wenn der Messwert 0 oder sehr niedrig ist, ersetzen Sie es.</li>
+<li><strong>Visuelle Inspektion:</strong> Öffnen Sie das Gehäuse und prüfen Sie die Komponenten visuell. Überprüfen Sie die Sicherung und suchen Sie nach sichtbaren Schäden (Brandspuren/Verfärbungen, aufgeblähte Bauteile).</li>
+<li><strong>Support kontaktieren:</strong> Wenn das Netzteil in Ordnung ist und keine sichtbaren Schäden vorliegen, schließen Sie die Stromversorgung wieder an (lassen Sie jedoch alle anderen Peripheriegeräte vorerst getrennt). Wenn das Problem weiterhin besteht, senden Sie ein Support-Ticket ein und hängen Sie ein klares, gut beleuchtetes Foto der Leiterplatte an.</li>
 </ol>
 <hr />
-<p><strong>After connecting an expander, the controller no longer powers on.</strong>
+<p><strong>Nach dem Anschließen eines Erweiterungsmoduls (Expander) lässt sich der Controller nicht mehr einschalten.</strong>
 <span class="vsp1"></span>
-This happens when the expander is accidentally plugged into the <strong>wired Ethernet module</strong> header instead of the <strong>Expander</strong> header. Please <strong>unplug power immediately</strong>, remove the expander, and plug it into the correct connector, marked 'Expander'. See the diagram below.</p>
+Dies passiert, wenn der Expander versehentlich an den Anschluss für das <strong>kabelgebundene Ethernet-Modul</strong> statt an den <strong>Expander</strong>-Anschluss angeschlossen wird. Bitte <strong>trennen Sie sofort die Stromversorgung</strong>, entfernen Sie den Expander und stecken Sie ihn in den richtigen Anschluss, der mit „Expander“ beschriftet ist. Siehe das Diagramm unten.</p>
 <p><img alt="Expander vs. Ethernet" src="../assets/images/expander_vs_ethernet.png" /></p>
 <hr />
-<p><strong>The expander isn't recognized by the controller.</strong></p>
+<p><strong>Das Erweiterungsmodul (Expander) wird vom Controller nicht erkannt.</strong></p>
 <ol>
-<li><strong>Check expander connection:</strong> is it plugged into the correct port (see the question above)?</li>
-<li><strong>Reboot the controller</strong> to allow it to re-detect expanders.</li>
-<li><strong>Verify in the UI:</strong> Go to the controller's homepage → Edit Options → Station Handling. Under <strong>Number of Stations</strong>, it shows the total available stations (including those on expanders):<ul>
-<li>If it shows more than <code>8</code> available, the expanders are detected. Proceed to <strong>choose how many you want enabled</strong> using the dropdown list.</li>
-<li>Otherwise, the ribbon cable or expander itself may be faulty - submit a support ticket and ask for a replacement.</li>
+<li><strong>Expander-Verbindung prüfen:</strong> Ist er an den richtigen Anschluss angeschlossen (siehe Frage oben)?</li>
+<li><strong>Controller neu starten</strong>, damit er die Expander neu erkennen kann.</li>
+<li><strong>In der Benutzeroberfläche überprüfen:</strong> Gehen Sie zur Homepage des Controllers → Edit Options → Station Handling. Unter <strong>Number of Stations</strong> wird die Gesamtzahl der verfügbaren Stationen angezeigt (einschließlich derer auf den Expandern):<ul>
+<li>Wenn dort mehr als <code>8</code> angezeigt werden, werden die Expander erkannt. Fahren Sie fort und <strong>wählen Sie über das Dropdown-Menü aus, wie viele Sie aktivieren möchten</strong>.</li>
+<li>Andernfalls sind das Flachbandkabel oder das Erweiterungsmodul selbst möglicherweise defekt – senden Sie ein Support-Ticket ein und bitten Sie um Ersatz.</li>
 </ul>
 </li>
 </ol>
 <p><img alt="Expander Detect" src="../assets/images/expander_detect.png" /></p>
 <hr />
-<p><strong>I don't see any expanded zones.</strong>
+<p><strong>Ich sehe keine erweiterten Zonen.</strong>
 <span class="vsp1"></span>
-First confirm the expander is detected (see the question above). Note that detection does <strong>not</strong> auto-enable expanded zones. You need to manually choose how many to enable using the dropdown list.  </p>
+Stellen Sie zuerst sicher, dass das Erweiterungsmodul erkannt wurde (siehe Frage oben). Beachten Sie, dass die Erkennung die erweiterten Zonen <strong>nicht</strong> automatisch aktiviert. Sie müssen manuell über das Dropdown-Menü auswählen, wie viele Sie aktivieren möchten.  </p>
 <hr />
-<p><strong>The expander is recognized, but zones on the expander don't work.</strong></p>
+<p><strong>Der Expander wird erkannt, aber die Zonen auf dem Expander funktionieren nicht.</strong></p>
 <ol>
-<li><strong>Confirm detection:</strong> Follow the questions above to verify the expander is detected.</li>
-<li><strong>Check the COM (common) wire:</strong> All zones including expanded must have a common wire that goes to the COM terminal on the main controller. A missing/broken COM wire will cause zones to stop working.</li>
-<li><strong>Perform a <a href="#wiring-and-solenoids">solenoid resistance test</a></strong> to rule out solenoid and wiring issues.</li>
-<li><strong>Check zones on the main controller:</strong> If the first eight zones exhibit the same issue, this is likely due to a broken fuse/COM wire; otherwise, it's more likely an expander-specific issue.</li>
+<li><strong>Erkennung bestätigen:</strong> Befolgen Sie die obigen Fragen, um sicherzustellen, dass der Expander erkannt wurde.</li>
+<li><strong>Überprüfen Sie das COM-Kabel (gemeinsamer Rückleiter):</strong> Alle Zonen, auch die erweiterten, müssen ein gemeinsames COM-Kabel haben, das zum COM-Anschluss des Hauptcontrollers führt. Ein fehlendes oder beschädigtes COM-Kabel führt zum Ausfall der Zonen.</li>
+<li><strong>Führen Sie einen <a href="#wiring-and-solenoids">Magnetventil-Widerstandstest</a></strong> durch, um Ventil- oder Verkabelungsfehler auszuschließen.</li>
+<li><strong>Zonen am Hauptcontroller prüfen:</strong> Wenn die ersten acht Zonen das gleiche Verhalten zeigen, liegt dies wahrscheinlich an einer defekten Sicherung oder einem gebrochenen COM-Kabel; andernfalls handelt es sich eher um ein expanderspezifisches Problem.</li>
 </ol>
 <hr />
-<p><strong>How do I connect multiple expanders?</strong></p>
+<p><strong>Wie schließe ich mehrere Erweiterungsmodule an?</strong></p>
 <ul>
-<li><strong>Power off the main controller:</strong> Always remove power before adding/removing expanders.</li>
-<li><strong>Daisy-chain expanders:</strong> Use the included ribbon cable to link the next expander to the previous.</li>
-<li><strong>Set a unique DIP index:</strong> Each expander <strong>must have a unique index</strong>. The DIP switch is at the back of the expander. Follow the instructions there. If two expanders have the same index, the main controller can't tell them apart. </li>
-<li><strong>Power on and verify:</strong> Follow the questions above to verify all expanders are detected.</li>
+<li><strong>Hauptcontroller ausschalten:</strong> Schalten Sie das Gerät immer aus, bevor Sie Expander hinzufügen oder entfernen.</li>
+<li><strong>Expander in Reihe schalten (Daisy-Chaining):</strong> Verwenden Sie das mitgelieferte Flachbandkabel, um den nächsten Expander mit dem vorherigen zu verbinden.</li>
+<li><strong>Eindeutigen DIP-Index einstellen:</strong> Jeder Expander <strong>muss einen eindeutigen Index haben</strong>. Der DIP-Schalter befindet sich auf der Rückseite des Expanders. Befolgen Sie die dortigen Anweisungen. Wenn zwei Expander denselben Index haben, kann der Hauptcontroller sie nicht voneinander unterscheiden. </li>
+<li><strong>Einschalten und Überprüfen:</strong> Befolgen Sie die obigen Fragen, um sicherzustellen, dass alle Expander erkannt werden.</li>
 </ul>
 <hr />
-<p><strong>I have multiple expanders, some work, others don't.</strong></p>
+<p><strong>Ich habe mehrere Erweiterungsmodule, einige funktionieren, andere nicht.</strong></p>
 <ul>
-<li><strong>Check DIP switch:</strong> as described above. Every expander must have a unique DIP index. </li>
-<li><strong>Test one at a time:</strong> Power off; remove all expanders; connect only one; power on, and verify it's detected and its zones work. Repeat for each additional expander. This helps isolate the bad expander/cable.</li>
+<li><strong>DIP-Schalter prüfen:</strong> Wie oben beschrieben. Jeder Expander muss einen eindeutigen DIP-Index aufweisen. </li>
+<li><strong>Einzeln testen:</strong> Schalten Sie den Strom aus, trennen Sie alle Expander, schließen Sie nur einen einzigen an, schalten Sie den Strom wieder ein und prüfen Sie, ob er erkannt wird und seine Zonen funktionieren. Wiederholen Sie dies für jeden weiteren Expander. Dies hilft, fehlerhafte Expander oder Kabel zu isolieren.</li>
 </ul>
 <hr class="double">
 
 <p><a id="reset-and-configurations"></a></p>
 <h3 id="reset-und-konfiguration">Reset und Konfiguration</h3>
-<p><strong>What's the default device password?</strong>
+<p><strong>Was ist das Standard-Gerätepasswort?</strong>
 <span class="vsp1"></span>
-After a factory reset, the default password is <code>opendoor</code>. There is NO username. This password is for accessing OpenSprinkler's homepage / UI. It's <strong>NOT</strong> your <code>opensprinkler.com</code> login credential, nor your WiFi password. For security, please change this password after your first login.</p>
+Nach dem Zurücksetzen auf die Werkseinstellungen lautet das Standard-Passwort <code>opendoor</code>. Es gibt KEINEN Benutzernamen. Dieses Passwort dient dem Zugriff auf die OpenSprinkler-Homepage / Benutzeroberfläche. Es ist <strong>NICHT</strong> Ihr <code>opensprinkler.com</code>-Anmeldedatensatz und auch nicht Ihr WLAN-Passwort. Bitte ändern Sie dieses Passwort aus Sicherheitsgründen nach Ihrer ersten Anmeldung.</p>
 <hr />
-<p><strong>I forgot the device password. How do I regain access to the controller?</strong>
+<p><strong>Ich habe das Gerätepasswort vergessen. Wie erhalte ich wieder Zugriff auf den Controller?</strong>
 <span class="vsp1"></span>
-You can use buttons on the controller to bypass the device password. To do so:</p>
+Sie können Tasten am Controller verwenden, um das Gerätepasswort zu umgehen. Gehen Sie dazu wie folgt vor:</p>
 <ul>
-<li>Reboot the controller; as soon as the OpenSprinkler logo appears, press and hold pushbutton <strong>B3</strong> until the LCD shows <strong>Setup Options</strong>.</li>
-<li>Click B3 repeatedly until it gets to <strong>Ignore Password</strong>. Click B1/B2 to select <strong>Yes</strong>.</li>
-<li>Hold B3 until the controller reboots. Now you can log in with any password (or blank).</li>
-<li>For security, change the password after logging in, and reset the <strong>Ignore Password</strong> option to No.</li>
+<li>Starten Sie den Controller neu; sobald das OpenSprinkler-Logo erscheint, drücken und halten Sie die Taste <strong>B3</strong> unten rechts am Display, bis das LCD <strong>Setup Options</strong> anzeigt.</li>
+<li>Drücken Sie B3 wiederholt, bis Sie zu <strong>Ignore Password</strong> gelangen. Drücken Sie B1/B2, um <strong>Yes</strong> auszuwählen.</li>
+<li>Halten Sie B3 gedrückt, bis der Controller neu startet. Nun können Sie sich mit einem beliebigen Passwort (oder leer) anmelden.</li>
+<li>Ändern Sie aus Sicherheitsgründen das Passwort nach dem Anmelden und stellen Sie die Option <strong>Ignore Password</strong> wieder auf No zurück.</li>
 </ul>
 <hr />
-<p><strong>I changed my WiFi router/SSID/password. How do I reset WiFi?</strong>
+<p><strong>Ich habe meinen WLAN-Router/SSID/Passwort geändert. Wie setze ich das WLAN zurück?</strong>
 <span class="vsp1"></span>
-<strong>Reset to AP (Access Point) mode</strong>: hold <strong>B3</strong>, then press <strong>B2</strong> within 1-2 seconds (similar to pressing Ctrl+C on a keyboard). Confirm on the LCD when prompted. The unit will reboot into AP mode. Follow the <a href="../2.2.1/221_4_manual_de/#step-4-setting-up-wifi-ethernet">WiFi Configuration step</a> in the user manual.</p>
-<p>If Reset to AP doesn't work, perform a Factory Reset (see below).</p>
+<strong>Zurücksetzen in den AP-Modus (Access Point)</strong>: Halten Sie <strong>B3</strong> gedrückt und drücken Sie innerhalb von 1–2 Sekunden die Taste <strong>B2</strong> (ähnlich wie das Drücken von Strg+C auf einer Tastatur). Bestätigen Sie die Eingabeaufforderung auf dem LCD. Das Gerät startet im AP-Modus neu. Folgen Sie dem <a href="../2.2.1/221_4_manual_de/#step-4-setting-up-wifi-ethernet">Schritt zur WLAN-Konfiguration</a> im Benutzerhandbuch.</p>
+<p>Wenn das Zurücksetzen in den AP-Modus nicht funktioniert, führen Sie ein Zurücksetzen auf Werkseinstellungen (siehe unten) durch.</p>
 <hr />
-<p><strong>How to perform a factory reset?</strong></p>
+<p><strong>Wie führe ich ein Zurücksetzen auf Werkseinstellungen durch?</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>A factory reset erases all programs, settings, logs, and data. If you can still access the controller, export a copy of your current configurations (see below) to easily restore them afterwards.</p>
+<p>Ein Zurücksetzen auf die Werkseinstellungen löscht alle Programme, Einstellungen, Protokolle und Daten. Wenn Sie noch auf den Controller zugreifen können, exportieren Sie eine Kopie Ihrer aktuellen Konfiguration (siehe unten), um diese später einfach wiederherstellen zu können.</p>
 </div>
 <ul>
-<li>Reboot the controller; as soon as the OpenSprinkler logo appears, press and hold <strong>B1</strong> until the LCD shows <strong>Factory Reset?</strong>.</li>
-<li>Verify the answer is <strong>Yes</strong>.</li>
-<li>Press and hold B3 until the controller reboots and completes the reset.</li>
-<li>After reset, the default device password is <code>opendoor</code>. WiFi is in AP mode.</li>
+<li>Starten Sie den Controller neu; sobald das OpenSprinkler-Logo erscheint, drücken und halten Sie <strong>B1</strong>, bis das LCD <strong>Factory Reset?</strong> anzeigt.</li>
+<li>Stellen Sie sicher, dass die Antwort <strong>Yes</strong> lautet.</li>
+<li>Drücken und halten Sie B3, bis der Controller neu startet und den Reset abschließt.</li>
+<li>Nach dem Zurücksetzen lautet das Standard-Gerätepasswort <code>opendoor</code>. WLAN befindet sich im AP-Modus.</li>
 </ul>
-<p>If your controller is OSPi, see <a href="#ospi-specific">OSPi-specific instructions</a>.</p>
+<p>Wenn Ihr Controller ein OSPi ist, lesen Sie die <a href="#ospi-specific">OSPi-spezifischen Anweisungen</a>.</p>
 <hr />
-<p><strong>How do I save the configurations?</strong>
+<p><strong>Wie speichere ich die Konfigurationen?</strong>
 <span class="vsp1"></span></p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Regular exports make it easy to restore programs and settings later. They’re also helpful to attach when opening a support ticket so we can reproduce software-related issues.</p>
+<p>Regelmäßige Exporte erleichtern es Ihnen, Ihre Programme und Einstellungen später wiederherzustellen. Sie eignen sich auch hervorragend als Anhang bei der Eröffnung eines Support-Tickets, damit wir softwarebezogene Probleme reproduzieren können.</p>
 </div>
-<p>At the controller's homepage, swipe left to right (or tap the upper-left menu icon) to open the Seitenmenü, then tap <strong>Konfiguration exportieren</strong> to a file.</p>
+<p>Wischen Sie auf der Homepage des Controllers von links nach rechts (oder tippen Sie auf das Menüsymbol oben links), um das Seitenmenü zu öffnen, und tippen Sie dann auf <strong>Konfiguration exportieren</strong>, um diese in einer Datei zu sichern.</p>
 <hr />
-<p><strong>I get a blank page when accessing the controller. How do I save the configurations?</strong>
+<p><strong>Ich erhalte eine leere Seite beim Zugriff auf den Controller. Wie speichere ich die Konfigurationen?</strong>
 <span class="vsp1"></span>
-See <a href="#ui-app-time-and-lcd">Blank page troubleshooting</a> below. In Step 4, use the <code>/ja</code> endpoint to fetch your settings directly, and save them as a file.</p>
+Siehe <a href="#ui-app-time-and-lcd">Fehlerbehebung bei leerer Seite</a> unten. Verwenden Sie in Schritt 4 den API-Endpunkt <code>/ja</code>, um Ihre Einstellungen direkt abzurufen, und speichern Sie diese als Datei.</p>
 <hr class="double">
 
 <h3 id="verbindung">Verbindung</h3>
-<p><strong>WiFi connection issues</strong>
+<p><strong>WLAN-Verbindungsprobleme</strong>
 <span class="vsp1"></span>
-If your OpenSprinkler v3.x fails to join or stay connected to your WiFi network, try these steps:</p>
+Wenn sich Ihr OpenSprinkler v3.x nicht mit Ihrem WLAN-Netzwerk verbinden kann oder die Verbindung trennt, versuchen Sie es mit folgenden Schritten:</p>
 <ol>
-<li><strong>Check the mode:</strong> Is the controller still in <strong>AP</strong> (Access Point) mode (LCD shows 4 lines, with a fast-blinking dot)? If so, follow WiFi Configuration in the user manual.</li>
-<li><strong>Changed router/SSID/password recently?</strong> Follow the <a href="#reset-and-configurations">Reset WiFi</a> instructions above. </li>
-<li><strong>Router compatibility checklist:</strong><ul>
-<li><strong>2.4 GHz only:</strong> The controller's ESP8266 chip is compatible with 2.4 GHz only. Make sure your router has 2.4 GHz enabled and uses a different SSID than 5 GHz.</li>
-<li><strong>Security:</strong> Use <strong>WPA2-PSK (AES)</strong> or WPA2/WPA mixed. <strong>Avoid WPA3-only</strong> and <strong>Enterprise</strong>.</li>
-<li><strong>Radio mode:</strong> Set 2.4 GHz to Wi-Fi mode to <strong>b/g/n (no ax)</strong>.</li>
-<li><strong>Channeling:</strong> <strong>20 MHz</strong> width; prefer channels <strong>1/6/11</strong>.</li>
-<li><strong>Band steering:</strong> <strong>Disable</strong> band steering / Smart Connect.</li>
-<li><strong>PMF/802.11w</strong> (if applicable): Set to <strong>Optional (not Required)</strong>.</li>
-<li><strong>Isolation/filters:</strong> <strong>Disable AP isolation</strong>, <strong>MAC filtering</strong>, and <strong>captive portal</strong> requirements.</li>
-<li>Turn on <strong>legacy mode</strong> on 2.4 GHz, <strong>disable WMM and airtime fairness</strong>.</li>
-<li>Ensure the controller isn’t blocked by firewall rules.</li>
+<li><strong>Prüfen Sie den Modus:</strong> Befindet sich der Controller noch im <strong>AP</strong>-Modus (Access Point) (LCD zeigt 4 Zeilen mit einem schnell blinkenden Punkt)? Wenn ja, folgen Sie der WLAN-Konfiguration im Benutzerhandbuch.</li>
+<li><strong>Router, SSID oder Passwort kürzlich geändert?</strong> Befolgen Sie die obigen Anweisungen zum <a href="#reset-and-configurations">Zurücksetzen des WLANs</a>. </li>
+<li><strong>Router-Kompatibilitäts-Checkliste:</strong><ul>
+<li><strong>Nur 2,4 GHz:</strong> Der ESP8266-Chip des Controllers ist nur mit 2,4 GHz kompatibel. Stellen Sie sicher, dass an Ihrem Router 2,4 GHz aktiviert ist und es eine andere SSID als die 5 GHz-Frequenz verwendet.</li>
+<li><strong>Sicherheit:</strong> Verwenden Sie <strong>WPA2-PSK (AES)</strong> oder WPA2/WPA Mixed. <strong>Vermeiden Sie reines WPA3</strong> sowie <strong>Enterprise</strong>-Verschlüsselungen.</li>
+<li><strong>Übertragungsmodus:</strong> Stellen Sie den 2,4 GHz WLAN-Modus auf <strong>b/g/n (kein ax)</strong> ein.</li>
+<li><strong>Kanalbreite:</strong> Feste <strong>20 MHz</strong> Breite; bevorzugte Kanäle sind <strong>1 / 6 / 11</strong>.</li>
+<li><strong>Band-Steering:</strong> <strong>Deaktivieren</strong> Sie Band-Steering / Smart Connect.</li>
+<li><strong>PMF/802.11w</strong> (falls zutreffend): Auf <strong>Optional (nicht erforderlich)</strong> einstellen.</li>
+<li><strong>Isolation/Filter:</strong> <strong>Deaktivieren Sie AP-Isolation</strong>, <strong>MAC-Filterung</strong> und alle <strong>Gästefilter (Captive Portal)</strong>.</li>
+<li>Schalten Sie den <strong>Legacy-Modus</strong> auf 2,4 GHz ein, <strong>deaktivieren Sie WMM und Airtime Fairness</strong>.</li>
+<li>Stellen Sie sicher, dass der Controller nicht durch Firewall-Regeln blockiert wird.</li>
 </ul>
 </li>
-<li><strong>Additional troubleshooting:</strong> If problems persist, there may be an ad-hoc compatibility issue between ESP8266 and your router. Try:<ul>
-<li>A different WiFi network (e.g. your phone's 2.4 GHz hotspot) to see if it works.</li>
-<li>Look up your router model + <code>ESP8266</code> for known issues and fixes. For example, if your router is Asus BE7200, search (or use generative AI) <code>ESP8266 issues Asus BE7200</code>.</li>
+<li><strong>Zusätzliche Fehlerbehebung:</strong> Wenn die Probleme weiterhin bestehen, liegt möglicherweise ein spezifisches Kompatibilitätsproblem zwischen dem ESP8266 und Ihrem Router vor. Versuchen Sie:<ul>
+<li>Ein anderes WLAN-Netzwerk (z. B. den 2,4 GHz Hotspot Ihres Telefons), um zu prüfen, ob es funktioniert.</li>
+<li>Suchen Sie nach Ihrem Router-Modell + <code>ESP8266</code> nach bekannten Problemen und Lösungen. Wenn Ihr Router beispielsweise ein Asus BE7200 ist, suchen Sie (oder nutzen Sie generative KI) nach <code>ESP8266-Probleme Asus BE7200</code>.</li>
 </ul>
 </li>
-<li><strong>Use wired Ethernet:</strong> Use a <a href="https://opensprinkler.com/product/wired_ethernet/">wired Ethernet module</a> to bypass WiFi entirely.</li>
+<li><strong>Kabelgebundenes Ethernet verwenden:</strong> Verwenden Sie ein <a href="https://opensprinkler.com/product/wired_ethernet/">kabelgebundenes Ethernet-Modul</a>, um WLAN vollständig zu umgehen.</li>
 </ol>
-<p><strong><u>For OSPi</u>:</strong> Wi-Fi is managed by the Raspberry Pi. Ensure adequate Pi power (OSPi supplies up to 500 mA. RPi 3/4/5 may need extra power via USB, otherwise WiFi may be unstable). </p>
+<p><strong><u>Für OSPi</u>:</strong> WLAN wird vom Raspberry Pi verwaltet. Stellen Sie eine ausreichende Stromversorgung des Pi sicher (OSPi liefert bis zu 500 mA. RPi 3/4/5 benötigt bei starker Auslastung möglicherweise zusätzlichen Strom über USB, andernfalls kann das WLAN instabil sein). </p>
 <hr />
-<p><strong>Wired Ethernet connection issues</strong>
+<p><strong>Probleme mit der kabelgebundenen Ethernet-Verbindung</strong>
 <span class="vsp1"></span>
-If your controller can't connect or stay connected via wired Ethernet, try these steps: </p>
+Wenn Ihr Controller keine Verbindung über kabelgebundenes Ethernet herstellen oder aufrechterhalten kann, führen Sie diese Schritte aus: </p>
 <ol>
-<li><strong>Check the LEDs:</strong> On your controller's RJ-45 jack, one LED should be solid (link), and the other blinks on traffic. If not, try a known-good cable and different router/switch port.</li>
-<li><strong>Disable PoE</strong> (Power-over-Ethernet) on that port: OpenSprinkler’s wired module is <strong>not PoE-compatible</strong>. PoE-enabled port can cause it to malfunction.</li>
-<li><strong>DHCP Setting:</strong> Leave the controller on DHCP, and set a <strong>DHCP reservation</strong> (IP-to-Mac) on your router to assign it a fixed IP. If you must use Static IP, verify <strong>Gateway IP, DNS, Subnet Mask</strong> are all correct and compatible with your router settings.</li>
-<li><strong>Use a dedicated router:</strong> If your wired network is very busy, the most effective solution is to place OpenSprinkler on a dedicated router to isolate it from heavy traffic. </li>
-<li><strong>Set an auto-reboot program:</strong> If the controller connects initially but doesn't stay connected, a work-around is to set an auto-reboot program (daily or any regular interval of your choice). See <a href="../2.2.1/221_4_manual_de/#program-name-annotations">Program Name Annotation</a> in the user manual.</li>
+<li><strong>Überprüfen Sie die LEDs:</strong> Am RJ-45-Anschluss Ihres Controllers sollte eine LED durchgehend leuchten (Link) und die andere bei Datenverkehr blinken. Wenn nicht, versuchen Sie es mit einem bekanntermaßen fehlerfreien Kabel und einem anderen Router- oder Switch-Port.</li>
+<li><strong>Deaktivieren Sie PoE</strong> (Power-over-Ethernet) an diesem Port: Das kabelgebundene Modul von OpenSprinkler ist <strong>nicht PoE-kompatibel</strong>. Ein PoE-aktivierter Port kann zu Fehlfunktionen führen oder Schäden verursachen.</li>
+<li><strong>DHCP-Einstellung:</strong> Belassen Sie den Controller auf DHCP und richten Sie an Ihrem Router eine <strong>DHCP-Reservierung</strong> (IP-zu-MAC) ein, um ihm eine feste IP zuzuweisen. Wenn Sie eine statische IP verwenden müssen, stellen Sie sicher, dass <strong>Gateway-IP, DNS und Subnetzmaske</strong> alle korrekt und mit Ihren Router-Einstellungen kompatibel sind.</li>
+<li><strong>Verwenden Sie einen dedizierten Router:</strong> Wenn Ihr kabelgebundenes Netzwerk sehr stark ausgelastet ist, ist es am effektivsten, den OpenSprinkler an einen dedizierten Router anzuschließen, um ihn von starkem Datenverkehr zu isolieren. </li>
+<li><strong>Ein automatisches Neustart-Programm einrichten:</strong> Wenn sich der Controller anfangs verbindet, aber die Verbindung verliert, besteht eine Behelfslösung darin, ein automatisches Neustart-Programm einzurichten (täglich oder in einem beliebigen Intervall Ihrer Wahl). Siehe <a href="../2.2.1/221_4_manual_de/#program-name-annotations">Program Name Annotation</a> im Benutzerhandbuch.</li>
 </ol>
-<p><strong><u>For OSPi</u>:</strong> Networking is managed by RPi. Ensure RPi has adequate power (OSPi supplies up to 500 mA. RPi 3/4/5 may need extra power via USB, otherwise network may be unstable).</p>
+<p><strong><u>Für OSPi</u>:</strong> Das Netzwerk wird vom RPi verwaltet. Stellen Sie sicher, dass das RPi ausreichend Strom erhält (OSPi liefert bis zu 500 mA. RPi 3/4/5 benötigt bei schwerer Last möglicherweise zusätzlichen Strom über USB, andernfalls kann das Netzwerk instabil sein).</p>
 <hr />
-<p><strong>I can access the controller on my local network, but not when I am away.</strong>
+<p><strong>Ich kann im lokalen Netzwerk auf den Controller zugreifen, aber nicht von unterwegs.</strong>
 <span class="vsp1"></span>
-Remote access requires using an <strong>OpenThings Cloud (OTC) token</strong>. To check OTC status, from the homepage, swipe left to right to open the Seitenmenü, tap <strong>System-Diagnose</strong>. Make sure OTC status is <strong>Connected</strong>. In the OpenSprinkler mobile app, use the OTC token (instead of the controller's IP address) for remote access.</p>
+Der Fernzugriff erfordert die Verwendung eines <strong>OpenThings Cloud (OTC)-Tokens</strong>. Um den OTC-Status zu überprüfen, wischen Sie von links nach rechts, um das Seitenmenü zu öffnen, und tippen Sie auf <strong>System-Diagnose</strong>. Stellen Sie sicher, dass der OTC-Status <strong>Connected</strong> lautet. Verwenden Sie in der OpenSprinkler-App das OTC-Token (anstelle der IP-Adresse des Controllers) für den Fernzugriff.</p>
 <hr class="double">
 
 <p><a id="ui-app-time-and-lcd"></a></p>
 <h3 id="ui-app-zeit-und-lcd">UI, App, Zeit und LCD</h3>
-<p><strong>Blank page when opening the controller's homepage</strong></p>
+<p><strong>Leere Seite beim Öffnen der Startseite des Controllers</strong></p>
 <ol>
-<li><strong>Firmware too old:</strong> If your controller's firmware is <strong>older than <code>2.2.0</code></strong>, update to the latest. Older firmwares can't parse newer weather data format, causing corruption and blank homepage. See <a href="../2.2.1/221_4_manual_de/#firmware-update">firmware update instructions</a>.</li>
-<li><strong>Check for errors:</strong> On a desktop/laptop, open a browser window, turn on <strong>Developer Console</strong> (e.g. in Chrome, go to <strong>Settings</strong> → <strong>More Tools</strong> → <strong>Developer Tools</strong> → click the <strong>Console</strong> tab). Open the controller's homepage and note any errors in the console window.</li>
-<li><strong>Reset UI Source:</strong> If you used a custom UI, reset it to the default: visit <code>http://os-ip/su</code> where <code>os-ip</code> is your controller's IP address. Reset the <code>UI Source</code> to the default.</li>
-<li><strong>Diagnose with API test script:</strong> <a download="TestOSAPI220.html" href="../assets/scripts/TestOSAPI220.html">Download the API test script</a>. Open it in a browser, test your controller with the <code>/ja</code> (JSON All) endpoint. If you see an <strong>INVALID JSON</strong> error, the stored data is corrupted, which is why the homepage hangs.</li>
-<li><strong>Fix corruption:</strong> Inspect the JSON data (or use a JSON validator) to identify the corrupted fields/variables. Correct the malformed value, save, and import the corrected <code>.json</code> as configurations to your controller. This should restore the homepage.</li>
-<li><strong>Factory reset:</strong> If you can't repair the data, perform a <a href="#reset-and-configurations">factory reset</a>.</li>
+<li><strong>Firmware zu alt:</strong> Wenn die Firmware Ihres Controllers <strong>älter als <code>2.2.0</code></strong> ist, aktualisieren Sie diese bitte auf die neueste Version. Ältere Firmware-Versionen können das neuere Wetterdatenformat nicht verarbeiten, was zu Datenbeschädigung und einer leeren Homepage führt. Siehe <a href="../2.2.1/221_4_manual_de/#firmware-update">Anweisungen zur Firmware-Aktualisierung</a>.</li>
+<li><strong>Auf Fehler prüfen:</strong> Öffnen Sie an einem PC/Laptop ein Browserfenster, aktivieren Sie die <strong>Entwicklerkonsole</strong> (z. B. in Chrome über <strong>Drei-Punkte-Menü</strong> → <strong>Weitere Tools</strong> → <strong>Entwicklertools</strong> → Reiter <strong>Konsole</strong>). Rufen Sie die Startseite des Controllers auf und notieren Sie etwaige Fehlermeldungen in diesem Fenster.</li>
+<li><strong>UI Source zurücksetzen:</strong> Wenn Sie eine angepasste Benutzeroberfläche (Custom UI) verwendet haben, setzen Sie diese auf den Standard zurück: Rufen Sie dazu direkt <code>http://os-ip/su</code> auf (wobei <code>os-ip</code> die IP-Adresse Ihres Controllers ist). Setzen Sie <code>UI Source</code> zurück auf „default“.</li>
+<li><strong>Mit API-Skript diagnostizieren:</strong> <a download="TestOSAPI220.html" href="../assets/scripts/TestOSAPI220.html">Laden Sie das API-Testskript herunter</a>. Öffnen Sie es in einem Browser und testen Sie Ihren Controller mit dem Endpunkt <code>/ja</code> (JSON All). Wenn Sie einen <strong>INVALID JSON</strong>-Fehler sehen, sind die gespeicherten Daten beschädigt, weshalb die Startseite einfriert.</li>
+<li><strong>Beschädigung reparieren:</strong> Prüfen Sie die JSON-Daten (oder verwenden Sie einen JSON-Validator), um die fehlerhaften Felder/Variablen zu identifizieren. Korrigieren Sie den fehlerhaften Wert, speichern Sie die Datei und importieren Sie die korrigierte <code>.json</code>-Konfiguration wieder in Ihren Controller. Dies sollte die Homepage wiederherstellen.</li>
+<li><strong>Werkseinstellungen:</strong> Wenn sich die Daten nicht reparieren lassen, führen Sie ein <a href="#reset-and-configurations">Zurücksetzen auf Werkseinstellungen</a> durch.</li>
 </ol>
 <hr />
-<p><strong>New program or changes to existing programs won't save.</strong>
+<p><strong>Neue Programme oder Änderungen an bestehenden Programmen werden nicht gespeichert.</strong>
 <span class="vsp1"></span>
-This is typically an issue with older firmwares. Update your firmware to the latest.</p>
+Dies ist in der Regel ein Problem älterer Firmware-Versionen. Aktualisieren Sie Ihre Firmware auf die neueste Version.</p>
 <hr />
-<p><strong>Sequential flag missing after updating to firmware 2.2.0</strong>
+<p><strong>„Sequential“-Attribut (Nacheinander) fehlt nach der Aktualisierung auf Firmware 2.2.0</strong>
 <span class="vsp1"></span>
-Starting with firmware 2.2.0, the old <strong>Sequential</strong> flag is replaced by a more flexible, zone-level <strong>Sequential Group</strong> attribute:</p>
+Ab Firmware-Version 2.2.0 wird die alte Option <strong>Sequential</strong> durch ein flexibleres Attribut auf Zonenebene namens <strong>Sequential Group</strong> (Sequenzielle Gruppe) ersetzt:</p>
 <ul>
-<li>Each zone can be assigned to <strong>one of four Sequential groups</strong> or to the <strong>Parallel</strong> group.</li>
-<li>Putting a zone in <strong>Parallel</strong> group is equivalent to removing the <strong>Sequential</strong> flag in older firmwares.</li>
+<li>Jede Zone kann <strong>einer von vier sequenziellen Gruppen</strong> oder der <strong>Parallel-Gruppe</strong> zugeordnet werden.</li>
+<li>Eine Zone der Gruppe <strong>Parallel</strong> zuzuordnen entspricht dem Deaktivieren des Attributs <strong>Sequential</strong> in älteren Firmware-Versionen.</li>
 </ul>
-<p>For details, refer to the <a href="../2.2.1/221_4_manual_de/#zones-group-attribute">Firmware User Manual</a> and the <a href="https://openthings.freshdesk.com/support/solutions/articles/5000860920-videos-introduction-to-opensprinkler-v3">Video Tutorial</a>.</p>
+<p>Einzelheiten dazu finden Sie im <a href="../2.2.1/221_4_manual_de/#zones-group-attribute">Firmware-Benutzerhandbuch</a> und im <a href="https://openthings.freshdesk.com/support/solutions/articles/5000860920-videos-introduction-to-opensprinkler-v3">Video-Tutorial</a>.</p>
 <hr />
-<p><strong>I am getting an error when accessing the logs.</strong>
+<p><strong>Ich erhalte eine Fehlermeldung beim Zugriff auf die Protokolle (Logs).</strong>
 <span class="vsp1"></span>
-This happens if the requested log data is excessively large, or a corruption exists in the data.</p>
+Dies geschieht, wenn die angeforderten Protokolldaten übermäßig groß sind oder eine Beschädigung der Daten vorliegt.</p>
 <ul>
-<li><strong>Limit to one day:</strong> On the <strong>Logs</strong> page, open the <strong>Table</strong> tab → expand <strong>Options</strong> → set the <code>Start</code> and <code>End</code> to the same date. See if the log data loads.</li>
-<li><strong>Fetch the raw data:</strong> <a download="TestOSLogWithCSV.html" href="../assets/scripts/TestOSLogWithCSV.html">Download the log helper script</a> and open it in a browser to retrieve logs directly. This often helps when the standard UI can't render the data due to a corruption.</li>
+<li><strong>Auf einen Tag beschränken:</strong> Öffnen Sie auf der <strong>Logs</strong>-Seite den Reiter <strong>Table</strong> (Tabelle) → erweitern Sie <strong>Options</strong> → stellen Sie <code>Start</code> und <code>End</code> auf das gleiche Datum ein. Prüfen Sie, ob die Protokolldaten nun geladen werden.</li>
+<li><strong>Rohdaten abrufen:</strong> <a download="TestOSLogWithCSV.html" href="../assets/scripts/TestOSLogWithCSV.html">Laden Sie das Protokoll-Hilfsskript herunter</a> und öffnen Sie es in einem Browser, um die Logs direkt abzurufen. Dies hilft oft, wenn die normale Benutzeroberfläche die Daten aufgrund einer Beschädigung nicht rendern kann.</li>
 </ul>
 <hr />
-<p><strong>The time on my controller is wrong.</strong>
+<p><strong>Die Uhrzeit auf meinem Controller ist falsch.</strong>
 <span class="vsp1"></span>
-OpenSprinkler sets time automatically from two data sources: <strong>your location</strong> (for time zone via weather queries) and <strong>NTP</strong> (network time). If the time is incorrect, try:</p>
+OpenSprinkler stellt die Uhrzeit automatisch aus zwei Datenquellen ein: <strong>Ihrem Standort</strong> (für die Zeitzone via Wetterabfragen) und <strong>NTP</strong> (Netzwerkzeit). Wenn die Zeit falsch ist, versuchen Sie Folgendes:</p>
 <ol>
-<li><strong>Check Location &amp; Internet</strong><ul>
-<li>Homepage → <strong>Edit Options</strong> → <strong>Location</strong>: ensure it's correct.</li>
-<li><strong>If using Static IP</strong>, verify <strong>Gateway IP, DNS, Subnet Mask</strong> are all correct.</li>
-<li>Confirm the controller has Internet access and is not blocked by a firewall.</li>
+<li><strong>Standort &amp; Internet prüfen</strong><ul>
+<li>Homepage → <strong>Edit Options</strong> → <strong>Location</strong>: Stellen Sie sicher, dass der Eintrag korrekt ist.</li>
+<li><strong>Bei Verwendung einer statischen IP</strong>: Überprüfen Sie, ob <strong>Gateway-IP, DNS und Subnetzmaske</strong> alle korrekt eingetragen sind.</li>
+<li>Bestätigen Sie, dass der Controller Internetzugang hat und nicht durch eine Firewall blockiert wird.</li>
 </ul>
 </li>
-<li><strong>Set Time Zone Manually</strong> (if needed)<ul>
-<li>An incorrect time zone is often caused by failed weather queries, and should be fixed by re-checking Location and Internet connection first.</li>
-<li>To set time zone manually, click the ✖️ icon next to <strong>Location</strong> to clear it. The <strong>Timezone</strong> dropdown is now editable - select the correct timezone and save.</li>
+<li><strong>Zeitzone manuell einstellen</strong> (falls erforderlich)<ul>
+<li>Eine falsche Zeitzone wird häufig durch fehlgeschlagene Wetterabfragen verursacht. Dies sollte zuerst durch Überprüfung der Standortdaten und der Internetverbindung behoben werden.</li>
+<li>Um die Zeitzone manuell einzustellen, klicken Sie auf das ✖️-Symbol neben <strong>Location</strong>, um den Standort zu löschen. Das Dropdown-Menü <strong>Timezone</strong> ist nun editierbar – wählen Sie die korrekte Zeitzone aus und speichern Sie.</li>
 </ul>
 </li>
-<li><strong>Check NTP Settings</strong><ul>
-<li>Homepage → <strong>Edit Options</strong> → <strong>Advanced</strong>: ensure <strong>NTP Sync</strong> is enabled.</li>
-<li><strong>NTP server:</strong> The recommended default setting is <code>0.0.0.0</code> (auto-selects public NTP servers). If using a custom server, confirm it’s valid/reachable.</li>
+<li><strong>NTP-Einstellungen überprüfen</strong><ul>
+<li>Homepage → <strong>Edit Options</strong> → <strong>Advanced</strong>: Stellen Sie sicher, dass <strong>NTP Sync</strong> aktiviert ist.</li>
+<li><strong>NTP-Server:</strong> Die empfohlene Standardeinstellung ist <code>0.0.0.0</code> (dies wählt automatisch öffentliche NTP-Server aus). Wenn Sie einen eigenen NTP-Server verwenden, prüfen Sie, ob dieser gültig und erreichbar ist.</li>
 </ul>
 </li>
-<li><strong>No Internet? Set Time Manually</strong><ul>
-<li>If using the controller without Internet, go to <strong>Edit Options</strong> → <strong>Advanced</strong>: <strong>uncheck NTP Sync</strong>.</li>
-<li><strong>Device Time</strong> is now editable. Set it, and Save. Note that time will drift without NTP sync.</li>
+<li><strong>Kein Internet? Zeit manuell einstellen</strong><ul>
+<li>Wenn Sie den Controller ganz ohne Internetverbindung betreiben, gehen Sie zu <strong>Edit Options</strong> → <strong>Advanced</strong> und deaktivieren Sie <strong>NTP Sync</strong>.</li>
+<li>Die <strong>Device Time</strong> ist nun editierbar. Stellen Sie die Zeit ein und speichern Sie. Beachten Sie, dass die Uhrzeit ohne NTP-Synchronisierung mit der Zeit leicht abweicht (driften kann).</li>
 </ul>
 </li>
 </ol>
-<p><strong><u>For OSPi</u>:</strong> only Steps 1 &amp; 2 apply, as NTP is managed by Raspbian, not by OpenSprinkler firmware.</p>
+<p><strong><u>Für OSPi</u>:</strong> Nur die Schritte 1 und 2 treffen zu, da NTP unter OSPi von Raspbian anstelle der OpenSprinkler-Firmware verwaltet wird.</p>
 <hr />
-<p><strong>My zones run at the wrong time.</strong>
+<p><strong>Meine Zonen laufen zur falschen Zeit.</strong>
 <span class="vsp1"></span>
-Refer to the steps above to verify the controller's time is correct.</p>
+Befolgen Sie die oben genannten Schritte, um sicherzustellen, dass die Uhrzeit des Controllers korrekt eingestellt ist.</p>
 <hr />
-<p><strong>A zone runs even though Rain Delay or Rain Sensor is active.</strong>
+<p><strong>Eine Zone schaltet sich ein, obwohl Regenverzögerung (Rain Delay) oder ein Regensensor (Rain Sensor) aktiv ist.</strong>
 <span class="vsp1"></span>
-This is usually caused by that zone being set to <code>Ignore Rain</code> or <code>Ignore Sensor</code>. These attributes can be found by clicking the ⚙️ icon next to the zone to open its attribute dialog. </p>
+Dies liegt in der Regel daran, dass die betroffene Zone auf <code>Ignore Rain</code> oder <code>Ignore Sensor</code> eingestellt ist. Diese Attribute können eingesehen werden, indem Sie auf das Zahnradsymbol (⚙️) neben der jeweiligen Zone klicken, um deren Optionsdialog zu öffnen. </p>
 <hr />
-<p><strong>My program didn't run as scheduled.</strong></p>
+<p><strong>Mein Programm lief nicht wie geplant ab.</strong></p>
 <ul>
-<li>Check if the program's <strong>Enabled</strong> flag is on.</li>
-<li>Check if the controller's <strong>time is correct</strong>.</li>
-<li>Check for any active <strong>Rain Delay</strong> or <strong>Rain Sensor</strong>.</li>
-<li>If the program's <strong>Use Weather</strong> flag is on, check if the current <strong>Watering Level</strong> is 0%, or there is any active <strong>Watering Restriction</strong>.</li>
-<li><strong>Enable a notification method</strong> (Email, MQTT, or IFTTT) and turn on the <strong>Program Start</strong> event - you will be alerted when a program is scheduled but skipped due to 0% Watering Level or active Watering Restriction. </li>
+<li>Prüfen Sie, ob das Kontrollkästchen <strong>Enabled</strong> (Aktiviert) des Programms markiert ist.</li>
+<li>Überprüfen Sie, ob die <strong>Uhrzeit des Controllers korrekt</strong> ist.</li>
+<li>Prüfen Sie, ob eine aktive <strong>Regenverzögerung (Rain Delay)</strong> oder ein <strong>Regensensor (Rain Sensor)</strong> anliegt.</li>
+<li>Wenn das Programm die Option <strong>Use Weather</strong> verwendet, prüfen Sie, ob die aktuelle Bewässerungsstufe (<strong>Watering Level</strong>) bei 0 % liegt oder ob eine aktive Bewässerungseinschränkung (<strong>Watering Restriction</strong>) vorliegt.</li>
+<li><strong>Aktivieren Sie eine Benachrichtigungsmethode</strong> (E-Mail, MQTT oder IFTTT) und schalten Sie das Ereignis <strong>Program Start</strong> ein – Sie werden alarmiert, wenn ein Programm geplant ist, aber aufgrund eines Bewässerungsgrads von 0 % oder einer aktiven Bewässerungseinschränkung übersprungen wird. </li>
 </ul>
 <hr />
-<p><strong>How do I verify the Weather Adjustment is working?</strong>
+<p><strong>Wie überprüfe ich, ob die wetterabhängige Anpassung (Weather Adjustment) funktioniert?</strong>
 <span class="vsp1"></span>
-From the homepage, swipe left to right to open the Seitenmenü, tap <strong>System-Diagnose</strong>. It shows <strong>Weather Service Details</strong> including error message, if any.</p>
+Wischen Sie auf der Startseite von links nach rechts, um das Seitenmenü zu öffnen, und tippen Sie auf <strong>System-Diagnose</strong> (bzw. System Diagnostics). Dort werden die <strong>Weather Service Details</strong> einschließlich etwaiger Fehlermeldungen angezeigt.</p>
 <hr />
-<p><strong>How do I save log data as a spreadsheet?</strong>
+<p><strong>Wie speichere ich die Protokolldaten als Spreadsheet (Tabelle)?</strong>
 <span class="vsp1"></span>
-<a download="TestOSLogWithCSV.html" href="../assets/scripts/TestOSLogWithCSV.html">Download the log helper script</a> and open it in a browser to export log data as a <code>.csv</code> file.</p>
+<a download="TestOSLogWithCSV.html" href="../assets/scripts/TestOSLogWithCSV.html">Laden Sie das Protokoll-Hilfsskript herunter</a> und öffnen Sie es in einem Browser, um die Protokolldaten als <code>.csv</code>-Datei zu exportieren.</p>
 <hr />
-<p><strong>The LCD is malfunctioning. How do I replace it?</strong>
+<p><strong>Das LCD-Display funktioniert nicht richtig. Wie kann ich es austauschen?</strong>
 <span class="vsp1"></span>
-If you purchased your OpenSprinkler within one year, it’s covered under warranty: submit a support ticket to receive a replacement display at no cost.</p>
-<p>If your purchase is out of warranty: replace it with an off-the-shelf module from <a href="https://www.amazon.com">Amazon</a> or <a href="https://www.aliexpress.com">Aliexpress</a>. For OpenSprinkler v3.x and OSPi v2.x, search <code>"I2C OLED 0.96"</code> (the part number is <code>SSD1315</code> or <code>SSD1306</code>). The pin order must be <code>GND, VCC, SCL, SDA</code> (most common type). Do <strong>NOT</strong> use ones with pins ordered VCC, GND, SCL, SDA as that's incompatible.</p>
-<p>To replace: power off the controller; open the enclosure; carefully unplug the existing LCD; plug in the new LCD to the same position; power on and verify.</p>
+Wenn Sie Ihren OpenSprinkler innerhalb des letzten Jahres erworben haben, ist er durch die Garantie abgedeckt: Senden Sie ein Support-Ticket ein, um ein kostenloses Ersatzdisplay zu erhalten.</p>
+<p>Wenn Ihre Garantie abgelaufen ist: Ersetzen Sie es durch ein handelsübliches Modul von <a href="https://www.amazon.com">Amazon</a> oder <a href="https://www.aliexpress.com">Aliexpress</a>. Suchen Sie für OpenSprinkler v3.x und OSPi v2.x nach <code>"I2C OLED 0.96"</code> (die Teilenummer lautet <code>SSD1315</code> oder <code>SSD1306</code>). Die Pin-Belegung muss <code>GND, VCC, SCL, SDA</code> lauten (dies ist der am häufigsten verwendete Typ). Verwenden Sie <strong>KEINE</strong> Displays mit der Pin-Reihenfolge VCC, GND, SCL, SDA, da diese inkompatibel sind.</p>
+<p>Austausch: Schalten Sie den Controller aus, öffnen Sie das Gehäuse, ziehen Sie das vorhandene LCD-Display vorsichtig ab, stecken Sie das neue LCD-Display an dieselbe Stelle, schalten Sie den Strom ein und überprüfen Sie die Funktion.</p>
 <hr class="double">
 
 <p><a id="ospi-specific"></a></p>
 <h3 id="ospi-spezifisch">OSPi-spezifisch</h3>
-<p><strong>Firmware compilation errors</strong>
+<p><strong>Kompilierungsfehler der Firmware</strong>
 <span class="vsp1"></span>
-The OpenSprinkler firmware compiles on modern Raspberry Pi OS (Debian Bullseye/Bookworm/Trixie). Most compilation errors come from an out-of-date OS/toolchain. Upgrading your RPi OS should fix the errors. If issues persist, look up the compilation error message on Google or generative AI for suggested fixes.</p>
+Die OpenSprinkler-Firmware lässt sich auf modernen Versionen von Raspberry Pi OS (Debian Bullseye/Bookworm/Trixie) problemlos kompilieren. Die meisten Kompilierungsfehler resultieren aus einem veralteten Betriebssystem oder einer veralteten Toolchain. Ein Upgrade Ihres RPi OS sollte die Fehler beheben. Wenn Probleme bestehen bleiben, suchen Sie nach der Fehlermeldung bei Google oder einer generativen KI für Lösungsvorschläge.</p>
 <hr />
-<p><strong>GPIO errors</strong>
+<p><strong>GPIO-Fehler</strong>
 <span class="vsp1"></span>
-If the firmware runs but shows GPIO errors (or GPIO actions don't work), it's generally a <strong>permission</strong> issue. Verify you are running it as root (<code>sudo ...</code>) or grant access to GPIO devices. When running the firmware in Docker, include <code>--privileged</code> parameter, or map GPIO devices to Docker.</p>
+Wenn die Firmware läuft, aber GPIO-Fehler anzeigt (oder GPIO-Aktion nicht funktionieren), liegt dies in der Regel an einem <strong>Berechtigungsproblem</strong>. Stellen Sie sicher, dass Sie die Firmware als Root ausführen (<code>sudo ...</code>) oder dem Benutzer Zugriff auf die GPIO-Geräte gewähren. Wenn Sie die Firmware in Docker ausführen, fügen Sie den Parameter <code>--privileged</code> hinzu oder mappen Sie die GPIO-Geräte in Docker.</p>
 <hr />
-<p><strong>Power issues</strong>
+<p><strong>Stromversorgungsprobleme</strong>
 <span class="vsp1"></span>
-If the Pi won't power on, or WiFi drops constantly, try these steps:</p>
+Wenn sich der Pi nicht einschalten lässt oder die WLAN-Verbindung ständig abbricht, versuchen Sie Folgendes:</p>
 <ul>
-<li><strong>Power off OSPi</strong>, remove peripherals (expanders, sensors), and separate RPi from OSPi.</li>
-<li><strong>Power RPi directly with a USB cable</strong>: if it powers on and WiFi is stable, the Pi is fine and the issue is with OSPi. Otherwise, the problem is RPi itself and you will need to replace it.</li>
-<li><strong>Check the power adapter:</strong> Use a multimeter to check the output of your 24VAC power adapter - it should output an <strong>AC</strong> voltage about 24-30V.</li>
-<li><strong>Check for shorts:</strong> Measure the <strong>resistance</strong> between <strong>+5V</strong>/VIN and GND on OSPi: red probe on +5V, black probe on GND. These pins are located at the top-right of the board. The resistance may fluctuate but should settle at <code>&gt;4.5 kΩ</code>. If it's less than 4 kΩ, there is a short.</li>
-<li><strong>Visual inspection:</strong> Check the <strong>fuse</strong>, and look for any component with burn marks, discoloration, or bulges.</li>
-<li><strong>Check OSPi +5V rail</strong>: If the adapter is good, there are no shorts, and no visual damage, plug in power again (but leave RPi and all peripherals <strong>disconnected</strong>). The LED on OSPi should light up; and the <strong>DC voltage</strong> between +5V/VIN and GND should be ~5.0V.</li>
-<li><strong>RPi's power draw:</strong> If all tests have passed so far, <strong>disconnect power</strong>, re-attach RPi to OSPi, and plug in power again. If the issue still persists, your RPi may be drawing too much current, exceeding what OSPi can supply. The best solution is to power RPi <strong>additionally via USB</strong>. RPi 4 &amp; 5 especially need extra power.</li>
+<li><strong>Schalten Sie das OSPi aus</strong>, entfernen Sie alle Peripheriegeräte (Expander, Sensoren) und trennen Sie das RPi vom OSPi.</li>
+<li><strong>Betreiben Sie das RPi direkt über ein USB-Kabel</strong>: Wenn es sich einschaltet und das WLAN stabil bleibt, ist der Pi in Ordnung und das Problem liegt am OSPi. Andernfalls liegt das Problem beim RPi selbst und Sie müssen es austauschen.</li>
+<li><strong>Netzteil überprüfen:</strong> Verwenden Sie ein Multimeter, um die Ausgangsspannung Ihres 24VAC-Netzteils zu prüfen – es sollte eine <strong>AC</strong>-Spannung von etwa 24–30V liefern.</li>
+<li><strong>Auf Kurzschlüsse prüfen:</strong> Messen Sie den <strong>Widerstand</strong> zwischen <strong>+5V</strong>/VIN und GND am OSPi: rote Messspitze auf +5V, schwarze Messspitze auf GND. Diese Pins befinden sich oben rechts auf der Platine. Der Widerstand kann schwanken, sollte sich jedoch bei <code>&gt;4,5 kΩ</code> einpendeln. Wenn er weniger als 4 kΩ beträgt, liegt ein Kurzschluss vor.</li>
+<li><strong>Visuelle Inspektion:</strong> Überprüfen Sie die <strong>Sicherung</strong> und suchen Sie nach Komponenten mit Brandspuren, verfärbten Stellen oder Wölbungen.</li>
+<li><strong>Überprüfen Sie die OSPi +5V-Schiene:</strong> Wenn das Netzteil in Ordnung ist, keine Kurzschlüsse und keine optischen Schäden vorliegen, schließen Sie die Stromversorgung wieder an (lassen Sie jedoch RPi und alle Peripheriegeräte <strong>getrennt</strong>). Die LED auf dem OSPi sollte aufleuchten, und die <strong>DC-Spannung</strong> zwischen +5V/VIN und GND sollte etwa 5,0V betragen.</li>
+<li><strong>Stromaufnahme des RPi:</strong> Wenn alle Tests bisher erfolgreich waren, <strong>trennen Sie die Stromversorgung</strong>, verbinden Sie das RPi wieder mit dem OSPi und schalten Sie den Strom erneut ein. Wenn das Problem weiterhin besteht, zieht Ihr RPi möglicherweise zu viel Strom, der die Kapazität des OSPi übersteigt. Die beste Lösung ist es, das RPi <strong>zusätzlich über ein USB-Netzteil</strong> zu versorgen. Insbesondere RPi 4 &amp; 5 benötigen zusätzlichen Strom.</li>
 </ul>
 <hr />
-<p><strong>Factory reset on OSPi</strong></p>
+<p><strong>Werkseinstellungen beim OSPi</strong></p>
 <ul>
-<li>Open a terminal and navigate to the firmware folder (<code>cd ~/OpenSprinkler-Firmware</code>).</li>
-<li>Delete the <code>done.dat</code> file in that folder: <code>sudo rm -f done.dat</code>.</li>
-<li>Reboot the Pi.</li>
+<li>Öffnen Sie ein Terminal und wechseln Sie in den Firmware-Ordner (<code>cd ~/OpenSprinkler-Firmware</code>).</li>
+<li>Löschen Sie die Datei <code>done.dat</code> in diesem Ordner: <code>sudo rm -f done.dat</code>.</li>
+<li>Starten Sie den Pi neu.</li>
 </ul>
-<p>Alternatively, you could delete the entire folder (<code>sudo rm -rf ~/OpenSprinkler-Firmware</code>) and reinstall the firmware.</p>
+<p>Alternativ können Sie den gesamten Ordner löschen (<code>sudo rm -rf ~/OpenSprinkler-Firmware</code>) und die Firmware neu installieren.</p>
 <hr />
-<p><strong>Check debug messages</strong>
+<p><strong>Debug-Meldungen überprüfen</strong>
 <span class="vsp1"></span>
-To run a debug build of the firmware:</p>
+So führen Sie einen Debug-Build der Firmware aus:</p>
 <ul>
-<li>Open a terminal and navigate to the firmware folder (<code>cd ~/OpenSprinkler-Firmware</code>).</li>
-<li>Stop the background service if running: <code>sudo systemctl stop OpenSprinkler.service</code></li>
-<li>Open <code>defines.h</code> in an editor, <strong>uncomment</strong> the <code>#define ENABLE_DEBUG</code> line near the top.</li>
-<li>Recompile the firmware: <code>sudo ./build.sh ospi</code></li>
-<li>Run the firmware in foreground: <code>sudo ./OpenSprinkler</code> and debug messages should appear.</li>
-<li>When you are done, recover <code>defines.h</code>, rebuild the firmware, and restart the background service: <code>sudo systemctl start OpenSprinkler.service</code></li>
+<li>Öffnen Sie ein Terminal und wechseln Sie in den Firmware-Ordner (<code>cd ~/OpenSprinkler-Firmware</code>).</li>
+<li>Stoppen Sie den Hintergrunddienst, falls dieser läuft: <code>sudo systemctl stop OpenSprinkler.service</code></li>
+<li>Öffnen Sie <code>defines.h</code> in einem Editor und <strong>entfernen Sie die Auskommentierung</strong> (Uncomment) der Zeile <code>#define ENABLE_DEBUG</code> nahe dem Anfang.</li>
+<li>Recompilieren Sie die Firmware: <code>sudo ./build.sh ospi</code></li>
+<li>Führen Sie die Firmware im Vordergrund aus: <code>sudo ./OpenSprinkler</code>. Nun sollten Debug-Meldungen angezeigt werden.</li>
+<li>Wenn Sie fertig sind, machen Sie die Änderung in <code>defines.h</code> rückgängig, bauen Sie die Firmware erneut und starten Sie den Hintergrunddienst neu: <code>sudo systemctl start OpenSprinkler.service</code></li>
 </ul>
 <hr />
               
