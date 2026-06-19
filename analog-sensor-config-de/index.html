@@ -329,6 +329,10 @@
 <td>Abonniert ein MQTT-Topic und parst den empfangenen Wert. Topic, optionalen JSON-/Textfilter, Einheit und Timeout-Verhalten konfigurieren.</td>
 </tr>
 <tr>
+<td>Remote-JSON-Sensor</td>
+<td>Fragt einen beliebigen externen HTTP/HTTPS-JSON-Endpunkt ab und extrahiert den Wert über einen Suchkanal.</td>
+</tr>
+<tr>
 <td>Remote-OpenSprinkler-Sensor</td>
 <td>Liest einen Sensor von einem anderen OpenSprinkler-Controller. Remote-URL/Controller und Quellsensornummer konfigurieren.</td>
 </tr>
@@ -487,6 +491,25 @@
 <p>Tragen Sie API-Token oder Login-Daten ein, die Ihre Firmware-Version benötigt. Halten Sie Zugangsdaten privat und aktualisieren Sie sie, wenn sich der FYTA-Zugriff ändert.</p>
 <h3 id="pflanzen-zuordnen">Pflanzen zuordnen</h3>
 <p>Nach der Anmeldung werden FYTA-Pflanzenwerte für Feuchte und Temperatur OpenSprinkler-Sensoren zugeordnet, damit sie protokolliert, überwacht und für Anpassungen genutzt werden können.</p>
+<h2 id="gardena-einrichtung">Gardena-Einrichtung</h2>
+<p>Die <strong>Gardena-Einrichtung</strong> ermöglicht die Verbindung mit der offiziellen Gardena-Cloud-API. Damit können Gardena smart Bodenfeuchte- und Temperatursensoren direkt importiert und in Ihren Ablaufregeln eingebunden werden.</p>
+<h3 id="gardena-oauth-assistent">Gardena OAuth-Assistent</h3>
+<ol>
+<li>Registrieren Sie sich bei Bedarf im Gardena Developer Portal und erstellen Sie eine App, um Client-ID und Client-Secret zu erhalten.</li>
+<li>Öffnen Sie im OpenSprinkler-Menü <strong>Optionen -&gt; Integrationen</strong> oder direkt den <strong>Gardena OAuth-Assistenten</strong> in den Analogsensor-Optionen.</li>
+<li>Geben Sie Ihre Anmeldedaten ein. Der Assistent führt Sie durch den OAuth 2.0 Login und fordert das Refresh-Token automatisch an.</li>
+<li>Nach erfolgreichem Login werden verbundene Gardena-Geräte automatisch erkannt.</li>
+</ol>
+<h3 id="zuordnung-von-gardena-sensoren">Zuordnung von Gardena-Sensoren</h3>
+<p>Wählen Sie in den Sensordefinitionen den Typ <code>Gardena-Feuchtesensor</code> oder <code>Gardena-Temperatursensor</code> aus. Im Editor können Sie danach das gewünschte Gerät und den spezifischen Datenkanal auswählen.</p>
+<hr />
+<h2 id="remote-json-sensor-einrichten">Remote-JSON-Sensor einrichten</h2>
+<p>Der <strong>Remote-JSON-Sensor</strong> ist ein extrem flexibler Typ zum Abfragen beliebiger REST-APIs, die Daten im JSON-Format zurückliefern. Er arbeitet ressourcenschonend direkt über einen Streaming-Parser.</p>
+<h3 id="editor-felder_1">Editor-Felder</h3>
+<ul>
+<li><strong>URL</strong>: Die vollständige HTTP- oder HTTPS-Adresse der API (z. B. <code>http://api.weather.com/v1/sensor</code>). Max. 200 Zeichen.</li>
+<li><strong>JSON-Suchpfad (Filter)</strong>: Der Pfad zum gewünschten Zahlenwert im JSON-Dokument. Verschachtelte Objekte werden mit einem senkrechten Strich (<code>|</code>) getrennt (z. B. <code>main|temp</code> oder <code>root|sensor_1|humidity</code>).</li>
+</ul>
 <h2 id="datensicherung-und-wiederherstellung">Datensicherung und Wiederherstellung</h2>
 <p><strong>Datensicherung</strong> exportiert oder stellt Sensor-Konfiguration, Programm-Anpassungen und Monitore getrennt vom allgemeinen Controller-Backup wieder her. Nutzen Sie dies vor größeren Sensoränderungen oder Firmwaretests.</p>
 <p><img alt="Datensicherung" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-backup-restore.png" /></p>

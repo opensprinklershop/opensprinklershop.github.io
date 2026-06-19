@@ -9,18 +9,22 @@ function initLanguageSelector() {
     de: "Deutsch",
     fr: "Français",
     it: "Italiano",
-    pt: "Português"
+    pt: "Português",
+    hu: "Magyar",
+    pl: "Polski"
   };
 
   var pageMap = {
-    index: { en: "index", de: "index-de", fr: "index-fr", it: "index-it", pt: "index-pt" },
+    index: { en: "index", de: "index-de", fr: "index-fr", it: "index-it", pt: "index-pt", hu: "index-hu", pl: "index-pl" },
     faq: { en: "faq", de: "faq-de", fr: "faq-fr", it: "faq-it", pt: "faq-pt" },
     manual: {
       en: "2.2.1/221_4_manual",
       de: "2.2.1/221_4_manual_de",
       fr: "2.2.1/221_4_manual_fr",
       it: "2.2.1/221_4_manual_it",
-      pt: "2.2.1/221_4_manual_pt"
+      pt: "2.2.1/221_4_manual_pt",
+      hu: "2.2.1/221_4_manual_hu",
+      pl: "2.2.1/221_4_manual_pl"
     },
     api: {
       en: "2.2.1/221_4_api",
@@ -34,7 +38,9 @@ function initLanguageSelector() {
       de: "opensprinklerpro_de",
       fr: "opensprinklerpro_fr",
       it: "opensprinklerpro_it",
-      pt: "opensprinklerpro_pt"
+      pt: "opensprinklerpro_pt",
+      hu: "opensprinklerpro_hu",
+      pl: "opensprinklerpro_pl"
     },
     zigbee: {
       en: "zigbee",
@@ -218,6 +224,50 @@ function initLanguageSelector() {
       "Previous Manuals and API docs": "Manuais e documentos de API anteriores",
       "FAQ": "FAQ",
       "Language": "Idioma"
+    },
+    hu: {
+      "Home": "Kezdőlap",
+      "Base Manual v2.2.1(4)": "Alap kézikönyv v2.2.1(4)",
+      "User Manual": "Felhasználói kézikönyv",
+      "API Reference": "API referencia",
+      "OpenSprinklerPro Extensions": "OpenSprinklerPro kiterjesztések",
+      "Overview": "Áttekintés",
+      "Zigbee Configuration": "Zigbee konfiguráció",
+      "Analog Sensor Config": "Analóg érzékelő konfiguráció",
+      "API and platform addendum": "API és platform kiegészítés",
+      "MCP and AI": "MCP és AI",
+      "MCP Server": "MCP szerver",
+      "AI Program Creation": "AI programlétrehozás",
+      "Sensor Automation": "Érzékelő automatizáció",
+      "RainMaker Provisioning": "RainMaker konfiguráció",
+      "FYTA Sensors": "FYTA érzékelők",
+      "Troubleshooting": "Hibaelhárítás",
+      "Archived": "Archivált",
+      "Previous Manuals and API docs": "Korábbi kézikönyvek és API dokumentáció",
+      "FAQ": "GYIK",
+      "Language": "Nyelv"
+    },
+    pl: {
+      "Home": "Strona główna",
+      "Base Manual v2.2.1(4)": "Instrukcja bazowa v2.2.1(4)",
+      "User Manual": "Instrukcja obsługi",
+      "API Reference": "Dokumentacja API",
+      "OpenSprinklerPro Extensions": "Rozszerzenia OpenSprinklerPro",
+      "Overview": "Przegląd",
+      "Zigbee Configuration": "Konfiguracja Zigbee",
+      "Analog Sensor Config": "Konfiguracja czujników analogowych",
+      "API and platform addendum": "Aneks do API i platformy",
+      "MCP and AI": "MCP i AI",
+      "MCP Server": "Serwer MCP",
+      "AI Program Creation": "Tworzenie programów AI",
+      "Sensor Automation": "Automatyzacja czujników",
+      "RainMaker Provisioning": "Konfiguracja RainMaker",
+      "FYTA Sensors": "Czujniki FYTA",
+      "Troubleshooting": "Rozwiązywanie problemów",
+      "Archived": "Archiwum",
+      "Previous Manuals and API docs": "Poprzednie instrukcje i API",
+      "FAQ": "Często zadawane pytania",
+      "Language": "Język"
     }
   };
 

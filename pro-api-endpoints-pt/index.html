@@ -118,6 +118,7 @@
               
                 <h1 id="adendo-de-api-e-plataformas-opensprinklerpro">Adendo de API e Plataformas OpenSprinklerPro</h1>
 <p>Este documento contém a descrição técnica de endpoints HTTP adicionais adicionados após as especificações básicas de hardware.</p>
+<p>The OpenSprinklerShop firmware, including OpenSprinklerPro, uses its own firmware version numbering independent of upstream OpenSprinkler releases. Current OpenSprinklerShop firmware version: <strong>2.4.0(213)</strong>.</p>
 <h2 id="correcoes-de-plataforma">Correções de Plataforma</h2>
 <table>
 <thead>
@@ -170,6 +171,123 @@
 </tr>
 </tbody>
 </table>
+<h2 id="atualizacao-online-e-backup">Atualização Online e Backup</h2>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Objetivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /uc?pw=...</code></td>
+<td>Verifica o manifesto de atualização e relata se um firmware mais recente está disponível.</td>
+</tr>
+<tr>
+<td><code>GET /uu?pw=...</code></td>
+<td>Inicia o processo de atualização do firmware. Parâmetros avançados permitem substituir URLs e hashes: <code>zu</code>, <code>mu</code>, <code>fu</code>, <code>zs</code>, <code>ms</code>; <code>vt</code> seleciona <code>zigbee</code> ou <code>matter</code>.</td>
+</tr>
+<tr>
+<td><code>GET /us?pw=...</code></td>
+<td>Lê o status da atualização e o progresso.</td>
+</tr>
+<tr>
+<td><code>GET /ub?pw=...</code></td>
+<td>Exporta a configuração completa do controlador para backup antes da atualização.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="certificados-https-e-acme">Certificados HTTPS e ACME</h2>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Objetivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /tg?pw=...</code></td>
+<td>Lê o tipo de certificado ativo, assunto, emissor e validade.</td>
+</tr>
+<tr>
+<td><code>POST /tl?pw=...</code></td>
+<td>Envia um certificado personalizado PEM e chave privada. Reinicia em seguida.</td>
+</tr>
+<tr>
+<td><code>GET /ta?pw=...</code></td>
+<td>Lê a configuração e o status do ACME (Let's Encrypt).</td>
+</tr>
+<tr>
+<td><code>POST /tc?pw=...</code></td>
+<td>Salva as configurações do ACME e solicita um certificado opcionalmente.</td>
+</tr>
+<tr>
+<td><code>GET /tx?pw=...</code></td>
+<td>Exclui dados do ACME e retorna para o certificado interno padrão.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="rainmaker-e-matter">RainMaker e Matter</h2>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Objetivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /rk?pw=...</code></td>
+<td>Lê o status do ESP RainMaker. Parâmetros opcionais <code>reset_mapping=1</code> ou <code>factory_reset=1</code> realizam ações de manutenção.</td>
+</tr>
+<tr>
+<td><code>GET /rp?pw=...&amp;uid=...&amp;key=...</code></td>
+<td>Inicia o provisionamento do RainMaker.</td>
+</tr>
+<tr>
+<td><code>GET /ru?pw=...</code></td>
+<td>Desvincula a conta RainMaker e aciona comportamentos de redefinição / reinicialização.</td>
+</tr>
+<tr>
+<td><code>GET /jm?pw=...</code></td>
+<td>Lê o estado de comissionamento do Matter, URL do QR Code e código manual de pareamento.</td>
+</tr>
+<tr>
+<td><code>GET /mm?pw=...&amp;t=300</code></td>
+<td>Abre a janela de pareamento do Matter; <code>t</code> é o tempo limite opcional em segundos, máximo <code>900</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="uso-de-agua-e-sensores">Uso de Água e Sensores</h2>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Objetivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /jw?pw=...</code></td>
+<td>Lê o uso mensal de água: taxa de pulso, mês atual e registros salvos.</td>
+</tr>
+<tr>
+<td><code>GET /sf?pw=...</code></td>
+<td>Lista os tipos de sensores suportados pela build atual.</td>
+</tr>
+<tr>
+<td><code>GET /sx?pw=...</code></td>
+<td>Exporta ou importa apenas a configuração de sensores.</td>
+</tr>
+<tr>
+<td><code>GET /mc</code>, <code>/ml</code>, <code>/mt</code></td>
+<td>Configura, lista e descobre tipos de monitoramento.</td>
+</tr>
+</tbody>
+</table>
+<p>A referência legacy completa da API pode ser encontrada em <a href="../2.2.1/221_4_api_pt/">Referência da API do Firmware 2.2.1</a>.</p>
               
             </div>
           </div><footer>

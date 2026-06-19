@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/rainmaker-provisioning-pt/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Provisionamento ESP RainMaker - OpenSprinkler Shop Documentation</title>
+    <title>Configuração do ESP RainMaker - OpenSprinkler Shop Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,7 +13,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Provisionamento ESP RainMaker";
+        var mkdocs_page_name = "Configura\u00e7\u00e3o do ESP RainMaker";
         var mkdocs_page_input_path = "rainmaker-provisioning-pt.md";
         var mkdocs_page_url = "/rainmaker-provisioning-pt/";
       </script>
@@ -106,7 +106,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Provisionamento ESP RainMaker</li>
+      <li class="breadcrumb-item active">Configuração do ESP RainMaker</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/rainmaker-provisioning-pt.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
@@ -116,16 +116,136 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="provisionamento-esp-rainmaker">Provisionamento ESP RainMaker</h1>
+                <h1 id="configuracao-do-esp-rainmaker">Configuração do ESP RainMaker</h1>
+<p>Esta página descreve a configuração do ESP RainMaker para o OpenSprinklerPro. Nomes técnicos, eventos e campos de API permanecem inalterados.</p>
 <p>Este documento descreve como o firmware do OpenSprinkler lida com o provisionamento do ESP RainMaker, abrangendo os métodos <strong>BLE Claiming</strong> e <strong>On-Network</strong>.</p>
 <h2 id="visao-geral">Visão Geral</h2>
 <p>O ESP RainMaker requer duas etapas antes que um dispositivo possa ser controlado na nuvem:</p>
 <ol>
-<li><strong>Claiming (Registro)</strong> — O dispositivo obtém certificados TLS do servidor de registro da Espressif para autenticar a comunicação MQTT criptografada.</li>
-<li><strong>Mapeamento de Nó de Usuário</strong> — O dispositivo é vinculado à conta RainMaker do usuário para que ele possa gerenciar o aspersor pelo app móvel.</li>
+<li><strong>Claiming (Registro)</strong> — O dispositivo obtém certificados TLS do servidor de registro da Espressif. Esses certificados autenticam a comunicação MQTT criptografada do dispositivo com a nuvem RainMaker.</li>
+<li><strong>Mapeamento de Nó de Usuário</strong> — O dispositivo é vinculado à conta RainMaker do usuário para que ele possa gerenciar o aspersor pelo aplicativo móvel.</li>
 </ol>
 <h2 id="metodos-de-provisionamento">Métodos de Provisionamento</h2>
-<p>Consulte os guias nos manuais de hardware para detalhes adicionais de ativação do rádio BLE e registro inicial de novos controladores.</p>
+<h3 id="ble-claiming-configuracao-inicial">BLE Claiming (Configuração Inicial)</h3>
+<p>Utilizado quando o dispositivo <strong>não possui certificados TLS</strong> (primeira inicialização ou após restauração de fábrica).</p>
+<p><strong>Fluxo de Trabalho:</strong></p>
+<ol>
+<li>O firmware detecta que não há certificado de cliente TLS no NVS de fábrica (<code>esp_rmaker_factory_get("client_cert")</code>).</li>
+<li>O núcleo do RainMaker é iniciado (<code>RMaker.start()</code>).</li>
+<li>O provisionamento BLE começa via <code>WiFiProv.beginProvision(NETWORK_PROV_SCHEME_BLE, ...)</code>.</li>
+<li>O dispositivo anuncia-se como um dispositivo BLE (nome do serviço: <code>PROV_XXXXXX</code>).</li>
+<li>O usuário abre o aplicativo móvel ESP RainMaker → "Add Device" (Adicionar Dispositivo) → escaneia o rádio BLE.</li>
+<li>O aplicativo do celular conecta via BLE e:</li>
+<li>Encaminha o CSR (Certificate Signing Request) para o servidor de registro da Espressif.</li>
+<li>Retorna o certificado TLS assinado para o dispositivo.</li>
+<li>Opcionalmente fornece credenciais de rede WiFi.</li>
+<li>O dispositivo armazena os certificados sob o NVS de fábrica.</li>
+<li>O evento <code>RMAKER_EVENT_CLAIM_SUCCESSFUL</code> é disparado.</li>
+<li>O dispositivo se conecta ao MQTT via rede WiFi ou Ethernet.</li>
+</ol>
+<p><strong>Prioridade:</strong> Durante o claiming BLE, o rádio Bluetooth é usado exclusivamente para provisionamento. O monitoramento de sensores BLE (<code>sensor_radio_early_init()</code>) é <strong>adiado</strong> até que o pareamento termine. Após o evento <code>CLAIM_SUCCESSFUL</code>, o BLE é liberado e o escaneamento de sensores virtuais é retomado.</p>
+<h3 id="configuracao-on-network-vinculacao-de-usuario">Configuração On-Network (Vinculação de Usuário)</h3>
+<p>Utilizado quando os certificados TLS já existem no dispositivo, mas é necessário vinculá-lo à conta de um novo usuário.</p>
+<p><strong>Fluxo de Trabalho:</strong></p>
+<ol>
+<li>O firmware detecta um certificado TLS de cliente válido → inicia no modo normal.</li>
+<li>O núcleo do RainMaker inicia e estabelece a conexão MQTT.</li>
+<li>O serviço de controle local é ativado (<code>esp_local_ctrl</code>) em uma porta TCP.</li>
+<li>O mDNS anuncia o serviço <code>_esp_local_ctrl._tcp</code> para descoberta no aplicativo móvel.</li>
+<li>O usuário abre o aplicativo ESP RainMaker → "Add Device" → "On Network".</li>
+<li>O aplicativo localiza o dispositivo via mDNS na rede local.</li>
+<li>O usuário insere o código PIN PoP (Proof of Possession).</li>
+<li>A solicitação de mapeamento é enviada para a nuvem RainMaker.</li>
+</ol>
+<p><strong>Requisito:</strong> O celular e o dispositivo devem estar na mesma rede de internet (WiFi ou cabo Ethernet).</p>
+<h2 id="suporte-para-ethernet">Suporte para Ethernet</h2>
+<p>Ambos os métodos funcionam quando conectado diretamente via cabo de rede Ethernet:</p>
+<ul>
+<li><strong>Ethernet + BLE Claiming:</strong> O dispositivo possui rede ativa via Ethernet. O Bluetooth é usado apenas para a troca de dados inicial (CSR via app do celular). A interface Web do OpenSprinkler permanece disponível normalmente durante o claiming BLE. Ao finalizar, o MQTT conecta via Ethernet.</li>
+<li><strong>Ethernet + On-Network:</strong> O controle local e anúncios mDNS são publicados tanto na interface WiFi quanto na interface Ethernet. O aplicativo no celular poderá descobrir o controlador na mesma rede local por qualquer uma das vias.</li>
+</ul>
+<h2 id="prioridade-de-sensores">Prioridade de Sensores</h2>
+<p>Durante o claiming BLE, os sensores que dependem de Bluetooth (ex: sensores de temperatura e solo BLE) são pausados:</p>
+<ul>
+<li><code>sensor_radio_early_init()</code> é <strong>ignorado</strong> quando <code>OSRainMaker::sensors_deferred()</code> retorna verdadeiro.</li>
+<li><code>sensor_api_connect()</code> é <strong>atrasado</strong> até a conclusão do claiming.</li>
+<li>Após o <code>CLAIM_SUCCESSFUL</code>, ocorre um intervalo de 3 segundos para liberação do canal de rede (<code>HANDLER_FREE_BLE</code>).</li>
+<li>Em seguida, o <code>sensor_radio_early_init()</code> é executado de forma automática, seguido do <code>sensor_api_connect()</code>.</li>
+</ul>
+<p>Isso ocorre apenas na primeira ativação do dispositivo. Em boots subsequentes, os sensores são ativados imediatamente.</p>
+<h2 id="endpoint-de-api">Endpoint de API</h2>
+<p>A chamada <code>GET /rk?pw=&lt;hash&gt;</code> retorna o estado de provisionamento:</p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>provisioning</code></td>
+<td>0/1</td>
+<td>Indica se há provisionamento ativo (BLE ou On-Network)</td>
+</tr>
+<tr>
+<td><code>ble_claiming</code></td>
+<td>0/1</td>
+<td>Indica claiming assistido via Bluetooth em andamento</td>
+</tr>
+<tr>
+<td><code>sensors_deferred</code></td>
+<td>0/1</td>
+<td>Indica se a inicialização de sensores BLE está aguardando provisionamento</td>
+</tr>
+<tr>
+<td><code>local_ctrl_active</code></td>
+<td>0/1</td>
+<td>Indica se a busca local via mDNS (On-Network) está ativa</td>
+</tr>
+<tr>
+<td><code>pop</code></td>
+<td>string</td>
+<td>Código PIN de Proof of Possession (vindo do eFuse)</td>
+</tr>
+<tr>
+<td><code>prov_service</code></td>
+<td>string</td>
+<td>Nome de serviço do rádio BLE para identificação no app</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pop-proof-of-possession">PoP (Proof of Possession)</h2>
+<p>O código PIN PoP é gerado a partir do endereço de rede MAC eFuse físico do chip do dispositivo e é único para cada controlador:</p>
+<ul>
+<li>É exibido no log serial durente o boot da placa.</li>
+<li>É mostrado no display de LCD durante o provisionamento BLE.</li>
+<li>É exposto na interface do usuário (menu suspenso do RainMaker → PoP PIN).</li>
+<li>Pode ser lido pelo endpoint de API <code>/rk</code>.</li>
+</ul>
+<h2 id="timeout-e-fallback">Timeout e Fallback</h2>
+<ul>
+<li>O provisionamento BLE possui um <strong>timeout de 5 minutos</strong>.</li>
+<li>Caso o aplicativo de celular não faça a conexão em 5 minutos, o controlador retorna ao modo WiFi padrão (Estação + Access Point).</li>
+<li>A interface gráfica de controle torna-se acessível pelo IP de AP local (192.168.4.1) ou por cabo Ethernet.</li>
+<li>Um reinício do equipamento reinicia a tentativa de claiming BLE caso os dados ainda estejam ausentes.</li>
+</ul>
+<h2 id="logs-de-debug">Logs de Debug</h2>
+<p>Todos os eventos são exibidos sob a tag <code>RMAKER</code> com o nível de nível INFO utilizando macros customizadas:</p>
+<pre><code>I (xxx) RMAKER: === RainMaker BLE CLAIMING mode ===
+I (xxx) RMAKER: BLE provisioning has PRIORITY over sensor BLE — sensors deferred
+I (xxx) RMAKER: Starting BLE provisioning: service=PROV_XXXXXX pop=XXXXXXXX
+I (xxx) RMAKER: Event: CLAIM_STARTED — contacting claiming server...
+I (xxx) RMAKER: Event: CLAIM_SUCCESSFUL — TLS certs provisioned!
+I (xxx) RMAKER: === Claiming successful — TLS certs received ===
+I (xxx) RMAKER: Sensor BLE init will resume after BLE cleanup (~3s)
+</code></pre>
+<h2 id="arquivos-fonte">Arquivos Fonte</h2>
+<ul>
+<li><code>opensprinkler_rainmaker.h</code> / <code>.cpp</code> — Lógica e controle de integração do RainMaker.</li>
+<li><code>main.cpp</code> — Máquina de estados WiFi, atraso na inicialização de sensores de rádio.</li>
+</ul>
               
             </div>
           </div><footer>

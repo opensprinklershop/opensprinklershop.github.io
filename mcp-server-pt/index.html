@@ -124,8 +124,95 @@
 <li><a href="../sensor-automation-pt/">Automação de sensores e monitores</a></li>
 </ul>
 <h2 id="modos-de-operacao">Modos de Operação</h2>
-<h3 id="servidor-mcp-integrado-no-firmware">Servidor MCP integrado no Firmware</h3>
-<p>O servidor MCP integrado é executado diretamente nos builds do firmware ESP32 que têm o recurso <code>USE_OTF</code> habilitado. Ele é acessado por Streamable HTTP utilizando a rota <code>/mcp</code>.</p>
+<h3 id="servidor-mcp-integrado-no-firmware">Servidor MCP Integrado no Firmware</h3>
+<p>O servidor MCP integrado é executado diretamente em builds de firmware ESP32 com <code>USE_OTF</code> ativado:</p>
+<pre><code class="language-http">POST http://&lt;controller-ip&gt;/mcp
+Content-Type: application/json
+</code></pre>
+<p>A autenticação utiliza o mesmo hash MD5 da senha do administrador da REST API: <code>?pw=</code>, o cabeçalho <code>X-OS-Password</code> ou Bearer Token.</p>
+<p>Plataforma: <strong>apenas ESP32 / ESP32-C5</strong> com <code>USE_OTF</code>; não disponível para ESP8266 e OSPi.</p>
+<h3 id="servidor-mcp-externo-nodejs">Servidor MCP Externo Node.js</h3>
+<p>O servidor externo em <code>tools/mcp-server/</code> é executado externamente ao firmware e expõe a REST API por meio de stdio. Ele funciona com controladores ESP8266, ESP32 e OSPi, oferecendo um conjunto maior de ferramentas, incluindo sensores, monitores, Zigbee, BLE e recursos do sistema, desde que o controlador de destino forneça suporte para essas funções.</p>
+<h2 id="configuracao">Configuração</h2>
+<h3 id="pre-requisitos">Pré-requisitos</h3>
+<ul>
+<li>Node.js 18 ou superior.</li>
+<li>Um controlador OpenSprinkler acessível.</li>
+<li>A senha do administrador como hash MD5.</li>
+</ul>
+<h3 id="instalacao-e-build">Instalação e Build</h3>
+<pre><code class="language-bash">cd tools/mcp-server
+npm install
+npm run build
+</code></pre>
+<h3 id="vs-code-github-copilot">VS Code / GitHub Copilot</h3>
+<p>Adicione ao seu arquivo <code>.vscode/mcp.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;servers&quot;: {
+    &quot;opensprinkler&quot;: {
+      &quot;type&quot;: &quot;stdio&quot;,
+      &quot;command&quot;: &quot;node&quot;,
+      &quot;args&quot;: [&quot;tools/mcp-server/dist/index.js&quot;],
+      &quot;env&quot;: {
+        &quot;OS_BASE_URL&quot;: &quot;http://&lt;CONTROLLER-IP&gt;&quot;,
+        &quot;OS_PASSWORD_HASH&quot;: &quot;&lt;MD5-HASH&gt;&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<h3 id="claude-desktop">Claude Desktop</h3>
+<p>Adicione ao seu arquivo <code>~/.config/claude/claude_desktop_config.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;opensprinkler&quot;: {
+      &quot;command&quot;: &quot;node&quot;,
+      &quot;args&quot;: [&quot;/caminho/completo/para/tools/mcp-server/dist/index.js&quot;],
+      &quot;env&quot;: {
+        &quot;OS_BASE_URL&quot;: &quot;http://&lt;CONTROLLER-IP&gt;&quot;,
+        &quot;OS_PASSWORD_HASH&quot;: &quot;&lt;MD5-HASH&gt;&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<h3 id="calcular-o-hash-da-senha">Calcular o Hash da Senha</h3>
+<pre><code class="language-bash">echo -n &quot;sua_senha_admin&quot; | md5sum | awk '{print $1}'
+</code></pre>
+<h2 id="visao-geral-das-ferramentas">Visão Geral das Ferramentas</h2>
+<table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Exemplo de Ferramentas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Status do Controlador</td>
+<td><code>get_all</code>, <code>get_controller_variables</code>, <code>get_options</code>, <code>get_debug</code>, <code>get_system_resources</code></td>
+</tr>
+<tr>
+<td>Estações e Programas</td>
+<td><code>get_stations</code>, <code>get_station_status</code>, <code>get_programs</code>, <code>manual_station_run</code>, <code>manual_program_start</code>, <code>change_program</code></td>
+</tr>
+<tr>
+<td>Sensores e Logs</td>
+<td><code>get_sensors</code>, <code>get_sensor_values</code>, <code>get_sensor_log</code>, <code>get_sensor_types</code>, <code>backup_sensor_config</code></td>
+</tr>
+<tr>
+<td>Rede Sem Fio OpenSprinklerPro</td>
+<td><code>get_ieee802154_config</code>, <code>get_zigbee_devices</code>, <code>get_zigbee_status</code>, <code>get_ble_devices</code>, <code>get_rainmaker_status</code></td>
+</tr>
+<tr>
+<td>Automação</td>
+<td><code>list_adjustments</code>, <code>configure_adjustment</code>, <code>list_monitors</code>, <code>configure_monitor</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagnostico-do-sistema">Diagnóstico do Sistema</h2>
+<p>O servidor MCP não possui diálogo de interface próprio. Para diagnósticos no local, a tela de <strong>Diagnóstico do Sistema</strong> ajuda a verificar a versão do firmware, recursos de memória e integrações.</p>
+<p><img alt="Diagnóstico do Sistema" class="mobile-screenshot" src="../assets/screenshots/pro/pt/system-diagnostics.png" /></p>
               
             </div>
           </div><footer>

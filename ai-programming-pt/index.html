@@ -119,7 +119,59 @@
                 <h1 id="criacao-de-programas-guiada-por-ia">Criação de Programas Guiada por IA</h1>
 <p>Assistentes de inteligência artificial conectados via <a href="../mcp-server-pt/">Servidor MCP</a> podem criar programas de irrigação automáticos por meio de solicitações em linguagem natural. O assistente analisa primeiro as configurações ativas do OpenSprinkler e, em seguida, grava as instruções do programa via API.</p>
 <h2 id="fluxo-de-trabalho">Fluxo de Trabalho</h2>
-<p>Consulte as especificações do <a href="../mcp-server-pt/">Servidor MCP</a> para obter mais detalhes sobre as rotas e o mapeamento digital do controlador.</p>
+<ol>
+<li><code>get_stations</code> lê os nomes e a quantidade de estações.</li>
+<li><code>get_options</code> lê o fuso horário, nascer/pôr do sol e capacidades do controlador.</li>
+<li><code>get_programs</code> verifica programas existentes para evitar conflitos de horários.</li>
+<li><code>change_program</code> com <code>pid=-1</code> cria um novo programa.</li>
+</ol>
+<h2 id="codificacao-de-programas">Codificação de Programas</h2>
+<p><code>change_program</code> utiliza o seguinte formato:</p>
+<pre><code class="language-text">v=[flag, days0, days1, [start0,start1,start2,start3], [dauer0,dauer1,...]]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Bit de Flag</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Ativado</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Usar ajuste meteorológico</td>
+</tr>
+<tr>
+<td>2-3</td>
+<td>Restrição de dias: nenhuma, ímpares, pares</td>
+</tr>
+<tr>
+<td>4-5</td>
+<td>Tipo de programação: semanal, única vez, mensal, intervalo</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Tipo de início: recorrente ou horários fixos</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Intervalo de datas ativo</td>
+</tr>
+</tbody>
+</table>
+<h2 id="exemplo">Exemplo</h2>
+<p>Solicitação: "Regar a grama e as floreiras todos os dias da semana às 6:00, por 15 e 20 minutos, com ajuste meteorológico."</p>
+<pre><code class="language-json">{
+  &quot;pid&quot;: -1,
+  &quot;name&quot;: &quot;RegaMatinal&quot;,
+  &quot;v&quot;: &quot;[67,31,0,[360,-1,-1,-1],[900,1200,0,0,0,0,0,0]]&quot;
+}
+</code></pre>
+<p>O programa criado aparecerá na interface normal de <strong>Programas</strong> e poderá ser editado ou gerenciado por lá.</p>
               
             </div>
           </div><footer>

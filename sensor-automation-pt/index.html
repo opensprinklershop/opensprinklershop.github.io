@@ -117,7 +117,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="automacao-e-monitores-de-sensores">Automação e Monitores de Sensores</h1>
-<p>O OpenSprinklerPro combina dados de sensores, ajustes de programas e regras de monitoramento. Todo o fluxo operacional na interface web está documentado em <a href="../analog-sensor-config-pt/">Configuração de Sensor Analógico</a>; esta página descreve os detalhes técnicos de automação e as chamadas de API/MCP como <code>configure_adjustment</code> e <code>configure_monitor</code>.</p>
+<p>O OpenSprinklerPro combina dados de sensores, ajustes de programas e regras de monitoramento. Todo o fluxo operacional na interface gráfica está documentado em <a href="../analog-sensor-config-pt/">Configuração de Sensor Analógico</a>; esta página descreve os detalhes técnicos de automação e as chamadas de API/MCP como <code>configure_adjustment</code> e <code>configure_monitor</code>.</p>
 <h2 id="ajustes-de-programas-baseados-em-sensores">Ajustes de programas baseados em sensores</h2>
 <p>Os ajustes de programas escalam dinamicamente a duração da irrigação com base em valores de sensores ativos.</p>
 <table>
@@ -146,8 +146,42 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="Program Adjustments" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-program-adjustments.png" /></p>
-<p><img alt="New Program Adjustment" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-program-adjustment-editor.png" /></p>
+<p><img alt="Ajustes de Programa" class="mobile-screenshot" src="../assets/screenshots/pro/pt/analog-program-adjustments.png" /></p>
+<p><img alt="Novo Ajuste de Programa" class="mobile-screenshot" src="../assets/screenshots/pro/pt/analog-program-adjustment-editor.png" /></p>
+<h2 id="monitores">Monitores</h2>
+<p>Os monitores supervisionam os valores dos sensores ou condições lógicas e geram regras de controle locais ou gatilhos de automação. Eles também podem disparar eventos de notificação.</p>
+<table>
+<thead>
+<tr>
+<th>Tipo de Monitor</th>
+<th>Objetivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MIN / MAX</td>
+<td>Verificação de limite simples (máximo/mínimo)</td>
+</tr>
+<tr>
+<td>SENSOR12 / SET_SENSOR12</td>
+<td>Integração digital de sensores de chuva/solo da placa base</td>
+</tr>
+<tr>
+<td>AND / OR / XOR / NOT</td>
+<td>Combinações lógicas baseadas em outros monitores ativos</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>Condição baseada em janela de horário ou período de tempo</td>
+</tr>
+<tr>
+<td>REMOTE</td>
+<td>Monitorar o estado e condição de outro controlador remoto OpenSprinkler</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Monitoramento e Controle" class="mobile-screenshot" src="../assets/screenshots/pro/pt/monitors.png" /></p>
+<p><img alt="Novo Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/pt/analog-monitor-editor.png" /></p>
               
             </div>
           </div><footer>

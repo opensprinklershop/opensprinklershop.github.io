@@ -329,6 +329,10 @@
 <td>Si iscrive a un topic MQTT e interpreta il valore ricevuto. Configurare topic, filtro JSON/testo opzionale, unità e timeout.</td>
 </tr>
 <tr>
+<td>Sensore JSON remoto</td>
+<td>Interroga qualsiasi endpoint JSON HTTP/HTTPS esterno ed estrae il valore utilizzando una ricerca del percorso.</td>
+</tr>
+<tr>
 <td>Sensore OpenSprinkler remoto</td>
 <td>Legge un sensore da un altro controller OpenSprinkler. Configurare URL/controller remoto e numero del sensore sorgente.</td>
 </tr>
@@ -487,6 +491,25 @@
 <p>Inserire token API o credenziali richiesti dalla versione firmware. Mantenerli privati e aggiornarli se l’accesso FYTA cambia.</p>
 <h3 id="mappatura-piante">Mappatura piante</h3>
 <p>Dopo l’autenticazione, mappare umidità e temperatura FYTA su sensori OpenSprinkler per grafici, monitor e regolazioni.</p>
+<h2 id="configurazione-gardena">Configurazione Gardena</h2>
+<p>La <strong>configurazione Gardena</strong> consente la connessione all'API ufficiale Gardena Cloud. Ciò consente di importare direttamente i sensori intelligenti di umidità del suolo e temperatura di Gardena e di integrarli nella logica di irrigazione.</p>
+<h3 id="assistente-oauth-gardena">Assistente OAuth Gardena</h3>
+<ol>
+<li>Registrati sul portale sviluppatori Gardena se necessario e crea un'app per ottenere un ID cliente (Client ID) e un segreto cliente (Client Secret).</li>
+<li>Nel menu OpenSprinkler, apri <strong>Opzioni -&gt; Integrazioni</strong> o apri direttamente l'<strong>assistente OAuth Gardena</strong> nelle opzioni dei sensori analogici.</li>
+<li>Inserisci le tue credenziali. L'assistente ti guiderà attraverso l'accesso OAuth 2.0 e richiederà automaticamente il token di aggiornamento (Refresh Token).</li>
+<li>Dopo un accesso corretto, i dispositivi Gardena connessi verranno rilevati automaticamente.</li>
+</ol>
+<h3 id="mappatura-dei-sensori-gardena">Mappatura dei sensori Gardena</h3>
+<p>Nelle definizioni dei sensori, seleziona il tipo <code>Sensore umidità Gardena</code> o <code>Sensore temperatura Gardena</code>. Nel configuratore, puoi quindi scegliere il dispositivo desiderato e la sua metrica dei dati specifica.</p>
+<hr />
+<h2 id="configurazione-del-sensore-json-remoto">Configurazione del sensore JSON remoto</h2>
+<p>Il <strong>sensore JSON remoto</strong> è un tipo estremamente flessibile progettato per interrogare API REST arbitrarie che restituiscono dati in formato JSON. Analizza le risposte al volo con un basso sovraccarico di memoria.</p>
+<h3 id="campi-delleditor_1">Campi dell'editor</h3>
+<ul>
+<li><strong>URL</strong>: L'indirizzo completo HTTP o HTTPS dell'API (ad esempio, <code>http://api.weather.com/v1/sensor</code>). Massimo 200 caratteri.</li>
+<li><strong>Percorso di ricerca JSON (Filtro)</strong>: Il percorso del valore numerico desiderato nel documento JSON. Gli oggetti annidati sono separati da una barra verticale (<code>|</code>) (ad esempio, <code>main|temp</code> o <code>root|sensor_1|humidity</code>).</li>
+</ul>
 <h2 id="backup-e-ripristino">Backup e ripristino</h2>
 <p><strong>Backup and Restore</strong> esporta o ripristina configurazione sensori, regolazioni programma e monitor separatamente dal backup generale.</p>
 <p><img alt="Backup and Restore" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-backup-restore.png" /></p>

@@ -186,6 +186,199 @@ Mesma causa raiz acima: você provavelmente usou uma <strong>fonte DC</strong> e
 <p><strong>Algumas zonas ligam, mas outras não.</strong>
 <span class="vsp1"></span>
 Primeiro, faça um <a href="#fiação-e-solenoides">teste de resistência do solenoide</a> para descartar falhas no solenoide ou na fiação. Se as leituras estiverem normais, abra a carcaça do controlador, tire uma foto nítida e verifique se há danos visíveis na placa (marcas de queimadura/descoloração, componentes estufados). Se tiver dúvidas, abra um tíquete de suporte e anexe a foto — inclua as versões de hardware/firmware e descreva os sintomas.</p>
+<hr class="double">
+
+<h3 id="fonte-de-alimentacao-e-expansores">Fonte de Alimentação e Expansores</h3>
+<p><strong>Meu controlador não liga.</strong>
+<span class="vsp1"></span>
+Se o controlador não ligar mais (e o visor LCD estiver apagado), siga estas etapas:</p>
+<ol>
+<li><strong>Desconecte tudo:</strong> Desconecte a energia e remova todos os periféricos (expansores, cabo de rede Ethernet, sensores).</li>
+<li><strong>Verifique a fonte de alimentação:</strong> Use um multímetro para verificar a saída da fonte. Por exemplo, uma fonte de 24VAC deve medir entre 24-30V AC; uma de 7.5VDC deve medir 7.5V DC. Se a leitura for zero ou muito baixa, substitua a fonte de alimentação.</li>
+<li><strong>Inspeção visual:</strong> Abra a carcaça do controlador e verifique se há danos visíveis na placa de circuito (componentes estufados, marcas de queimaduras/descolorações). Verifique o fusível também.</li>
+<li><strong>Entre em contato com o suporte:</strong> Se a fonte estiver em boas condições e não houver danos visíveis na placa de circuito, ligue-a novamente (mas mantenha todos os periféricos desconectados por enquanto). Se o problema persistir, envie uma foto legível da placa num tíquete de suporte.</li>
+</ol>
+<hr />
+<p><strong>Depois de conectar um expansor, o controlador não liga mais.</strong>
+<span class="vsp1"></span>
+Isso acontece se o expansor for rotacionado ou conectado por engano no barramento de <strong>Ethernet cabeada</strong> em vez do barramento do <strong>Expansor</strong>. <strong>Desligue a energia imediatamente</strong>, desconecte o expansor e conecte-o na entrada correta marcada como 'Expander'. Veja a ilustração abaixo.</p>
+<p><img alt="Expander vs. Ethernet" src="../assets/images/expander_vs_ethernet.png" /></p>
+<hr />
+<p><strong>O expansor não é detectado pelo controlador.</strong></p>
+<ol>
+<li><strong>Verifique a conexão:</strong> O expansor está conectado à porta correta? (consulte a questão acima).</li>
+<li><strong>Reinicie o controlador</strong> para permitir a detecção automática de expansores.</li>
+<li><strong>Verifique na interface:</strong> Acesse a página inicial do OpenSprinkler → Opções → Gerenciamento de Estações. Sob <strong>Número de Estações</strong>, você verá o total de canais disponíveis (incluindo os expansores):<ul>
+<li>Se apresentar mais de <code>8</code> canais, os expansores foram identificados com sucesso. Selecione quantos canais você deseja ativar usando a lista suspensa.</li>
+<li>Caso contrário, o cabo flat ou o próprio expansor podem estar com defeito. Envie um tíquete de suporte.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="Expander Detect" src="../assets/images/expander_detect.png" /></p>
+<hr />
+<p><strong>Não consigo ver nenhuma zona de expansão.</strong>
+<span class="vsp1"></span>
+Primeiro, verifique se o expansor foi detectado (consulte o procedimento acima). Tenha em mente que as novas canais não são ativadas automaticamente após a detecção; você deve habilitá-las manualmente na interface sob Opções de Estações.</p>
+<hr />
+<p><strong>O expansor é reconhecido, mas as zonas nele não funcionam.</strong></p>
+<ol>
+<li><strong>Confirme a detecção:</strong> Verifique as etapas acima.</li>
+<li><strong>Verifique o fio COM (comum):</strong> Todas os solenoides devem estar conectados ao terminal COM do controlador principal. Caso contrário, elas não serão acionadas.</li>
+<li><strong>Faça o <a href="#fiação-e-solenoides">teste de resistência do solenoide</a></strong> para descartar problemas nas válvulas ou fiação.</li>
+<li><strong>Verifique as zonas da placa principal:</strong> Se as primeiras 8 zonas também apresentarem falha, há grandes chances de fusível queimado ou fio COM solto. Se os demais funcionarem bem na placa principal, pode ser um problema específico nas saídas do expansor.</li>
+</ol>
+<hr />
+<p><strong>Como conectar múltiplos expansores?</strong></p>
+<ul>
+<li><strong>Desligue o controlador principal:</strong> Sempre remova a alimentação elétrica antes de alterar conexões de expansores.</li>
+<li><strong>Cascateamento:</strong> Conecte o próximo expansor ao anterior utilizando as saídas traseiras e cabos incluídos.</li>
+<li><strong>Endereço único (DIP):</strong> Cada placa de expansão <strong>deve possuir um ID único</strong>. Os interruptores DIP estão na parte traseira do expansor. Defina os IDs de acordo com as instruções; IDs idênticos farão com que o controlador principal se confunda.</li>
+<li><strong>Ligue e valide:</strong> Execute os passos de detecção acima.</li>
+</ul>
+<hr />
+<p><strong>Tenho múltiplos expansores mas alguns funcionam e outros não.</strong></p>
+<ul>
+<li><strong>Interruptores DIP:</strong> Conforme mencionado no item anterior, garanta que cada expansor possua um ID exclusivo configurado.</li>
+<li><strong>Teste individual:</strong> Desligue a energia, desencaixe os expansores e teste conectando apenas um por vez ao controlador básico para isolar cabos ou módulos defeituosos.</li>
+</ul>
+<hr class="double">
+
+<p><a id="reset-and-configurations"></a></p>
+<h3 id="redefinicao-e-configuracao">Redefinição e Configuração</h3>
+<p><strong>Qual a senha padrão do dispositivo?</strong>
+<span class="vsp1"></span>
+Após uma restauração de fábrica, a senha padrão é <code>opendoor</code>. Não há nome de usuário. Essa senha é usada exclusivamente para acessar a interface Web local ou app móvel. Altamente recomendável alterar essa senha no primeiro acesso por questões de segurança.</p>
+<hr />
+<p><strong>Esqueci a senha do meu dispositivo. Como recuperar o acesso?</strong>
+<span class="vsp1"></span>
+Você pode contornar a senha editando as configurações através dos botões físicos presentes na placa do controlador:</p>
+<ul>
+<li>Reinicie o controlador. Assim que surgir o logotipo do OpenSprinkler, mantenha o botão <strong>B3</strong> pressionado até visualizar no visor LCD: <strong>Setup Options</strong> (Opções de Configuração).</li>
+<li>Clique em B3 repetidas vezes até chegar na tela <strong>Ignore Password</strong> (Ignorar Senha). Selecione <strong>Yes</strong> clicando nos botões B1 ou B2.</li>
+<li>Segure B3 até o controlador reiniciar. Agora você pode efetuar o login usando qualquer senha (ou vazio).</li>
+<li>Altere sua senha de administrador imediatamente e redefina a opção <strong>Ignore Password</strong> para No.</li>
+</ul>
+<hr />
+<p><strong>Mudei meu roteador/nome da rede WiFi (SSID) / senha. Como redefinir o WiFi do controlador?</strong>
+<span class="vsp1"></span>
+<strong>Reiniciar no modo AP (Access Point)</strong>: Mantenha o botão <strong>B3</strong> pressionado e pressione <strong>B2</strong> rapidamente (em até 1-2 segundos). Confirme no visor de LCD. O OpenSprinkler reiniciará em seu modo de ponto de acesso básico de WiFi. Siga as orientações descritas no <a href="../2.2.1/221_4_manual_pt/#step-4-setting-up-wifi-ethernet">Guia de Configuração de WiFi</a>.</p>
+<p>Caso o atalho com os botões não funcione, realize a restauração de fábrica completa (ver item abaixo).</p>
+<hr />
+<p><strong>Como fazer a restauração de fábrica completa?</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A restauração de fábrica apagará todas as configurações, programas, arquivos de histórico e dados medidos. Se possuir acesso à rede, faça um backup de exportação (instruções abaixo) para restabelecer os dados com facilidade.</p>
+</div>
+<ul>
+<li>Reinicie o controlador. Assim que surgir o logotipo na tela de LCD, mantenha o botão <strong>B1</strong> pressionado até exibir: <strong>Factory Reset?</strong>.</li>
+<li>Valide se a seleção está como <strong>Yes</strong>.</li>
+<li>Pressione e segure o botão B3 até o controlador reinicializar completamente.</li>
+<li>Após a restauração, a senha padrão de rede será <code>opendoor</code> e o WiFi iniciará em modo AP básico.</li>
+</ul>
+<p>Se possuir um controlador do tipo OSPi executando sob Linux, veja as <a href="#ospi-specific">etapas para OSPi</a>.</p>
+<hr />
+<p><strong>Como salvar minhas configurações (fazer backup)?</strong>
+<span class="vsp1"></span></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Copias de segurança de exportação regulares facilitam a restauração de programas e históricos no futuro do sistema. Também são muito úteis para anexar em tíquetes de suporte.</p>
+</div>
+<p>Acesse a página inicial do OpenSprinkler, deslize do lado esquerdo para o direito para abrir o menu lateral e toque em <strong>Configuração exportar</strong> para salvar o arquivo de dados.</p>
+<hr />
+<p><strong>O controlador mostra apenas uma tela branca ao abrir. Como realizar backup?</strong>
+<span class="vsp1"></span>
+Veja as etapas em <a href="#ui-app-time-and-lcd">Resolução de problemas de interface</a> abaixo. No passo 4, utilize a chamada direta <code>/ja</code> para ler e salvar o arquivo JSON bruto de configurações.</p>
+<hr class="double">
+
+<h3 id="conexao">Conexão</h3>
+<p><strong>Problemas de conexão WiFi</strong>
+<span class="vsp1"></span>
+Se o seu OpenSprinkler v3.x não está conectando ou caindo a conexão com a rede sem fio, siga:</p>
+<ol>
+<li><strong>Verifique o modo de rede:</strong> O controlador está em modo <strong>AP</strong> (LCD indica 4 linhas de texto e ponto piscando rápido)? Se sim, siga a configuração no guia.</li>
+<li><strong>Roteador ou senhas alterados recentemente?</strong> Realize o procedimento de redefinição de WiFi descrito no tópico de redefinições acima.</li>
+<li><strong>Requisitos de rede sem fio (WiFi):</strong><ul>
+<li><strong>Apenas 2.4 GHz:</strong> O chip sem fio opera apenas em redes de 2.4 GHz. Redes de 5 GHz não são compatíveis. Garanta SSID exclusivos em redes híbridas.</li>
+<li><strong>Segurança de criptografia:</strong> Utilize autenticação do tipo <strong>WPA2-PSK (AES)</strong> ou misto (WPA/WPA2). Criptografias WPA3 exclusivas ou redes empresariais no padrão Enterprise não são aceitas.</li>
+<li><strong>Formatos de transmissão:</strong> Configure para redes de padrão <strong>b/g/n (no ax)</strong>.</li>
+<li><strong>Configuração de canal:</strong> largura de banda fixa em <strong>20 MHz</strong>; canais preferenciais <strong>1, 6 ou 11</strong>.</li>
+<li><strong>Recursos especiais:</strong> <strong>Desative</strong> o Smart Connect ou direcionamento de bandas (band steering).</li>
+<li>Configure <strong>PMF (Protected Management Frames)</strong> como opcional ou desativado.</li>
+<li>Redes sem fio operando sob regras captive portal ou filtragem de MAC devem possuir exclusão criada para o controlador.</li>
+</ul>
+</li>
+<li><strong>Testes alternativos:</strong> Caso o WiFi não conecte de forma alguma com o seu roteador principal, tente habilitar o ponto de acesso WiFi no celular de 2.4 GHz para testar o pareamento local.</li>
+<li><strong>Use rede física cabeada:</strong> Adquira um módulo oficial de <a href="https://opensprinkler.com/product/wired_ethernet/">Ethernet cabeada</a> para dispensar a necessidade de conexão sem fio.</li>
+</ol>
+<p><strong><u>Para OSPi</u>:</strong> A conexão Wifi é gerenciada internamente pela placa do Raspberry Pi. Certifique-se de fonte de alimentação estável do RPi (Raspberry Pi 3/4/5 podem demandar energia via USB adicional sob redes sem fio intensas).</p>
+<hr />
+<p><strong>Problemas com rede física de Ethernet (cabo)</strong>
+<span class="vsp1"></span>
+Caso seu controlador não estabeleça conexão pela rede de cabo, siga:</p>
+<ol>
+<li><strong>Indicadores em LEDs:</strong> O conector RJ-45 deve possuir um LED fixo (link) and outro piscando ao trafegar dados. Se não piscarem, teste em outra porta do roteador/switch com outro cabo.</li>
+<li><strong>Sem suporte a PoE:</strong> O módulo de rede cabeada da placa <strong>não aceita alimentação PoE</strong>. Sistemas alimentados com PoE ativo nessas saídas podem sofrer perda de comunicação e danos físicos.</li>
+<li><strong>DHCP habilitado:</strong> Mantenha a configuração sob DHCP automático no controlador e crie uma reserva estática (reserva de IP por endereço MAC) em seu roteador. IPs fixos configurados de forma manual sem dados de DNS ou gateway válidos podem sofrer quedas frequentes.</li>
+<li><strong>Reinicializações agendadas:</strong> Caso sua rede sofra perda eventual de buffers de tráfego, agende rotinas de reinício automático no OpenSprinkler utilizando anotações de agendamento de programas. Consulte o manual em <a href="../2.2.1/221_4_manual_pt/#program-name-annotations">Anexos de nomes de programas</a>.</li>
+</ol>
+<hr class="double">
+
+<p><a id="ui-app-time-and-lcd"></a></p>
+<h3 id="interface-de-usuario-aplicativos-relogio-e-displays">Interface de Usuário, Aplicativos, Relógio e Displays</h3>
+<p><strong>Página branca ao carregar a página inicial</strong></p>
+<ol>
+<li><strong>Firmware obsoleto:</strong> Se o firmware for anterior ao formato de weather data moderno (versões inferiores a <code>2.2.0</code>), dados climáticos farão com que a página inicial retorne vazia. Conecte pelo atualizador local e realize a atualização do firmware.</li>
+<li><strong>Terminal desenvolvedor (Logs de erro):</strong> Abra o console do navegador no PC (tecla F12 no Chrome -&gt; console) e digite o IP do OpenSprinkler. Verifique erros na tela.</li>
+<li><strong>Resetar origem da UI:</strong> Modificações de caminhos podem travar a resposta inicial da página Web local. Digite o endereço <code>http://ip-do-aspersor/su</code> no navegador e redefina os campos de <code>UI Source</code> para o modo básico ('default').</li>
+<li><strong>Arquivos JSON corrompidos:</strong> Faça o download do arquivo de validação <a href="../assets/scripts/TestOSAPI220.html">API validation tool</a>. Execute localmente em seu navegador web inserindo o IP do controlador. Caso mostre mensagens como <code>INVALID JSON</code>, houve alguma gravação corrompida.</li>
+<li><strong>Soluções via API:</strong> Corrija os campos com erros utilizando chamadas via endpoint ou proceda instalando um backup limpo.</li>
+<li><strong>Restauração de fábrica física:</strong> Se as opções de sistema Web não reestabelecerem os acessos, force a restauração de fábrica física pelos botões físicos.</li>
+</ol>
+<hr />
+<p><strong>Alterações nos programas de rega não são salvas.</strong>
+<span class="vsp1"></span>
+Geralmente relacionada a firmware do controlador ou aplicativo celular desatualizados. Execute a atualização.</p>
+<hr />
+<p><strong>O relógio do meu aspersor apresenta dados de hora incorretos.</strong>
+<span class="vsp1"></span>
+O relógio utiliza sincronia dupla: o fuso horário geográfico é definido pela sua <strong>Localização (Location)</strong> de geocódigo inserida e o relógio local é sincronizado via servidor de rede <strong>NTP</strong>:</p>
+<ol>
+<li><strong>Localização e Conexão de Internet:</strong> Vá em Opções e verifique se as configurações de localização estão corretas. IPs estáticos sem tabelas de DNS ou Gateway falharão ao contactar as rotas correspondentes dos servidores NTP públicos na nuvem.</li>
+<li><strong>Defina Fuso Horário de forma manual:</strong> Em casos de redes locais isoladas sem internet estável, clique para limpar o campo de Localização e adicione o seu Fuso Horário preferencial de forma isolada na interface.</li>
+<li><strong>Servidores NTP:</strong> Mantenha a configuração padrão do servidor NTP em <code>0.0.0.0</code> para utilizar servidores geográficos em formato dinâmico.</li>
+<li><strong>No OSPi</strong>, o relógio local e serviços NTP são definidos via sistema operacional Linux Raspbian da placa.</li>
+</ol>
+<hr />
+<p><strong>Minhas válvulas acionam no horário incorreto.</strong>
+<span class="vsp1"></span>
+Efetue os procedimentos acima de relógio e fuso horário.</p>
+<hr />
+<p><strong>Uma válvula aciona mesmo com as suspensões climáticas ativas.</strong>
+<span class="vsp1"></span>
+Certifique-se de que a opção de atributos da estação não esteja marcada como <code>Ignore Rain</code> (Ignorar Chuva) ou <code>Ignore Sensor</code>. Abra as propriedades da estação clicando no ícone de engrenagem individual correspondente.</p>
+<hr />
+<p><strong>Meus programas agendados não estão executando.</strong></p>
+<ul>
+<li>Verifique se o programa correspondente de rega está ativado (flag de status visível).</li>
+<li>Confira a hora interna do controlador.</li>
+<li>Verifique se no controle principal não está ativa alguma suspensão de clima (Rain Delay / Rain Sensor).</li>
+<li>Vá em opções e verifique se a ação climática inteligente de suspensão sob o uso de clima não reduziu o tempo a 0%.</li>
+</ul>
+<hr class="double">
+
+<p><a id="ospi-specific"></a></p>
+<h3 id="especificos-para-ospi-raspberry-pi-hat">Específicos para OSPi (Raspberry Pi HAT)</h3>
+<p><strong>Rotas de Compilação do Firmware</strong>
+<span class="vsp1"></span>
+O firmware compila perfeitamente nas versões modernas de sistema (Debian Bullseye, Bookworm ou Trixie). Erros de compilação geralmente estão associados a pacotes básicos ausentes de biblioteca ou versões muito antigas do sistema operacional.</p>
+<hr />
+<p><strong>Restauração Física de Fábrica no OSPi</strong></p>
+<ul>
+<li>Abra o terminal remoto do Raspberry Pi.</li>
+<li>Vá para a biblioteca do OpenSprinkler compilada: <code>cd ~/OpenSprinkler-Firmware</code>.</li>
+<li>Digite a instrução para remoção dos dados: <code>sudo rm -f done.dat</code>.</li>
+<li>Reinicie o Raspberry Pi para que o sistema de persistência recrie as opções padrões originais.</li>
+</ul>
               
             </div>
           </div><footer>

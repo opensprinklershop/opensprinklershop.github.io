@@ -111,6 +111,20 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gardena-setup">Gardena setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#gardena-oauth-assistant">Gardena OAuth Assistant</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mapping-gardena-sensors">Mapping Gardena Sensors</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#remote-json-sensor-setup">Remote JSON sensor setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#editor-fields_1">Editor Fields</a>
+    </li>
+        </ul>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#backup-and-restore">Backup and restore</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#what-is-included">What is included</a>
@@ -392,6 +406,10 @@
 <td>Subscribes to an MQTT topic and parses the incoming value. Configure topic, optional JSON/filter expression, unit and timeout behavior.</td>
 </tr>
 <tr>
+<td>Remote JSON sensor</td>
+<td>Queries any external HTTP/HTTPS JSON endpoint and extracts the value using a path search.</td>
+</tr>
+<tr>
 <td>Remote OpenSprinkler sensor</td>
 <td>Reads a sensor from another OpenSprinkler controller. Configure the remote URL/controller and source sensor number.</td>
 </tr>
@@ -550,6 +568,25 @@
 <p>Enter the FYTA API token or login data required by your firmware version. Keep credentials private and update them if FYTA access changes.</p>
 <h3 id="mapping-plants">Mapping plants</h3>
 <p>After authentication, map FYTA plant moisture and temperature values to OpenSprinkler sensor entries so they can be charted, monitored and used in adjustments.</p>
+<h2 id="gardena-setup">Gardena setup</h2>
+<p>The <strong>Gardena Setup</strong> enables connection to the official Gardena Cloud API. This allows Gardena smart soil moisture and temperature sensors to be imported directly and integrated into your watering logic.</p>
+<h3 id="gardena-oauth-assistant">Gardena OAuth Assistant</h3>
+<ol>
+<li>Register on the Gardena Developer Portal if needed and create an app to obtain a Client ID and Client Secret.</li>
+<li>In the OpenSprinkler menu, open <strong>Options -&gt; Integrations</strong> or open the <strong>Gardena OAuth Assistant</strong> directly within the analog sensor options.</li>
+<li>Enter your credentials. The assistant will guide you through the OAuth 2.0 login and request the Refresh Token automatically.</li>
+<li>After a successful login, connected Gardena devices will be automatically discovered.</li>
+</ol>
+<h3 id="mapping-gardena-sensors">Mapping Gardena Sensors</h3>
+<p>In the sensor definitions, select the type <code>Gardena moisture sensor</code> or <code>Gardena temperature sensor</code>. In the editor, you can then choose the desired device and its specific data metric.</p>
+<hr />
+<h2 id="remote-json-sensor-setup">Remote JSON sensor setup</h2>
+<p>The <strong>Remote JSON sensor</strong> is an extremely flexible type designed to query arbitrary REST APIs returning data in JSON format. It parses responses on-the-fly stream-wise with low memory overhead.</p>
+<h3 id="editor-fields_1">Editor Fields</h3>
+<ul>
+<li><strong>URL</strong>: The full HTTP or HTTPS address of the API (e.g., <code>http://api.weather.com/v1/sensor</code>). Max 200 characters.</li>
+<li><strong>JSON Search Path (Filter)</strong>: The path to the desired numeric value in the JSON document. Neseted objects are separated by a vertical bar (<code>|</code>) (e.g., <code>main|temp</code> or <code>root|sensor_1|humidity</code>).</li>
+</ul>
 <h2 id="backup-and-restore">Backup and restore</h2>
 <p><strong>Backup and Restore</strong> exports or restores sensor configuration, program adjustments and monitors separately from the general controller backup. Use this before large sensor changes or firmware tests.</p>
 <p><img alt="Backup and Restore" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-backup-restore.png" /></p>

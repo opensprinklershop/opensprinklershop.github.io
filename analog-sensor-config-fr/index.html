@@ -329,6 +329,10 @@
 <td>S’abonne à un topic MQTT et analyse la valeur reçue. Configurez topic, filtre JSON/texte optionnel, unité et comportement en cas de timeout.</td>
 </tr>
 <tr>
+<td>Capteur JSON distant</td>
+<td>Interroge n’importe quel point de terminaison JSON HTTP/HTTPS externe et extrait la valeur à l’aide d’une recherche de chemin.</td>
+</tr>
+<tr>
 <td>Capteur OpenSprinkler distant</td>
 <td>Lit un capteur depuis un autre contrôleur OpenSprinkler. Configurez l’URL/le contrôleur distant et le numéro du capteur source.</td>
 </tr>
@@ -487,6 +491,25 @@
 <p>Saisissez le jeton API ou les identifiants requis par votre firmware. Gardez-les privés et mettez-les à jour si l’accès FYTA change.</p>
 <h3 id="association-des-plantes">Association des plantes</h3>
 <p>Après authentification, associez humidité et température FYTA à des capteurs OpenSprinkler pour les afficher, surveiller et utiliser dans les ajustements.</p>
+<h2 id="configuration-gardena">Configuration Gardena</h2>
+<p>La <strong>configuration Gardena</strong> permet la connexion à l’API officielle Gardena Cloud. Cela permet d’importer directement les capteurs intelligents d’humidité du sol et de température de Gardena et de les intégrer à votre logique d'arrosage.</p>
+<h3 id="assistant-oauth-gardena">Assistant OAuth Gardena</h3>
+<ol>
+<li>Enregistrez-vous sur le portail des développeurs Gardena si nécessaire et créez une application pour obtenir un identifiant client (Client ID) et un secret client (Client Secret).</li>
+<li>Dans le menu OpenSprinkler, ouvrez <strong>Options -&gt; Intégrations</strong> ou ouvrez l’<strong>assistant OAuth Gardena</strong> directement dans les options des capteurs analogiques.</li>
+<li>Saisissez vos identifiants. L’assistant vous guidera à travers la connexion OAuth 2.0 et demandera automatiquement le jeton de rafraîchissement (Refresh Token).</li>
+<li>Une fois la connexion établie, les appareils Gardena connectés seront automatiquement découverts.</li>
+</ol>
+<h3 id="mappage-des-capteurs-gardena">Mappage des capteurs Gardena</h3>
+<p>Dans les définitions de capteurs, sélectionnez le type <code>Capteur d’humidité Gardena</code> ou <code>Capteur de température Gardena</code>. Dans l'éditeur, vous pouvez ensuite choisir l'appareil souhaité et sa mesure de données spécifique.</p>
+<hr />
+<h2 id="configuration-du-capteur-json-distant">Configuration du capteur JSON distant</h2>
+<p>Le <strong>capteur JSON distant</strong> est un type extrêmement flexible conçu pour interroger des API REST arbitraires renvoyant des données au format JSON. Il analyse les réponses à la volée avec une faible surcharge de mémoire.</p>
+<h3 id="champs-de-lediteur_1">Champs de l'éditeur</h3>
+<ul>
+<li><strong>URL</strong> : L'adresse complète HTTP ou HTTPS de l'API (par exemple, <code>http://api.weather.com/v1/sensor</code>). Maximum 200 caractères.</li>
+<li><strong>Chemin de recherche JSON (Filtre)</strong> : Le chemin d'accès à la valeur numérique souhaitée dans le document JSON. Les objets imbriqués sont séparés par une barre verticale (<code>|</code>) (par exemple, <code>main|temp</code> ou <code>root|sensor_1|humidity</code>).</li>
+</ul>
 <h2 id="sauvegarde-et-restauration">Sauvegarde et restauration</h2>
 <p><strong>Backup and Restore</strong> exporte ou restaure configuration capteurs, ajustements de programme et monitors séparément de la sauvegarde générale.</p>
 <p><img alt="Backup and Restore" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-backup-restore.png" /></p>

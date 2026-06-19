@@ -118,11 +118,11 @@
               
                 <h1 id="configuracao-de-sensor-analogico">Configuração de Sensor Analógico</h1>
 <p>A <strong>Configuração de Sensor Analógico</strong> é a área da interface do OpenSprinklerPro para definir fontes de sensores e usar seus valores na automação da irrigação. Abra a partir do menu inferior em <strong>Analog Sensor Configuration</strong>.</p>
-<p><img alt="Configuração de Sensor Analógico" class="mobile-screenshot" src="../assets/screenshots/pro/en/sensor-config.png" /></p>
-<p>Páginas relacionadas: <a href="../sensor-automation-pt/">Automação e Monitores de Sensores</a>, <a href="../fyta-sensors-pt/">Sensores FYTA</a>, <a href="../opensprinklerpro_pt/#monitors-and-local-alerts">Extensões OpenSprinklerPro</a>, <a href="../pro-api-endpoints-pt/">Adendo de API e plataforma</a>.</p>
+<p><img alt="Configuração de Sensor Analógico" class="mobile-screenshot" src="../assets/screenshots/pro/pt/sensor-config.png" /></p>
+<p>Páginas relacionadas: <a href="../sensor-automation-pt/">Automação e Monitores de Sensores</a>, <a href="../fyta-sensors-pt/">Sensores FYTA</a>, <a href="../opensprinklerpro_pt/#monitores-e-alertas-locais">Extensões OpenSprinklerPro</a>, <a href="../pro-api-endpoints-pt/">Adendo de API e plataforma</a>.</p>
 <h2 id="definicoes-de-sensores">Definições de sensores</h2>
 <p>A primeira seção define a lista de sensores. Cada linha possui um número de sensor, nome, valor atual e estado de ativação. <strong>Add Sensor</strong> abre o editor para um novo sensor; os sensores existentes são editados tocando no nome do sensor.</p>
-<p><img alt="Novo Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-sensor-editor.png" /></p>
+<p><img alt="Novo Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/pt/analog-sensor-editor.png" /></p>
 <h3 id="campos-do-editor">Campos do Editor</h3>
 <table>
 <thead>
@@ -329,6 +329,10 @@
 <td>Subscreve a um tópico MQTT e analisa o valor recebido. Configure o tópico, expressão JSON/filtro opcional, unidade e comportamento de timeout.</td>
 </tr>
 <tr>
+<td>Sensor JSON remoto</td>
+<td>Consulta qualquer endpoint JSON HTTP/HTTPS externo e extrai o valor usando uma busca de caminho.</td>
+</tr>
+<tr>
 <td>Sensor OpenSprinkler remoto</td>
 <td>Lê um sensor de outro controlador OpenSprinkler. Configure a URL/controlador remoto e o número do sensor de origem.</td>
 </tr>
@@ -406,10 +410,93 @@
 </tr>
 <tr>
 <td>Grupo de sensores com valor de soma</td>
-<td>Relata a soma de sensores de origem selecionados, por exemplo, totais combinados de chuva ou fluxo.</td>
+<td>Relata a soma de sensores de origem selecionados, por exemplo, totais combinados de fluxo ou chuva.</td>
 </tr>
 </tbody>
 </table>
+<h2 id="ajustes-de-programa">Ajustes de Programa</h2>
+<p>Os <strong>Ajustes de Programa</strong> dimensionam a duração da irrigação de um programa com base no valor de um sensor. Exemplos típicos são menos irrigação com alta umidade do solo ou mais irrigação com alta temperatura.</p>
+<p><img alt="Ajustes de Programa" class="mobile-screenshot" src="../assets/screenshots/pro/pt/analog-program-adjustments.png" /></p>
+<p><img alt="Novo Ajuste de Programa" class="mobile-screenshot" src="../assets/screenshots/pro/pt/analog-program-adjustment-editor.png" /></p>
+<h3 id="modelo-de-ajuste">Modelo de Ajuste</h3>
+<p>Cada ajuste conecta um sensor a um programa de irrigação e calcula um fator percentual. Ative primeiro o log do sensor e verifique os valores medidos antes que a irrigação real seja afetada.</p>
+<h3 id="tipos-de-ajuste">Tipos de Ajuste</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LINEAR</code></td>
+<td>Dimensiona continuamente entre o ponto inferior e superior configurado.</td>
+</tr>
+<tr>
+<td><code>DIGITAL_MIN</code></td>
+<td>Dispara uma redução binária ou bloqueio se o sensor estiver abaixo de um limite.</td>
+</tr>
+<tr>
+<td><code>DIGITAL_MAX</code></td>
+<td>Dispara uma redução binária ou bloqueio se o sensor estiver acima de um limite.</td>
+</tr>
+<tr>
+<td><code>DIGITAL_MINMAX</code></td>
+<td>Aplica comportamento binário dentro ou fora de uma faixa configurada.</td>
+</tr>
+</tbody>
+</table>
+<p>Os modelos de funcionamento e fórmulas podem ser encontrados em <a href="../sensor-automation-pt/#ajustes-de-programas-baseados-em-sensores">Automação e Monitores de Sensores</a>.</p>
+<h2 id="monitores-e-alertas-locais">Monitores e Alertas Locais</h2>
+<p><strong>Monitoramento e Controle</strong> cria regras de limite e lógica a partir de sensores. Os monitores podem gerar alertas locais, alimentar eventos de notificação e combinar condições como "o solo está seco" e "o período é de manhã".</p>
+<p><img alt="Monitoramento e Controle" class="mobile-screenshot" src="../assets/screenshots/pro/pt/monitors.png" /></p>
+<p><img alt="Novo Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/pt/analog-monitor-editor.png" /></p>
+<h3 id="estrutura-de-regras">Estrutura de Regras</h3>
+<p>As regras do monitor selecionam um sensor, comparam-no com um limite ou estado e definem o que deve acontecer quando a condição for atendida. Nomes claros facilitam a compreensão de alertas futuros.</p>
+<h3 id="logica-e-periodos">Lógica e Períodos</h3>
+<p>Os tipos de monitores incluem limites, regras digitais de sensores de chuva/solo, combinações lógicas, períodos de tempo e estados de monitores remotos. Consulte <a href="../sensor-automation-pt/#monitores">Automação e Monitores de Sensores</a> para o modelo funcional.</p>
+<h2 id="graficos-de-sensores-e-dados">Gráficos de Sensores e Dados</h2>
+<p>O <strong>Gráfico do Sensor</strong> exibe os valores registrados dos sensores. Use-o para verificar leituras reais antes de usá-las para ajustes de programa ou monitores. A interface gráfica também permite descarregar logs ou abrir a tabela de dados.</p>
+<p><img alt="Gráfico do Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/pt/analog-sensor-chart.png" /></p>
+<h3 id="leitura-de-graficos">Leitura de Gráficos</h3>
+<p>Preste atenção a pontos de medição ausentes, picos inesperados e unidades incompatíveis. Compare sensores relacionados no mesmo grupo antes de usá-los para decisões automáticas.</p>
+<h3 id="baixar-dados">Baixar Dados</h3>
+<p>Os dados registrados podem ser baixados ou inspecionados em formato de tabela. Isso ajuda na calibração, solução de problemas e compartilhamento de curvas de sensores.</p>
+<h2 id="configuracao-fyta">Configuração FYTA</h2>
+<p>O menu de <strong>Configuração FYTA</strong> armazena o token da API ou os dados de login da FYTA e mapeia os sensores de plantas FYTA para sensores correspondentes do OpenSprinkler. Detalhes: <a href="../fyta-sensors-pt/">Sensores FYTA</a>.</p>
+<p><img alt="Configuração FYTA" class="mobile-screenshot" src="../assets/screenshots/pro/pt/fyta-setup.png" /></p>
+<p><img alt="Credenciais FYTA" class="mobile-screenshot" src="../assets/screenshots/pro/pt/analog-fyta-credentials.png" /></p>
+<h3 id="credenciais">Credenciais</h3>
+<p>Insira o token de API ou as credenciais de login exigidas pela sua versão de firmware. Mantenha as credenciais privadas e atualize-as caso o acesso à FYTA mude.</p>
+<h3 id="mapear-plantas">Mapear Plantas</h3>
+<p>Após a autenticação, mapeie os valores de umidade e temperatura das plantas FYTA para as entradas de sensores do OpenSprinkler, permitindo que sejam visualizados em gráficos, monitorados e ajustados.</p>
+<h2 id="configuracao-gardena">Configuração Gardena</h2>
+<p>A <strong>Configuração Gardena</strong> permite a conexão com a API oficial da nuvem Gardena. Isso possibilita importar diretamente os sensores inteligentes de umidade e temperatura do solo da Gardena e integrá-los à sua lógica de rega.</p>
+<h3 id="assistente-oauth-gardena">Assistente OAuth Gardena</h3>
+<ol>
+<li>Cadastre-se no Portal do Desenvolvedor Gardena se necessário e crie um aplicativo para obter um Client ID e Client Secret.</li>
+<li>No menu do OpenSprinkler, acesse <strong>Opções -&gt; Integrações</strong> ou abra diretamente o <strong>Assistente OAuth Gardena</strong> nas opções de sensores analógicos.</li>
+<li>Insira suas credenciais. O assistente o guiará pelo login OAuth 2.0 e solicitará automaticamente o Token de Atualização (Refresh Token).</li>
+<li>Após o login com sucesso, os dispositivos Gardena conectados serão descobertos de forma automática.</li>
+</ol>
+<h3 id="mapear-sensores-gardena">Mapear Sensores Gardena</h3>
+<p>Nas definições de sensores, selecione o tipo <code>Sensor de umidade Gardena</code> ou <code>Sensor de temperatura Gardena</code>. No editor, você poderá então escolher o dispositivo desejado e sua respectiva métrica de dados.</p>
+<hr />
+<h2 id="configuracao-de-sensor-json-remoto">Configuração de Sensor JSON Remoto</h2>
+<p>O <strong>Sensor JSON remoto</strong> é um tipo extremamente flexível projetado para consultar APIs REST arbitrárias que retornam dados no formato JSON. Ele analisa as respostas diretamente em tempo real com baixo consumo de memória.</p>
+<h3 id="campos-do-editor_1">Campos do Editor</h3>
+<ul>
+<li><strong>URL</strong>: O endereço HTTP ou HTTPS completo da API (ex: <code>http://api.weather.com/v1/sensor</code>). Máximo de 200 caracteres.</li>
+<li><strong>Caminho de Busca JSON (Filtro)</strong>: O caminho mapeado para o valor numérico desejado no documento JSON. Objetos aninhados são separados por uma barra vertical (<code>|</code>) (ex: <code>main|temp</code> ou <code>root|sensor_1|humidity</code>).</li>
+</ul>
+<h2 id="backup-e-restauracao">Backup e Restauração</h2>
+<p>O menu <strong>Backup e Restauração</strong> exporta ou restaura arquivos de configuração de sensores, ajustes de programas e regras do monitor separadamente do backup geral do controlador. Use antes de grandes mudanças ou testes de firmware.</p>
+<p><img alt="Backup e Restauração" class="mobile-screenshot" src="../assets/screenshots/pro/pt/analog-backup-restore.png" /></p>
+<h3 id="dados-incluidos">Dados Incluídos</h3>
+<p>Os backups incluem definições de sensores, regras de ajuste e regras dos monitores. Não substituem o backup geral do sistema para outros ajustes.</p>
+<h3 id="processo-de-restauracao-seguro">Processo de Restauração Seguro</h3>
+<p>Exporte sempre um backup antes de realizar alterações, restaure apenas arquivos de origens confiáveis e valide os valores medidos após o restauro antes de permitir decisões automáticas de irrigação.</p>
               
             </div>
           </div><footer>
