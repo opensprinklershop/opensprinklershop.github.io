@@ -123,6 +123,8 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#editor-fields_1">Editor Fields</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#technical-specifications">Technical Specifications</a>
+    </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#backup-and-restore">Backup and restore</a>
@@ -584,8 +586,16 @@
 <p>The <strong>Remote JSON sensor</strong> is an extremely flexible type designed to query arbitrary REST APIs returning data in JSON format. It parses responses on-the-fly stream-wise with low memory overhead.</p>
 <h3 id="editor-fields_1">Editor Fields</h3>
 <ul>
-<li><strong>URL</strong>: The full HTTP or HTTPS address of the API (e.g., <code>http://api.weather.com/v1/sensor</code>). Max 200 characters.</li>
+<li><strong>URL</strong>: The full HTTP or HTTPS address of the API (e.g., <code>http://api.weather.com/v1/sensor</code>). Max 200 characters. You can supply custom query-string parameters directly within the URL (e.g., <code>http://192.168.1.1/api?pw=123&amp;js=1</code> to pass keys, passwords, or IDs).</li>
 <li><strong>JSON Search Path (Filter)</strong>: The path to the desired numeric value in the JSON document. Neseted objects are separated by a vertical bar (<code>|</code>) (e.g., <code>main|temp</code> or <code>root|sensor_1|humidity</code>).</li>
+</ul>
+<h3 id="technical-specifications">Technical Specifications</h3>
+<ul>
+<li><strong>Request Method</strong>: Standard <strong>HTTP-GET</strong> is used exclusively.</li>
+<li><strong>Polling Type (Single Data Poll)</strong>: A single current data value is queried and parsed on each interval loop (historical log files or dataset arrays are not handled by the controller).</li>
+<li><strong>Timeout</strong>: The network lockup and stream read timeout is set to exactly <strong>3000 milliseconds</strong>. Endpoints must respond within 3 seconds, or the poll fails.</li>
+<li><strong>Synchronization &amp; Best-Practice Architecture</strong>:
+  To prevent timeouts and exceedances of external API limits (e.g., on OpenMeteo), it is best practice to run a script (via cronjob) on a local server or gateway (like an OpenWrt router). This script processes forecasts, performs anti-aliasing filter smoothing, and outputs a static JSON file on the gateway. OpenSprinkler then polls this local static file in a few milliseconds.</li>
 </ul>
 <h2 id="backup-and-restore">Backup and restore</h2>
 <p><strong>Backup and Restore</strong> exports or restores sensor configuration, program adjustments and monitors separately from the general controller backup. Use this before large sensor changes or firmware tests.</p>

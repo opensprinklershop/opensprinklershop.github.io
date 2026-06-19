@@ -507,8 +507,16 @@
 <p>Il <strong>sensore JSON remoto</strong> è un tipo estremamente flessibile progettato per interrogare API REST arbitrarie che restituiscono dati in formato JSON. Analizza le risposte al volo con un basso sovraccarico di memoria.</p>
 <h3 id="campi-delleditor_1">Campi dell'editor</h3>
 <ul>
-<li><strong>URL</strong>: L'indirizzo completo HTTP o HTTPS dell'API (ad esempio, <code>http://api.weather.com/v1/sensor</code>). Massimo 200 caratteri.</li>
-<li><strong>Percorso di ricerca JSON (Filtro)</strong>: Il percorso del valore numerico desiderato nel documento JSON. Gli oggetti annidati sono separati da una barra verticale (<code>|</code>) (ad esempio, <code>main|temp</code> o <code>root|sensor_1|humidity</code>).</li>
+<li><strong>URL</strong>: L'indirizzo completo HTTP o HTTPS dell'API (ad esempio, <code>http://api.weather.com/v1/sensor</code>). Massimo 200 caratteri. È possibile inserire direttamente parametri di query nell'URL (ad esempio, <code>http://192.168.1.1/api?pw=123&amp;js=1</code> per trasmettere chiavi, password o ID).</li>
+<li><strong>Percorso di ricerca JSON (Filtre)</strong>: Il percorso del valore numerico desiderato nel documento JSON. Gli oggetti annidati sono separati da una barra verticale (<code>|</code>) (ad esempio, <code>main|temp</code> o <code>root|sensor_1|humidity</code>).</li>
+</ul>
+<h3 id="specifiche-tecniche">Specifiche tecniche</h3>
+<ul>
+<li><strong>Metodo di query</strong>: Viene utilizzato esclusivamente il protocollo standard <strong>HTTP-GET</strong>.</li>
+<li><strong>Tipo di polling (Single Data Poll)</strong>: A ogni intervallo programmato viene richiesto e interpretato un singolo valore di misurazione corrente (i log storici o i set di dati non sono gestiti dal controller).</li>
+<li><strong>Tempo limite (Timeout)</strong>: Il tempo massimo di connessione e lettura del flusso è impostato su esattamente <strong>3000 millisecondi</strong>. I punti di terminazione devono rispondere entro 3 secondi, o il polling fallisce.</li>
+<li><strong>Sincronizzazione e architettura raccomandata</strong>:
+  Per prevenire timeout e superamenti dei limiti di API esterne (ad esempio su OpenMeteo), si consiglia di eseguire uno script (tramite un cronjob) su un server o router locale (ad esempio sotto OpenWrt). Questo script recupera le previsioni esterne, applica un filtro smorzante (anti-aliasing) e salva il risultato in un file JSON statico sul router. OpenSprinkler controllerà quindi questo file locale statico in pochi millisecondi.</li>
 </ul>
 <h2 id="backup-e-ripristino">Backup e ripristino</h2>
 <p><strong>Backup and Restore</strong> esporta o ripristina configurazione sensori, regolazioni programma e monitor separatamente dal backup generale.</p>

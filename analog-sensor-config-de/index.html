@@ -507,8 +507,16 @@
 <p>Der <strong>Remote-JSON-Sensor</strong> ist ein extrem flexibler Typ zum Abfragen beliebiger REST-APIs, die Daten im JSON-Format zurückliefern. Er arbeitet ressourcenschonend direkt über einen Streaming-Parser.</p>
 <h3 id="editor-felder_1">Editor-Felder</h3>
 <ul>
-<li><strong>URL</strong>: Die vollständige HTTP- oder HTTPS-Adresse der API (z. B. <code>http://api.weather.com/v1/sensor</code>). Max. 200 Zeichen.</li>
+<li><strong>URL</strong>: Die vollständige HTTP- oder HTTPS-Adresse der API (z. B. <code>http://api.weather.com/v1/sensor</code>). Max. 200 Zeichen. Sie können benutzerdefinierte Query-Parameter (wie Token, Passwörter, IDs) direkt in der URL mitsenden (z. B. <code>http://192.168.1.1/api?pw=123&amp;js=1</code>).</li>
 <li><strong>JSON-Suchpfad (Filter)</strong>: Der Pfad zum gewünschten Zahlenwert im JSON-Dokument. Verschachtelte Objekte werden mit einem senkrechten Strich (<code>|</code>) getrennt (z. B. <code>main|temp</code> oder <code>root|sensor_1|humidity</code>).</li>
+</ul>
+<h3 id="technische-details">Technische Details</h3>
+<ul>
+<li><strong>Anfragemethode</strong>: Es wird ausschließlich ein einfaches <strong>HTTP-GET</strong> ausgeführt.</li>
+<li><strong>Abfragetyp (Single Data Poll)</strong>: Bei jedem Erreichen des Abfrageintervalls wird ein einzelner Messwert synchron aus der JSON-Antwort extrahiert (keine Abfrage historischer Logdateien oder Arrays).</li>
+<li><strong>Timeout</strong>: Das Zeitfenster für den Verbindungsaufbau und Datenstrom beträgt fest <strong>3000 Millisekunden</strong>. Wenn der Endpunkt nicht innerhalb von 3 Sekunden antwortet, wird die Messung verworfenf.</li>
+<li><strong>Synchronisation (Empfehlenswertes Design)</strong>:
+  Um Timeouts und übermäßige externe API-Anfragen (wie z. B. an OpenMeteo) zu vermeiden, wird empfohlen, auf einem lokalen Server oder Router (wie OpenWrt) ein separates Skript (z. B. Cronjob) laufen zu lassen. Dieses Skript holt die externen Vorhersagen, dämpft sie (Anti-Aliasing) und speichert das Ergebnis als statisches JSON auf dem Router ab. OpenSprinkler pollt dann nur die lokale statische Datei in wenigen Millisekunden ab.</li>
 </ul>
 <h2 id="datensicherung-und-wiederherstellung">Datensicherung und Wiederherstellung</h2>
 <p><strong>Datensicherung</strong> exportiert oder stellt Sensor-Konfiguration, Programm-Anpassungen und Monitore getrennt vom allgemeinen Controller-Backup wieder her. Nutzen Sie dies vor größeren Sensoränderungen oder Firmwaretests.</p>

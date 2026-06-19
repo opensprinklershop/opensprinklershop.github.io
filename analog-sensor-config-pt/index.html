@@ -484,11 +484,19 @@
 <p>Nas definições de sensores, selecione o tipo <code>Sensor de umidade Gardena</code> ou <code>Sensor de temperatura Gardena</code>. No editor, você poderá então escolher o dispositivo desejado e sua respectiva métrica de dados.</p>
 <hr />
 <h2 id="configuracao-de-sensor-json-remoto">Configuração de Sensor JSON Remoto</h2>
-<p>O <strong>Sensor JSON remoto</strong> é um tipo extremamente flexível projetado para consultar APIs REST arbitrárias que retornam dados no formato JSON. Ele analisa as respostas diretamente em tempo real com baixo consumo de memória.</p>
+<p>O <strong>Sensor JSON remoto</strong> é um tipo extremamente flexível projetado para consultar APIs REST arbitrarias que retornam dados no formato JSON. Ele analisa as respostas diretamente em tempo real com baixo consumo de memória.</p>
 <h3 id="campos-do-editor_1">Campos do Editor</h3>
 <ul>
-<li><strong>URL</strong>: O endereço HTTP ou HTTPS completo da API (ex: <code>http://api.weather.com/v1/sensor</code>). Máximo de 200 caracteres.</li>
+<li><strong>URL</strong>: O endereço HTTP ou HTTPS completo da API (ex: <code>http://api.weather.com/v1/sensor</code>). Máximo de 200 caracteres. Você pode incluir parâmetros de consulta diretamente na URL (ex: <code>http://192.168.1.1/api?pw=123&amp;js=1</code> para passar chaves, senhas ou IDs).</li>
 <li><strong>Caminho de Busca JSON (Filtro)</strong>: O caminho mapeado para o valor numérico desejado no documento JSON. Objetos aninhados são separados por uma barra vertical (<code>|</code>) (ex: <code>main|temp</code> ou <code>root|sensor_1|humidity</code>).</li>
+</ul>
+<h3 id="especificacoes-tecnicas">Especificações Técnicas</h3>
+<ul>
+<li><strong>Método de Requisição</strong>: É utilizado exclusivamente o protocolo <strong>HTTP-GET</strong> padrão.</li>
+<li><strong>Frequência de Consulta (Single Data Poll)</strong>: Apenas um único valor de medição atual é consultado e processado a cada intervalo de tempo (arquivos de log ou listas de dados não são analisados pelo controlador).</li>
+<li><strong>Tempo Limite (Timeout)</strong>: O tempo para estabelecimento de conexão e fluxo de dados é fixado em exatamente <strong>3000 milissegundos</strong>. O endpoint deve responder dentro de 3 segundos, ou a transmissão falhará.</li>
+<li><strong>Sincronização e Arquitetura Recomendada</strong>:
+  Para evitar problemas de timeout ou estouro de limites de chamadas em APIs externas (como a do OpenMeteo), a prática recomendada consiste em executar um script (via agendamento cronjob) em um gateway ou computador local (como um roteador com OpenWrt). Esse script processa as previsões de clima, aplica suavizações de filtro (anti-aliasing) e gera um arquivo estático JSON local. O OpenSprinkler lê esse arquivo estático local em rede em poucos milissegundos.</li>
 </ul>
 <h2 id="backup-e-restauracao">Backup e Restauração</h2>
 <p>O menu <strong>Backup e Restauração</strong> exporta ou restaura arquivos de configuração de sensores, ajustes de programas e regras do monitor separadamente do backup geral do controlador. Use antes de grandes mudanças ou testes de firmware.</p>

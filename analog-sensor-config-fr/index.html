@@ -507,8 +507,16 @@
 <p>Le <strong>capteur JSON distant</strong> est un type extrêmement flexible conçu pour interroger des API REST arbitraires renvoyant des données au format JSON. Il analyse les réponses à la volée avec une faible surcharge de mémoire.</p>
 <h3 id="champs-de-lediteur_1">Champs de l'éditeur</h3>
 <ul>
-<li><strong>URL</strong> : L'adresse complète HTTP ou HTTPS de l'API (par exemple, <code>http://api.weather.com/v1/sensor</code>). Maximum 200 caractères.</li>
+<li><strong>URL</strong> : L'adresse complète HTTP ou HTTPS de l'API (par exemple, <code>http://api.weather.com/v1/sensor</code>). Maximum 200 caractères. Vous pouvez fournir des paramètres de requête directement dans l'URL (par exemple, <code>http://192.168.1.1/api?pw=123&amp;js=1</code> pour transmettre des clés, des mots de passe ou des identifiants).</li>
 <li><strong>Chemin de recherche JSON (Filtre)</strong> : Le chemin d'accès à la valeur numérique souhaitée dans le document JSON. Les objets imbriqués sont séparés par une barre verticale (<code>|</code>) (par exemple, <code>main|temp</code> ou <code>root|sensor_1|humidity</code>).</li>
+</ul>
+<h3 id="specifications-techniques">Spécifications techniques</h3>
+<ul>
+<li><strong>Méthode de requête</strong> : Seul le protocole standard <strong>HTTP-GET</strong> est pris en charge.</li>
+<li><strong>Type d'interrogation (Single Data Poll)</strong> : Une seule valeur de mesure actuelle est interrogée et analysée à chaque intervalle (les fichiers journaux historiques ou tableaux de données ne sont pas traités par le contrôleur).</li>
+<li><strong>Délai d'attente (Timeout)</strong> : Le délai de connexion et de lecture des données est fixé à exactement <strong>3000 millisecondes</strong>. Si le point de terminaison ne répond pas dans les 3 secondes, l'interrogation échoue.</li>
+<li><strong>Synchronisation et architecture recommandée</strong> :
+  Pour éviter les timeouts et les dépassements de quotas d'API externes (par exemple sur OpenMeteo), il est recommandé d'exécuter un script (via un cronjob) sur un serveur ou routeur local (par exemple sous OpenWrt). Ce script récupère les prévisions externes, applique un filtre lissant (anti-aliasing) et enregistre le résultat dans un fichier JSON statique sur le routeur. OpenSprinkler interroge ensuite ce fichier local statique en quelques millisecondes seulement.</li>
 </ul>
 <h2 id="sauvegarde-et-restauration">Sauvegarde et restauration</h2>
 <p><strong>Backup and Restore</strong> exporte ou restaure configuration capteurs, ajustements de programme et monitors séparément de la sauvegarde générale.</p>
