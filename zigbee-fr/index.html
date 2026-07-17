@@ -134,8 +134,8 @@
 <li>Mettez votre appareil Zigbee (par exemple, une électrovanne intelligente GIEX, un capteur de sol Tuya ou un capteur de température Xiaomi) en mode d'appairage (généralement en maintenant son bouton enfoncé pendant 5 secondes).</li>
 <li>L'appareil sera détecté, se verra attribuer une adresse courte et affichera son adresse IEEE 64 bits, son type d'appareil et la qualité du signal (LQI).</li>
 </ol>
-<h3 id="etape-3-options-dintegration-globales">Étape 3 : Options d'intégration globales</h3>
-<p>Sous <strong>Edit Options</strong> → <strong>Integrations</strong>, assurez-vous que les alertes et les liaisons de coordonnées Zigbee sont actives. Cela permet au contrôleur de relier proprement les signaux externes au cycle de planification local.</p>
+<h3 id="etape-3-facultatif-integrations-externes">Étape 3 (facultatif) : Intégrations externes</h3>
+<p>Cette étape est <strong>facultative</strong> et n'est pas nécessaire au fonctionnement des stations ou capteurs Zigbee. Ouvrez <strong>Edit Options</strong> → <strong>Integrations</strong> uniquement si vous souhaitez transmettre vos données à des systèmes externes : publier les relevés des capteurs et les états des vannes via <strong>MQTT</strong>, les enregistrer dans <strong>InfluxDB</strong>, activer l'accès distant dans le cloud avec <strong>OpenThings Cloud (OTC)</strong>, ou envoyer des notifications <strong>e-mail / IFTTT</strong> pour les événements du contrôleur.</p>
 <p><img alt="Integrations options" class="mobile-screenshot" src="../assets/screenshots/pro/fr/options-integrations.png" /></p>
 <h3 id="etape-4-configuration-des-capteurs-multiples-et-etalonnage">Étape 4 : Configuration des capteurs multiples et étalonnage</h3>
 <p>Pour utiliser les données des capteurs dans vos ajustements de programme, accédez à <strong>Analog Sensor Configuration</strong> depuis le menu de bas de page. Ce tableau de bord affiche tous les capteurs logiques actifs, leurs liaisons physiques et l'état de leur batterie.</p>
@@ -148,6 +148,74 @@
 - Choisir le <strong>Type de capteur</strong> (par exemple, humidité, température, batterie, etc.).
 - Sélectionner l'<strong>Appareil source</strong> (Source Device) dans la liste déroulante des nœuds Zigbee appairés.
 - Définir des décalages d'étalonnage personnalisés et des seuils de déclenchement.</p>
+<hr />
+<h2 id="vannes-intelligentes-giex-controle-des-zones">💧 Vannes intelligentes GIEX &amp; contrôle des zones</h2>
+<p>Au-delà de la simple lecture de capteurs, OpenSprinklerPro peut piloter <strong>des vannes Zigbee GIEX alimentées par batterie directement en tant que zones d'arrosage (stations)</strong>. Chaque sortie de vanne est associée à une station et ouverte/fermée sans fil par le contrôleur — sans câblage 24 V, électrovannes ni boîtiers de vannes.</p>
+<h3 id="ce-qui-rend-ces-vannes-speciales">Ce qui rend ces vannes spéciales</h3>
+<ul>
+<li><strong>Sans fil et sur batterie</strong> – la vanne fonctionne avec des batteries internes et communique via Zigbee ; une zone peut donc être placée n'importe où à portée du coordinateur.</li>
+<li><strong>Plateforme de vanne intelligente Tuya</strong> – les vannes GIEX exposent leurs fonctions sous forme de points de données Tuya (DP) : commande marche/arrêt, minuterie, arrosage cyclique ou par durée et, sur les modèles équipés d'un compteur, télémétrie de débit et de volume.</li>
+<li><strong>Plusieurs zones dans un seul appareil</strong> – un seul GX03 offre <strong>deux sorties totalement indépendantes</strong>, de sorte qu'un seul appareil appairé fournit deux zones OpenSprinkler distinctes.</li>
+<li><strong>Rapport de batterie</strong> – le pourcentage de batterie restant est affiché directement sur la carte de la station dans le tableau de bord.</li>
+</ul>
+<h3 id="la-famille-de-produits-giex">La famille de produits GIEX</h3>
+<table>
+<thead>
+<tr>
+<th>Modèle</th>
+<th>Type</th>
+<th>Sorties / appareils logiques</th>
+<th>Utilisation typique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GX02</strong></td>
+<td>Vanne d'eau intelligente simple</td>
+<td>1 vanne (<code>valve_1</code>, DP 1)</td>
+<td>Une zone d'arrosage sans fil</td>
+</tr>
+<tr>
+<td><strong>GX03</strong></td>
+<td>Vanne d'eau intelligente à 2 zones</td>
+<td>2 vannes (<code>valve_1</code> = DP 1, <code>valve_2</code> = DP 2)</td>
+<td>Deux zones sans fil indépendantes à partir d'un seul appareil</td>
+</tr>
+<tr>
+<td><strong>GX04</strong></td>
+<td>Capteur d'humidité du sol et de température</td>
+<td>Humidité du sol + température</td>
+<td>Ajustements de programme basés sur l'humidité (utilisé comme capteur analogique, voir l'étape 5 ci-dessus)</td>
+</tr>
+</tbody>
+</table>
+<p>Une fois appairés, tous ces appareils apparaissent ensemble sur la page <strong>ZigBee Gateway</strong> avec leur nom convivial, leur fabricant/modèle et leur adresse IEEE 64 bits :</p>
+<p><img alt="Passerelle ZigBee avec appareils GIEX appairés" class="mobile-screenshot" src="../assets/screenshots/pro/fr/giex-gateway.png" /></p>
+<h3 id="comment-elles-fonctionnent-avec-opensprinkler">Comment elles fonctionnent avec OpenSprinkler</h3>
+<p>Lorsqu'une vanne est utilisée comme <strong>station Zigbee</strong>, le contrôleur agit comme coordinateur Zigbee et traduit chaque exécution de station en une commande marche/arrêt (ou DP Tuya) envoyée à la bonne sortie de vanne :</p>
+<ul>
+<li>Un <strong>appareil appairé</strong> est identifié par son <strong>adresse IEEE</strong> 64 bits.</li>
+<li>Un <strong>appareil logique</strong> sélectionne la sortie individuelle à l'intérieur de cet appareil — par exemple <code>valve_1 (EP: 1, DP: 1)</code> ou <code>valve_2 (EP: 1, DP: 2)</code> pour les deux zones d'un GX03.</li>
+<li>Le démarrage de la station ouvre la vanne ; durée d'exécution, programmes, groupes séquentiels, délais pluie/capteur et commande manuelle se comportent exactement comme une zone câblée.</li>
+</ul>
+<p>Cela diffère de l'association <em>capteur</em> de l'étape 5 : un capteur <strong>lit</strong> des données pour les ajustements de programme, tandis qu'une <strong>station</strong> Zigbee <strong>commande</strong> activement une vanne.</p>
+<h3 id="configurer-une-vanne-giex-comme-zone">Configurer une vanne GIEX comme zone</h3>
+<ol>
+<li><strong>Appairez la vanne</strong> sur la page <strong>ZigBee Gateway</strong> (voir l'étape 2 ci-dessus). L'appareil GIEX apparaît avec son nom convivial et son adresse IEEE.</li>
+<li>Sur le tableau de bord, ouvrez les <strong>paramètres de la station</strong> (icône d'engrenage sur la carte de la zone) et passez à l'onglet <strong>Avancé</strong>.</li>
+<li>Réglez le <strong>Type de station</strong> (Station Type) sur <strong>Zigbee</strong>.</li>
+<li>Choisissez l'<strong>appareil Zigbee appairé</strong> (par exemple <em>GIEX GX03 2-Zone Valve</em>). L'<strong>adresse IEEE</strong> est renseignée automatiquement.</li>
+<li>Sélectionnez l'<strong>appareil logique</strong> correspondant à la sortie que cette station doit commander — <code>valve_1</code> pour la première zone, <code>valve_2</code> pour la seconde.</li>
+</ol>
+<p><img alt="Options de zone Zigbee dans l'éditeur de station" class="mobile-screenshot" src="../assets/screenshots/pro/fr/giex-zone-options.png" /></p>
+<ol>
+<li>Appuyez sur <strong>Soumettre</strong> (Submit). La station ouvre et ferme désormais sans fil la sortie de vanne GIEX sélectionnée à chaque exécution.</li>
+</ol>
+<p>Pour un GX03 à deux zones, répétez les étapes pour une seconde station et sélectionnez <code>valve_2</code>, afin que les deux sorties soient commandées indépendamment.</p>
+<div class="admonition note">
+<p class="admonition-title">Disponibilité de la plateforme</p>
+<p>Les stations Zigbee et la fonction de zone GIEX nécessitent le <strong>contrôleur ESP32-C5 exécutant la variante de micrologiciel Zigbee</strong>. Elles ne sont pas disponibles sur les versions ESP8266 ou OSPi.</p>
+</div>
 <hr />
 <h2 id="appareils-pris-en-charge-et-details-techniques">🛠️ Appareils pris en charge et détails techniques</h2>
 <p>Le micrologiciel interne prend en charge les clusters Zigbee 3.0 standard :

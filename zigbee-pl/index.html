@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/zigbee-pl/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Integracja bramki Zigbee - OpenSprinkler Shop Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Integracja bramki Zigbee";
+        var mkdocs_page_input_path = "zigbee-pl.md";
+        var mkdocs_page_url = "/zigbee-pl/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenSprinkler Shop Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Base Manual v2.2.1(4)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_manual/">User Manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_api/">API Reference</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OpenSprinklerPro Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../zigbee/">Zigbee Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../analog-sensor-config/">Analog Sensor Config</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MCP and AI</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../mcp-server/">MCP Server</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ai-programming/">AI Program Creation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sensor-automation/">Sensor Automation</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../rainmaker-provisioning/">RainMaker Provisioning</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../fyta-sensors/">FYTA Sensors</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Archived</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../archive/">Previous Manuals and API docs</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenSprinkler Shop Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Integracja bramki Zigbee</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/zigbee-pl.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="integracja-bramki-zigbee">Integracja bramki Zigbee</h1>
+<p>OpenSprinklerPro oferuje natywne możliwości koordynacji Zigbee bezpośrednio na płytce ESP32-C5. Jednoukładowe rozwiązanie ESP32-C5 obsługuje dwuzakresowe Wi-Fi 6 2,4 GHz, Bluetooth 5 (LE) oraz 802.15.4 (Zigbee 3.0 / Thread).</p>
+<p>Korzystając z wariantu firmware'u Zigbee, sterownik OpenSprinkler działa jako pełnoprawny koordynator Zigbee. Może być parowany z czujnikami automatyki domowej, inteligentnymi zaworami, sondami wilgotności gleby i czujnikami temperatury, aby dostosowywać harmonogramy podlewania na podstawie lokalnych warunków w czasie rzeczywistym.</p>
+<hr />
+<h2 id="prowadzony-proces-konfiguracji">📸 Prowadzony proces konfiguracji</h2>
+<p>Ten przewodnik krok po kroku pokazuje, jak skonfigurować tryb radiowy, sparować urządzenia Zigbee i przypisać ich atrybuty do czujników analogowych.</p>
+<h3 id="krok-1-konfiguracja-trybu-radiowego">Krok 1: Konfiguracja trybu radiowego</h3>
+<p>Najpierw sprawdź, czy sterownik ESP32-C5 jest ustawiony na właściwy tryb radiowy. Domyślnie ESP32-C5 może pracować w kilku trybach. Ustawienia trybu znajdziesz w menu bocznym w sekcji <strong>Setup ESP32 Mode</strong>.</p>
+<p><img alt="Setup ESP32 Mode" class="mobile-screenshot" src="../assets/screenshots/pro/pl/esp32-mode.png" /></p>
+<p>Aby korzystać z Zigbee, włącz tryb <strong>Zigbee Gateway / Coordinator</strong>. Inicjuje on natywne radio 802.15.4 do zarządzania kanałami Zigbee, routingu urządzeń i tworzenia sieci.</p>
+<h3 id="krok-2-doaczanie-i-parowanie-urzadzen">Krok 2: Dołączanie i parowanie urządzeń</h3>
+<p>Gdy tryb Zigbee jest aktywny, z menu bocznego możesz otworzyć stronę <strong>ZigBee Gateway</strong>. Na tej stronie sterujesz oknem parowania i zarządzasz zarejestrowanymi urządzeniami fizycznymi.</p>
+<p><img alt="ZigBee Gateway" class="mobile-screenshot" src="../assets/screenshots/pro/pl/zigbee-gateway.png" /></p>
+<ol>
+<li>Kliknij <strong>Permit Join</strong> (Zezwól na dołączenie, zwykle 60 sekund), aby otworzyć sieć dla nowych urządzeń.</li>
+<li>Przełącz urządzenie Zigbee (np. inteligentny zawór GIEX, czujnik gleby Tuya lub czujnik temperatury Xiaomi) w tryb parowania (zwykle przytrzymując przycisk parowania przez 5 sekund).</li>
+<li>Urządzenie zostanie wykryte, otrzyma krótki adres oraz wyświetli swój 64-bitowy adres IEEE, typ urządzenia i jakość połączenia.</li>
+</ol>
+<h3 id="krok-3-opcjonalnie-integracje-zewnetrzne">Krok 3 (opcjonalnie): Integracje zewnętrzne</h3>
+<p>Ten krok jest <strong>opcjonalny</strong> i nie jest wymagany do działania stacji ani czujników Zigbee. Otwórz <strong>Edytuj opcje</strong> → <strong>Integracje</strong> (Integrations) tylko wtedy, gdy chcesz przekazywać swoje dane do systemów zewnętrznych: publikować odczyty czujników i stany zaworów przez <strong>MQTT</strong>, zapisywać je w <strong>InfluxDB</strong>, włączyć zdalny dostęp w chmurze za pomocą <strong>OpenThings Cloud (OTC)</strong> lub wysyłać powiadomienia <strong>e-mail / IFTTT</strong> o zdarzeniach sterownika.</p>
+<p><img alt="Integrations options" class="mobile-screenshot" src="../assets/screenshots/pro/pl/options-integrations.png" /></p>
+<h3 id="krok-4-konfiguracja-wielu-czujnikow-i-kalibracji">Krok 4: Konfiguracja wielu czujników i kalibracji</h3>
+<p>Aby wykorzystać dane czujników do korekt programu, przejdź do strony <strong>Czujniki analogowe</strong> (Analog Sensor Configuration) z menu w stopce. Ten przegląd wyświetla wszystkie aktywne czujniki logiczne, ich powiązania fizyczne oraz stan baterii.</p>
+<p><img alt="Sensor configuration" class="mobile-screenshot" src="../assets/screenshots/pro/pl/sensor-config.png" /></p>
+<h3 id="krok-5-dodawanieedycja-czujnika-zigbee">Krok 5: Dodawanie/edycja czujnika Zigbee</h3>
+<p>Kliknij <strong>Dodaj czujnik</strong> (Add Sensor) (lub edytuj istniejący), aby przypisać konkretny atrybut urządzenia Zigbee (np. procent wilgotności gleby lub temperaturę) do gniazda czujnika analogowego.</p>
+<p><img alt="New Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/pl/analog-sensor-editor.png" /></p>
+<p>W tym edytorze możesz:
+- Nadać czujnikowi rozpoznawalną <strong>Nazwę</strong>.
+- Wybrać <strong>Typ czujnika</strong> (np. wilgotność, temperatura, bateria itp.).
+- Wybrać <strong>Urządzenie źródłowe</strong> (Source Device) z listy rozwijanej sparowanych węzłów Zigbee.
+- Zdefiniować własne przesunięcia kalibracji i progi wyzwalania.</p>
+<hr />
+<h2 id="inteligentne-zawory-giex-i-sterowanie-strefami">💧 Inteligentne zawory GIEX i sterowanie strefami</h2>
+<p>Poza odczytem czujników OpenSprinklerPro może sterować <strong>zasilanymi bateryjnie zaworami Zigbee GIEX bezpośrednio jako strefami nawadniania (stacjami)</strong>. Każde wyjście zaworu jest przypisane do stacji i otwierane oraz zamykane bezprzewodowo przez sterownik — bez okablowania 24 V, elektrozaworów czy skrzynek zaworowych.</p>
+<h3 id="co-wyroznia-te-zawory">Co wyróżnia te zawory</h3>
+<ul>
+<li><strong>Bezprzewodowe i zasilane bateryjnie</strong> – zawór działa na wewnętrznych bateriach i komunikuje się przez Zigbee, więc strefę można umieścić w dowolnym miejscu w zasięgu koordynatora.</li>
+<li><strong>Platforma inteligentnych zaworów Tuya</strong> – zawory GIEX udostępniają swoje funkcje jako punkty danych Tuya (DP): sterowanie wł./wył., timer odliczający, nawadnianie cykliczne lub czasowe, a w modelach z licznikiem – telemetrię przepływu i objętości.</li>
+<li><strong>Wiele stref w jednym urządzeniu</strong> – pojedynczy GX03 zapewnia <strong>dwa całkowicie niezależne wyjścia</strong>, więc jedno sparowane urządzenie daje dwie odrębne strefy OpenSprinkler.</li>
+<li><strong>Raportowanie baterii</strong> – pozostały poziom baterii jest wyświetlany bezpośrednio na karcie stacji w panelu.</li>
+</ul>
+<h3 id="rodzina-produktow-giex">Rodzina produktów GIEX</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Typ</th>
+<th>Wyjścia / urządzenia logiczne</th>
+<th>Typowe zastosowanie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GX02</strong></td>
+<td>Pojedynczy inteligentny zawór wodny</td>
+<td>1 zawór (<code>valve_1</code>, DP 1)</td>
+<td>Jedna bezprzewodowa strefa nawadniania</td>
+</tr>
+<tr>
+<td><strong>GX03</strong></td>
+<td>Inteligentny zawór wodny 2-strefowy</td>
+<td>2 zawory (<code>valve_1</code> = DP 1, <code>valve_2</code> = DP 2)</td>
+<td>Dwie niezależne strefy bezprzewodowe z jednego urządzenia</td>
+</tr>
+<tr>
+<td><strong>GX04</strong></td>
+<td>Czujnik wilgotności gleby i temperatury</td>
+<td>Wilgotność gleby + temperatura</td>
+<td>Korekty programu na podstawie wilgotności (używany jako czujnik analogowy, patrz Krok 5 powyżej)</td>
+</tr>
+</tbody>
+</table>
+<p>Po sparowaniu wszystkie te urządzenia są wymienione razem na stronie <strong>ZigBee Gateway</strong> wraz z ich przyjazną nazwą, producentem/modelem i 64-bitowym adresem IEEE:</p>
+<p><img alt="ZigBee Gateway ze sparowanymi urządzeniami GIEX" class="mobile-screenshot" src="../assets/screenshots/pro/pl/giex-gateway.png" /></p>
+<h3 id="jak-wspopracuja-z-opensprinkler">Jak współpracują z OpenSprinkler</h3>
+<p>Gdy zawór jest używany jako <strong>stacja Zigbee</strong>, sterownik działa jako koordynator Zigbee i tłumaczy każde uruchomienie stacji na polecenie wł./wył. (lub DP Tuya) wysyłane do właściwego wyjścia zaworu:</p>
+<ul>
+<li><strong>Sparowane urządzenie</strong> jest identyfikowane przez jego 64-bitowy <strong>adres IEEE</strong>.</li>
+<li><strong>Urządzenie logiczne</strong> wybiera pojedyncze wyjście wewnątrz tego urządzenia — np. <code>valve_1 (EP: 1, DP: 1)</code> lub <code>valve_2 (EP: 1, DP: 2)</code> dla dwóch stref GX03.</li>
+<li>Uruchomienie stacji otwiera zawór; czas pracy, harmonogramy programów, grupy sekwencyjne, opóźnienia deszczu/czujnika i sterowanie ręczne działają dokładnie tak, jak w strefie przewodowej.</li>
+</ul>
+<p>Różni się to od przypisania <em>czujnika</em> z Kroku 5: czujnik <strong>odczytuje</strong> dane do korekt programu, natomiast <strong>stacja</strong> Zigbee aktywnie <strong>steruje</strong> zaworem.</p>
+<h3 id="konfiguracja-zaworu-giex-jako-strefy">Konfiguracja zaworu GIEX jako strefy</h3>
+<ol>
+<li><strong>Sparuj zawór</strong> na stronie <strong>ZigBee Gateway</strong> (patrz Krok 2 powyżej). Urządzenie GIEX pojawi się ze swoją przyjazną nazwą i adresem IEEE.</li>
+<li>W panelu otwórz <strong>ustawienia stacji</strong> (ikona koła zębatego na karcie strefy) i przejdź do zakładki <strong>Zaawansowane</strong> (Advanced).</li>
+<li>Ustaw <strong>Typ stacji</strong> (Station Type) na <strong>Zigbee</strong>.</li>
+<li>Wybierz <strong>sparowane urządzenie Zigbee</strong> (np. <em>GIEX GX03 2-Zone Valve</em>). <strong>Adres IEEE</strong> zostanie wypełniony automatycznie.</li>
+<li>Wybierz <strong>urządzenie logiczne</strong> dla wyjścia, którym ma sterować ta stacja — <code>valve_1</code> dla pierwszej strefy, <code>valve_2</code> dla drugiej.</li>
+</ol>
+<p><img alt="Opcje strefy Zigbee w edytorze stacji" class="mobile-screenshot" src="../assets/screenshots/pro/pl/giex-zone-options.png" /></p>
+<ol>
+<li>Naciśnij <strong>Wyślij</strong> (Submit). Stacja będzie teraz bezprzewodowo otwierać i zamykać wybrane wyjście zaworu GIEX przy każdym uruchomieniu.</li>
+</ol>
+<p>W przypadku dwustrefowego GX03 powtórz kroki dla drugiej stacji i wybierz <code>valve_2</code>, aby oba wyjścia były sterowane niezależnie.</p>
+<div class="admonition note">
+<p class="admonition-title">Dostępność platformy</p>
+<p>Stacje Zigbee i funkcja stref GIEX wymagają <strong>sterownika ESP32-C5 z wariantem firmware'u Zigbee</strong>. Nie są dostępne w wersjach ESP8266 ani OSPi.</p>
+</div>
+<hr />
+<h2 id="obsugiwane-urzadzenia-i-szczegoy-techniczne">🛠️ Obsługiwane urządzenia i szczegóły techniczne</h2>
+<p>Wewnętrzny firmware obsługuje standardowe klastry Zigbee 3.0:
+- <strong>0x0402</strong>: Pomiar temperatury (Tuya, Xiaomi, Sonoff)
+- <strong>0x0405</strong>: Wilgotność względna / wilgotność gleby (GIEX, Tuya, Moes)
+- <strong>0x0001</strong>: Konfiguracja zasilania (raportowanie procentu baterii)</p>
+<h3 id="mapowanie-urzadzen-wielokanaowych">Mapowanie urządzeń wielokanałowych</h3>
+<p>W przypadku złożonych, wielokanałowych inteligentnych zaworów (jak dwuwyjściowy zawór nawadniający GIEX GX02) koordynator dzieli poszczególne stany zaworów i kanały telemetrii na odrębne logiczne podurządzenia. Zapewnia to, że każda strefa może być wyzwalana lub skalowana niezależnie.</p>
+<h3 id="wspoistnienie-radiowe-coexistence">Współistnienie radiowe (Coexistence)</h3>
+<p>ESP32-C5 zarządza jednocześnie skanowaniem BLE, ruchem Wi-Fi 6 i pakietami Zigbee 802.15.4. Podczas skanowania czujników BLE protokół Zigbee Packet Traffic Arbitration (PTA) chwilowo obniża priorytet punktów końcowych Zigbee, aby uniknąć kolizji radiowych i utraty pakietów, natychmiast przywracając pełny priorytet po wstrzymaniu aktywnego skanowania.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../custom.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

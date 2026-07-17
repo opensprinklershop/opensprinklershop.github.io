@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/smt100-usb-rs485/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>SMT100 via USB-RS485 Adapter on Raspberry Pi (OSPi) - OpenSprinkler Shop Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "SMT100 via USB-RS485 Adapter on Raspberry Pi (OSPi)";
+        var mkdocs_page_input_path = "smt100-usb-rs485.md";
+        var mkdocs_page_url = "/smt100-usb-rs485/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenSprinkler Shop Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Base Manual v2.2.1(4)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_manual/">User Manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_api/">API Reference</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OpenSprinklerPro Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../zigbee/">Zigbee Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../analog-sensor-config/">Analog Sensor Config</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MCP and AI</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../mcp-server/">MCP Server</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ai-programming/">AI Program Creation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sensor-automation/">Sensor Automation</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../rainmaker-provisioning/">RainMaker Provisioning</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../fyta-sensors/">FYTA Sensors</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Archived</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../archive/">Previous Manuals and API docs</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenSprinkler Shop Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">SMT100 via USB-RS485 Adapter on Raspberry Pi (OSPi)</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/smt100-usb-rs485.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="smt100-via-usb-rs485-adapter-on-raspberry-pi-ospi">SMT100 via USB-RS485 Adapter on Raspberry Pi (OSPi)</h1>
+<p>This guide explains how to connect and configure a <strong>Truebner SMT100</strong> (RS485/Modbus-RTU) to an OpenSprinkler installation on a <strong>Raspberry Pi (OSPi)</strong> using a <strong>USB-RS485 adapter</strong>.</p>
+<p>Related pages: <a href="../analog-sensor-config/">Analog Sensor Config</a>, <a href="../sensor-automation/">Sensor Automation and Monitors</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">OSPi / Linux only</p>
+<p>The USB-RS485 path described here applies to the native OpenSprinkler build on Raspberry Pi/Linux (built with <code>-DOSPI</code>). On ESP32/ESP8266 the SMT100 is connected instead via the I2C-RS485 adapter or the ASB.</p>
+</div>
+<h2 id="overview">Overview</h2>
+<p>On OSPi, OpenSprinkler uses <strong>libmodbus</strong> and talks to the SMT100 directly as a Modbus-RTU device over the serial port of the USB adapter. The mapping is:</p>
+<ul>
+<li><strong>RS485 adapter</strong> → one line in the <code>rs485</code> file (device index <code>0</code>, <code>1</code>, …)</li>
+<li><strong>Modbus slave address</strong> of the SMT100 → sensor <strong>ID</strong> field</li>
+<li><strong>Measurement</strong> (moisture / temperature / permittivity) → sensor <strong>Type</strong></li>
+</ul>
+<p>The serial parameters are fixed at <strong>9600 baud, 8 data bits, even parity, 1 stop bit (8E1)</strong> — exactly the SMT100 factory setting.</p>
+<h2 id="required-hardware">Required hardware</h2>
+<ul>
+<li>Raspberry Pi running the OpenSprinkler OSPi firmware</li>
+<li>USB-RS485 adapter with automatic transmit-direction control (auto-RTS/DE), e.g. based on CH340, CP2102 or FT232 with MAX485/MAX3485. Galvanically isolated adapters (e.g. DSD TECH SH-U11, Waveshare USB-TO-RS485, USR-DR134) are recommended.</li>
+<li>Truebner SMT100 in the <strong>RS485 variant</strong></li>
+<li>Power supply for the SMT100: <strong>3.6 – 20 V DC</strong> (usually available from the Pi's 5 V/3.3 V or a separate supply)</li>
+</ul>
+<h2 id="wiring">Wiring</h2>
+<p>Connect the SMT100 RS485 data lines to the adapter and provide power to the sensor:</p>
+<table>
+<thead>
+<tr>
+<th>SMT100 (typical Truebner wire colors)</th>
+<th>Function</th>
+<th>Connect to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brown</td>
+<td>+ supply (3.6–20 V)</td>
+<td>power supply / Pi 5 V</td>
+</tr>
+<tr>
+<td>White</td>
+<td>GND</td>
+<td>supply GND <strong>and</strong> adapter GND</td>
+</tr>
+<tr>
+<td>Green</td>
+<td>RS485 <strong>A</strong> (D+)</td>
+<td>adapter <strong>A / D+</strong></td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td>RS485 <strong>B</strong> (D−)</td>
+<td>adapter <strong>B / D−</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Verify wire colors</p>
+<p>The pinout may vary depending on the SMT100 version and cable batch. <strong>Always</strong> check your sensor's datasheet. The GND of sensor, supply and adapter must share a common connection.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Bus termination</p>
+<p>For short cabling and a single sensor, a 120-Ω termination resistor is usually not needed. For long cables or multiple devices, add termination at the bus ends.</p>
+</div>
+<h2 id="detect-the-usb-adapter-on-the-raspberry-pi">Detect the USB adapter on the Raspberry Pi</h2>
+<p>Plug in the adapter and determine the device path:</p>
+<pre><code class="language-bash"># check the kernel log after plugging in
+dmesg | grep -i tty
+
+# list available USB serial devices
+ls -l /dev/ttyUSB*
+</code></pre>
+<p>The adapter typically appears as <code>/dev/ttyUSB0</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Use a stable device name</p>
+<p><code>/dev/ttyUSB0</code> can change on reboot or when multiple adapters are present. Use the stable path under <code>/dev/serial/by-id/</code> instead:</p>
+<p><code>bash
+ls -l /dev/serial/by-id/</code></p>
+<p>The path shown there (e.g. <code>/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0</code>) can be written directly into the <code>rs485</code> file and stays constant.</p>
+</div>
+<h2 id="create-the-rs485-file">Create the <code>rs485</code> file</h2>
+<p>At startup OpenSprinkler reads the <code>rs485</code> file from its <strong>working directory</strong> (the install folder that also contains the <code>.dat</code> files; with the systemd install this is the <code>WorkingDirectory</code> from <code>OpenSprinkler.service</code>). Each line describes exactly one adapter.</p>
+<p>Change into the OpenSprinkler directory and create the file:</p>
+<pre><code class="language-bash">cd /path/to/OpenSprinkler
+echo &quot;/dev/ttyUSB0&quot; &gt; rs485
+</code></pre>
+<p>With a stable name:</p>
+<pre><code class="language-bash">echo &quot;/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0&quot; &gt; rs485
+</code></pre>
+<p>Multiple adapters — one entry per line (index starts at <code>0</code>):</p>
+<pre><code class="language-text">/dev/ttyUSB0
+/dev/ttyUSB1
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Alternative: Modbus-TCP gateway</p>
+<p>Instead of a serial path, the <code>rs485</code> file may also contain <code>IP</code> or <code>IP:port</code> (e.g. <code>192.168.0.50:502</code>). OpenSprinkler then talks to a Modbus-TCP gateway. Without a port, 502 is used.</p>
+</div>
+<p>Since the OSPi service runs as <code>root</code>, no additional permissions (group <code>dialout</code>) are required. If you start OpenSprinkler manually as a normal user, add the user to the <code>dialout</code> group:</p>
+<pre><code class="language-bash">sudo usermod -aG dialout $USER
+# then log out and back in
+</code></pre>
+<h2 id="restart-opensprinkler">Restart OpenSprinkler</h2>
+<p>The <code>rs485</code> file is only evaluated at startup:</p>
+<pre><code class="language-bash">sudo systemctl restart OpenSprinkler
+</code></pre>
+<p>Or restart the process when running manually. For verification, the logs (in a debug build) show the connection setup; if <code>modbus_connect</code> fails, a <code>Connection failed</code> message appears.</p>
+<h2 id="configure-the-sensor-in-the-user-interface">Configure the sensor in the user interface</h2>
+<p>Open <strong>Analog Sensor Config</strong> and create a new sensor via <strong>Add sensor</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td><em>Truebner SMT100 RS485 Modbus, moisture mode</em> (or temperature or permittivity mode)</td>
+</tr>
+<tr>
+<td><strong>Bus / RS485 port</strong></td>
+<td>index of the adapter from the <code>rs485</code> file (first line = <code>0</code>)</td>
+</tr>
+<tr>
+<td><strong>ID / Modbus address</strong></td>
+<td>slave address of the SMT100 (factory setting usually <code>1</code>)</td>
+</tr>
+<tr>
+<td><strong>Interval</strong></td>
+<td>read interval in seconds, e.g. <code>60</code></td>
+</tr>
+<tr>
+<td><strong>Log / Show</strong></td>
+<td>enable as needed</td>
+</tr>
+</tbody>
+</table>
+<p>The register is derived automatically from the type (temperature, moisture or permittivity) — it does not need to be set manually. The raw value read is converted as:</p>
+<ul>
+<li><strong>Moisture:</strong> raw / 100 → volumetric water content in %</li>
+<li><strong>Temperature:</strong> (raw / 100) − 100 → °C</li>
+<li><strong>Permittivity:</strong> raw / 100 → dielectric permittivity</li>
+</ul>
+<p>For temperature <strong>and</strong> moisture of the same sensor, create two sensor entries with the same <strong>Bus</strong> and same <strong>ID</strong> but different <strong>Type</strong>.</p>
+<h3 id="alternative-configuration-via-the-rest-api">Alternative: configuration via the REST API</h3>
+<p>The sensor can also be created directly via the <code>/sc</code> endpoint (<code>port</code> = adapter index, <code>id</code> = Modbus address):</p>
+<pre><code class="language-bash"># Moisture, adapter 0, Modbus address 1, interval 60 s
+curl &quot;http://&lt;ip&gt;/sc?pw=&lt;md5pw&gt;&amp;nr=1&amp;type=1&amp;group=0&amp;name=SMT100-Moisture&amp;port=0&amp;id=1&amp;ri=60&amp;enable=1&amp;log=1&quot;
+
+# Temperature of the same sensor
+curl &quot;http://&lt;ip&gt;/sc?pw=&lt;md5pw&gt;&amp;nr=2&amp;type=2&amp;group=0&amp;name=SMT100-Temp&amp;port=0&amp;id=1&amp;ri=60&amp;enable=1&amp;log=1&quot;
+</code></pre>
+<p>Sensor types: <code>1</code> = SMT100 moisture, <code>2</code> = SMT100 temperature, <code>3</code> = SMT100 permittivity.</p>
+<h2 id="change-the-modbus-address-of-an-smt100">Change the Modbus address of an SMT100</h2>
+<p>New SMT100 units usually ship with address <code>1</code>. If several sensors share one bus, each must get its own address.</p>
+<div class="admonition warning">
+<p class="admonition-title">Address one at a time</p>
+<p>To set the address, OpenSprinkler uses the broadcast (address 253). When addressing, connect <strong>only one</strong> sensor to the bus, otherwise all of them respond at once.</p>
+</div>
+<p>The <code>/sa</code> endpoint assigns a new Modbus address <code>id</code> to the sensor with number <code>nr</code>:</p>
+<pre><code class="language-bash">curl &quot;http://&lt;ip&gt;/sa?pw=&lt;md5pw&gt;&amp;nr=1&amp;id=2&quot;
+</code></pre>
+<p>Afterwards, update the <strong>ID</strong> field of the sensor configuration to the new address.</p>
+<h2 id="multiple-sensors-and-multiple-adapters">Multiple sensors and multiple adapters</h2>
+<ul>
+<li><strong>Multiple SMT100 on one adapter:</strong> assign different Modbus addresses, all sensor entries with the same <strong>Bus</strong> but different <strong>IDs</strong>.</li>
+<li><strong>Multiple adapters:</strong> one path per line in <code>rs485</code>; the line index (<code>0</code>, <code>1</code>, …) is the <strong>Bus</strong> value in the sensor.</li>
+<li>Up to <code>MAX_RS485_DEVICES</code> (16) adapters are supported.</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No reading / <code>data_ok</code> never set</td>
+<td>A/B swapped? GND commonly connected? Correct <strong>Bus</strong> index and <strong>ID</strong>?</td>
+</tr>
+<tr>
+<td><code>Connection failed</code> in the log</td>
+<td>Device path in <code>rs485</code> correct? Adapter plugged in (<code>ls /dev/ttyUSB*</code>)? Permissions (root/<code>dialout</code>)?</td>
+</tr>
+<tr>
+<td>Sporadic timeouts</td>
+<td>Check cable length/termination; is the sensor supply voltage stable?</td>
+</tr>
+<tr>
+<td>Address cannot be set</td>
+<td>Only <strong>one</strong> sensor on the bus during <code>/sa</code>?</td>
+</tr>
+<tr>
+<td>Implausible values</td>
+<td>Wrong <strong>Type</strong> selected (moisture vs. temperature vs. permittivity)?</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Test the connection</p>
+<p>With <code>apt install libmodbus-dev</code> the libmodbus tooling ecosystem is available on the Pi. For a quick bus check, common Modbus CLI tools (e.g. <code>mbpoll</code>) are useful: <code>mbpoll -m rtu -b 9600 -P even -a 1 -t 4 -r 1 -c 1 /dev/ttyUSB0</code>.</p>
+</div>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../custom.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

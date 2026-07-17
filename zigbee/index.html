@@ -63,11 +63,23 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#step-2-device-joining-pairing">Step 2: Device Joining &amp; Pairing</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#step-3-global-integrations-options">Step 3: Global Integrations Options</a>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3-optional-external-integrations">Step 3 (optional): External Integrations</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#step-4-multi-sensor-and-calibration-configuration">Step 4: Multi-Sensor and Calibration Configuration</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#step-5-addingediting-a-zigbee-sensor">Step 5: Adding/Editing a Zigbee Sensor</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#giex-smart-valves-zone-control">💧 GIEX Smart Valves &amp; Zone Control</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#what-makes-these-valves-special">What makes these valves special</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-giex-product-family">The GIEX product family</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-they-work-with-opensprinkler">How they work with OpenSprinkler</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-up-a-giex-valve-as-a-zone">Setting up a GIEX valve as a zone</a>
     </li>
         </ul>
     </li>
@@ -159,8 +171,8 @@
 <li>Put your Zigbee device (e.g. GIEX smart valve, Tuya soil sensor, or Xiaomi temperature sensor) into pairing mode (usually by holding its pairing button for 5 seconds).</li>
 <li>The device will be detected, assigned a short address, and display its IEEE 64-bit address, device type, and connection quality.</li>
 </ol>
-<h3 id="step-3-global-integrations-options">Step 3: Global Integrations Options</h3>
-<p>Under <strong>Edit Options</strong> → <strong>Integrations</strong>, ensure that Zigbee alerts and coordinate bindings are active. This enables the controller to cleanly bridge external payload signals into the local scheduling loop.</p>
+<h3 id="step-3-optional-external-integrations">Step 3 (optional): External Integrations</h3>
+<p>This step is <strong>optional</strong> and is not required for Zigbee stations or sensors to work. Open <strong>Edit Options</strong> → <strong>Integrations</strong> only if you want to forward your data to external systems: publish sensor readings and valve states over <strong>MQTT</strong>, log them to <strong>InfluxDB</strong>, enable cloud remote access with <strong>OpenThings Cloud (OTC)</strong>, or send <strong>Email / IFTTT</strong> notifications for controller events.</p>
 <p><img alt="Integrations options" class="mobile-screenshot" src="../assets/screenshots/pro/en/options-integrations.png" /></p>
 <h3 id="step-4-multi-sensor-and-calibration-configuration">Step 4: Multi-Sensor and Calibration Configuration</h3>
 <p>To use the sensor data for program adjustments, navigate to <strong>Analog Sensor Configuration</strong> from the footer menu. This dashboard displays all active logical sensors, their physical bindings, and battery status.</p>
@@ -173,6 +185,74 @@
 - Choose the <strong>Sensor Type</strong> (e.g., Moisture, Temperature, Battery, etc.).
 - Select the <strong>Source Device</strong> from the dropdown of paired Zigbee nodes.
 - Define custom calibration offsets and threshold triggers.</p>
+<hr />
+<h2 id="giex-smart-valves-zone-control">💧 GIEX Smart Valves &amp; Zone Control</h2>
+<p>Beyond reading sensors, OpenSprinklerPro can drive <strong>battery-powered GIEX Zigbee valves directly as irrigation zones (stations)</strong>. Each valve outlet is mapped to a station and is opened and closed wirelessly by the controller — no 24 VAC wiring, solenoids or valve boxes are required.</p>
+<h3 id="what-makes-these-valves-special">What makes these valves special</h3>
+<ul>
+<li><strong>Wireless &amp; battery-powered</strong> – the valve runs on internal batteries and communicates over Zigbee, so a zone can be placed anywhere within range of the coordinator.</li>
+<li><strong>Tuya smart-valve platform</strong> – GIEX valves expose their functions as Tuya data points (DPs): on/off control, countdown timer, cyclic/duration irrigation and, on metered models, water-flow and volume telemetry.</li>
+<li><strong>Multi-zone in a single device</strong> – one physical GX03 provides <strong>two fully independent outlets</strong>, so a single paired device yields two separate OpenSprinkler zones.</li>
+<li><strong>Battery reporting</strong> – the remaining battery percentage is shown directly on the station card in the dashboard.</li>
+</ul>
+<h3 id="the-giex-product-family">The GIEX product family</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Type</th>
+<th>Outlets / logical devices</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GX02</strong></td>
+<td>Single smart water valve</td>
+<td>1 valve (<code>valve_1</code>, DP 1)</td>
+<td>One wireless irrigation zone</td>
+</tr>
+<tr>
+<td><strong>GX03</strong></td>
+<td>2-zone smart water valve</td>
+<td>2 valves (<code>valve_1</code> = DP 1, <code>valve_2</code> = DP 2)</td>
+<td>Two independent wireless zones from a single device</td>
+</tr>
+<tr>
+<td><strong>GX04</strong></td>
+<td>Soil moisture &amp; temperature sensor</td>
+<td>Soil moisture + temperature</td>
+<td>Moisture-based program adjustments (used as an analog sensor, see Step 5 above)</td>
+</tr>
+</tbody>
+</table>
+<p>Once paired, all of these devices are listed together on the <strong>ZigBee Gateway</strong> page with their friendly name, manufacturer/model and 64-bit IEEE address:</p>
+<p><img alt="ZigBee Gateway with paired GIEX devices" class="mobile-screenshot" src="../assets/screenshots/pro/en/giex-gateway.png" /></p>
+<h3 id="how-they-work-with-opensprinkler">How they work with OpenSprinkler</h3>
+<p>When a valve is used as a <strong>Zigbee station</strong>, the controller acts as the Zigbee coordinator and translates every station run into an on/off (or Tuya DP) command sent to the correct valve outlet:</p>
+<ul>
+<li>A <strong>paired device</strong> is identified by its 64-bit <strong>IEEE address</strong>.</li>
+<li>A <strong>logical device</strong> selects the individual outlet inside that device — e.g. <code>valve_1 (EP: 1, DP: 1)</code> or <code>valve_2 (EP: 1, DP: 2)</code> for the two zones of a GX03.</li>
+<li>Starting the station opens the valve; runtime, program schedules, sequential groups, rain/sensor delays and manual control all behave exactly like a wired zone.</li>
+</ul>
+<p>This is different from the <em>sensor</em> mapping in Step 5: a sensor <strong>reads</strong> data for program adjustments, whereas a Zigbee <strong>station</strong> actively <strong>controls</strong> a valve.</p>
+<h3 id="setting-up-a-giex-valve-as-a-zone">Setting up a GIEX valve as a zone</h3>
+<ol>
+<li><strong>Pair the valve</strong> on the <strong>ZigBee Gateway</strong> page (see Step 2 above). The GIEX device appears with its friendly name and IEEE address.</li>
+<li>On the dashboard, open the <strong>station settings</strong> (the gear icon on the zone card) and switch to the <strong>Advanced</strong> tab.</li>
+<li>Set <strong>Station Type</strong> to <strong>Zigbee</strong>.</li>
+<li>Choose the <strong>Paired Zigbee Device</strong> (e.g. <em>GIEX GX03 2-Zone Valve</em>). The <strong>IEEE Address</strong> is filled in automatically.</li>
+<li>Select the <strong>Logical Device</strong> for the outlet this station should control — <code>valve_1</code> for the first zone, <code>valve_2</code> for the second.</li>
+</ol>
+<p><img alt="Zigbee zone options in the station editor" class="mobile-screenshot" src="../assets/screenshots/pro/en/giex-zone-options.png" /></p>
+<ol>
+<li>Press <strong>Submit</strong>. The station now opens and closes the selected GIEX valve outlet wirelessly whenever it runs.</li>
+</ol>
+<p>For a two-zone GX03, repeat the steps for a second station and select <code>valve_2</code>, so both outlets are controlled independently.</p>
+<div class="admonition note">
+<p class="admonition-title">Platform availability</p>
+<p>Zigbee stations and the GIEX zone function require the <strong>ESP32-C5 controller running the Zigbee firmware variant</strong>. They are not available on ESP8266 or OSPi builds.</p>
+</div>
 <hr />
 <h2 id="supported-devices-and-technical-details">🛠️ Supported Devices and Technical Details</h2>
 <p>The internal firmware supports standard Zigbee 3.0 clusters:

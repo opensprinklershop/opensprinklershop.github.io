@@ -134,8 +134,8 @@
 <li>Coloque o seu dispositivo Zigbee (por exemplo, válvula inteligente GIEX, sensor de solo Tuya ou sensor de temperatura Xiaomi) no modo de emparelhamento (geralmente mantendo pressionado o botão de associação por 5 segundos).</li>
 <li>O dispositivo será detectado, receberá um endereço curto e exibirá o seu endereço IEEE de 64 bits, tipo de dispositivo e qualidade de sinal (LQI).</li>
 </ol>
-<h3 id="passo-3-opcoes-gerais-de-integracao">Passo 3: Opções Gerais de Integração</h3>
-<p>Em <strong>Edit Options</strong> → <strong>Integrations</strong>, certifique-se de que os alertas Zigbee e as vinculações coordenadas estejam ativos. Isso permite que o controlador faça a ponte entre os sinais externos e o circuito de agendamento local.</p>
+<h3 id="passo-3-opcional-integracoes-externas">Passo 3 (opcional): Integrações externas</h3>
+<p>Este passo é <strong>opcional</strong> e não é necessário para o funcionamento das estações ou sensores Zigbee. Abra <strong>Edit Options</strong> → <strong>Integrations</strong> apenas se quiser encaminhar os seus dados para sistemas externos: publicar as leituras dos sensores e os estados das válvulas via <strong>MQTT</strong>, registá-los no <strong>InfluxDB</strong>, ativar o acesso remoto na nuvem com <strong>OpenThings Cloud (OTC)</strong> ou enviar notificações por <strong>e-mail / IFTTT</strong> para eventos do controlador.</p>
 <p><img alt="Integrations options" class="mobile-screenshot" src="../assets/screenshots/pro/pt/options-integrations.png" /></p>
 <h3 id="passo-4-configuracao-de-multi-sensores-e-calibracao">Passo 4: Configuração de Multi-Sensores e Calibração</h3>
 <p>Para usar os dados dos sensores para ajustes de programas, aceda a <strong>Analog Sensor Configuration</strong> a partir do menu do rodapé. Este painel exibe todos os sensores lógicos ativos, as suas vinculações físicas e o estado da bateria.</p>
@@ -148,6 +148,74 @@
 - Escolher o <strong>Tipo de Sensor</strong> (por exemplo, umidade, temperatura, bateria, etc.).
 - Selecionar o <strong>Dispositivo de Origem</strong> (Source Device) na lista suspensa dos nós Zigbee emparelhados.
 - Definir offsets de calibração personalizados e limites de disparo.</p>
+<hr />
+<h2 id="valvulas-inteligentes-giex-e-controlo-de-zonas">💧 Válvulas Inteligentes GIEX e Controlo de Zonas</h2>
+<p>Para além da leitura de sensores, o OpenSprinklerPro pode acionar <strong>válvulas Zigbee GIEX alimentadas por bateria diretamente como zonas de rega (estações)</strong>. Cada saída de válvula é associada a uma estação e aberta/fechada sem fios pelo controlador — sem cablagem de 24 V, solenoides ou caixas de válvulas.</p>
+<h3 id="o-que-torna-estas-valvulas-especiais">O que torna estas válvulas especiais</h3>
+<ul>
+<li><strong>Sem fios e a bateria</strong> – a válvula funciona com baterias internas e comunica por Zigbee, pelo que uma zona pode ser colocada em qualquer local dentro do alcance do coordenador.</li>
+<li><strong>Plataforma de válvula inteligente Tuya</strong> – as válvulas GIEX expõem as suas funções como pontos de dados Tuya (DPs): comando ligar/desligar, temporizador de contagem decrescente, rega cíclica ou por duração e, nos modelos com contador, telemetria de caudal e volume.</li>
+<li><strong>Várias zonas num único dispositivo</strong> – um único GX03 oferece <strong>duas saídas totalmente independentes</strong>, pelo que um só dispositivo emparelhado resulta em duas zonas OpenSprinkler distintas.</li>
+<li><strong>Relatório de bateria</strong> – a percentagem de bateria restante é apresentada diretamente no cartão da estação no painel.</li>
+</ul>
+<h3 id="a-familia-de-produtos-giex">A família de produtos GIEX</h3>
+<table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th>Tipo</th>
+<th>Saídas / dispositivos lógicos</th>
+<th>Utilização típica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GX02</strong></td>
+<td>Válvula de água inteligente única</td>
+<td>1 válvula (<code>valve_1</code>, DP 1)</td>
+<td>Uma zona de rega sem fios</td>
+</tr>
+<tr>
+<td><strong>GX03</strong></td>
+<td>Válvula de água inteligente de 2 zonas</td>
+<td>2 válvulas (<code>valve_1</code> = DP 1, <code>valve_2</code> = DP 2)</td>
+<td>Duas zonas sem fios independentes a partir de um único dispositivo</td>
+</tr>
+<tr>
+<td><strong>GX04</strong></td>
+<td>Sensor de humidade do solo e temperatura</td>
+<td>Humidade do solo + temperatura</td>
+<td>Ajustes de programa baseados na humidade (usado como sensor analógico, ver o Passo 5 acima)</td>
+</tr>
+</tbody>
+</table>
+<p>Após o emparelhamento, todos estes dispositivos são listados em conjunto na página <strong>ZigBee Gateway</strong> com o seu nome amigável, fabricante/modelo e endereço IEEE de 64 bits:</p>
+<p><img alt="ZigBee Gateway com dispositivos GIEX emparelhados" class="mobile-screenshot" src="../assets/screenshots/pro/pt/giex-gateway.png" /></p>
+<h3 id="como-funcionam-com-o-opensprinkler">Como funcionam com o OpenSprinkler</h3>
+<p>Quando uma válvula é usada como <strong>estação Zigbee</strong>, o controlador atua como coordenador Zigbee e traduz cada execução da estação num comando ligar/desligar (ou DP Tuya) enviado para a saída de válvula correta:</p>
+<ul>
+<li>Um <strong>dispositivo emparelhado</strong> é identificado pelo seu <strong>endereço IEEE</strong> de 64 bits.</li>
+<li>Um <strong>dispositivo lógico</strong> seleciona a saída individual dentro desse dispositivo — por exemplo <code>valve_1 (EP: 1, DP: 1)</code> ou <code>valve_2 (EP: 1, DP: 2)</code> para as duas zonas de um GX03.</li>
+<li>Iniciar a estação abre a válvula; o tempo de execução, os programas, os grupos sequenciais, os atrasos de chuva/sensor e o controlo manual comportam-se exatamente como uma zona cablada.</li>
+</ul>
+<p>Isto é diferente da associação de <em>sensor</em> do Passo 5: um sensor <strong>lê</strong> dados para ajustes de programa, ao passo que uma <strong>estação</strong> Zigbee <strong>comanda</strong> ativamente uma válvula.</p>
+<h3 id="configurar-uma-valvula-giex-como-zona">Configurar uma válvula GIEX como zona</h3>
+<ol>
+<li><strong>Emparelhe a válvula</strong> na página <strong>ZigBee Gateway</strong> (ver o Passo 2 acima). O dispositivo GIEX aparece com o seu nome amigável e endereço IEEE.</li>
+<li>No painel, abra as <strong>definições da estação</strong> (ícone de engrenagem no cartão da zona) e mude para o separador <strong>Avançado</strong>.</li>
+<li>Defina o <strong>Tipo de Estação</strong> (Station Type) como <strong>Zigbee</strong>.</li>
+<li>Escolha o <strong>dispositivo Zigbee emparelhado</strong> (por exemplo <em>GIEX GX03 2-Zone Valve</em>). O <strong>endereço IEEE</strong> é preenchido automaticamente.</li>
+<li>Selecione o <strong>dispositivo lógico</strong> para a saída que esta estação deve comandar — <code>valve_1</code> para a primeira zona, <code>valve_2</code> para a segunda.</li>
+</ol>
+<p><img alt="Opções de zona Zigbee no editor de estação" class="mobile-screenshot" src="../assets/screenshots/pro/pt/giex-zone-options.png" /></p>
+<ol>
+<li>Prima <strong>Submeter</strong> (Submit). A estação passa a abrir e fechar sem fios a saída da válvula GIEX selecionada sempre que é executada.</li>
+</ol>
+<p>Para um GX03 de duas zonas, repita os passos para uma segunda estação e selecione <code>valve_2</code>, para que ambas as saídas sejam comandadas de forma independente.</p>
+<div class="admonition note">
+<p class="admonition-title">Disponibilidade da plataforma</p>
+<p>As estações Zigbee e a função de zona GIEX requerem o <strong>controlador ESP32-C5 com a variante de firmware Zigbee</strong>. Não estão disponíveis nas builds ESP8266 ou OSPi.</p>
+</div>
 <hr />
 <h2 id="dispositivos-suportados-e-detalhes-tecnicos">🛠️ Dispositivos Suportados e Detalhes Técnicos</h2>
 <p>O firmware interno suporta clusters padrão Zigbee 3.0:

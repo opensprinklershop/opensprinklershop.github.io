@@ -134,8 +134,8 @@
 <li>Versetzen Sie Ihr Zigbee-Gerät (z. B. GIEX-Bewässerungsventil, Tuya-Bodensensor oder Xiaomi-Temperatursensor) in den Kopplungsmodus (meist durch Drücken der Kopplungstaste für 5 Sekunden).</li>
 <li>Das Gerät wird erkannt, erhält eine Kurzadresse und wird mit seiner 64-Bit-IEEE-Adresse, dem Gerätetyp und der Signalqualität (LQI) aufgelistet.</li>
 </ol>
-<h3 id="schritt-3-globale-integrations-optionen">Schritt 3: Globale Integrations-Optionen</h3>
-<p>Stellen Sie unter <strong>Optionen bearbeiten</strong> → <strong>Integrationen</strong> (Integrations) sicher, dass Zigbee-Meldungen und Koordinatenbindungen aktiv sind. Dies ermöglicht es dem Controller, externe Statussignale sauber in die lokale Bewässerungssteuerung zu übertragen.</p>
+<h3 id="schritt-3-optional-externe-integrationen">Schritt 3 (optional): Externe Integrationen</h3>
+<p>Dieser Schritt ist <strong>optional</strong> und für den Betrieb von Zigbee-Stationen oder -Sensoren nicht erforderlich. Öffnen Sie <strong>Optionen bearbeiten</strong> → <strong>Integrationen</strong> (Integrations) nur dann, wenn Sie Ihre Daten an externe Systeme weitergeben möchten: Sensorwerte und Ventilzustände per <strong>MQTT</strong> veröffentlichen, in <strong>InfluxDB</strong> protokollieren, den Cloud-Fernzugriff über <strong>OpenThings Cloud (OTC)</strong> aktivieren oder <strong>E-Mail-/IFTTT-Benachrichtigungen</strong> für Controller-Ereignisse senden.</p>
 <p><img alt="Integrations options" class="mobile-screenshot" src="../assets/screenshots/pro/de/options-integrations.png" /></p>
 <h3 id="schritt-4-multi-sensor-und-kalibrierungskonfiguration">Schritt 4: Multi-Sensor- und Kalibrierungskonfiguration</h3>
 <p>Um die Sensordaten für Programmanpassungen zu verwenden, wechseln Sie über das Fußzeilenmenü zu <strong>Analoge Sensoren</strong> (Analog Sensor Configuration). Diese Übersicht zeigt alle aktiven logischen Sensoren, deren physikalische Bindung sowie den Batteriestatus.</p>
@@ -148,6 +148,74 @@
 - Den <strong>Sensortyp</strong> auswählen (z. B. Feuchtigkeit, Temperatur, Batterie usw.).
 - Das <strong>Quellgerät</strong> (Source Device) aus der Dropdown-Liste der gekoppelten Zigbee-Knoten auswählen.
 - Eigene Kalibrierungs-Offsets sowie Schwellenwerte für Auslöser festlegen.</p>
+<hr />
+<h2 id="giex-smart-ventile-zonensteuerung">💧 GIEX-Smart-Ventile &amp; Zonensteuerung</h2>
+<p>Über das reine Auslesen von Sensoren hinaus kann OpenSprinklerPro <strong>batteriebetriebene GIEX-Zigbee-Ventile direkt als Bewässerungszonen (Stationen) ansteuern</strong>. Jeder Ventilausgang wird einer Station zugeordnet und vom Controller drahtlos geöffnet und geschlossen — ganz ohne 24-V-Verkabelung, Magnetventile oder Ventilboxen.</p>
+<h3 id="was-diese-ventile-besonders-macht">Was diese Ventile besonders macht</h3>
+<ul>
+<li><strong>Kabellos &amp; batteriebetrieben</strong> – das Ventil läuft mit internen Batterien und kommuniziert über Zigbee, sodass eine Zone überall in Reichweite des Koordinators platziert werden kann.</li>
+<li><strong>Tuya-Smart-Ventil-Plattform</strong> – GIEX-Ventile stellen ihre Funktionen als Tuya-Datenpunkte (DPs) bereit: Ein/Aus-Steuerung, Countdown-Timer, zyklische bzw. dauerbasierte Bewässerung und – bei Modellen mit Zähler – Durchfluss- und Mengentelemetrie.</li>
+<li><strong>Mehrere Zonen in einem Gerät</strong> – ein einzelnes GX03 bietet <strong>zwei völlig unabhängige Ausgänge</strong>, sodass ein einziges gekoppeltes Gerät zwei separate OpenSprinkler-Zonen ergibt.</li>
+<li><strong>Batteriestatus</strong> – der verbleibende Batterieladestand wird direkt auf der Stationskarte im Dashboard angezeigt.</li>
+</ul>
+<h3 id="die-giex-produktfamilie">Die GIEX-Produktfamilie</h3>
+<table>
+<thead>
+<tr>
+<th>Modell</th>
+<th>Typ</th>
+<th>Ausgänge / logische Geräte</th>
+<th>Typische Verwendung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GX02</strong></td>
+<td>Einzelnes Smart-Wasserventil</td>
+<td>1 Ventil (<code>valve_1</code>, DP 1)</td>
+<td>Eine drahtlose Bewässerungszone</td>
+</tr>
+<tr>
+<td><strong>GX03</strong></td>
+<td>2-Zonen-Smart-Wasserventil</td>
+<td>2 Ventile (<code>valve_1</code> = DP 1, <code>valve_2</code> = DP 2)</td>
+<td>Zwei unabhängige drahtlose Zonen aus einem Gerät</td>
+</tr>
+<tr>
+<td><strong>GX04</strong></td>
+<td>Bodenfeuchte- &amp; Temperatursensor</td>
+<td>Bodenfeuchte + Temperatur</td>
+<td>Feuchtebasierte Programmanpassungen (als analoger Sensor genutzt, siehe Schritt 5 oben)</td>
+</tr>
+</tbody>
+</table>
+<p>Nach der Kopplung werden alle diese Geräte gemeinsam auf der Seite <strong>ZigBee Gateway</strong> mit ihrem Anzeigenamen, Hersteller/Modell und ihrer 64-Bit-IEEE-Adresse aufgelistet:</p>
+<p><img alt="ZigBee Gateway mit gekoppelten GIEX-Geräten" class="mobile-screenshot" src="../assets/screenshots/pro/de/giex-gateway.png" /></p>
+<h3 id="wie-sie-mit-opensprinkler-zusammenarbeiten">Wie sie mit OpenSprinkler zusammenarbeiten</h3>
+<p>Wird ein Ventil als <strong>Zigbee-Station</strong> verwendet, fungiert der Controller als Zigbee-Koordinator und übersetzt jeden Stationslauf in einen Ein/Aus- (oder Tuya-DP-) Befehl an den richtigen Ventilausgang:</p>
+<ul>
+<li>Ein <strong>gekoppeltes Gerät</strong> wird über seine 64-Bit-<strong>IEEE-Adresse</strong> identifiziert.</li>
+<li>Ein <strong>logisches Gerät</strong> wählt den einzelnen Ausgang innerhalb dieses Geräts – z. B. <code>valve_1 (EP: 1, DP: 1)</code> oder <code>valve_2 (EP: 1, DP: 2)</code> für die beiden Zonen eines GX03.</li>
+<li>Beim Start der Station wird das Ventil geöffnet; Laufzeit, Programmpläne, sequentielle Gruppen, Regen-/Sensorverzögerungen und die manuelle Steuerung verhalten sich exakt wie bei einer verdrahteten Zone.</li>
+</ul>
+<p>Dies unterscheidet sich von der <em>Sensor</em>-Zuweisung in Schritt 5: Ein Sensor <strong>liest</strong> Daten für Programmanpassungen, während eine Zigbee-<strong>Station</strong> ein Ventil aktiv <strong>steuert</strong>.</p>
+<h3 id="ein-giex-ventil-als-zone-einrichten">Ein GIEX-Ventil als Zone einrichten</h3>
+<ol>
+<li><strong>Koppeln Sie das Ventil</strong> auf der Seite <strong>ZigBee Gateway</strong> (siehe Schritt 2 oben). Das GIEX-Gerät erscheint mit seinem Anzeigenamen und seiner IEEE-Adresse.</li>
+<li>Öffnen Sie im Dashboard die <strong>Stationseinstellungen</strong> (Zahnrad-Symbol auf der Zonenkarte) und wechseln Sie zum Reiter <strong>Erweitert</strong>.</li>
+<li>Setzen Sie den <strong>Bewässerungskreis-Typ</strong> (Station Type) auf <strong>Zigbee</strong>.</li>
+<li>Wählen Sie das <strong>gekoppelte Zigbee-Gerät</strong> (z. B. <em>GIEX GX03 2-Zone Valve</em>). Die <strong>IEEE-Adresse</strong> wird automatisch ausgefüllt.</li>
+<li>Wählen Sie das <strong>logische Gerät</strong> für den Ausgang, den diese Station steuern soll – <code>valve_1</code> für die erste Zone, <code>valve_2</code> für die zweite.</li>
+</ol>
+<p><img alt="Zigbee-Zonenoptionen im Stationseditor" class="mobile-screenshot" src="../assets/screenshots/pro/de/giex-zone-options.png" /></p>
+<ol>
+<li>Klicken Sie auf <strong>Speichern</strong> (Submit). Die Station öffnet und schließt nun bei jedem Lauf den ausgewählten GIEX-Ventilausgang drahtlos.</li>
+</ol>
+<p>Für ein Zweizonen-GX03 wiederholen Sie die Schritte für eine zweite Station und wählen dort <code>valve_2</code>, damit beide Ausgänge unabhängig gesteuert werden.</p>
+<div class="admonition note">
+<p class="admonition-title">Plattform-Verfügbarkeit</p>
+<p>Zigbee-Stationen und die GIEX-Zonenfunktion erfordern den <strong>ESP32-C5-Controller mit der Zigbee-Firmware-Variante</strong>. Auf ESP8266- oder OSPi-Builds sind sie nicht verfügbar.</p>
+</div>
 <hr />
 <h2 id="unterstutzte-gerate-und-technische-details">🛠️ Unterstützte Geräte und technische Details</h2>
 <p>Die interne Firmware unterstützt standardmäßige Zigbee 3.0-Cluster:

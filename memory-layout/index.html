@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/memory-layout/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>ESP32-C5 Speicheraufteilung - OpenSprinkler Shop Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ESP32-C5 Speicheraufteilung";
+        var mkdocs_page_input_path = "memory-layout.md";
+        var mkdocs_page_url = "/memory-layout/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenSprinkler Shop Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Base Manual v2.2.1(4)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_manual/">User Manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_api/">API Reference</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OpenSprinklerPro Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../zigbee/">Zigbee Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../analog-sensor-config/">Analog Sensor Config</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MCP and AI</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../mcp-server/">MCP Server</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ai-programming/">AI Program Creation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sensor-automation/">Sensor Automation</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../rainmaker-provisioning/">RainMaker Provisioning</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../fyta-sensors/">FYTA Sensors</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Archived</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../archive/">Previous Manuals and API docs</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenSprinkler Shop Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">ESP32-C5 Speicheraufteilung</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/memory-layout.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="esp32-c5-speicheraufteilung">ESP32-C5 Speicheraufteilung</h1>
+<p>Stand: 2026-07-05
+Build: <code>esp32-c5-zigbee</code></p>
+<h2 id="firmware-speicher-aus-pio-run-e-esp32-c5-zigbee-t-size">Firmware-Speicher (aus <code>pio run -e esp32-c5-zigbee -t size</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Sektion</th>
+<th style="text-align: right;">Verwendet (Bytes)</th>
+<th style="text-align: right;">Verwendet (%)</th>
+<th style="text-align: right;">Frei (Bytes)</th>
+<th style="text-align: right;">Gesamt (Bytes)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flash</td>
+<td>Gesamt (Image-Sektionen)</td>
+<td style="text-align: right;">3,502,644</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+</tr>
+<tr>
+<td>Flash</td>
+<td>.text</td>
+<td style="text-align: right;">2,824,872</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+</tr>
+<tr>
+<td>Flash</td>
+<td>.rodata</td>
+<td style="text-align: right;">508,236</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+</tr>
+<tr>
+<td>Flash</td>
+<td>.eh_frame</td>
+<td style="text-align: right;">160,548</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+</tr>
+<tr>
+<td>Flash</td>
+<td>.bss</td>
+<td style="text-align: right;">8,732</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+</tr>
+<tr>
+<td>Flash</td>
+<td>.appdesc</td>
+<td style="text-align: right;">256</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+</tr>
+<tr>
+<td>HP SRAM</td>
+<td>Gesamt</td>
+<td style="text-align: right;">267,227</td>
+<td style="text-align: right;">83.27</td>
+<td style="text-align: right;">53,701</td>
+<td style="text-align: right;">320,928</td>
+</tr>
+<tr>
+<td>HP SRAM</td>
+<td>.bss</td>
+<td style="text-align: right;">122,048</td>
+<td style="text-align: right;">38.03</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">320,928</td>
+</tr>
+<tr>
+<td>HP SRAM</td>
+<td>.text</td>
+<td style="text-align: right;">121,178</td>
+<td style="text-align: right;">37.76</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">320,928</td>
+</tr>
+<tr>
+<td>HP SRAM</td>
+<td>.data</td>
+<td style="text-align: right;">24,001</td>
+<td style="text-align: right;">7.48</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">320,928</td>
+</tr>
+</tbody>
+</table>
+<h2 id="elf-summenwerte-tool-ausgabe">ELF-Summenwerte (Tool-Ausgabe)</h2>
+<table>
+<thead>
+<tr>
+<th>Kennzahl</th>
+<th style="text-align: right;">Wert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td style="text-align: right;">3,142,269</td>
+</tr>
+<tr>
+<td>data</td>
+<td style="text-align: right;">532,269</td>
+</tr>
+<tr>
+<td>bss</td>
+<td style="text-align: right;">6,618,893</td>
+</tr>
+<tr>
+<td>dec</td>
+<td style="text-align: right;">10,293,431</td>
+</tr>
+<tr>
+<td>hex</td>
+<td style="text-align: right;">0x9d10b7</td>
+</tr>
+<tr>
+<td>Total image size</td>
+<td style="text-align: right;">3,639,091</td>
+</tr>
+</tbody>
+</table>
+<h2 id="partitionierung-8-mb-os4_c5_dual_otf_8mbcsv">Partitionierung (8 MB, <code>os4_c5_dual_otf_8mb.csv</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>Typ</th>
+<th>Subtyp</th>
+<th style="text-align: right;">Offset</th>
+<th style="text-align: right;">Größe (Hex)</th>
+<th style="text-align: right;">Größe (Bytes)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nvs</td>
+<td>data</td>
+<td>nvs</td>
+<td style="text-align: right;">0x9000</td>
+<td style="text-align: right;">0x5000</td>
+<td style="text-align: right;">20,480</td>
+</tr>
+<tr>
+<td>otadata</td>
+<td>data</td>
+<td>ota</td>
+<td style="text-align: right;">0xE000</td>
+<td style="text-align: right;">0x2000</td>
+<td style="text-align: right;">8,192</td>
+</tr>
+<tr>
+<td>zigbee</td>
+<td>app</td>
+<td>ota_0</td>
+<td style="text-align: right;">0x10000</td>
+<td style="text-align: right;">0x390000</td>
+<td style="text-align: right;">3,735,552</td>
+</tr>
+<tr>
+<td>matter</td>
+<td>app</td>
+<td>ota_1</td>
+<td style="text-align: right;">0x3A0000</td>
+<td style="text-align: right;">0x390000</td>
+<td style="text-align: right;">3,735,552</td>
+</tr>
+<tr>
+<td>matter_kvs</td>
+<td>data</td>
+<td>nvs</td>
+<td style="text-align: right;">0x730000</td>
+<td style="text-align: right;">0x10000</td>
+<td style="text-align: right;">65,536</td>
+</tr>
+<tr>
+<td>zb_storage</td>
+<td>data</td>
+<td>fat</td>
+<td style="text-align: right;">0x740000</td>
+<td style="text-align: right;">0x20000</td>
+<td style="text-align: right;">131,072</td>
+</tr>
+<tr>
+<td>zb_fct</td>
+<td>data</td>
+<td>fat</td>
+<td style="text-align: right;">0x760000</td>
+<td style="text-align: right;">0x1000</td>
+<td style="text-align: right;">4,096</td>
+</tr>
+<tr>
+<td>littlefs</td>
+<td>data</td>
+<td>littlefs</td>
+<td style="text-align: right;">0x761000</td>
+<td style="text-align: right;">0x87000</td>
+<td style="text-align: right;">552,960</td>
+</tr>
+<tr>
+<td>esp_secure_cert</td>
+<td>data</td>
+<td>0x00</td>
+<td style="text-align: right;">0x7E8000</td>
+<td style="text-align: right;">0x2000</td>
+<td style="text-align: right;">8,192</td>
+</tr>
+<tr>
+<td>fctry</td>
+<td>data</td>
+<td>nvs</td>
+<td style="text-align: right;">0x7EA000</td>
+<td style="text-align: right;">0x6000</td>
+<td style="text-align: right;">24,576</td>
+</tr>
+<tr>
+<td>coredump</td>
+<td>data</td>
+<td>coredump</td>
+<td style="text-align: right;">0x7F0000</td>
+<td style="text-align: right;">0x10000</td>
+<td style="text-align: right;">65,536</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slot-auslastung-zigbee-image">Slot-Auslastung (zigbee-Image)</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th style="text-align: right;">Slot-Größe (Bytes)</th>
+<th style="text-align: right;">Image-Größe (Bytes)</th>
+<th style="text-align: right;">Belegt (%)</th>
+<th style="text-align: right;">Frei (Bytes)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zigbee (ota_0)</td>
+<td style="text-align: right;">3,735,552</td>
+<td style="text-align: right;">3,639,091</td>
+<td style="text-align: right;">97.42</td>
+<td style="text-align: right;">96,461</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../custom.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

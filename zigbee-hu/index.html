@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/zigbee-hu/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Zigbee átjáró integráció - OpenSprinkler Shop Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Zigbee \u00e1tj\u00e1r\u00f3 integr\u00e1ci\u00f3";
+        var mkdocs_page_input_path = "zigbee-hu.md";
+        var mkdocs_page_url = "/zigbee-hu/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenSprinkler Shop Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Base Manual v2.2.1(4)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_manual/">User Manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_api/">API Reference</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OpenSprinklerPro Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../zigbee/">Zigbee Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../analog-sensor-config/">Analog Sensor Config</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MCP and AI</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../mcp-server/">MCP Server</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ai-programming/">AI Program Creation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sensor-automation/">Sensor Automation</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../rainmaker-provisioning/">RainMaker Provisioning</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../fyta-sensors/">FYTA Sensors</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Archived</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../archive/">Previous Manuals and API docs</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenSprinkler Shop Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Zigbee átjáró integráció</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/zigbee-hu.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="zigbee-atjaro-integracio">Zigbee átjáró integráció</h1>
+<p>Az OpenSprinklerPro natív Zigbee-koordinációs képességekkel rendelkezik közvetlenül az ESP32-C5 panelen. Az ESP32-C5 egychipes megoldása támogatja a 2,4 GHz-es kétsávos Wi-Fi 6-ot, a Bluetooth 5-öt (LE) és a 802.15.4-et (Zigbee 3.0 / Thread).</p>
+<p>A firmware Zigbee változatával az OpenSprinkler vezérlő teljes értékű Zigbee-koordinátorként működik. Párosítható otthonautomatizálási érzékelőkkel, okos szelepekkel, talajnedvesség-mérőkkel és hőmérséklet-figyelőkkel, hogy az öntözési ütemtervet a valós idejű helyi körülmények alapján igazítsa.</p>
+<hr />
+<h2 id="vezetett-beallitasi-folyamat">📸 Vezetett beállítási folyamat</h2>
+<p>Ez a lépésről lépésre útmutató bemutatja, hogyan konfigurálja a rádió üzemmódot, hogyan párosítson Zigbee-eszközöket, és hogyan rendelje azok attribútumait analóg érzékelőkhöz.</p>
+<h3 id="1-lepes-a-radio-uzemmod-konfiguralasa">1. lépés: A rádió üzemmód konfigurálása</h3>
+<p>Először ellenőrizze, hogy az ESP32-C5 vezérlő a megfelelő rádió üzemmódra van-e állítva. Alapértelmezés szerint az ESP32-C5 többféle üzemmódban futhat. A üzemmód-beállításokat az oldalsó menü <strong>Setup ESP32 Mode</strong> pontjában érheti el.</p>
+<p><img alt="Setup ESP32 Mode" class="mobile-screenshot" src="../assets/screenshots/pro/hu/esp32-mode.png" /></p>
+<p>A Zigbee használatához engedélyezze a <strong>Zigbee Gateway / Coordinator</strong> üzemmódot. Ez inicializálja a natív 802.15.4 rádiót a Zigbee csatornakezeléshez, az eszközök útválasztásához és a hálózat kialakításához.</p>
+<h3 id="2-lepes-eszkozok-csatlakoztatasa-es-parositasa">2. lépés: Eszközök csatlakoztatása és párosítása</h3>
+<p>Amint a Zigbee üzemmód aktív, az oldalsó menüből elérheti a <strong>ZigBee Gateway</strong> oldalt. Ezen az oldalon vezérelheti a párosítási ablakot, és kezelheti a regisztrált fizikai eszközöket.</p>
+<p><img alt="ZigBee Gateway" class="mobile-screenshot" src="../assets/screenshots/pro/hu/zigbee-gateway.png" /></p>
+<ol>
+<li>Kattintson a <strong>Permit Join</strong> (Csatlakozás engedélyezése, jellemzően 60 másodperc) gombra a hálózat új eszközök számára történő megnyitásához.</li>
+<li>Állítsa a Zigbee-eszközét (pl. GIEX okos szelep, Tuya talajérzékelő vagy Xiaomi hőmérséklet-érzékelő) párosítási módba (általában a párosítógomb 5 másodpercig tartó nyomva tartásával).</li>
+<li>Az eszközt a rendszer felismeri, rövid címet rendel hozzá, és megjeleníti a 64 bites IEEE-címét, az eszköztípust és a kapcsolat minőségét.</li>
+</ol>
+<h3 id="3-lepes-opcionalis-kulso-integraciok">3. lépés (opcionális): Külső integrációk</h3>
+<p>Ez a lépés <strong>opcionális</strong>, és nem szükséges a Zigbee-állomások vagy -érzékelők működéséhez. Csak akkor nyissa meg a <strong>Beállítások szerkesztése</strong> → <strong>Integrációk</strong> (Integrations) menüpontot, ha az adatait külső rendszereknek szeretné továbbítani: érzékelőértékek és szelepállapotok közzététele <strong>MQTT</strong>-n keresztül, naplózásuk <strong>InfluxDB</strong>-be, felhőalapú távoli hozzáférés engedélyezése az <strong>OpenThings Cloud (OTC)</strong> segítségével, vagy <strong>e-mail / IFTTT</strong> értesítések küldése vezérlőeseményekről.</p>
+<p><img alt="Integrations options" class="mobile-screenshot" src="../assets/screenshots/pro/hu/options-integrations.png" /></p>
+<h3 id="4-lepes-tobb-erzekelo-es-a-kalibracio-konfiguralasa">4. lépés: Több érzékelő és a kalibráció konfigurálása</h3>
+<p>Az érzékelőadatok programkorrekciókhoz való felhasználásához nyissa meg az <strong>Analóg érzékelők</strong> (Analog Sensor Configuration) oldalt a lábléc menüből. Ez az áttekintés megjeleníti az összes aktív logikai érzékelőt, azok fizikai kötéseit és az akkumulátor állapotát.</p>
+<p><img alt="Sensor configuration" class="mobile-screenshot" src="../assets/screenshots/pro/hu/sensor-config.png" /></p>
+<h3 id="5-lepes-zigbee-erzekelo-hozzaadasaszerkesztese">5. lépés: Zigbee érzékelő hozzáadása/szerkesztése</h3>
+<p>Kattintson az <strong>Érzékelő hozzáadása</strong> (Add Sensor) gombra (vagy szerkesszen egy meglévőt), hogy egy adott Zigbee-eszközattribútumot (például talajnedvesség százalékát vagy hőmérsékletet) egy analóg érzékelőhelyhez rendeljen.</p>
+<p><img alt="New Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/hu/analog-sensor-editor.png" /></p>
+<p>Ebben a szerkesztőben:
+- Adhat az érzékelőnek egy könnyen felismerhető <strong>Nevet</strong>.
+- Kiválaszthatja az <strong>Érzékelő típusát</strong> (pl. nedvesség, hőmérséklet, akkumulátor stb.).
+- Kiválaszthatja a <strong>Forráseszközt</strong> (Source Device) a párosított Zigbee-csomópontok legördülő listájából.
+- Egyedi kalibrációs eltolásokat és küszöbérték-kioldókat határozhat meg.</p>
+<hr />
+<h2 id="giex-okos-szelepek-es-zonavezerles">💧 GIEX okos szelepek és zónavezérlés</h2>
+<p>Az érzékelők kiolvasásán túl az OpenSprinklerPro képes <strong>elemmel működő GIEX Zigbee-szelepeket közvetlenül öntözőzónaként (állomásként) vezérelni</strong>. Minden szelepkimenet egy állomáshoz van rendelve, amelyet a vezérlő vezeték nélkül nyit és zár — nincs szükség 24 V-os vezetékezésre, mágnesszelepekre vagy szelepaknákra.</p>
+<h3 id="mitol-kulonlegesek-ezek-a-szelepek">Mitől különlegesek ezek a szelepek</h3>
+<ul>
+<li><strong>Vezeték nélküli és elemmel működő</strong> – a szelep belső elemekről működik és Zigbee-n keresztül kommunikál, így egy zóna a koordinátor hatótávolságán belül bárhová elhelyezhető.</li>
+<li><strong>Tuya okosszelep-platform</strong> – a GIEX-szelepek Tuya-adatpontokként (DP) teszik elérhetővé funkcióikat: be/ki vezérlés, visszaszámláló időzítő, ciklikus vagy időtartam-alapú öntözés, és a mérővel felszerelt modelleknél átfolyás- és mennyiség-telemetria.</li>
+<li><strong>Több zóna egyetlen eszközben</strong> – egyetlen fizikai GX03 <strong>két teljesen független kimenetet</strong> biztosít, így egyetlen párosított eszköz két különálló OpenSprinkler-zónát ad.</li>
+<li><strong>Akkumulátor-jelentés</strong> – a fennmaradó töltöttségi százalék közvetlenül az állomás kártyáján jelenik meg az irányítópulton.</li>
+</ul>
+<h3 id="a-giex-termekcsalad">A GIEX termékcsalád</h3>
+<table>
+<thead>
+<tr>
+<th>Modell</th>
+<th>Típus</th>
+<th>Kimenetek / logikai eszközök</th>
+<th>Tipikus felhasználás</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GX02</strong></td>
+<td>Egyszelepes okos vízszelep</td>
+<td>1 szelep (<code>valve_1</code>, DP 1)</td>
+<td>Egy vezeték nélküli öntözőzóna</td>
+</tr>
+<tr>
+<td><strong>GX03</strong></td>
+<td>2 zónás okos vízszelep</td>
+<td>2 szelep (<code>valve_1</code> = DP 1, <code>valve_2</code> = DP 2)</td>
+<td>Két független vezeték nélküli zóna egyetlen eszközből</td>
+</tr>
+<tr>
+<td><strong>GX04</strong></td>
+<td>Talajnedvesség- és hőmérséklet-érzékelő</td>
+<td>Talajnedvesség + hőmérséklet</td>
+<td>Nedvesség-alapú programkorrekciók (analóg érzékelőként használva, lásd a fenti 5. lépést)</td>
+</tr>
+</tbody>
+</table>
+<p>Párosítás után mindezek az eszközök együtt jelennek meg a <strong>ZigBee Gateway</strong> oldalon a felhasználóbarát nevükkel, gyártójukkal/modelljükkel és 64 bites IEEE-címükkel:</p>
+<p><img alt="ZigBee Gateway a párosított GIEX-eszközökkel" class="mobile-screenshot" src="../assets/screenshots/pro/hu/giex-gateway.png" /></p>
+<h3 id="hogyan-mukodnek-egyutt-az-opensprinklerrel">Hogyan működnek együtt az OpenSprinklerrel</h3>
+<p>Amikor egy szelepet <strong>Zigbee-állomásként</strong> használnak, a vezérlő Zigbee-koordinátorként működik, és minden állomásfutást egy be/ki (vagy Tuya DP) paranccsá alakít, amelyet a megfelelő szelepkimenetre küld:</p>
+<ul>
+<li>Egy <strong>párosított eszközt</strong> a 64 bites <strong>IEEE-címe</strong> azonosít.</li>
+<li>Egy <strong>logikai eszköz</strong> kiválasztja az adott eszközön belüli egyedi kimenetet — pl. <code>valve_1 (EP: 1, DP: 1)</code> vagy <code>valve_2 (EP: 1, DP: 2)</code> egy GX03 két zónájához.</li>
+<li>Az állomás indítása megnyitja a szelepet; a futásidő, a programütemezések, a szekvenciális csoportok, az eső-/érzékelő-késleltetések és a kézi vezérlés pontosan úgy viselkednek, mint egy vezetékes zónánál.</li>
+</ul>
+<p>Ez eltér az 5. lépésbeli <em>érzékelő</em>-hozzárendeléstől: az érzékelő adatokat <strong>olvas</strong> a programkorrekciókhoz, míg egy Zigbee-<strong>állomás</strong> aktívan <strong>vezérel</strong> egy szelepet.</p>
+<h3 id="giex-szelep-beallitasa-zonakent">GIEX-szelep beállítása zónaként</h3>
+<ol>
+<li><strong>Párosítsa a szelepet</strong> a <strong>ZigBee Gateway</strong> oldalon (lásd a fenti 2. lépést). A GIEX-eszköz a felhasználóbarát nevével és IEEE-címével jelenik meg.</li>
+<li>Az irányítópulton nyissa meg az <strong>állomás beállításait</strong> (a zónakártyán lévő fogaskerék ikon), és váltson a <strong>Speciális</strong> (Advanced) fülre.</li>
+<li>Állítsa az <strong>Állomás típusát</strong> (Station Type) <strong>Zigbee</strong> értékre.</li>
+<li>Válassza ki a <strong>párosított Zigbee-eszközt</strong> (pl. <em>GIEX GX03 2-Zone Valve</em>). Az <strong>IEEE-cím</strong> automatikusan kitöltődik.</li>
+<li>Válassza ki a <strong>logikai eszközt</strong> ahhoz a kimenethez, amelyet ennek az állomásnak vezérelnie kell — <code>valve_1</code> az első zónához, <code>valve_2</code> a másodikhoz.</li>
+</ol>
+<p><img alt="Zigbee zónabeállítások az állomásszerkesztőben" class="mobile-screenshot" src="../assets/screenshots/pro/hu/giex-zone-options.png" /></p>
+<ol>
+<li>Nyomja meg a <strong>Küldés</strong> (Submit) gombot. Az állomás mostantól minden futáskor vezeték nélkül nyitja és zárja a kiválasztott GIEX-szelepkimenetet.</li>
+</ol>
+<p>Kétzónás GX03 esetén ismételje meg a lépéseket egy második állomásnál, és válassza a <code>valve_2</code>-t, hogy mindkét kimenet függetlenül vezérelhető legyen.</p>
+<div class="admonition note">
+<p class="admonition-title">Platform elérhetőség</p>
+<p>A Zigbee-állomások és a GIEX-zónafunkció a <strong>Zigbee firmware-változatot futtató ESP32-C5 vezérlőt</strong> igénylik. ESP8266- vagy OSPi-változatokon nem érhetők el.</p>
+</div>
+<hr />
+<h2 id="tamogatott-eszkozok-es-technikai-reszletek">🛠️ Támogatott eszközök és technikai részletek</h2>
+<p>A belső firmware támogatja a szabványos Zigbee 3.0 clustereket:
+- <strong>0x0402</strong>: Hőmérséklet-mérés (Tuya, Xiaomi, Sonoff)
+- <strong>0x0405</strong>: Relatív páratartalom / talajnedvesség (GIEX, Tuya, Moes)
+- <strong>0x0001</strong>: Tápellátás-konfiguráció (akkumulátor-százalék jelentése)</p>
+<h3 id="tobbcsatornas-eszkozok-lekepezese">Többcsatornás eszközök leképezése</h3>
+<p>Összetett, többcsatornás okos szelepek (mint a GIEX GX02 kétkimenetes öntözőszelep) használatakor a koordinátor az egyes szelepállapotokat és telemetriacsatornákat külön logikai aleszközökre bontja. Ez biztosítja, hogy minden zóna függetlenül indítható vagy skálázható legyen.</p>
+<h3 id="radio-egyutteles-coexistence">Rádió-együttélés (Coexistence)</h3>
+<p>Az ESP32-C5 egyszerre kezeli a BLE-vizsgálatokat, a Wi-Fi 6 forgalmat és a Zigbee 802.15.4 csomagokat. A BLE-érzékelővizsgálatok során a Zigbee Packet Traffic Arbitration (PTA) protokoll pillanatnyilag csökkenti a Zigbee-végpontok prioritását a rádiós ütközések és a csomagvesztés elkerülése érdekében, majd azonnal visszaállítja a teljes prioritást, amint az aktív vizsgálat szünetel.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../custom.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
