@@ -451,11 +451,90 @@
 <h2 id="monitores-e-alertas-locais">Monitores e Alertas Locais</h2>
 <p><strong>Monitoramento e Controle</strong> cria regras de limite e lógica a partir de sensores. Os monitores podem gerar alertas locais, alimentar eventos de notificação e combinar condições como "o solo está seco" e "o período é de manhã".</p>
 <p><img alt="Monitoramento e Controle" class="mobile-screenshot" src="../assets/screenshots/pro/pt/monitors.png" /></p>
-<p><img alt="Novo Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/pt/analog-monitor-editor.png" /></p>
-<h3 id="estrutura-de-regras">Estrutura de Regras</h3>
-<p>As regras do monitor selecionam um sensor, comparam-no com um limite ou estado e definem o que deve acontecer quando a condição for atendida. Nomes claros facilitam a compreensão de alertas futuros.</p>
-<h3 id="logica-e-periodos">Lógica e Períodos</h3>
-<p>Os tipos de monitores incluem limites, regras digitais de sensores de chuva/solo, combinações lógicas, períodos de tempo e estados de monitores remotos. Consulte <a href="../sensor-automation-pt/#monitores">Automação e Monitores de Sensores</a> para o modelo funcional.</p>
+<h3 id="campos-do-editor-todos-os-tipos-de-monitor">Campos do editor (todos os tipos de monitor)</h3>
+<p>Todo monitor possui os campos a seguir, independentemente do tipo. Selecionar o <strong>Tipo</strong> revela os campos específicos descritos mais abaixo.</p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nº do monitor / Nome do monitor</strong></td>
+<td>Número único e nome descritivo exibido em listas e alertas.</td>
+</tr>
+<tr>
+<td><strong>Tipo</strong></td>
+<td>Seleciona o tipo de regra. Alterá-lo troca os campos específicos.</td>
+</tr>
+<tr>
+<td><strong>Programa a iniciar / Zona a iniciar</strong></td>
+<td>Ação enquanto o monitor está ativo: iniciar um programa ou uma única zona. Deixe em <em>Desativado</em> para um monitor apenas de alerta ou lógico.</td>
+</tr>
+<tr>
+<td><strong>Tempo máx. (s)</strong></td>
+<td>Tempo máximo de rega da zona iniciada por ativação.</td>
+</tr>
+<tr>
+<td><strong>Prioridade</strong></td>
+<td>Gravidade da notificação gerada (Baixa / Média / Alta).</td>
+</tr>
+<tr>
+<td><strong>Redefinir estado após (s)</strong></td>
+<td>Maior que 0: o estado ativo é redefinido automaticamente após esse tempo (comportamento periódico/por pulsos). 0 mantém o estado até que a própria condição desapareça.</td>
+</tr>
+<tr>
+<td><strong>Modo de saída</strong></td>
+<td><em>Iniciar e parar</em> controla a saída em ambos os sentidos. <em>Apenas desligar</em> permite que o monitor apenas desligue a zona/o programa (por exemplo, uma parada de emergência), nunca iniciá-lo.</td>
+</tr>
+<tr>
+<td><strong>Failsafe após (s)</strong></td>
+<td>Se o sensor referenciado não fornecer dados válidos por esse tempo, o estado de segurança é aplicado. 0 desativa o failsafe e mantém o último estado.</td>
+</tr>
+<tr>
+<td><strong>Estado failsafe</strong></td>
+<td>Estado de saída (Ligado/Desligado) forçado quando os dados do sensor são considerados obsoletos.</td>
+</tr>
+<tr>
+<td><strong>Mostrar na página inicial</strong></td>
+<td>Mostra o monitor e o seu estado atual na página inicial do aplicativo.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tipos-de-monitor">Tipos de monitor</h3>
+<h4 id="minimo-min">Mínimo (MIN)</h4>
+<p>Ativa quando um valor do sensor cai para ou abaixo de um limite — por exemplo, para reabastecer uma cisterna quando o nível está baixo. <em>Valor para ativar</em> e <em>Valor para desativar</em> formam uma faixa de histerese para evitar comutações repetidas em torno de um único valor.</p>
+<p><img alt="Monitor mínimo" class="mobile-screenshot" src="../assets/screenshots/pro/pt/monitor-min.png" /></p>
+<h4 id="maximo-max">Máximo (MAX)</h4>
+<p>Ativa quando um valor do sensor atinge ou ultrapassa um limite — por exemplo, um alarme de temperatura alta ou de transbordamento. Usa a mesma faixa de histerese (<em>Valor para ativar</em> / <em>Valor para desativar</em>) do tipo MIN.</p>
+<p><img alt="Monitor máximo" class="mobile-screenshot" src="../assets/screenshots/pro/pt/monitor-max.png" /></p>
+<h4 id="sensor-digital-12-sn-12">Sensor digital 1/2 (SN 1/2)</h4>
+<p>Espelha o estado da entrada digital de chuva/solo integrada (Sensor 1 ou Sensor 2). Ative <em>inverse</em> para reagir ao estado oposto.</p>
+<p><img alt="Monitor de sensor digital" class="mobile-screenshot" src="../assets/screenshots/pro/pt/monitor-sensor12.png" /></p>
+<h4 id="definir-sensor-digital-set-sn-12">Definir sensor digital (SET SN 1/2)</h4>
+<p>Aciona o estado virtual do sensor digital 1 ou 2 a partir de outro monitor. Assim, uma condição calculada pode agir como um sensor físico de chuva/solo para o agendador.</p>
+<p><img alt="Monitor definir sensor digital" class="mobile-screenshot" src="../assets/screenshots/pro/pt/monitor-set-sensor12.png" /></p>
+<h4 id="e-and">E (AND)</h4>
+<p>Ativo apenas quando <strong>todos</strong> os monitores de origem selecionados estão ativos. Cada uma das até quatro entradas pode ser invertida individualmente com a caixa <em>inverse</em>.</p>
+<p><img alt="Monitor E" class="mobile-screenshot" src="../assets/screenshots/pro/pt/monitor-and.png" /></p>
+<h4 id="ou-or">OU (OR)</h4>
+<p>Ativo quando <strong>qualquer</strong> um dos monitores de origem selecionados está ativo. As entradas podem ser invertidas individualmente.</p>
+<p><img alt="Monitor OU" class="mobile-screenshot" src="../assets/screenshots/pro/pt/monitor-or.png" /></p>
+<h4 id="ou-exclusivo-xor">OU exclusivo (XOR)</h4>
+<p>Ativo quando um número <strong>ímpar</strong> das entradas selecionadas está ativo (ou exclusivo). Útil para detectar uma divergência entre duas condições.</p>
+<p><img alt="Monitor XOR" class="mobile-screenshot" src="../assets/screenshots/pro/pt/monitor-xor.png" /></p>
+<h4 id="nao-not">NÃO (NOT)</h4>
+<p>Inverte o estado de um único monitor de origem.</p>
+<p><img alt="Monitor NÃO" class="mobile-screenshot" src="../assets/screenshots/pro/pt/monitor-not.png" /></p>
+<h4 id="periodo-de-tempo-time">Período de tempo (TIME)</h4>
+<p>Ativo durante um período diário nos dias da semana selecionados. Defina <em>De</em> e <em>Até</em> (é suportado um período que cruza a meia-noite) e marque os dias da semana.</p>
+<p><img alt="Monitor de período" class="mobile-screenshot" src="../assets/screenshots/pro/pt/monitor-time.png" /></p>
+<h4 id="remoto-remote">Remoto (REMOTE)</h4>
+<p>Espelha o estado ativo de um monitor em outro controlador OpenSprinkler. Informe o <em>Nº do monitor remoto</em>, o <em>IP</em> e a <em>Porta</em> do controlador.</p>
+<p><img alt="Monitor remoto" class="mobile-screenshot" src="../assets/screenshots/pro/pt/monitor-remote.png" /></p>
+<p>Consulte <a href="../sensor-automation-pt/#monitores">Automação e Monitores de Sensores</a> para o modelo funcional.</p>
 <h2 id="graficos-de-sensores-e-dados">Gráficos de Sensores e Dados</h2>
 <p>O <strong>Gráfico do Sensor</strong> exibe os valores registrados dos sensores. Use-o para verificar leituras reais antes de usá-las para ajustes de programa ou monitores. A interface gráfica também permite descarregar logs ou abrir a tabela de dados.</p>
 <p><img alt="Gráfico do Sensor" class="mobile-screenshot" src="../assets/screenshots/pro/pt/analog-sensor-chart.png" /></p>

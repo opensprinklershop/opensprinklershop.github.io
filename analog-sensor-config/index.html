@@ -89,9 +89,31 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#monitors-and-local-alerts">Monitors and local alerts</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#rule-structure">Rule structure</a>
+    <li class="toctree-l3"><a class="reference internal" href="#editor-fields-all-monitor-types">Editor fields (all monitor types)</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#logic-and-time-windows">Logic and time windows</a>
+    <li class="toctree-l3"><a class="reference internal" href="#monitor-types">Monitor types</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#minimum-min">Minimum (MIN)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#maximum-max">Maximum (MAX)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#digital-sensor-12-sn-12">Digital sensor 1/2 (SN 1/2)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#set-digital-sensor-set-sn-12">Set digital sensor (SET SN 1/2)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#and">AND</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#or">OR</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#xor">XOR</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#not">NOT</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#time-window-time">Time window (TIME)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#remote-remote">Remote (REMOTE)</a>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -550,11 +572,90 @@
 <h2 id="monitors-and-local-alerts">Monitors and local alerts</h2>
 <p><strong>Monitoring and Control</strong> creates threshold and logic rules from sensors. Monitors can produce local warnings, feed notification events and combine conditions such as “soil is dry” and “current time is morning”.</p>
 <p><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitors.png" /></p>
-<p><img alt="New Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-monitor-editor.png" /></p>
-<h3 id="rule-structure">Rule structure</h3>
-<p>Monitor rules select a sensor, compare it with a threshold or state and define what should happen when the condition is true. Use clear names so warnings are understandable later.</p>
-<h3 id="logic-and-time-windows">Logic and time windows</h3>
-<p>Monitor types include threshold checks, digital rain/soil sensor rules, logic combinations, time windows and remote monitor states. See <a href="../sensor-automation/#monitors">Sensor Automation and Monitors</a> for the functional model.</p>
+<h3 id="editor-fields-all-monitor-types">Editor fields (all monitor types)</h3>
+<p>Every monitor shares the following fields, independent of its type. Selecting the <strong>Type</strong> reveals the type-specific fields documented further below.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Monitor-Nr / Monitor-Name</strong></td>
+<td>Unique number and a descriptive name shown in lists and alerts.</td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td>Selects the rule type. Changing it swaps the type-specific fields.</td>
+</tr>
+<tr>
+<td><strong>Program to start / Zone to start</strong></td>
+<td>Action taken while the monitor is active: start a program or a single zone. Leave on <em>Disabled</em> for a pure alert or logic monitor.</td>
+</tr>
+<tr>
+<td><strong>Max runtime (s)</strong></td>
+<td>Maximum run time of the started zone per activation.</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Severity of the generated notification (Low / Medium / High).</td>
+</tr>
+<tr>
+<td><strong>Reset status after (s)</strong></td>
+<td>If greater than 0, the active state is reset automatically after this many seconds (periodic/pulse behaviour). 0 keeps the state until the condition itself clears.</td>
+</tr>
+<tr>
+<td><strong>Output mode</strong></td>
+<td><em>Start and stop</em> controls the output in both directions. <em>Only switch off</em> lets the monitor only turn the zone/program off (for example an emergency stop) and never start it.</td>
+</tr>
+<tr>
+<td><strong>Failsafe after (s)</strong></td>
+<td>If the referenced sensor delivers no valid data for this many seconds, the failsafe state is applied. 0 disables the failsafe and the last state is kept.</td>
+</tr>
+<tr>
+<td><strong>Failsafe state</strong></td>
+<td>Output state (On/Off) that is forced once the sensor data is considered stale.</td>
+</tr>
+<tr>
+<td><strong>Show on Mainpage</strong></td>
+<td>Shows the monitor and its current state on the app main page.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="monitor-types">Monitor types</h3>
+<h4 id="minimum-min">Minimum (MIN)</h4>
+<p>Activates when a sensor value drops to or below a threshold — for example to refill a cistern when the level is low. <em>Value for activate</em> and <em>Value for deactivate</em> form a hysteresis band so the output does not toggle repeatedly around a single value.</p>
+<p><img alt="Minimum monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitor-min.png" /></p>
+<h4 id="maximum-max">Maximum (MAX)</h4>
+<p>Activates when a sensor value rises to or above a threshold — for example a high-temperature or overflow alarm. It uses the same hysteresis band (<em>Value for activate</em> / <em>Value for deactivate</em>) as the MIN type.</p>
+<p><img alt="Maximum monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitor-max.png" /></p>
+<h4 id="digital-sensor-12-sn-12">Digital sensor 1/2 (SN 1/2)</h4>
+<p>Mirrors the state of the built-in digital rain/soil sensor input (Sensor 1 or Sensor 2). Enable <em>inverse</em> to react to the opposite state.</p>
+<p><img alt="Digital sensor monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitor-sensor12.png" /></p>
+<h4 id="set-digital-sensor-set-sn-12">Set digital sensor (SET SN 1/2)</h4>
+<p>Drives the virtual state of digital Sensor 1 or Sensor 2 from another monitor. This lets a computed condition act like a physical rain/soil sensor for the scheduler.</p>
+<p><img alt="Set digital sensor monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitor-set-sensor12.png" /></p>
+<h4 id="and">AND</h4>
+<p>Active only when <strong>all</strong> selected source monitors are active. Each of the up to four inputs can be individually inverted with its <em>inverse</em> checkbox.</p>
+<p><img alt="AND monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitor-and.png" /></p>
+<h4 id="or">OR</h4>
+<p>Active when <strong>any</strong> of the selected source monitors is active. Inputs can be inverted individually.</p>
+<p><img alt="OR monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitor-or.png" /></p>
+<h4 id="xor">XOR</h4>
+<p>Active when an <strong>odd</strong> number of the selected inputs are active (exclusive or). Useful to detect a mismatch between two conditions.</p>
+<p><img alt="XOR monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitor-xor.png" /></p>
+<h4 id="not">NOT</h4>
+<p>Inverts the state of a single source monitor.</p>
+<p><img alt="NOT monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitor-not.png" /></p>
+<h4 id="time-window-time">Time window (TIME)</h4>
+<p>Active during a daily time window on the selected weekdays. Set <em>From</em> and <em>To</em> (a window that crosses midnight is supported) and tick the weekdays.</p>
+<p><img alt="Time window monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitor-time.png" /></p>
+<h4 id="remote-remote">Remote (REMOTE)</h4>
+<p>Mirrors the active state of a monitor on another OpenSprinkler controller. Enter the <em>Remote Monitor nr</em>, the controller <em>IP</em> and <em>Port</em>.</p>
+<p><img alt="Remote monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitor-remote.png" /></p>
+<p>See <a href="../sensor-automation/#monitors">Sensor Automation and Monitors</a> for the functional model.</p>
 <h2 id="sensor-chart-and-data">Sensor chart and data</h2>
 <p><strong>Sensor Chart</strong> displays logged sensor values. Use it to check whether readings are plausible before using them for program adjustments or monitors. The UI can also download logs or open the logged data table.</p>
 <p><img alt="Sensor Chart" class="mobile-screenshot" src="../assets/screenshots/pro/en/analog-sensor-chart.png" /></p>

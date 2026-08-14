@@ -471,11 +471,90 @@
 <h2 id="monitore-und-lokale-warnungen">Monitore und lokale Warnungen</h2>
 <p><strong>Überwachung und Kontrolle</strong> erstellt Schwellwert- und Logikregeln aus Sensoren. Monitore können lokale Warnungen erzeugen, Benachrichtigungsereignisse speisen und Bedingungen wie „Boden ist trocken“ und „Zeitfenster ist morgens“ kombinieren.</p>
 <p><img alt="Überwachung und Kontrolle" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitors.png" /></p>
-<p><img alt="Neuer Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-monitor-editor.png" /></p>
-<h3 id="regelaufbau">Regelaufbau</h3>
-<p>Monitorregeln wählen einen Sensor, vergleichen ihn mit einem Schwellwert oder Zustand und definieren, was bei erfüllter Bedingung geschehen soll. Klare Namen machen spätere Warnungen verständlich.</p>
-<h3 id="logik-und-zeitfenster">Logik und Zeitfenster</h3>
-<p>Monitortypen umfassen Schwellwerte, digitale Regen-/Bodensensorregeln, Logikkombinationen, Zeitfenster und entfernte Monitorzustände. Siehe <a href="../sensor-automation-de/#monitore">Sensor-Automation und Monitore</a> für das Funktionsmodell.</p>
+<h3 id="editor-felder-alle-monitortypen">Editor-Felder (alle Monitortypen)</h3>
+<p>Jeder Monitor besitzt unabhängig vom Typ die folgenden Felder. Über die Auswahl des <strong>Typs</strong> erscheinen die typspezifischen Felder, die weiter unten beschrieben sind.</p>
+<table>
+<thead>
+<tr>
+<th>Feld</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Monitor-Nr / Monitor-Name</strong></td>
+<td>Eindeutige Nummer und ein sprechender Name, der in Listen und Warnungen angezeigt wird.</td>
+</tr>
+<tr>
+<td><strong>Typ</strong></td>
+<td>Wählt den Regeltyp. Ein Wechsel blendet die typspezifischen Felder um.</td>
+</tr>
+<tr>
+<td><strong>Zu startendes Programm / Zu startende Zone</strong></td>
+<td>Aktion, solange der Monitor aktiv ist: ein Programm oder eine einzelne Zone starten. Für reine Warn- oder Logikmonitore auf <em>Ausgeschaltet</em> lassen.</td>
+</tr>
+<tr>
+<td><strong>Max. Laufzeit (s)</strong></td>
+<td>Maximale Laufzeit der gestarteten Zone pro Aktivierung.</td>
+</tr>
+<tr>
+<td><strong>Priorität</strong></td>
+<td>Dringlichkeit der erzeugten Benachrichtigung (Niedrig / Mittel / Hoch).</td>
+</tr>
+<tr>
+<td><strong>Zurücksetzen nach (s)</strong></td>
+<td>Größer als 0: Der Aktiv-Zustand wird nach dieser Zeit automatisch zurückgesetzt (periodisches/pulsierendes Verhalten). 0 hält den Zustand, bis die Bedingung selbst wegfällt.</td>
+</tr>
+<tr>
+<td><strong>Ausgangsmodus</strong></td>
+<td><em>Starten und Stoppen</em> steuert den Ausgang in beide Richtungen. <em>Nur ausschalten</em> lässt den Monitor die Zone/das Programm nur abschalten (z. B. als Not-Aus) und niemals starten.</td>
+</tr>
+<tr>
+<td><strong>Failsafe nach (s)</strong></td>
+<td>Liefert der referenzierte Sensor so lange keine gültigen Daten, wird der Failsafe-Zustand angewendet. 0 deaktiviert das Failsafe, der letzte Zustand bleibt erhalten.</td>
+</tr>
+<tr>
+<td><strong>Failsafe-Zustand</strong></td>
+<td>Ausgangszustand (Ein/Aus), der erzwungen wird, sobald die Sensordaten als veraltet gelten.</td>
+</tr>
+<tr>
+<td><strong>Auf der Hauptseite zeigen</strong></td>
+<td>Zeigt den Monitor und seinen aktuellen Zustand auf der App-Hauptseite.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="monitortypen">Monitortypen</h3>
+<h4 id="mindestwert-min">Mindestwert (MIN)</h4>
+<p>Aktiviert, wenn ein Sensorwert auf oder unter einen Schwellwert fällt – z. B. um eine Zisterne bei niedrigem Füllstand nachzufüllen. <em>Wert für Aktivierung</em> und <em>Wert für Deaktivierung</em> bilden ein Hysteresefenster, damit der Ausgang nicht ständig um einen einzelnen Wert herum schaltet.</p>
+<p><img alt="Mindestwert-Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitor-min.png" /></p>
+<h4 id="maximalwert-max">Maximalwert (MAX)</h4>
+<p>Aktiviert, wenn ein Sensorwert auf oder über einen Schwellwert steigt – z. B. ein Übertemperatur- oder Überlaufalarm. Nutzt dasselbe Hysteresefenster (<em>Wert für Aktivierung</em> / <em>Wert für Deaktivierung</em>) wie der MIN-Typ.</p>
+<p><img alt="Maximalwert-Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitor-max.png" /></p>
+<h4 id="digitaler-sensor-12-sn-12">Digitaler Sensor 1/2 (SN 1/2)</h4>
+<p>Spiegelt den Zustand des eingebauten digitalen Regen-/Bodensensor-Eingangs (Sensor 1 oder Sensor 2). <em>inverse</em> aktiviert die Reaktion auf den umgekehrten Zustand.</p>
+<p><img alt="Digitalsensor-Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitor-sensor12.png" /></p>
+<h4 id="digitalen-sensor-setzen-set-sn-12">Digitalen Sensor setzen (SET SN 1/2)</h4>
+<p>Steuert den virtuellen Zustand des digitalen Sensors 1 oder 2 aus einem anderen Monitor. So kann eine berechnete Bedingung für die Steuerung wie ein physischer Regen-/Bodensensor wirken.</p>
+<p><img alt="Digitalsensor-setzen-Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitor-set-sensor12.png" /></p>
+<h4 id="und-and">UND (AND)</h4>
+<p>Nur aktiv, wenn <strong>alle</strong> ausgewählten Quellmonitore aktiv sind. Jeder der bis zu vier Eingänge kann über seine <em>inverse</em>-Checkbox einzeln invertiert werden.</p>
+<p><img alt="UND-Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitor-and.png" /></p>
+<h4 id="oder-or">ODER (OR)</h4>
+<p>Aktiv, sobald <strong>einer</strong> der ausgewählten Quellmonitore aktiv ist. Eingänge lassen sich einzeln invertieren.</p>
+<p><img alt="ODER-Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitor-or.png" /></p>
+<h4 id="exklusiv-oder-xor">Exklusiv-ODER (XOR)</h4>
+<p>Aktiv, wenn eine <strong>ungerade</strong> Anzahl der ausgewählten Eingänge aktiv ist (Exklusiv-ODER). Nützlich, um eine Abweichung zwischen zwei Bedingungen zu erkennen.</p>
+<p><img alt="XOR-Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitor-xor.png" /></p>
+<h4 id="nicht-not">NICHT (NOT)</h4>
+<p>Invertiert den Zustand eines einzelnen Quellmonitors.</p>
+<p><img alt="NICHT-Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitor-not.png" /></p>
+<h4 id="zeitfenster-time">Zeitfenster (TIME)</h4>
+<p>Aktiv während eines täglichen Zeitfensters an den ausgewählten Wochentagen. <em>Von</em> und <em>Bis</em> festlegen (ein Fenster über Mitternacht wird unterstützt) und die Wochentage anhaken.</p>
+<p><img alt="Zeitfenster-Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitor-time.png" /></p>
+<h4 id="remote-remote">Remote (REMOTE)</h4>
+<p>Spiegelt den Aktiv-Zustand eines Monitors auf einem anderen OpenSprinkler-Controller. <em>Remote Monitor Nr</em>, <em>IP</em> und <em>Port</em> des Controllers eintragen.</p>
+<p><img alt="Remote-Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitor-remote.png" /></p>
+<p>Siehe <a href="../sensor-automation-de/#monitore">Sensor-Automation und Monitore</a> für das Funktionsmodell.</p>
 <h2 id="sensor-diagramm-und-daten">Sensor-Diagramm und Daten</h2>
 <p>Das <strong>Sensor Diagramm</strong> zeigt protokollierte Sensorwerte. Nutzen Sie es, um Messwerte zu prüfen, bevor diese für Programm-Anpassungen oder Monitore verwendet werden. Die UI kann außerdem Logs herunterladen oder die Datentabelle öffnen.</p>
 <p><img alt="Sensor Diagramm" class="mobile-screenshot" src="../assets/screenshots/pro/de/analog-sensor-chart.png" /></p>

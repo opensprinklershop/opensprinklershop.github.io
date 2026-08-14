@@ -471,11 +471,90 @@
 <h2 id="monitors-et-alertes-locales">Monitors et alertes locales</h2>
 <p><strong>Monitoring and Control</strong> crée des règles de seuil et de logique à partir des capteurs. Les monitors peuvent générer des avertissements locaux, alimenter les notifications et combiner des conditions comme « sol sec » et « créneau du matin ».</p>
 <p><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitors.png" /></p>
-<p><img alt="Nouveau monitor" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-monitor-editor.png" /></p>
-<h3 id="structure-des-regles">Structure des règles</h3>
-<p>Une règle choisit un capteur, le compare à un seuil ou état, puis définit l’action lorsque la condition est vraie. Des noms clairs rendent les alertes compréhensibles.</p>
-<h3 id="logique-et-fenetres-horaires">Logique et fenêtres horaires</h3>
-<p>Les types de monitors couvrent seuils, règles pluie/sol numériques, combinaisons logiques, fenêtres horaires et états de monitors distants. Voir <a href="../sensor-automation-fr/#monitors">Automatisation capteurs et monitors</a>.</p>
+<h3 id="champs-de-lediteur-tous-les-types-de-monitors">Champs de l’éditeur (tous les types de monitors)</h3>
+<p>Chaque monitor possède les champs suivants, indépendamment de son type. La sélection du <strong>Type</strong> fait apparaître les champs spécifiques décrits plus bas.</p>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>N° de monitor / Nom du monitor</strong></td>
+<td>Numéro unique et nom parlant affiché dans les listes et les alertes.</td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td>Sélectionne le type de règle. Le changer remplace les champs spécifiques.</td>
+</tr>
+<tr>
+<td><strong>Programme à démarrer / Zone à démarrer</strong></td>
+<td>Action tant que le monitor est actif : démarrer un programme ou une seule zone. Laisser sur <em>Désactivé</em> pour un monitor purement d’alerte ou logique.</td>
+</tr>
+<tr>
+<td><strong>Durée max (s)</strong></td>
+<td>Durée d’arrosage maximale de la zone démarrée par activation.</td>
+</tr>
+<tr>
+<td><strong>Priorité</strong></td>
+<td>Gravité de la notification générée (Basse / Moyenne / Haute).</td>
+</tr>
+<tr>
+<td><strong>Réinitialiser après (s)</strong></td>
+<td>Supérieur à 0 : l’état actif est réinitialisé automatiquement après ce délai (comportement périodique/impulsionnel). 0 conserve l’état jusqu’à ce que la condition disparaisse.</td>
+</tr>
+<tr>
+<td><strong>Mode de sortie</strong></td>
+<td><em>Démarrer et arrêter</em> pilote la sortie dans les deux sens. <em>Uniquement couper</em> n’autorise le monitor qu’à couper la zone/le programme (par ex. un arrêt d’urgence), jamais à le démarrer.</td>
+</tr>
+<tr>
+<td><strong>Failsafe après (s)</strong></td>
+<td>Si le capteur référencé ne fournit pas de données valides pendant ce délai, l’état de repli est appliqué. 0 désactive le repli et conserve le dernier état.</td>
+</tr>
+<tr>
+<td><strong>État de repli (failsafe)</strong></td>
+<td>État de sortie (Marche/Arrêt) forcé lorsque les données du capteur sont considérées comme obsolètes.</td>
+</tr>
+<tr>
+<td><strong>Afficher sur la page d’accueil</strong></td>
+<td>Affiche le monitor et son état sur la page principale de l’application.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="types-de-monitors">Types de monitors</h3>
+<h4 id="minimum-min">Minimum (MIN)</h4>
+<p>S’active lorsqu’une valeur de capteur descend à ou sous un seuil — par exemple pour remplir une citerne quand le niveau est bas. <em>Valeur d’activation</em> et <em>Valeur de désactivation</em> forment une bande d’hystérésis afin d’éviter les commutations répétées autour d’une seule valeur.</p>
+<p><img alt="Monitor minimum" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitor-min.png" /></p>
+<h4 id="maximum-max">Maximum (MAX)</h4>
+<p>S’active lorsqu’une valeur de capteur atteint ou dépasse un seuil — par exemple une alarme de température élevée ou de débordement. Utilise la même bande d’hystérésis (<em>Valeur d’activation</em> / <em>Valeur de désactivation</em>) que le type MIN.</p>
+<p><img alt="Monitor maximum" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitor-max.png" /></p>
+<h4 id="capteur-numerique-12-sn-12">Capteur numérique 1/2 (SN 1/2)</h4>
+<p>Reflète l’état de l’entrée numérique pluie/sol intégrée (Capteur 1 ou Capteur 2). Cochez <em>inverse</em> pour réagir à l’état opposé.</p>
+<p><img alt="Monitor capteur numérique" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitor-sensor12.png" /></p>
+<h4 id="definir-capteur-numerique-set-sn-12">Définir capteur numérique (SET SN 1/2)</h4>
+<p>Pilote l’état virtuel du capteur numérique 1 ou 2 à partir d’un autre monitor. Une condition calculée peut ainsi agir comme un capteur pluie/sol physique pour le planificateur.</p>
+<p><img alt="Monitor définir capteur numérique" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitor-set-sensor12.png" /></p>
+<h4 id="et-and">ET (AND)</h4>
+<p>Actif uniquement lorsque <strong>tous</strong> les monitors sources sélectionnés sont actifs. Chacune des quatre entrées peut être inversée individuellement via sa case <em>inverse</em>.</p>
+<p><img alt="Monitor ET" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitor-and.png" /></p>
+<h4 id="ou-or">OU (OR)</h4>
+<p>Actif dès qu’<strong>au moins un</strong> des monitors sources sélectionnés est actif. Les entrées peuvent être inversées individuellement.</p>
+<p><img alt="Monitor OU" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitor-or.png" /></p>
+<h4 id="ou-exclusif-xor">OU exclusif (XOR)</h4>
+<p>Actif lorsqu’un nombre <strong>impair</strong> des entrées sélectionnées est actif (ou exclusif). Utile pour détecter une divergence entre deux conditions.</p>
+<p><img alt="Monitor XOR" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitor-xor.png" /></p>
+<h4 id="non-not">NON (NOT)</h4>
+<p>Inverse l’état d’un seul monitor source.</p>
+<p><img alt="Monitor NON" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitor-not.png" /></p>
+<h4 id="fenetre-horaire-time">Fenêtre horaire (TIME)</h4>
+<p>Actif pendant une plage horaire quotidienne les jours sélectionnés. Renseignez <em>De</em> et <em>À</em> (une plage qui traverse minuit est prise en charge) et cochez les jours de la semaine.</p>
+<p><img alt="Monitor fenêtre horaire" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitor-time.png" /></p>
+<h4 id="distant-remote">Distant (REMOTE)</h4>
+<p>Reflète l’état actif d’un monitor sur un autre contrôleur OpenSprinkler. Saisissez le <em>N° de monitor distant</em>, l’<em>IP</em> et le <em>Port</em> du contrôleur.</p>
+<p><img alt="Monitor distant" class="mobile-screenshot" src="../assets/screenshots/pro/fr/monitor-remote.png" /></p>
+<p>Voir <a href="../sensor-automation-fr/#monitors">Automatisation capteurs et monitors</a> pour le modèle fonctionnel.</p>
 <h2 id="graphiques-et-donnees-capteur">Graphiques et données capteur</h2>
 <p><strong>Sensor Chart</strong> affiche les valeurs journalisées. Utilisez-le pour vérifier la plausibilité des mesures avant les ajustements ou monitors. L’UI peut aussi télécharger les logs ou ouvrir la table de données.</p>
 <p><img alt="Sensor Chart" class="mobile-screenshot" src="../assets/screenshots/pro/fr/analog-sensor-chart.png" /></p>

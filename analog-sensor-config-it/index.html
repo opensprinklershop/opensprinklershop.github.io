@@ -471,11 +471,90 @@
 <h2 id="monitor-e-avvisi-locali">Monitor e avvisi locali</h2>
 <p><strong>Monitoring and Control</strong> crea regole di soglia e logica dai sensori. I monitor possono generare avvisi locali, alimentare notifiche e combinare condizioni come “suolo asciutto” e “fascia mattutina”.</p>
 <p><img alt="Monitoring and Control" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitors.png" /></p>
-<p><img alt="Nuovo monitor" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-monitor-editor.png" /></p>
-<h3 id="struttura-delle-regole">Struttura delle regole</h3>
-<p>Una regola seleziona un sensore, lo confronta con soglia o stato e definisce cosa succede quando la condizione è vera. Nomi chiari rendono gli avvisi comprensibili.</p>
-<h3 id="logica-e-finestre-orarie">Logica e finestre orarie</h3>
-<p>I tipi monitor includono soglie, regole pioggia/suolo digitali, combinazioni logiche, finestre orarie e stati monitor remoti. Vedi <a href="../sensor-automation-it/#monitor">Automazione sensori e monitor</a>.</p>
+<h3 id="campi-delleditor-tutti-i-tipi-di-monitor">Campi dell’editor (tutti i tipi di monitor)</h3>
+<p>Ogni monitor possiede i seguenti campi, indipendentemente dal tipo. La selezione del <strong>Tipo</strong> mostra i campi specifici descritti più avanti.</p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Significato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>N. monitor / Nome monitor</strong></td>
+<td>Numero univoco e nome descrittivo mostrato in elenchi e avvisi.</td>
+</tr>
+<tr>
+<td><strong>Tipo</strong></td>
+<td>Seleziona il tipo di regola. Cambiandolo si sostituiscono i campi specifici.</td>
+</tr>
+<tr>
+<td><strong>Programma da avviare / Zona da avviare</strong></td>
+<td>Azione mentre il monitor è attivo: avviare un programma o una singola zona. Lasciare su <em>Disabilitato</em> per un monitor di solo avviso o logico.</td>
+</tr>
+<tr>
+<td><strong>Durata massima (s)</strong></td>
+<td>Tempo di irrigazione massimo della zona avviata per ogni attivazione.</td>
+</tr>
+<tr>
+<td><strong>Priorità</strong></td>
+<td>Gravità della notifica generata (Bassa / Media / Alta).</td>
+</tr>
+<tr>
+<td><strong>Reimposta dopo (s)</strong></td>
+<td>Maggiore di 0: lo stato attivo viene reimpostato automaticamente dopo questo tempo (comportamento periodico/a impulsi). 0 mantiene lo stato finché la condizione non decade.</td>
+</tr>
+<tr>
+<td><strong>Modalità di uscita</strong></td>
+<td><em>Avvia e ferma</em> controlla l’uscita in entrambe le direzioni. <em>Solo spegnimento</em> consente al monitor solo di spegnere la zona/il programma (ad es. un arresto di emergenza), mai di avviarlo.</td>
+</tr>
+<tr>
+<td><strong>Failsafe dopo (s)</strong></td>
+<td>Se il sensore di riferimento non fornisce dati validi per questo tempo, viene applicato lo stato di sicurezza. 0 disattiva il failsafe e mantiene l’ultimo stato.</td>
+</tr>
+<tr>
+<td><strong>Stato failsafe</strong></td>
+<td>Stato di uscita (Acceso/Spento) forzato quando i dati del sensore sono considerati obsoleti.</td>
+</tr>
+<tr>
+<td><strong>Mostra nella pagina principale</strong></td>
+<td>Mostra il monitor e il suo stato attuale nella pagina principale dell’app.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tipi-di-monitor">Tipi di monitor</h3>
+<h4 id="minimo-min">Minimo (MIN)</h4>
+<p>Si attiva quando un valore del sensore scende fino a o sotto una soglia — ad esempio per riempire una cisterna quando il livello è basso. <em>Valore per attivazione</em> e <em>Valore per disattivazione</em> formano una banda di isteresi per evitare commutazioni ripetute attorno a un singolo valore.</p>
+<p><img alt="Monitor minimo" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitor-min.png" /></p>
+<h4 id="massimo-max">Massimo (MAX)</h4>
+<p>Si attiva quando un valore del sensore raggiunge o supera una soglia — ad esempio un allarme di temperatura elevata o di troppopieno. Usa la stessa banda di isteresi (<em>Valore per attivazione</em> / <em>Valore per disattivazione</em>) del tipo MIN.</p>
+<p><img alt="Monitor massimo" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitor-max.png" /></p>
+<h4 id="sensore-digitale-12-sn-12">Sensore digitale 1/2 (SN 1/2)</h4>
+<p>Rispecchia lo stato dell’ingresso digitale pioggia/suolo integrato (Sensore 1 o Sensore 2). Attiva <em>inverse</em> per reagire allo stato opposto.</p>
+<p><img alt="Monitor sensore digitale" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitor-sensor12.png" /></p>
+<h4 id="imposta-sensore-digitale-set-sn-12">Imposta sensore digitale (SET SN 1/2)</h4>
+<p>Pilota lo stato virtuale del sensore digitale 1 o 2 a partire da un altro monitor. Una condizione calcolata può così comportarsi come un sensore pioggia/suolo fisico per lo scheduler.</p>
+<p><img alt="Monitor imposta sensore digitale" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitor-set-sensor12.png" /></p>
+<h4 id="and">AND</h4>
+<p>Attivo solo quando <strong>tutti</strong> i monitor sorgente selezionati sono attivi. Ciascuno dei fino a quattro ingressi può essere invertito singolarmente con la casella <em>inverse</em>.</p>
+<p><img alt="Monitor AND" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitor-and.png" /></p>
+<h4 id="or">OR</h4>
+<p>Attivo quando <strong>almeno uno</strong> dei monitor sorgente selezionati è attivo. Gli ingressi possono essere invertiti singolarmente.</p>
+<p><img alt="Monitor OR" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitor-or.png" /></p>
+<h4 id="xor">XOR</h4>
+<p>Attivo quando è attivo un numero <strong>dispari</strong> degli ingressi selezionati (or esclusivo). Utile per rilevare una discordanza tra due condizioni.</p>
+<p><img alt="Monitor XOR" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitor-xor.png" /></p>
+<h4 id="not">NOT</h4>
+<p>Inverte lo stato di un singolo monitor sorgente.</p>
+<p><img alt="Monitor NOT" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitor-not.png" /></p>
+<h4 id="finestra-oraria-time">Finestra oraria (TIME)</h4>
+<p>Attivo durante una finestra oraria giornaliera nei giorni selezionati. Imposta <em>Da</em> e <em>A</em> (è supportata una finestra che attraversa la mezzanotte) e seleziona i giorni della settimana.</p>
+<p><img alt="Monitor finestra oraria" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitor-time.png" /></p>
+<h4 id="remoto-remote">Remoto (REMOTE)</h4>
+<p>Rispecchia lo stato attivo di un monitor su un altro controller OpenSprinkler. Inserisci il <em>N. monitor remoto</em>, l’<em>IP</em> e la <em>Porta</em> del controller.</p>
+<p><img alt="Monitor remoto" class="mobile-screenshot" src="../assets/screenshots/pro/it/monitor-remote.png" /></p>
+<p>Vedi <a href="../sensor-automation-it/#monitor">Automazione sensori e monitor</a> per il modello funzionale.</p>
 <h2 id="grafici-e-dati-sensore">Grafici e dati sensore</h2>
 <p><strong>Sensor Chart</strong> mostra i valori registrati. Usarlo per verificare la plausibilità delle misure prima di regolazioni o monitor. L’UI può anche scaricare i log o aprire la tabella dati.</p>
 <p><img alt="Sensor Chart" class="mobile-screenshot" src="../assets/screenshots/pro/it/analog-sensor-chart.png" /></p>
