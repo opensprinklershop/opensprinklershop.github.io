@@ -368,6 +368,13 @@ Certifique-se de que a opção de atributos da estação não esteja marcada com
 
 <p><a id="ospi-specific"></a></p>
 <h3 id="especificos-para-ospi-raspberry-pi-hat">Específicos para OSPi (Raspberry Pi HAT)</h3>
+<hr />
+<p><strong>Confusão entre comandos RS485 e "bash" em traces</strong>
+<span class="vsp1"></span>
+Ao configurar uma zona RS485 no OSPi, usuários monitorando o trace do sistema (ex. usando <code>strace</code>) podem notar execuções contínuas de <code>bash</code> ou <code>/bin/sh</code> e erroneamente acreditar que o firmware usa scripts bash para enviar comandos RS485.
+Isso está incorreto. O firmware envia comandos RS485 nativamente através da biblioteca C++ <code>libmodbus</code>. Os comandos bash em segundo plano são na verdade chamadas <code>raspi-gpio</code> consultando continuamente os botões de hardware. Se os seus comandos RS485 não estão funcionando, geralmente é porque:
+1. <strong>Arquivo <code>rs485</code> ausente:</strong> O arquivo <code>rs485</code> no diretório OpenSprinkler está ausente ou aponta para o caminho USB errado.
+2. <strong>Permissão negada:</strong> O usuário que está executando o firmware não está no grupo <code>dialout</code> (<code>sudo usermod -aG dialout $USER</code>), impedindo silenciosamente o acesso USB.</p>
 <p><strong>Rotas de Compilação do Firmware</strong>
 <span class="vsp1"></span>
 O firmware compila perfeitamente nas versões modernas de sistema (Debian Bullseye, Bookworm ou Trixie). Erros de compilação geralmente estão associados a pacotes básicos ausentes de biblioteca ou versões muito antigas do sistema operacional.</p>

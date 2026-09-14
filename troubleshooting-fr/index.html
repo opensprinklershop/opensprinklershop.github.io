@@ -411,6 +411,13 @@ Si l’achat de votre boîtier remonte à moins de un an, ce composant est couve
 
 <p><a id="ospi-specific"></a></p>
 <h3 id="specifique-ospi">Spécifique OSPi</h3>
+<hr />
+<p><strong>Confusion entre RS485 et les commandes "bash" dans les traces</strong>
+<span class="vsp1"></span>
+Lors de la configuration d'une zone RS485 sur OSPi, les utilisateurs surveillant les traces du système (par ex. via <code>strace</code>) peuvent remarquer des exécutions continues de <code>bash</code> ou <code>/bin/sh</code> et croire à tort que le firmware utilise des scripts bash pour envoyer des commandes RS485.
+C'est incorrect. Le firmware envoie les commandes RS485 nativement via la bibliothèque C++ <code>libmodbus</code>. Les commandes bash en arrière-plan sont en réalité des appels <code>raspi-gpio</code> interrogeant continuellement les boutons matériels. Si vos commandes RS485 ne fonctionnent pas, c'est généralement parce que :
+1. <strong>Fichier <code>rs485</code> manquant :</strong> Le fichier <code>rs485</code> dans le répertoire OpenSprinkler est manquant ou pointe vers le mauvais chemin USB.
+2. <strong>Permission refusée :</strong> L'utilisateur exécutant le firmware n'est pas dans le groupe <code>dialout</code> (<code>sudo usermod -aG dialout $USER</code>), empêchant silencieusement l'accès USB.</p>
 <p><strong>Dysfonctionnements ou erreurs à la compilation du code source</strong>
 <span class="vsp1"></span>
 Le micrologiciel OpenSprinkler se compile sans difficulté sur les distributions logicielles modernes du système d'exploitation Raspberry Pi OS (Debian Bullseye, Bookworm, ou Trixie). La quasi-totalité des pannes à l’étape de compilation proviennent de paquets logiciels ou de bibliothèques système obsolètes ou manquants. Une simple mise à jour globale du système Pi OS remédie généralement à ces anomalies. Si les écueils subsistent, étudiez la nature du message retourné en console sur des moteurs de recherches web ou des outils de générateurs IA.</p>

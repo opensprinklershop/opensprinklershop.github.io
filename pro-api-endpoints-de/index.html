@@ -119,7 +119,7 @@
                 <h1 id="opensprinklerpro-api-und-plattformerganzung">OpenSprinklerPro API- und Plattformergänzung</h1>
 <p>Diese Seite ist die vollständige deutsche Fassung der OpenSprinklerPro-API- und Plattformergänzung. API-Pfade und Parameter bleiben unverändert.</p>
 <p>This addendum documents firmware endpoints and platform details that were added after the original 2.2.1 manual pages.</p>
-<p>The OpenSprinklerShop firmware, including OpenSprinklerPro, uses its own firmware version numbering independent of upstream OpenSprinkler releases. Current OpenSprinklerShop firmware version: <strong>2.4.0(227)</strong>.</p>
+<p>The OpenSprinklerShop firmware, including OpenSprinklerPro, uses its own firmware version numbering independent of upstream OpenSprinkler releases. Current OpenSprinklerShop firmware version: <strong>2.4.0(228)</strong>.</p>
 <h2 id="plattformkorrekturen">Plattformkorrekturen</h2>
 <table>
 <thead>
@@ -288,6 +288,108 @@
 </tr>
 </tbody>
 </table>
+<h2 id="erweiterte-sensor-api-kompatibel-zur-offiziellen-firmware-2215">Erweiterte Sensor-API (kompatibel zur offiziellen Firmware 2.2.1(5))</h2>
+<p>Die offizielle OpenSprinkler-Firmware 2.2.1(5) hat eine "Expanded Sensor"-API eingeführt. Die OpenSprinklerShop-Firmware ab 2.4.0(228) stellt dieselben Endpunkte als Fassade über ihr eigenes Sensorsystem bereit: Es gibt nur einen Sensorspeicher, die offizielle <code>uuid</code> ist die OpenSprinklerShop-Sensornummer <code>nr</code>, und die offizielle OpenSprinkler-App sowie Drittanbieter-Clients, die gegen die offizielle API geschrieben wurden, funktionieren unverändert. Die OpenSprinklerShop-Endpunkte (<code>/sl</code>, <code>/sc</code>, <code>/so</code>, <code>/se</code>, ...) arbeiten weiter auf denselben Daten.</p>
+<p>Verfügbar auf ESP32, ESP8266 und OSPi. Die Endpunkt-Schlüssel haben drei Buchstaben.</p>
+<table>
+<thead>
+<tr>
+<th>Endpunkt</th>
+<th>Zweck</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /jsn?pw=...</code></td>
+<td>Sensoren mit letztem Messwert auflisten (<code>sn[]</code>, <code>count</code>). Schlüssel: <code>uuid</code>, <code>name</code>, <code>type</code>, <code>unit</code>, <code>flag</code>, <code>status</code>, <code>interval</code> (Minuten), <code>min</code>, <code>max</code>, <code>value</code>, <code>extra</code>.</td>
+</tr>
+<tr>
+<td><code>GET /csn?pw=...&amp;uuid=-1&amp;type=...</code></td>
+<td>Sensor anlegen (<code>uuid=-1</code> oder <code>sid=-1</code>) oder ändern. Allgemeine Parameter: <code>name</code>, <code>min</code>, <code>max</code>, <code>interval</code>, <code>unit</code>, <code>flag</code>. Typparameter: <code>children</code>/<code>action</code> (Aggregate), <code>pin</code>/<code>subtype</code>/<code>scale</code>/<code>offset</code>/<code>points</code> (ADS1115), <code>action</code> (Weather), <code>metric</code> (System Internal), <code>input</code> (Onboard Digital), <code>ntype</code> (Typ 5, siehe unten).</td>
+</tr>
+<tr>
+<td><code>GET /dsn?pw=...&amp;uuid=...</code></td>
+<td>Einen Sensor löschen; <code>uuid=-1</code> löscht alle Sensoren.</td>
+</tr>
+<tr>
+<td><code>GET /jsd?pw=...</code></td>
+<td>Sensorbeschreibungen für schemagesteuerte Editoren: <code>sensors[]</code> (Index = <code>type</code>), <code>units[]</code>, <code>enums</code>, <code>as</code>, <code>flags</code>.</td>
+</tr>
+<tr>
+<td><code>GET /jsl?pw=...</code></td>
+<td>Sensorprotokoll: <code>[[uuid,ts,value],...]</code>; <code>fmt=csv</code> oder <code>fmt=binary</code>; Filter <code>uuid</code>/<code>sid</code>, <code>before</code>, <code>after</code>, <code>count</code>, <code>cursor</code>; <code>page=1</code> aktiviert die Slot-Paginierung mit den <code>X-OS-*</code>-Antwort-Headern.</td>
+</tr>
+<tr>
+<td><code>GET /dsl?pw=...&amp;uuid=...</code></td>
+<td>Protokolleinträge eines Sensors löschen (<code>uuid=-1</code>: gesamtes Protokoll). <code>page=1</code> liefert das JSON-Fortschrittsobjekt; das Löschen wird in einer Anfrage abgeschlossen (<code>done=1</code>).</td>
+</tr>
+<tr>
+<td><code>GET /jpa?pw=...</code></td>
+<td>Pro Programm die Wetter- (<code>wa</code>), Sensor- (<code>sa</code>) und Gesamt-Anpassungsfaktoren (<code>ta</code>) sowie <code>maxrt</code>.</td>
+</tr>
+<tr>
+<td><code>GET /jp</code></td>
+<td>Jeder Programmeintrag trägt das Sensor-Anpassungsobjekt <code>{flag,uuid,splits[]}</code> als 8. Element (<code>{}</code>, wenn keines).</td>
+</tr>
+<tr>
+<td><code>GET /cp?...&amp;snadj=flag,uuid,x0,y0,...</code></td>
+<td>Sensor-Anpassung des Programms setzen; <code>snadj=0,0</code> entfernt sie. <code>v</code> bleibt Pflicht.</td>
+</tr>
+<tr>
+<td><code>GET /mp?...&amp;usa=0|1</code></td>
+<td>Manueller Programmstart mit (<code>1</code>) oder ohne (<code>0</code>) Sensor-Anpassung. Ohne <code>usa</code> bleibt das OpenSprinklerShop-Verhalten erhalten und die Anpassung wird angewendet.</td>
+</tr>
+</tbody>
+</table>
+<p>Typzuordnung (<code>/jsn.type</code>, Index von <code>/jsd.sensors</code>):</p>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>Offizieller Name</th>
+<th>OpenSprinklerShop-Sensoren</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Aggregate</td>
+<td>Sensorgruppen MIN/MAX/AVG/SUM sowie die neuen MEDIAN (1004) / RANGE (1005). <code>children</code> sind die Gruppenmitglieder; <code>scale</code>/<code>offset</code> der Kinder müssen <code>1</code>/<code>0</code> sein.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>ADS1115</td>
+<td>Analog-Sensor-Board-Typen (10, 11, 12 stückweise, 15-18, 30-32, 49) und OSPi-ADC-Typen (50-53). <code>pin</code> 1-16 = Board-Adresse 0x48-0x4B x Kanal 0-3. Subtypen: 0 Linear, 1 Stückweise (neuer Typ 12), 10/11 SMT50, 12/13 SMT100 analog, 15 VH400, 16 THERM200, 17 AquaPlumb. <code>scale</code>/<code>offset</code> werden nach der Umrechnung angewendet.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Weather</td>
+<td>Wetterdienst-Sensoren (101-110); <code>action</code> indiziert <code>enums.WeatherAction</code>.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>System Internal</td>
+<td>Freier Speicher (<code>metric</code> 0), freier Flash (1), CPU-Temperatur (3).</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Onboard Digital</td>
+<td>Neuer Typ 56: entprellter Zustand von SN1 (<code>input</code> 0) oder SN2 (<code>input</code> 1).</td>
+</tr>
+<tr>
+<td>5</td>
+<td>OpenSprinklerShop-Sensor</td>
+<td>Alle übrigen Typen (RS485, MQTT, Zigbee, BLE, FYTA, Gardena, Remote, Durchflussmesser, ...). <code>extra.ntype</code> ist der OpenSprinklerShop-Typ; typspezifische Einstellungen werden mit <code>/sc</code> bearbeitet.</td>
+</tr>
+</tbody>
+</table>
+<p>Verhaltenshinweise:</p>
+<ul>
+<li><code>min</code>/<code>max</code> begrenzen den Sensorwert, wenn sie mit <code>/csn</code> gesendet werden (gespeichert als <code>cmin</code>/<code>cmax</code>/<code>clamp</code> in <code>sensors.json</code>); <code>status</code> meldet Bit 3/4, wenn ein Wert begrenzt wurde. Mit <code>/sc</code> angelegte Sensoren werden nicht begrenzt und melden ihren natürlichen Bereich.</li>
+<li><code>interval</code> ist in Minuten; das OpenSprinklerShop-<code>ri</code> ist in Sekunden und wird in <code>/jsn</code> auf volle Minuten gerundet.</li>
+<li>Fest verdrahtete Subtypen melden ihre native Einheit; eine andere Einheit derselben Gruppe (z. B. Fahrenheit) wird abgelehnt, weil die Firmware keine Einheiten umrechnet.</li>
+<li>Programm-Anpassungen: Eine <code>snadj</code>-Kurve mit zwei Punkten wird zu einer <code>PROG_LINEAR</code>-Anpassung, eine Zwei-Punkt-Stufe zu <code>PROG_DIGITAL_MIN</code>, andere Kurven nutzen den neuen Anpassungstyp <code>PROG_PIECEWISE</code> (5). <code>/jp</code> meldet die erste Anpassung eines Programms; weitere mit <code>/sb</code> definierte Anpassungen wendet der Scheduler weiterhin an.</li>
+</ul>
 <p>Die vollständige Legacy-API-Referenz finden Sie unter <a href="../2.2.1/221_4_api_de/">Firmware 2.2.1 API-Referenz</a>.</p>
               
             </div>
