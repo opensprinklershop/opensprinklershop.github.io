@@ -118,7 +118,7 @@
               
                 <h1 id="rozszerzenia-opensprinklerpro">Rozszerzenia OpenSprinklerPro</h1>
 <p>OpenSprinklerPro to rozszerzony zestaw funkcji dla sterowników OpenSprinkler, zaprojektowany dla instalacji wymagających nowoczesnej integracji radiowej, zaawansowanych czujników, aktualizacji online, dostępu do asystentów AI (poprzez protokół MCP) oraz kompleksowego monitorowania urządzeń. Rozszerzenie bazuje na standardowych funkcjach nawadniania: sekcjach (strefach), harmonogramach (programach), korektach pogodowych, historii pracy i zdalnym dostępie (przeglądarka / aplikacja mobilna).</p>
-<p>Oprogramowanie OpenSprinklerShop (w tym rozszerzenia OpenSprinklerPro) posiada własną, niezależną numerację wersji firmware od głównej gałęzi (upstream). Obecna stabilna wersja firmware OpenSprinklerShop to <strong>2.4.0(229)</strong>.</p>
+<p>Oprogramowanie OpenSprinklerShop (w tym rozszerzenia OpenSprinklerPro) posiada własną, niezależną numerację wersji firmware od głównej gałęzi (upstream). Obecna stabilna wersja firmware OpenSprinklerShop to <strong>2.4.0(230)</strong>.</p>
 <h2 id="przeglad-funkcji">Przegląd funkcji</h2>
 <p>OpenSprinklerPro dodaje kluczowe rozszerzenia w następujących obszarach:</p>
 <ul>
@@ -340,6 +340,32 @@
 - <strong>OSPi (Raspberry Pi):</strong> Aktualizacji należy dokonywać bezpośrednio z powłoki systemowej (skrypty terminala / repozytorium Git).
 - Połączenie z siecią Internet jest wymagane do pobrania najnowszego manifestu aktualizacji.</p>
 <p>Przed aktualizacją zaleca się wyeksportowanie konfiguracji. W systemach ESP32 oraz ESP8266, REST API obsługuje polecenie <code>/ub</code> tworzące pełny zrzut zabezpieczający bazy danych, natomiast <code>/sx</code> eksportuje wyłącznie wpisy dotyczące czujników.</p>
+<h2 id="informacje-radiowe-i-ograniczenia-uzytkowania">Informacje radiowe i ograniczenia użytkowania</h2>
+<p>OpenSprinkler Pro zawiera moduł radiowy Espressif ESP32-C5-WROOM-1 ze zintegrowaną anteną.</p>
+<table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Pasmo częstotliwości</th>
+<th>Maks. moc nadawania (e.i.r.p.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wi-Fi 2,4 GHz, Bluetooth LE, IEEE 802.15.4 (Zigbee/Thread)</td>
+<td>2400–2483,5 MHz</td>
+<td>20 dBm</td>
+</tr>
+<tr>
+<td>Wi-Fi 5 GHz</td>
+<td>5150–5350 MHz, 5470–5725 MHz</td>
+<td>23 dBm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ograniczenie 5 GHz:</strong> w paśmie 5150–5350 MHz (kanały Wi-Fi 36–64) użytkowanie jest dozwolone wyłącznie wewnątrz pomieszczeń. Ograniczenie obowiązuje w: AT, BE, BG, CH, CY, CZ, DE, DK, EE, EL, ES, FI, FR, HR, HU, IE, IS, IT, LI, LT, LU, LV, MT, NL, NO, PL, PT, RO, SE, SI, SK, TR, UK(NI).</p>
+<p>W paśmie 5 GHz sterownik nadaje wyłącznie jako klient Wi-Fi, na kanale ustawionym przez router. Jeżeli sterownik jest zamontowany na zewnątrz, również w obudowie odpornej na warunki atmosferyczne, należy ustawić router tak, aby w paśmie 5 GHz używał tylko kanałów 100–140, albo połączyć sterownik z siecią Wi-Fi 2,4 GHz.</p>
+<p><strong>Odstęp:</strong> podczas pracy należy zachować odległość co najmniej 20 cm między urządzeniem a osobami.</p>
               
             </div>
           </div><footer>

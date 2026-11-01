@@ -118,7 +118,7 @@
               
                 <h1 id="extension-opensprinklerpro">Extension OpenSprinklerPro</h1>
 <p>OpenSprinklerPro désigne l’ensemble étendu de fonctions pour les installations OpenSprinkler qui ont besoin d’intégrations radio modernes, de capteurs avancés, de mises à jour en ligne, d’un accès MCP/IA et d’une supervision plus riche. Les fonctions de base restent celles d’OpenSprinkler : zones, programmes, ajustement météo, journaux, accès distant et interface web/app.</p>
-<p>La ligne de firmware OpenSprinklerShop, y compris OpenSprinklerPro, utilise sa propre numérotation de version, indépendante du firmware OpenSprinkler amont. La version actuelle du firmware OpenSprinklerShop est <strong>2.4.0(229)</strong>.</p>
+<p>La ligne de firmware OpenSprinklerShop, y compris OpenSprinklerPro, utilise sa propre numérotation de version, indépendante du firmware OpenSprinkler amont. La version actuelle du firmware OpenSprinklerShop est <strong>2.4.0(230)</strong>.</p>
 <p>Cette page est autonome et renvoie aux documents locaux détaillés quand c’est utile.</p>
 <h2 id="vue-densemble">Vue d’ensemble</h2>
 <p>OpenSprinklerPro couvre notamment :</p>
@@ -361,6 +361,32 @@
 <li>Ethernet est recommandé pour les installations Zigbee importantes.</li>
 </ul>
 <p>Note API pour intégrations avancées : <code>/ir</code> lit le mode radio, <code>/iw</code> le définit, <code>/zj</code> gère le join client, <code>/zg</code> les données passerelle et <code>/zs</code> l’état Zigbee.</p>
+<h2 id="informations-radio-et-restrictions-dutilisation">Informations radio et restrictions d'utilisation</h2>
+<p>L'OpenSprinkler Pro contient le module radio Espressif ESP32-C5-WROOM-1 avec antenne intégrée.</p>
+<table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Bande de fréquences</th>
+<th>Puissance d'émission max. (p.i.r.e.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wi-Fi 2,4 GHz, Bluetooth LE, IEEE 802.15.4 (Zigbee/Thread)</td>
+<td>2400–2483,5 MHz</td>
+<td>20 dBm</td>
+</tr>
+<tr>
+<td>Wi-Fi 5 GHz</td>
+<td>5150–5350 MHz, 5470–5725 MHz</td>
+<td>23 dBm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Restriction 5 GHz :</strong> dans la bande 5150–5350 MHz (canaux Wi-Fi 36–64), l'utilisation est limitée à l'intérieur des bâtiments. Cette restriction s'applique en : AT, BE, BG, CH, CY, CZ, DE, DK, EE, EL, ES, FI, FR, HR, HU, IE, IS, IT, LI, LT, LU, LV, MT, NL, NO, PL, PT, RO, SE, SI, SK, TR, UK(NI).</p>
+<p>Dans la bande 5 GHz, le contrôleur émet uniquement en tant que client Wi-Fi, sur le canal imposé par le routeur. Si le contrôleur est installé à l'extérieur, y compris dans un boîtier étanche, configurez le routeur pour qu'il n'utilise que les canaux 100–140 dans la bande 5 GHz, ou connectez le contrôleur au Wi-Fi 2,4 GHz.</p>
+<p><strong>Distance de séparation :</strong> pendant le fonctionnement, maintenez une distance d'au moins 20 cm entre l'appareil et les personnes.</p>
 <h2 id="passerelle-et-client-zigbee">Passerelle et client Zigbee</h2>
 <p>Zigbee est une fonction du <strong>firmware ESP32-C5 Zigbee</strong>. Elle n’est pas disponible sur ESP32-C5 Matter, ESP8266 ou OSPi.</p>
 <p>OpenSprinklerPro prend en charge deux rôles Zigbee.</p>

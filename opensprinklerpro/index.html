@@ -65,6 +65,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#esp32-mode-and-radio-management">ESP32 mode and radio management</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#radio-information-and-restrictions-of-use">Radio information and restrictions of use</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#zigbee-gateway-and-zigbee-client">Zigbee gateway and Zigbee client</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#gateway-mode">Gateway mode</a>
@@ -171,7 +173,7 @@
               
                 <h1 id="opensprinklerpro-extension">OpenSprinklerPro Extension</h1>
 <p>OpenSprinklerPro is the extended OpenSprinkler feature set for installations that need modern radio integrations, richer sensors, online updates, AI/MCP access and advanced monitoring. It builds on the normal OpenSprinkler controller functions: zones, programs, weather adjustment, logs, remote access and the web/app UI.</p>
-<p>The OpenSprinklerShop firmware line, including OpenSprinklerPro, has its own firmware version numbering independent of upstream OpenSprinkler releases. The current OpenSprinklerShop firmware version is <strong>2.4.0(229)</strong>.</p>
+<p>The OpenSprinklerShop firmware line, including OpenSprinklerPro, has its own firmware version numbering independent of upstream OpenSprinkler releases. The current OpenSprinklerShop firmware version is <strong>2.4.0(230)</strong>.</p>
 <p>This page is standalone, but preserves references to the detailed local documentation where useful.</p>
 <h2 id="overview">Overview</h2>
 <p>OpenSprinklerPro adds these extension areas:</p>
@@ -415,6 +417,32 @@
 <li>Prefer Ethernet for Zigbee-heavy installations because Wi-Fi, BLE and Zigbee share the 2.4 GHz radio environment.</li>
 </ul>
 <p>API note for advanced integrations: <code>/ir</code> gets the radio mode, <code>/iw</code> sets it, <code>/zj</code> starts client join handling, <code>/zg</code> manages gateway data and <code>/zs</code> returns Zigbee status.</p>
+<h2 id="radio-information-and-restrictions-of-use">Radio information and restrictions of use</h2>
+<p>The OpenSprinkler Pro contains the Espressif ESP32-C5-WROOM-1 radio module with integrated antenna.</p>
+<table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Frequency band</th>
+<th>Max. transmit power (e.i.r.p.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wi-Fi 2.4 GHz, Bluetooth LE, IEEE 802.15.4 (Zigbee/Thread)</td>
+<td>2400–2483.5 MHz</td>
+<td>20 dBm</td>
+</tr>
+<tr>
+<td>Wi-Fi 5 GHz</td>
+<td>5150–5350 MHz, 5470–5725 MHz</td>
+<td>23 dBm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>5 GHz restriction:</strong> In the 5150–5350 MHz band (Wi-Fi channels 36–64) operation is restricted to indoor use only. This applies in: AT, BE, BG, CH, CY, CZ, DE, DK, EE, EL, ES, FI, FR, HR, HU, IE, IS, IT, LI, LT, LU, LV, MT, NL, NO, PL, PT, RO, SE, SI, SK, TR, UK(NI).</p>
+<p>The controller transmits in the 5 GHz band only as a Wi-Fi client on the channel set by the router. If the controller is installed outdoors, including in a weatherproof enclosure, configure the router to use only channels 100–140 in the 5 GHz band, or connect the controller to the 2.4 GHz Wi-Fi.</p>
+<p><strong>Separation distance:</strong> Keep a distance of at least 20 cm between the device and persons during operation.</p>
 <h2 id="zigbee-gateway-and-zigbee-client">Zigbee gateway and Zigbee client</h2>
 <p>Zigbee is an <strong>ESP32-C5 Zigbee firmware</strong> feature. It is not available on ESP32-C5 Matter builds, ESP8266 or OSPi.</p>
 <p>OpenSprinklerPro supports two Zigbee roles:</p>

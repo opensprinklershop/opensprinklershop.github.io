@@ -118,7 +118,7 @@
               
                 <h1 id="opensprinklerpro-erweiterung">OpenSprinklerPro-Erweiterung</h1>
 <p>OpenSprinklerPro bezeichnet den erweiterten Funktionsumfang für OpenSprinkler-Installationen mit modernen Funkintegrationen, umfangreicher Sensorik, Online-Updates, KI/MCP-Zugriff und erweiterten Benachrichtigungen. Die Basisfunktionen bleiben unverändert: Zonen, Programme, Wetteranpassung, Protokolle, Fernzugriff und Web-/App-Bedienung.</p>
-<p>Die OpenSprinklerShop-Firmware inklusive OpenSprinklerPro verwendet eine eigene Firmware-Versionsnummerierung unabhängig von der Upstream-OpenSprinkler-Firmware. Die aktuelle OpenSprinklerShop-Firmware-Version ist <strong>2.4.0(229)</strong>.</p>
+<p>Die OpenSprinklerShop-Firmware inklusive OpenSprinklerPro verwendet eine eigene Firmware-Versionsnummerierung unabhängig von der Upstream-OpenSprinkler-Firmware. Die aktuelle OpenSprinklerShop-Firmware-Version ist <strong>2.4.0(230)</strong>.</p>
 <p>Diese Seite ist eigenständig lesbar und verweist nur dort auf Detailseiten, wo zusätzliche Referenzdaten hilfreich sind.</p>
 <h2 id="uberblick">Überblick</h2>
 <p>OpenSprinklerPro umfasst insbesondere:</p>
@@ -361,6 +361,32 @@
 <li>Für Zigbee-lastige Installationen ist Ethernet empfehlenswert.</li>
 </ul>
 <p>API-Hinweis für Integrationen: <code>/ir</code> liest den Funkmodus, <code>/iw</code> setzt ihn, <code>/zj</code> startet den Client-Join, <code>/zg</code> verwaltet Gateway-Daten und <code>/zs</code> liefert den Zigbee-Status.</p>
+<h2 id="funkangaben-und-nutzungsbeschrankungen">Funkangaben und Nutzungsbeschränkungen</h2>
+<p>Der OpenSprinkler Pro enthält das Funkmodul Espressif ESP32-C5-WROOM-1 mit integrierter Antenne.</p>
+<table>
+<thead>
+<tr>
+<th>Funk</th>
+<th>Frequenzband</th>
+<th>max. Sendeleistung (e.i.r.p.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WLAN 2,4 GHz, Bluetooth LE, IEEE 802.15.4 (Zigbee/Thread)</td>
+<td>2400–2483,5 MHz</td>
+<td>20 dBm</td>
+</tr>
+<tr>
+<td>WLAN 5 GHz</td>
+<td>5150–5350 MHz, 5470–5725 MHz</td>
+<td>23 dBm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nutzungsbeschränkung 5 GHz:</strong> Im Frequenzbereich 5150–5350 MHz (WLAN-Kanäle 36–64) ist der Betrieb nur in Innenräumen zulässig. Das gilt in: AT, BE, BG, CH, CY, CZ, DE, DK, EE, EL, ES, FI, FR, HR, HU, IE, IS, IT, LI, LT, LU, LV, MT, NL, NO, PL, PT, RO, SE, SI, SK, TR, UK(NI).</p>
+<p>Der Controller sendet im 5-GHz-Band nur als WLAN-Client auf dem Kanal, den der Router vorgibt. Wird der Controller im Freien montiert, auch in einem wetterfesten Gehäuse, stellen Sie den WLAN-Router so ein, dass er im 5-GHz-Band nur die Kanäle 100–140 verwendet, oder verbinden Sie den Controller mit dem 2,4-GHz-WLAN.</p>
+<p><strong>Abstand:</strong> Halten Sie im Betrieb mindestens 20 cm Abstand zwischen Gerät und Personen ein.</p>
 <h2 id="zigbee-gateway-und-zigbee-client">Zigbee-Gateway und Zigbee-Client</h2>
 <p>Zigbee ist eine Funktion der <strong>ESP32-C5-Zigbee-Firmware</strong>. Sie ist nicht in ESP32-C5-Matter-Builds, nicht auf ESP8266 und nicht auf OSPi verfügbar.</p>
 <p>OpenSprinklerPro unterstützt zwei Zigbee-Rollen:</p>

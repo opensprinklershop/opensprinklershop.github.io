@@ -118,7 +118,7 @@
               
                 <h1 id="extensao-opensprinklerpro">Extensão OpenSprinklerPro</h1>
 <p>O OpenSprinklerPro é de um conjunto estendido de funções do OpenSprinkler para instalações que necessitam de integrações modernas de rádio, sensores enriquecidos, atualizações online, acesso a IA/MCP e monitoramento avançado. Ele se baseia nas funções de irrigação existentes: zonas, programas, ajuste de clima, logs, acesso remoto e interface gráfica web/app.</p>
-<p>A linha de firmware OpenSprinklerShop (incluindo o OpenSprinklerPro) usa sua própria versão independente. A versão de firmware atual é <strong>2.4.0(229)</strong>.</p>
+<p>A linha de firmware OpenSprinklerShop (incluindo o OpenSprinklerPro) usa sua própria versão independente. A versão de firmware atual é <strong>2.4.0(230)</strong>.</p>
 <p>Esta página é autônoma, mas faz referências a manuais mais detalhados se necessário.</p>
 <h2 id="visao-geral">Visão Geral</h2>
 <p>O OpenSprinklerPro adiciona estas extensões:</p>
@@ -333,6 +333,32 @@
 <li>Escolha <strong>Matter</strong> apenas se estiver na variante de firmware Matter; os protocolos Matter e Zigbee não podem operar simultaneamente no rádio do chip ESP32-C5.</li>
 <li>Prefira cabo Ethernet para instalações com alto tráfego Zigbee, visto que o rádio compartilha a banda de 2.4 GHz com o Wi-Fi e BLE.</li>
 </ul>
+<h2 id="informacoes-de-radio-e-restricoes-de-utilizacao">Informações de rádio e restrições de utilização</h2>
+<p>O OpenSprinkler Pro contém o módulo de rádio Espressif ESP32-C5-WROOM-1 com antena integrada.</p>
+<table>
+<thead>
+<tr>
+<th>Rádio</th>
+<th>Banda de frequências</th>
+<th>Potência de emissão máx. (p.i.r.e.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wi-Fi 2,4 GHz, Bluetooth LE, IEEE 802.15.4 (Zigbee/Thread)</td>
+<td>2400–2483,5 MHz</td>
+<td>20 dBm</td>
+</tr>
+<tr>
+<td>Wi-Fi 5 GHz</td>
+<td>5150–5350 MHz, 5470–5725 MHz</td>
+<td>23 dBm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Restrição 5 GHz:</strong> na banda 5150–5350 MHz (canais Wi-Fi 36–64) a utilização é permitida apenas em espaços interiores. Esta restrição aplica-se em: AT, BE, BG, CH, CY, CZ, DE, DK, EE, EL, ES, FI, FR, HR, HU, IE, IS, IT, LI, LT, LU, LV, MT, NL, NO, PL, PT, RO, SE, SI, SK, TR, UK(NI).</p>
+<p>Na banda de 5 GHz, o controlador emite apenas como cliente Wi-Fi, no canal definido pelo router. Se o controlador for instalado no exterior, mesmo numa caixa à prova de intempéries, configure o router para utilizar apenas os canais 100–140 na banda de 5 GHz ou ligue o controlador à rede Wi-Fi de 2,4 GHz.</p>
+<p><strong>Distância de separação:</strong> durante o funcionamento, mantenha uma distância mínima de 20 cm entre o aparelho e as pessoas.</p>
 <h2 id="gateway-zigbee-e-cliente-zigbee">Gateway Zigbee e Cliente Zigbee</h2>
 <p>O protocolo Zigbee é um recurso exclusivo das builds de <strong>firmware ESP32-C5 Zigbee</strong>. Não está disponível em builds ESP32-C5 Matter, ESP8266 ou OSPi.</p>
 <h3 id="modo-gateway">Modo Gateway</h3>

@@ -63,6 +63,8 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#platform-corrections">Platform corrections</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#en-18031-1-compliance-build-option-en18031_compliance-default-on-for-esp32">EN 18031-1 compliance (build option EN18031_COMPLIANCE, default on for ESP32)</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#online-update-and-backup">Online update and backup</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#https-certificates-and-acme">HTTPS certificates and ACME</a>
@@ -133,7 +135,7 @@
               
                 <h1 id="opensprinklerpro-api-and-platform-addendum">OpenSprinklerPro API and platform addendum</h1>
 <p>This addendum documents firmware endpoints and platform details that were added after the original 2.2.1 manual pages.</p>
-<p>The OpenSprinklerShop firmware, including OpenSprinklerPro, uses its own firmware version numbering independent of upstream OpenSprinkler releases. Current OpenSprinklerShop firmware version: <strong>2.4.0(229)</strong>.</p>
+<p>The OpenSprinklerShop firmware, including OpenSprinklerPro, uses its own firmware version numbering independent of upstream OpenSprinkler releases. Current OpenSprinklerShop firmware version: <strong>2.4.0(230)</strong>.</p>
 <h2 id="platform-corrections">Platform corrections</h2>
 <table>
 <thead>
@@ -183,6 +185,44 @@
 <td><code>/ir</code>, <code>/iw</code>, <code>/zj</code>, <code>/zs</code>, <code>/zg</code>, <code>/zd</code>, <code>/zo</code>, <code>/zc</code></td>
 <td>ESP32-C5 with Zigbee/IEEE 802.15.4 support</td>
 <td>Radio mode and Zigbee gateway/client endpoints.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="en-18031-1-compliance-build-option-en18031_compliance-default-on-for-esp32">EN 18031-1 compliance (build option <code>EN18031_COMPLIANCE</code>, default on for ESP32)</h2>
+<p>Measures required by RED 2014/53/EU Art. 3.3 d (EN 18031-1). Disable with <code>-D EN18031_COMPLIANCE=0</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Behaviour</th>
+<th>Platforms</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Ignore password" option forced off</td>
+<td>ESP32</td>
+<td><code>ipas</code> in <code>/jo</code> is always 0 and <code>/co?ipas=1</code> has no effect. Every API call needs <code>pw</code>.</td>
+</tr>
+<tr>
+<td>Generated device password</td>
+<td>ESP32</td>
+<td>Starting the WiFi setup AP generates a random 12-character password. It is shown on the display (<code>PW:</code> line) and on the setup page; <code>/jsap</code> returns it as <code>"gpw"</code>. It stays valid until changed with <code>/sp</code>; a factory reset issues a new one on the next AP start.</td>
+</tr>
+<tr>
+<td><code>/jo</code> field <code>pwdef</code></td>
+<td>ESP32</td>
+<td><code>1</code> while the factory default password (<code>opendoor</code>) is still active (devices upgraded from older firmware). The UI should ask the user to set a new password.</td>
+</tr>
+<tr>
+<td>Login rate limit</td>
+<td>ESP32</td>
+<td>5 failed password checks within 5 minutes lock the API and <code>/update</code> for 30 seconds (result 2, unauthorized).</td>
+</tr>
+<tr>
+<td>Setup AP band</td>
+<td>ESP32-C5</td>
+<td>The setup AP is always 2.4 GHz (channel 1); station mode may use 2.4 GHz and 5 GHz. WiFi country code <code>DE</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -303,7 +343,7 @@
 </tbody>
 </table>
 <h2 id="expanded-sensor-api-compatible-with-official-firmware-2215">Expanded Sensor API (compatible with official firmware 2.2.1(5))</h2>
-<p>The official OpenSprinkler firmware 2.2.1(5) introduced an "Expanded Sensor" API. OpenSprinklerShop firmware 2.4.0(229) and later implements the same endpoints as a facade over its own sensor system: there is one sensor store, the upstream <code>uuid</code> is the OpenSprinklerShop sensor <code>nr</code>, and the official OpenSprinkler App as well as third-party clients written against the official API work unchanged. The OpenSprinklerShop endpoints (<code>/sl</code>, <code>/sc</code>, <code>/so</code>, <code>/se</code>, ...) continue to work on the same data.</p>
+<p>The official OpenSprinkler firmware 2.2.1(5) introduced an "Expanded Sensor" API. OpenSprinklerShop firmware 2.4.0(230) and later implements the same endpoints as a facade over its own sensor system: there is one sensor store, the upstream <code>uuid</code> is the OpenSprinklerShop sensor <code>nr</code>, and the official OpenSprinkler App as well as third-party clients written against the official API work unchanged. The OpenSprinklerShop endpoints (<code>/sl</code>, <code>/sc</code>, <code>/so</code>, <code>/se</code>, ...) continue to work on the same data.</p>
 <p>Available on ESP32, ESP8266 and OSPi. Endpoint keys have three letters.</p>
 <table>
 <thead>
