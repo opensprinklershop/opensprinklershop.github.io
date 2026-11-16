@@ -51,6 +51,13 @@ function initLanguageSelector() {
       hu: "zigbee-hu",
       pl: "zigbee-pl"
     },
+    "rs485-pro-kit": {
+      en: "rs485-pro-kit",
+      de: "rs485-pro-kit-de",
+      fr: "rs485-pro-kit-fr",
+      it: "rs485-pro-kit-it",
+      pt: "rs485-pro-kit-pt"
+    },
     "analog-sensor-config": {
       en: "analog-sensor-config",
       de: "analog-sensor-config-de",

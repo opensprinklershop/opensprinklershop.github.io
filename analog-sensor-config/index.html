@@ -101,6 +101,8 @@
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#set-digital-sensor-set-sn-12">Set digital sensor (SET SN 1/2)</a>
     </li>
+    <li class="toctree-l4"><a class="reference internal" href="#redirect-master-set-master">Redirect master (SET MASTER)</a>
+    </li>
     <li class="toctree-l4"><a class="reference internal" href="#and">AND</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#or">OR</a>
@@ -158,6 +160,8 @@
         </ul>
     </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rs485-pro-kit/">RS485 Sensor Kit (Assembly)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
                   </li>
@@ -637,6 +641,9 @@
 <h4 id="set-digital-sensor-set-sn-12">Set digital sensor (SET SN 1/2)</h4>
 <p>Drives the virtual state of digital Sensor 1 or Sensor 2 from another monitor. This lets a computed condition act like a physical rain/soil sensor for the scheduler.</p>
 <p><img alt="Set digital sensor monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitor-set-sensor12.png" /></p>
+<h4 id="redirect-master-set-master">Redirect master (SET MASTER)</h4>
+<p>Water source switch: while the selected source monitor is active, every station bound to the chosen master runs with the other master instead (using that master's own on/off adjustments). Station settings are not modified, and without such a monitor the master handling is unchanged.</p>
+<p>Typical setup <em>cistern with city water backup</em>: Master 1 = cistern pump, Master 2 = city water valve, all zones bound to Master 1 only. A <em>Minimum</em> monitor on the level sensor (e.g. active at 10 %, inactive at 30 % as hysteresis) is the source; the SET MASTER monitor redirects Master 1 → Master 2. When the level drops below 10 % the controller switches to the city water valve immediately, even in the middle of a run. The source monitor's notification reports the switch. For a failed level sensor, configure <em>failsafe</em> with active state on the source monitor so city water is used when in doubt. The active state is shown in the app status bar and in <code>/jc</code> as <code>masrd</code> (0 = no redirect, 1 = Master 1 → 2, 2 = Master 2 → 1).</p>
 <h4 id="and">AND</h4>
 <p>Active only when <strong>all</strong> selected source monitors are active. Each of the up to four inputs can be individually inverted with its <em>inverse</em> checkbox.</p>
 <p><img alt="AND monitor" class="mobile-screenshot" src="../assets/screenshots/pro/en/monitor-and.png" /></p>
@@ -710,7 +717,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../zigbee/" class="btn btn-neutral float-left" title="Zigbee Configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../pro-api-endpoints/" class="btn btn-neutral float-right" title="API and platform addendum">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../rs485-pro-kit/" class="btn btn-neutral float-right" title="RS485 Sensor Kit (Assembly)">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -740,7 +747,7 @@
       <span><a href="../zigbee/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../pro-api-endpoints/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../rs485-pro-kit/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -59,6 +59,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../analog-sensor-config/">Analog Sensor Config</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rs485-pro-kit/">RS485 Sensor Kit (Assembly)</a>
+                  </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">API and platform addendum</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#platform-corrections">Platform corrections</a>
@@ -66,6 +68,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#en-18031-1-compliance-build-option-en18031_compliance-default-on-for-esp32">EN 18031-1 compliance (build option EN18031_COMPLIANCE, default on for ESP32)</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#online-update-and-backup">Online update and backup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#on-device-web-ui-firmware-240231-and-later-esp32-and-ospi">On-device web UI (firmware 2.4.0(231) and later, ESP32 and OSPi)</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#https-certificates-and-acme">HTTPS certificates and ACME</a>
     </li>
@@ -157,9 +161,19 @@
 <td>Sensor-only configuration backup/import. Distinct from <code>/ub</code>.</td>
 </tr>
 <tr>
+<td><code>/ul</code>, <code>/uf</code>, <code>/ui/*</code></td>
+<td>ESP32, OSPi</td>
+<td>On-device web UI: status/installation, package upload (ESP32 only, port 8080), static UI files. Not on the ESP8266 (no room).</td>
+</tr>
+<tr>
 <td><code>/jw</code></td>
 <td>ESP32, ESP8266, OSPi</td>
 <td>Monthly water-usage data.</td>
+</tr>
+<tr>
+<td><code>/db?lp=1\|2\|3</code></td>
+<td>ESP32</td>
+<td>Diagnostics: main-loop profiler (<code>lp=1</code> read, <code>lp=2</code> read and reset, <code>lp=3</code> filesystem benchmark, blocks 1-3 s). Without <code>lp</code> the usual <code>/db</code> diagnostic object.</td>
 </tr>
 <tr>
 <td><code>/tg</code>, <code>/tl</code>, <code>/ta</code>, <code>/tc</code>, <code>/tx</code></td>
@@ -253,6 +267,64 @@
 </tr>
 </tbody>
 </table>
+<h2 id="on-device-web-ui-firmware-240231-and-later-esp32-and-ospi">On-device web UI (firmware 2.4.0(231) and later, ESP32 and OSPi)</h2>
+<p>The web interface can be stored on the controller and served by the controller
+itself (ESP32: external LittleFS, OSPi: <code>&lt;data dir&gt;/ui/</code>). A UI package
+(<code>ui.tar</code>, built by <code>tools/mkuipack.py</code>, ECDSA P-256 signed) is installed per
+firmware version under <code>/ui/&lt;version&gt;/</code>; the local copy is only used when its
+version equals the running firmware. It is the fallback for offline / island
+operation: without Internet access the device still serves its own UI.</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /ul?pw=...</code></td>
+<td>Status: <code>fw</code>, <code>installed</code> (version served locally), <code>exact</code>, <code>use</code>, <code>stale</code>, <code>src</code> (0 device/auto, 1 device only, 2 external), <code>fb</code> (fallback), <code>versions</code>, <code>state</code> (0 idle, 1 downloading, 2 verifying, 3 activating, 4 done, 5 error), <code>progress</code>, <code>received</code>, <code>total</code>, <code>free</code>, <code>fs</code>, <code>busy</code>, <code>url</code> (archive package URL for this firmware), <code>msg</code>.</td>
+</tr>
+<tr>
+<td><code>GET /ul?pw=...&amp;install=1[&amp;url=...]</code></td>
+<td>Download <code>&lt;url&gt;</code> and <code>&lt;url&gt;.sig</code> (default: <code>upgrade/archive/v&lt;fw&gt;_&lt;minor&gt;/ui.tar</code>) in a background task, verify the signature and activate. <code>action</code> in the reply is 1 when the task was started.</td>
+</tr>
+<tr>
+<td><code>GET /ul?pw=...&amp;remove=1[&amp;ver=x.y.z.n]</code></td>
+<td>Remove one or all installed UI versions; the home page falls back to the external URL.</td>
+</tr>
+<tr>
+<td><code>GET /ul?pw=...&amp;check=1</code></td>
+<td>Trigger the automatic installation check now (otherwise 2 min after boot, then with 1 h / 6 h / 24 h backoff).</td>
+</tr>
+<tr>
+<td><code>POST :8080/uf</code> (multipart <code>file</code>, fields <code>pw</code>, <code>sig</code>)</td>
+<td>Upload a package for devices without Internet access. <code>sig</code> is the base64 signature (<code>ui.tar.sig</code>). Unsigned or foreign packages are rejected. ESP32 only.</td>
+</tr>
+<tr>
+<td><code>GET /ui/...</code></td>
+<td>Static files of the active UI version (<code>/ui/js/home.js</code>, <code>/ui/versions.json</code>, <code>/ui/&lt;version&gt;/js/...</code>), served gzip-encoded with immutable caching for versioned paths.</td>
+</tr>
+<tr>
+<td><code>GET /su</code>, <code>GET /cu?pw=...&amp;uis=0|2&amp;uifb=0|1&amp;jsp=...</code></td>
+<td>Firmware-own settings page and its form target: UI source, fallback, external URL, weather URL.</td>
+</tr>
+</tbody>
+</table>
+<p>The external UI is faster, so it stays the default: in mode 0 the home page
+loads the external loader with an error handler and a watchdog and reloads
+itself as <code>/?ui=local</code> (device copy) when the loader fails or has not run after
+<code>uifb</code> seconds; <code>/?ui=ext</code> forces the external loader. Related options (<code>/jo</code>,
+<code>/co</code>): <code>uisr</code> (0 external first / device copy when offline, 1 always the device
+copy, 2 external only, no package installed), <code>uifb</code> (seconds before the
+browser switches to the device copy, default 6, 0 = only on load error). <code>/jo</code> also reports <code>uiv</code> (installed version
+served locally), <code>uia</code> (1 = home page uses the local copy) and <code>uist</code> (1 = an
+older local version is served in "device only" mode). On the first boot after
+the upgrade a custom <code>jsp</code> URL keeps the external source (<code>uisr=2</code>), the default
+URL switches to the device copy (<code>uisr=0</code>). The OTA update installs the matching
+package at the end of phase 2; <code>manifest.json</code> carries <code>ui_url</code>, <code>ui_version</code>,
+<code>ui_size</code>, <code>ui_sha256</code>, <code>ui_sig</code>.</p>
 <h2 id="https-certificates-and-acme">HTTPS certificates and ACME</h2>
 <table>
 <thead>
@@ -339,6 +411,10 @@
 <tr>
 <td><code>GET /mc</code>, <code>/ml</code>, <code>/mt</code></td>
 <td>Configure, list and discover monitor types.</td>
+</tr>
+<tr>
+<td><code>GET /mc?type=5&amp;monitor=N&amp;master=1\|2</code></td>
+<td>Monitor type 5 <em>SET MASTER</em> (water source switch, 2.4.0(231)): while monitor <code>N</code> is active, stations bound to <code>master</code> run with the other master. Reported by <code>/ml</code> as <code>monitor</code>/<code>master</code>; <code>master</code> outside 1..2 is rejected (result 18). The active redirect is in <code>/jc</code> as <code>masrd</code> (0/1/2). All platforms.</td>
 </tr>
 </tbody>
 </table>
@@ -449,7 +525,7 @@
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../analog-sensor-config/" class="btn btn-neutral float-left" title="Analog Sensor Config"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../rs485-pro-kit/" class="btn btn-neutral float-left" title="RS485 Sensor Kit (Assembly)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../mcp-server/" class="btn btn-neutral float-right" title="MCP Server">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -477,7 +553,7 @@
         </span>
     
     
-      <span><a href="../analog-sensor-config/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../rs485-pro-kit/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../mcp-server/" style="color: #fcfcfc">Next &raquo;</a></span>

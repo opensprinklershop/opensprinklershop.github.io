@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://opensprinklershop.github.io/rs485-pro-kit-fr/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>OpenSprinkler Pro avec capteurs RS485 – Guide de montage et d'utilisation - OpenSprinkler Shop Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "OpenSprinkler Pro avec capteurs RS485 \u2013 Guide de montage et d\u0027utilisation";
+        var mkdocs_page_input_path = "rs485-pro-kit-fr.md";
+        var mkdocs_page_url = "/rs485-pro-kit-fr/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OpenSprinkler Shop Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Base Manual v2.2.1(4)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_manual/">User Manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2.2.1/221_4_api/">API Reference</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">OpenSprinklerPro Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../opensprinklerpro/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../zigbee/">Zigbee Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../analog-sensor-config/">Analog Sensor Config</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rs485-pro-kit/">RS485 Sensor Kit (Assembly)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MCP and AI</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../mcp-server/">MCP Server</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ai-programming/">AI Program Creation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sensor-automation/">Sensor Automation</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../rainmaker-provisioning/">RainMaker Provisioning</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../fyta-sensors/">FYTA Sensors</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Archived</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../archive/">Previous Manuals and API docs</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OpenSprinkler Shop Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">OpenSprinkler Pro avec capteurs RS485 – Guide de montage et d'utilisation</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware/edit/master/docs/rs485-pro-kit-fr.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="opensprinkler-pro-avec-capteurs-rs485-guide-de-montage-et-dutilisation">OpenSprinkler Pro avec capteurs RS485 – Guide de montage et d'utilisation</h1>
+<p>Ce guide décrit une installation professionnelle complète : <strong>OpenSprinkler Pro (DC, Ethernet)</strong> avec la
+<strong>carte RS485 OpenSprinkler</strong>, des sondes d'humidité du sol <strong>Truebner SMT100</strong>, un capteur de
+température/humidité de l'air <strong>Truebner TH100</strong>, un boîtier de jonction <strong>TrueCon100</strong> et un détecteur de pluie <strong>Hunter Rain-Clik</strong>.</p>
+<p>Pages liées : <a href="../analog-sensor-config-fr/">Configuration du capteur analogique</a>, <a href="../sensor-automation-fr/">Automatisation capteurs et monitors</a>,
+<a href="../opensprinklerpro_fr/">OpenSprinkler Pro</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Référence rapide (PDF, 2 pages)</p>
+<p><a href="../assets/rs485-pro-kit/rs485-pro-kit-quickref-en.pdf">Télécharger la référence rapide (anglais)</a> ·
+<a href="../assets/rs485-pro-kit/rs485-pro-kit-quickref-de.pdf">Référence rapide (allemand)</a></p>
+</div>
+<h2 id="1-composants">1. Composants</h2>
+<table>
+<thead>
+<tr>
+<th>Qté</th>
+<th>Composant</th>
+<th>Fonction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>OpenSprinkler Pro, variante DC, Ethernet + antenne externe</td>
+<td>Contrôleur, 8 zones, entrées capteur SN1/SN2, bus d'extension EXT</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Alimentation DC + câble adaptateur 7,5–12 V DC (ADPK12VDC)</td>
+<td>Alimentation du contrôleur et des vannes</td>
+</tr>
+<tr>
+<td>1–2</td>
+<td>Carte RS485 OpenSprinkler (adaptateur RS485 Truebner)</td>
+<td>I²C → RS485/Modbus RTU, 4 borniers</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Truebner SMT100 (RS485 Modbus)</td>
+<td>Humidité du sol, température du sol, permittivité</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Truebner TH100 (RS485 Modbus)</td>
+<td>Température de l'air et humidité relative</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Truebner TrueCon100 (RS485)</td>
+<td>Boîtier de jonction de terrain, jusqu'à 10 capteurs sur un seul câble de bus</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Hunter Rain-Clik</td>
+<td>Contact de pluie sur SN1</td>
+</tr>
+<tr>
+<td>2+2</td>
+<td>Supports rail DIN V4</td>
+<td>Montage sur rail DIN du Pro et de la carte RS485</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Connecteurs gel 3M 314</td>
+<td>Raccordement étanche des vannes dans le regard</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Une seule carte RS485 par contrôleur</p>
+<p>La carte RS485 a l'adresse I²C fixe <code>0x4C</code>. Le firmware pilote <strong>une</strong> carte par
+contrôleur. Une deuxième carte sur le même contrôleur n'est pas détectée et peut perturber le
+bus I²C. <strong>Les quatre borniers d'une carte forment le même bus</strong> et desservent ensemble jusqu'à
+64 capteurs ; quatre SMT100 et le TH100 tiennent donc sur une seule carte. Si votre kit contient une deuxième
+carte, gardez-la en réserve ou utilisez-la sur un second contrôleur.</p>
+</div>
+<h2 id="2-schema-de-cablage">2. Schéma de câblage</h2>
+<p><img alt="Schéma de câblage" src="../assets/rs485-pro-kit/wiring.svg" /></p>
+<h2 id="3-schema-dalimentation">3. Schéma d'alimentation</h2>
+<p><img alt="Distribution de l'alimentation" src="../assets/rs485-pro-kit/power.svg" /></p>
+<ul>
+<li>Le contrôleur est alimenté en <strong>DC (7,5–24 V)</strong> par l'alimentation. Cette même tension est
+  commutée vers les sorties de zone ; choisissez donc la tension de l'alimentation en fonction des bobines des vannes
+  (la variante DC pilote aussi les vannes standard 24 V AC).</li>
+<li>La carte RS485 prend son 5 V et l'I²C sur le <strong>bus EXT</strong> du contrôleur (câble plat). Elle n'a besoin
+  d'aucune alimentation séparée.</li>
+<li>Le côté bus de la carte RS485 est <strong>isolé galvaniquement</strong>. L'alimentation des capteurs (+5 V sur les
+  borniers) n'est activée que pendant une mesure (environ 1 s de préchauffage) ; les
+  capteurs ne consomment donc presque rien entre deux lectures.</li>
+<li>Le Rain-Clik est un contact passif et n'a besoin que de <strong>SN1 + GND</strong>.</li>
+</ul>
+<h2 id="4-montage">4. Montage</h2>
+<ol>
+<li><strong>Fixation.</strong> Clipsez deux supports rail DIN V4 sur l'OpenSprinkler Pro et deux sur la carte RS485,
+   puis encliquetez les deux sur le rail DIN. Laissez de la place pour le câble plat et les presse-étoupes.</li>
+<li><strong>Câble plat.</strong> Hors tension, reliez la carte RS485 au connecteur <strong>EXT</strong> du
+   Pro. Vérifiez l'orientation (broche 1 / repère rouge des deux côtés).</li>
+<li><strong>Ethernet et antenne.</strong> Branchez le câble réseau. Vissez l'antenne externe sur la prise
+   SMA ; elle sert au WiFi/BLE/Zigbee même lorsque l'Ethernet est actif.</li>
+<li><strong>Vannes.</strong> Reliez le fil commun de toutes les vannes à <strong>COM</strong> et le second fil de chaque vanne à la
+   zone <strong>1 … 8</strong>. Dans le regard, raccordez les fils avec les connecteurs gel 3M 314
+   (ne pas dénuder, enfoncer les fils à fond, presser le capuchon avec une pince).</li>
+<li><strong>Rain-Clik.</strong> Reliez les deux fils à <strong>SN1</strong> et <strong>GND</strong>. <strong>Ne jamais raccorder à COM.</strong></li>
+<li><strong>Câble de bus.</strong> Depuis le <strong>port 1</strong> de la carte RS485, tirez un câble avec une paire torsadée pour A/B plus
+   deux fils pour +5 V et GND (p. ex. LiYCY 2×2×0,5 mm² ou câble CAT extérieur) jusqu'au TrueCon100.
+   Longueur totale de câble par bus jusqu'à 300 m. Posez le câble dans une gaine, pas à côté de câbles secteur.</li>
+<li><strong>TrueCon100.</strong> Raccordez le câble de bus entrant aux bornes d'entrée et chaque SMT100 à une
+   sortie (+ / GND / A / B, tous en parallèle). Refermez le boîtier de façon étanche.</li>
+<li><strong>TH100.</strong> Raccordez le TH100 directement au <strong>port 2</strong> de la carte RS485 (ou à une sortie libre du TrueCon100).
+   Montez-le à l'ombre, à 1,5–2 m du sol, dans son abri anti-rayonnement.</li>
+<li><strong>Installation des SMT100.</strong> Enfoncez les capteurs verticalement ou horizontalement dans un sol non remanié de la
+   zone racinaire (en général 10–20 cm de profondeur), avec un contact complet avec le sol et sans poches d'air. Ne les installez pas
+   directement à côté d'un goutteur.</li>
+</ol>
+<p><strong>Couleurs des fils SMT100 / TH100 (Truebner) :</strong> marron = alimentation +, blanc = GND, vert = RS485 <strong>A</strong>,
+jaune = RS485 <strong>B</strong>. Vérifiez toujours l'étiquette ou la fiche technique de votre lot de capteurs. Si un capteur ne
+répond pas, inversez A et B comme premier test.</p>
+<div class="admonition note">
+<p class="admonition-title">Terminaison</p>
+<p>La carte RS485 contient déjà une résistance de terminaison de 120 Ω. Pour les câbles courts (&lt; 50 m),
+rien d'autre n'est nécessaire. Pour les câbles longs, ajoutez 120 Ω entre A et B à l'extrémité opposée (dans le TrueCon100).</p>
+</div>
+<h2 id="5-mise-en-service">5. Mise en service</h2>
+<ol>
+<li>Mettez l'alimentation sous tension. L'écran OLED affiche l'adresse IP (Ethernet).</li>
+<li>Ouvrez l'interface web ou l'<strong>application OpenSprinklerASB</strong> et connectez-vous. Mettez à jour le firmware via
+   <strong>Online Update</strong> si une version plus récente est proposée.</li>
+<li><strong>Détecteur de pluie :</strong> <em>Modifier les Options (Edit Options) → Sensors → Type du capteur 1 = Pluie (Rain)</em>, réglez <strong>Circuit normalement ouvert (Normally Open) = désactivé</strong>
+   (le Rain-Clik est fermé à sec). Testez avec le bouton de test du Rain-Clik (maintenir ≥ 30 s).</li>
+<li><strong>Vérifier la carte RS485 :</strong> une fois le premier capteur RS485 créé, le diagnostic du capteur ne doit
+   pas signaler <em>pas d'adaptateur RS485</em> (<code>RS485_NO_ADAPTER</code>). Si c'est le cas, vérifiez le câble plat.</li>
+</ol>
+<h3 id="51-attribuer-les-adresses-modbus-un-capteur-a-la-fois">5.1 Attribuer les adresses Modbus (un capteur à la fois)</h3>
+<p>Les capteurs Truebner neufs sont généralement livrés avec l'adresse Modbus <strong>1</strong>. Chaque capteur du bus
+a besoin de sa propre adresse. Plan recommandé :</p>
+<table>
+<thead>
+<tr>
+<th>Capteur</th>
+<th>Adresse Modbus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SMT100 n° 1 … n° 4</td>
+<td>1, 2, 3, 4</td>
+</tr>
+<tr>
+<td>TH100</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Raccordez <strong>un seul capteur</strong> au bus (débranchez les autres au niveau du TrueCon100).</li>
+<li>Dans <em>Configuration du capteur analogique (Analog Sensor Config)</em>, ajoutez un capteur de type <em>Truebner SMT100 RS485 Modbus, moisture mode</em>
+   (TH100 : <em>Truebner TH100 RS485 Modbus, humidity mode</em>).</li>
+<li>Saisissez la nouvelle adresse dans <strong>ID Modbus (Modbus ID)</strong> et appuyez sur <strong>Définir l'ID Modbus SMT100 (Set SMT100 Modbus ID)</strong>. Confirmez.</li>
+<li>Étiquetez le câble du capteur avec l'adresse, raccordez le capteur suivant et recommencez.</li>
+</ol>
+<h3 id="52-creer-les-capteurs">5.2 Créer les capteurs</h3>
+<table>
+<thead>
+<tr>
+<th>Nom (exemple)</th>
+<th>Type</th>
+<th>ID Modbus</th>
+<th>Intervalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Humidité massif 1</td>
+<td>Truebner SMT100 RS485 Modbus, moisture mode</td>
+<td>1</td>
+<td>300 s</td>
+</tr>
+<tr>
+<td>Temp. sol massif 1</td>
+<td>Truebner SMT100 RS485 Modbus, temperature mode</td>
+<td>1</td>
+<td>900 s</td>
+</tr>
+<tr>
+<td>Humidité massifs 2–4</td>
+<td>… moisture mode</td>
+<td>2, 3, 4</td>
+<td>300 s</td>
+</tr>
+<tr>
+<td>Humidité de l'air</td>
+<td>Truebner TH100 RS485 Modbus, humidity mode</td>
+<td>10</td>
+<td>300 s</td>
+</tr>
+<tr>
+<td>Température de l'air</td>
+<td>Truebner TH100 RS485 Modbus, temperature mode</td>
+<td>10</td>
+<td>300 s</td>
+</tr>
+</tbody>
+</table>
+<p>Activez <strong>Journal (Log)</strong> pour les graphiques d'historique. L'humidité et la température d'un même SMT100 sont deux entrées
+de capteur avec le même ID Modbus. Vous pouvez aussi créer un <strong>groupe de capteurs</strong> (min/max/moy) sur plusieurs
+capteurs d'humidité.</p>
+<h2 id="6-utiliser-les-capteurs-pour-larrosage">6. Utiliser les capteurs pour l'arrosage</h2>
+<ul>
+<li><strong>Program Adjustments :</strong> associez un capteur d'humidité à un programme. Définissez des valeurs <em>min/max</em> : en dessous de
+  <em>min</em>, le programme tourne à 100 % (ou plus) ; au-dessus de <em>max</em>, il est réduit à 0 %. Exemple pour un limon sableux :
+  min 15 %, max 30 % VWC.</li>
+<li><strong>Moniteurs (Monitoring and control) :</strong> p. ex. arrêter ou bloquer une zone lorsque l'humidité dépasse 35 %, ou avertir lorsque la température de l'air
+  descend sous 2 °C (gel). Voir <a href="../sensor-automation-fr/">Automatisation capteurs et monitors</a>.</li>
+<li>Le Rain-Clik fonctionne indépendamment via SN1 et arrête toutes les zones pour lesquelles
+  <em>Ignorer le capteur 1 (Ignore Sensor 1)</em> n'est pas activé.</li>
+</ul>
+<h2 id="7-depannage">7. Dépannage</h2>
+<table>
+<thead>
+<tr>
+<th>Symptôme</th>
+<th>Vérification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Diagnostic : pas d'adaptateur RS485</td>
+<td>Orientation du câble plat, une seule carte RS485 raccordée, redémarrer le contrôleur</td>
+</tr>
+<tr>
+<td>Un capteur n'affiche aucune valeur</td>
+<td>A/B inversés, adresse erronée ou en double, +5 V/GND au TrueCon100, longueur de câble</td>
+</tr>
+<tr>
+<td>Tous les capteurs sont en défaut</td>
+<td>Court-circuit sur le câble de bus, eau dans le TrueCon100, terminaison aux deux extrémités d'un câble court</td>
+</tr>
+<tr>
+<td>Valeurs d'humidité erronées</td>
+<td>Poches d'air autour du capteur, capteur dans du gravier ou directement au goutteur</td>
+</tr>
+<tr>
+<td>Le Rain-Clik ne réagit pas</td>
+<td>Type SN1 = Pluie, Circuit normalement ouvert = désactivé, câblage SN1 + GND</td>
+</tr>
+</tbody>
+</table>
+<p>Détails matériels et API des types RS485 : <a href="../analog-sensor-config-fr/">Configuration du capteur analogique</a>.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/opensprinklershop/OpenSprinkler-Firmware" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../custom.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -59,6 +59,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../analog-sensor-config/">Analog Sensor Config</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rs485-pro-kit/">RS485 Sensor Kit (Assembly)</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pro-api-endpoints/">API and platform addendum</a>
                   </li>
               </ul>
@@ -536,6 +538,9 @@
 <h4 id="digitalen-sensor-setzen-set-sn-12">Digitalen Sensor setzen (SET SN 1/2)</h4>
 <p>Steuert den virtuellen Zustand des digitalen Sensors 1 oder 2 aus einem anderen Monitor. So kann eine berechnete Bedingung für die Steuerung wie ein physischer Regen-/Bodensensor wirken.</p>
 <p><img alt="Digitalsensor-setzen-Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitor-set-sensor12.png" /></p>
+<h4 id="master-umleiten-set-master">Master umleiten (SET MASTER)</h4>
+<p>Wasserquellen-Umschaltung: Solange der gewählte Quell-Monitor aktiv ist, laufen alle Stationen, die an den gewählten Master gebunden sind, stattdessen mit dem anderen Master (mit dessen eigenen Vor- und Nachlaufzeiten). Die Stationseinstellungen werden dabei nicht verändert, und ohne einen solchen Monitor verhält sich die Master-Steuerung wie bisher.</p>
+<p>Typischer Aufbau <em>Zisterne mit Stadtwasser-Nachspeisung</em>: Master 1 = Zisternenpumpe, Master 2 = Stadtwasserventil, alle Zonen nur an Master 1 gebunden. Ein <em>Mindestwert</em>-Monitor auf dem Füllstandsensor (z. B. aktiv ab 10 %, inaktiv ab 30 % als Hysterese) dient als Quelle; der SET-MASTER-Monitor leitet Master 1 → Master 2 um. Fällt der Füllstand unter 10 %, wird sofort, auch mitten im Lauf, auf das Stadtwasserventil gewechselt. Die Monitor-Meldung des Quell-Monitors informiert über den Wechsel. Für einen ausgefallenen Füllstandsensor empfiehlt sich am Quell-Monitor <em>Failsafe</em> mit aktivem Zustand, damit im Zweifel Stadtwasser verwendet wird. Der aktive Zustand erscheint in der Statuszeile der App und in <code>/jc</code> als <code>masrd</code> (0 = keine Umleitung, 1 = Master 1 → 2, 2 = Master 2 → 1).</p>
 <h4 id="und-and">UND (AND)</h4>
 <p>Nur aktiv, wenn <strong>alle</strong> ausgewählten Quellmonitore aktiv sind. Jeder der bis zu vier Eingänge kann über seine <em>inverse</em>-Checkbox einzeln invertiert werden.</p>
 <p><img alt="UND-Monitor" class="mobile-screenshot" src="../assets/screenshots/pro/de/monitor-and.png" /></p>

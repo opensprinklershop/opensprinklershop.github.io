@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 470" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <defs>
+    <style>
+      .box{fill:#f6f8fa;stroke:#24292f;stroke-width:2}
+      .hv{fill:#fff1f0;stroke:#cf222e;stroke-width:2}
+      .iso{fill:#ddf4ff;stroke:#0969da;stroke-width:2;stroke-dasharray:6 4}
+      .h{font-size:15px;font-weight:bold;fill:#24292f}
+      .s{font-size:11.5px;fill:#57606a}
+      .v{font-size:12px;font-weight:bold;fill:#cf222e}
+      .ln{stroke:#cf222e;stroke-width:3;fill:none;marker-end:url(#ar)}
+      .lb{stroke:#0969da;stroke-width:3;fill:none;marker-end:url(#arb)}
+      .lv{stroke:#8250df;stroke-width:3;fill:none;marker-end:url(#arv)}
+    </style>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#cf222e"/></marker>
+    <marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0969da"/></marker>
+    <marker id="arv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8250df"/></marker>
+  </defs>
+  <text x="550" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#24292f">Stromverteilung</text>
+
+  <rect class="hv" x="20" y="150" width="130" height="80" rx="8"/>
+  <text class="h" x="85" y="182" text-anchor="middle">Netz</text>
+  <text class="s" x="85" y="202" text-anchor="middle">230 V AC</text>
+  <text class="s" x="85" y="218" text-anchor="middle">nur innen</text>
+  <path class="ln" d="M150 190 H 200"/>
+
+  <rect class="box" x="200" y="150" width="150" height="80" rx="8"/>
+  <text class="h" x="275" y="178" text-anchor="middle">DC-Netzteil</text>
+  <text class="s" x="275" y="198" text-anchor="middle">SELV-Ausgang</text>
+  <text class="s" x="275" y="214" text-anchor="middle">7,5–24 V DC</text>
+  <path class="ln" d="M350 190 H 410"/>
+  <text class="v" x="356" y="182">V<tspan font-size="9">IN</tspan></text>
+
+  <rect class="box" x="410" y="60" width="300" height="300" rx="8"/>
+  <text class="h" x="560" y="86" text-anchor="middle">OpenSprinkler Pro DC</text>
+  <rect x="430" y="105" width="260" height="56" rx="6" fill="#fff" stroke="#57606a"/>
+  <text x="560" y="128" text-anchor="middle" font-size="13" fill="#24292f">Zonentreiber (MOSFET, 2 A / Zone)</text>
+  <text class="s" x="560" y="146" text-anchor="middle">schalten V<tspan font-size="9">IN</tspan> auf Zone 1–8 gegen COM</text>
+  <rect x="430" y="175" width="260" height="56" rx="6" fill="#fff" stroke="#57606a"/>
+  <text x="560" y="198" text-anchor="middle" font-size="13" fill="#24292f">5-V-Regler</text>
+  <text class="s" x="560" y="216" text-anchor="middle">ESP32-C5, Display, Ethernet W5500, EXT-Bus</text>
+  <rect x="430" y="245" width="260" height="56" rx="6" fill="#fff" stroke="#57606a"/>
+  <text x="560" y="268" text-anchor="middle" font-size="13" fill="#24292f">Sensoreingänge SN1 / SN2</text>
+  <text class="s" x="560" y="286" text-anchor="middle">Kontakteingänge Kleinspannung, gegen GND</text>
+
+  <!-- Valves -->
+  <path class="lv" d="M690 133 H 800"/>
+  <rect class="box" x="800" y="95" width="280" height="76" rx="8"/>
+  <text class="h" x="940" y="120" text-anchor="middle">Ventile (DC- oder 24-V-AC-Spulen)</text>
+  <text class="s" x="940" y="139" text-anchor="middle">Spannung am Ventil = V<tspan font-size="9">IN</tspan> des Netzteils</text>
+  <text class="s" x="940" y="155" text-anchor="middle">Netzteilspannung passend zu den Spulen wählen</text>
+
+  <!-- RS485 board -->
+  <path class="ln" d="M690 203 H 800"/>
+  <text class="v" x="694" y="196">5 V · Flachband</text>
+  <rect class="box" x="800" y="185" width="280" height="150" rx="8"/>
+  <text class="h" x="940" y="208" text-anchor="middle">RS485 Board (OWA4)</text>
+  <text class="s" x="940" y="226" text-anchor="middle">3,3-V-Logik (AMS1117) · I²C-UART SC16IS752</text>
+  <rect class="iso" x="815" y="236" width="250" height="88" rx="6"/>
+  <text x="940" y="256" text-anchor="middle" font-size="12" fill="#0a3069" font-weight="bold">galvanisch getrennte Busseite (5 kV)</text>
+  <text class="s" x="940" y="274" text-anchor="middle">Transceiver + Sensorversorgung nur</text>
+  <text class="s" x="940" y="290" text-anchor="middle">während der Messung an (ca. 1 s Vorlauf)</text>
+  <text class="s" x="940" y="306" text-anchor="middle">TVS + PTC-Sicherungen an A/B</text>
+
+  <path class="lb" d="M940 335 V 380"/>
+  <text class="v" x="950" y="362">+5 V geschaltet</text>
+  <rect class="box" x="760" y="380" width="320" height="76" rx="8"/>
+  <text class="h" x="920" y="405" text-anchor="middle">4 × SMT100 + TH100</text>
+  <text class="s" x="920" y="424" text-anchor="middle">wenige mA je Sensor beim Messen, sonst stromlos</text>
+  <text class="s" x="920" y="440" text-anchor="middle">gesamt weit unter dem 5-V-Budget der Steuerung</text>
+
+  <!-- Rain clik -->
+  <path class="lb" d="M560 301 V 395 H 470"/>
+  <rect class="box" x="230" y="370" width="240" height="70" rx="8"/>
+  <text class="h" x="350" y="396" text-anchor="middle">Hunter Rain-Clik</text>
+  <text class="s" x="350" y="415" text-anchor="middle">passiver Kontakt, keine Versorgung</text>
+  <text class="s" x="350" y="431" text-anchor="middle">nur SN1 + GND</text>
+
+  <g transform="translate(20,270)">
+    <rect x="0" y="0" width="190" height="80" fill="#fff" stroke="#d0d7de"/>
+    <rect class="hv" x="10" y="10" width="22" height="14"/><text class="s" x="40" y="22">Netzspannung</text>
+    <rect class="box" x="10" y="32" width="22" height="14"/><text class="s" x="40" y="44">Schutzkleinspannung</text>
+    <rect class="iso" x="10" y="54" width="22" height="14"/><text class="s" x="40" y="66">galvanisch getrennt</text>
+  </g>
+</svg>

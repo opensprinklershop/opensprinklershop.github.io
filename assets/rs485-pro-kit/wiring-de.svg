@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 750" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <defs>
+    <style>
+      .box{fill:#f6f8fa;stroke:#24292f;stroke-width:2}
+      .term{fill:#fff;stroke:#57606a;stroke-width:1.2}
+      .t{font-size:12px;fill:#24292f}
+      .h{font-size:15px;font-weight:bold;fill:#24292f}
+      .s{font-size:11px;fill:#57606a}
+      .pwr{stroke:#cf222e;stroke-width:3;fill:none}
+      .gnd{stroke:#24292f;stroke-width:3;fill:none}
+      .a{stroke:#1a7f37;stroke-width:3;fill:none}
+      .b{stroke:#bf8700;stroke-width:3;fill:none}
+      .sig{stroke:#0969da;stroke-width:3;fill:none}
+      .vlv{stroke:#8250df;stroke-width:3;fill:none}
+      .rib{stroke:#8c959f;stroke-width:10;fill:none;stroke-linejoin:round}
+      .eth{stroke:#0a3069;stroke-width:4;fill:none;stroke-dasharray:8 4}
+    </style>
+  </defs>
+  <text x="550" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#24292f">OpenSprinkler Pro DC + RS485-Sensoren – Anschlussplan</text>
+
+  <!-- Power supply -->
+  <rect class="box" x="20" y="60" width="180" height="80" rx="8"/>
+  <text class="h" x="110" y="88" text-anchor="middle">DC-Netzteil</text>
+  <text class="s" x="110" y="108" text-anchor="middle">230 V AC Eingang</text>
+  <text class="s" x="110" y="124" text-anchor="middle">DC-Ausgang 7,5–24 V</text>
+  <path class="pwr" d="M200 85 H 330"/>
+  <path class="gnd" d="M200 115 H 330"/>
+  <text class="s" x="215" y="77">+</text><text class="s" x="215" y="133">−</text>
+  <text class="s" x="203" y="156">Adapterkabel ADPK12VDC</text>
+
+  <!-- OpenSprinkler Pro -->
+  <rect class="box" x="330" y="50" width="330" height="230" rx="8"/>
+  <text class="h" x="495" y="76" text-anchor="middle">OpenSprinkler Pro (DC)</text>
+  <text class="s" x="495" y="94" text-anchor="middle">ESP32-C5 · OLED · W5500 Ethernet</text>
+  <rect class="term" x="330" y="70" width="64" height="58"/>
+  <text class="t" x="362" y="96" text-anchor="middle">DC IN</text>
+  <text class="s" x="362" y="113" text-anchor="middle">+ / −</text>
+  <rect class="term" x="596" y="104" width="64" height="32"/>
+  <text class="t" x="628" y="125" text-anchor="middle">RJ45</text>
+  <rect class="term" x="596" y="142" width="64" height="30"/>
+  <text class="t" x="628" y="162" text-anchor="middle">SMA</text>
+  <path class="eth" d="M660 120 H 760"/>
+  <text class="s" x="766" y="124">LAN / Router</text>
+  <path d="M660 157 H 700 V 134 M690 134 L700 146 L710 134" stroke="#24292f" stroke-width="2" fill="none"/>
+  <text class="s" x="716" y="160">externe Antenne</text>
+  <rect class="term" x="330" y="160" width="118" height="48"/>
+  <text class="t" x="389" y="181" text-anchor="middle">EXT bus</text>
+  <text class="s" x="389" y="197" text-anchor="middle">2×5-polig · I²C + 5 V</text>
+  <!-- bottom terminals -->
+  <rect class="term" x="345" y="240" width="45" height="40"/><text class="t" x="367" y="265" text-anchor="middle">SN1</text>
+  <rect class="term" x="390" y="240" width="45" height="40"/><text class="t" x="412" y="265" text-anchor="middle">GND</text>
+  <rect class="term" x="435" y="240" width="45" height="40"/><text class="t" x="457" y="265" text-anchor="middle">SN2</text>
+  <rect class="term" x="500" y="240" width="44" height="40"/><text class="t" x="522" y="265" text-anchor="middle">COM</text>
+  <rect class="term" x="544" y="240" width="34" height="40"/><text class="t" x="561" y="265" text-anchor="middle">1</text>
+  <rect class="term" x="578" y="240" width="34" height="40"/><text class="t" x="595" y="265" text-anchor="middle">2</text>
+  <rect class="term" x="612" y="240" width="34" height="40"/><text class="t" x="629" y="265" text-anchor="middle">…8</text>
+
+  <!-- Rain-Clik -->
+  <path class="sig" d="M367 280 V 310"/>
+  <path class="gnd" d="M412 280 V 310"/>
+  <rect class="box" x="330" y="310" width="150" height="66" rx="8"/>
+  <text class="h" x="405" y="334" text-anchor="middle">Hunter Rain-Clik</text>
+  <text class="s" x="405" y="352" text-anchor="middle">trocken = zu · Regen = offen</text>
+  <text class="s" x="405" y="367" text-anchor="middle">2 Adern, beliebig gepolt</text>
+  <text x="330" y="393" font-size="12" fill="#cf222e" font-weight="bold">niemals an COM!</text>
+
+  <!-- Valves -->
+  <path class="vlv" d="M522 280 V 310"/>
+  <path class="vlv" d="M561 280 V 310"/>
+  <path class="vlv" d="M595 280 V 310"/>
+  <path class="vlv" d="M629 280 V 310"/>
+  <rect class="box" x="500" y="310" width="160" height="66" rx="8"/>
+  <text class="h" x="580" y="334" text-anchor="middle">Ventile 1…8</text>
+  <text class="s" x="580" y="352" text-anchor="middle">gemeinsamer Draht → COM</text>
+  <text class="s" x="580" y="367" text-anchor="middle">3M-314-Gelverbinder</text>
+
+  <!-- Flachbandkabel -->
+  <path class="rib" d="M330 184 H 120 V 410"/>
+  <text class="s" x="140" y="210">Flachbandkabel</text>
+
+  <!-- RS485 board vertical -->
+  <rect class="box" x="30" y="410" width="200" height="330" rx="8"/>
+  <text class="h" x="110" y="436" text-anchor="middle">RS485 Board</text>
+  <text class="s" x="110" y="453" text-anchor="middle">OWA4 · I²C 0x4C</text>
+  <text class="s" x="110" y="468" text-anchor="middle">galvanisch getrennt</text>
+  <text class="s" x="110" y="483" text-anchor="middle">120 Ω auf dem Board</text>
+  <g class="t">
+    <text x="166" y="497" class="h" font-size="12">Port 1</text>
+    <rect class="term" x="186" y="505" width="44" height="18"/><text x="208" y="518" text-anchor="middle" font-size="11" fill="#cf222e">+5V</text>
+    <rect class="term" x="186" y="523" width="44" height="18"/><text x="208" y="536" text-anchor="middle" font-size="11">GND</text>
+    <rect class="term" x="186" y="541" width="44" height="18"/><text x="208" y="554" text-anchor="middle" font-size="11" fill="#1a7f37">A</text>
+    <rect class="term" x="186" y="559" width="44" height="18"/><text x="208" y="572" text-anchor="middle" font-size="11" fill="#bf8700">B</text>
+    <text x="166" y="597" class="h" font-size="12">Port 2</text>
+    <rect class="term" x="186" y="605" width="44" height="18"/><text x="208" y="618" text-anchor="middle" font-size="11" fill="#cf222e">+5V</text>
+    <rect class="term" x="186" y="623" width="44" height="18"/><text x="208" y="636" text-anchor="middle" font-size="11">GND</text>
+    <rect class="term" x="186" y="641" width="44" height="18"/><text x="208" y="654" text-anchor="middle" font-size="11" fill="#1a7f37">A</text>
+    <rect class="term" x="186" y="659" width="44" height="18"/><text x="208" y="672" text-anchor="middle" font-size="11" fill="#bf8700">B</text>
+    <text x="44" y="700" class="s">Port 3 + 4: frei</text>
+    <text x="44" y="716" class="s">alle 4 Ports = ein Bus</text>
+  </g>
+
+  <!-- Bus cable port 1 → TrueCon -->
+  <path class="pwr" d="M230 514 H 700"/>
+  <path class="gnd" d="M230 532 H 700"/>
+  <path class="a"   d="M230 550 H 700"/>
+  <path class="b"   d="M230 568 H 700"/>
+  <text class="s" x="300" y="503">Buskabel, A/B auf einem verdrillten Paar, gesamt bis 300 m</text>
+
+  <!-- TrueCon -->
+  <rect class="box" x="700" y="470" width="140" height="130" rx="8"/>
+  <text class="h" x="770" y="496" text-anchor="middle">TrueCon100</text>
+  <text class="s" x="770" y="514" text-anchor="middle">Verteilerbox</text>
+  <text class="s" x="770" y="530" text-anchor="middle">1 Bus-Eingang →</text>
+  <text class="s" x="770" y="546" text-anchor="middle">bis 10 Sensoren</text>
+  <text class="s" x="770" y="562" text-anchor="middle">(+ / GND / A / B</text>
+  <text class="s" x="770" y="578" text-anchor="middle">parallel)</text>
+
+  <!-- SMT100 -->
+  <path class="gnd" d="M840 492 H 860 V 401 H 890"/>
+  <path class="gnd" d="M840 520 H 870 V 461 H 890"/>
+  <path class="gnd" d="M840 548 H 870 V 521 H 890"/>
+  <path class="gnd" d="M840 576 H 860 V 581 H 890"/>
+  <text class="s" x="700" y="618">je 4-adriges Sensorkabel</text>
+  <rect class="box" x="890" y="340" width="190" height="290" rx="8"/>
+  <text class="h" x="985" y="365" text-anchor="middle">4 × SMT100 (Boden)</text>
+  <rect class="term" x="905" y="380" width="160" height="42"/><text class="t" x="985" y="398" text-anchor="middle">SMT100 #1</text><text class="s" x="985" y="414" text-anchor="middle">Modbus-Adresse 1</text>
+  <rect class="term" x="905" y="440" width="160" height="42"/><text class="t" x="985" y="458" text-anchor="middle">SMT100 #2</text><text class="s" x="985" y="474" text-anchor="middle">Modbus-Adresse 2</text>
+  <rect class="term" x="905" y="500" width="160" height="42"/><text class="t" x="985" y="518" text-anchor="middle">SMT100 #3</text><text class="s" x="985" y="534" text-anchor="middle">Modbus-Adresse 3</text>
+  <rect class="term" x="905" y="560" width="160" height="42"/><text class="t" x="985" y="578" text-anchor="middle">SMT100 #4</text><text class="s" x="985" y="594" text-anchor="middle">Modbus-Adresse 4</text>
+  <text class="s" x="985" y="645" text-anchor="middle">braun + · weiß GND · grün A · gelb B</text>
+
+  <!-- TH100 on port 2 -->
+  <path class="pwr" d="M230 614 H 300"/>
+  <path class="gnd" d="M230 632 H 300"/>
+  <path class="a"   d="M230 650 H 300"/>
+  <path class="b"   d="M230 668 H 300"/>
+  <rect class="box" x="300" y="600" width="220" height="80" rx="8"/>
+  <text class="h" x="410" y="626" text-anchor="middle">TH100 (Lufttemp. / Feuchte)</text>
+  <text class="s" x="410" y="645" text-anchor="middle">Modbus-Adresse 10</text>
+  <text class="s" x="410" y="661" text-anchor="middle">Strahlungsschutz, 1,5–2 m über Boden</text>
+
+  <!-- legend -->
+  <g transform="translate(548,650)">
+    <rect x="0" y="0" width="530" height="96" fill="#fff" stroke="#d0d7de"/>
+    <path class="pwr" d="M12 22 H 46"/><text class="t" x="54" y="26">+ Versorgung (DC-Eingang / +5 V Sensoren)</text>
+    <path class="gnd" d="M12 46 H 46"/><text class="t" x="54" y="50">GND / −</text>
+    <path class="sig" d="M12 70 H 46"/><text class="t" x="54" y="74">Regensensor-Eingang SN1</text>
+    <path class="a" d="M310 22 H 344"/><text class="t" x="352" y="26">RS485 A (+)</text>
+    <path class="b" d="M310 46 H 344"/><text class="t" x="352" y="50">RS485 B (−)</text>
+    <path class="vlv" d="M310 70 H 344"/><text class="t" x="352" y="74">Ventilausgänge (DC geschaltet)</text>
+    <text class="s" x="12" y="91">Aderfarben mit Etikett/Datenblatt des Sensors abgleichen.</text>
+  </g>
+</svg>
